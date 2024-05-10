@@ -10,10 +10,10 @@ const typography = {
 export const theme = createTheme({
     palette: {
         background: {
-            default: "0E0E10"
+            default: "#0E0E10"
         },
         text: {
-            primary: "FFEEDD"
+            primary: "#FFEEDD"
         },
     },
     typography,
