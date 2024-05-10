@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('./PlayfairDisplay-Black.woff2') format('woff2');
+    font-weight: 900;
+    /* Black */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('./PlayfairDisplay-BlackItalic.woff2') format('woff2');
+    font-weight: 900;
+    /* BlackItalic */
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('./PlayfairDisplay-Bold.woff2') format('woff2');
+    font-weight: bold;
+    /* Bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('./PlayfairDisplay-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    /* BoldItalic */
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('./PlayfairDisplay-Regular.woff2') format('woff2');
+    font-weight: 400;
+    /* Regular */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('./PlayfairDisplay-Italic.woff2') format('woff2');
+    font-weight: 400;
+    /* Italic */
+    font-style: italic;
+}
