@@ -1,13 +1,13 @@
 import { GlobalStyles } from "tss-react";
 import { Header } from "shared/Header"
-import { useStyles } from "tss-react/mui";
-
+import { tss } from "tss-react/mui";
+import { Home } from "pages/Home"; 
 
 
 
 export function App() {
 
-  const { theme } = useStyles();
+  const { classes, theme } = useStyle();
 
   return (
     <>
@@ -21,8 +21,21 @@ export function App() {
         }
       }} />
 
-      <Header />
+      <Header className={classes.header} />
+
+      <main>
+        <Home />
+      </main>
 
     </>
   )
 }
+
+const useStyle = tss
+  .create(() => ({
+    "header": {
+      "position": "absolute",
+      "top": 0,
+      "zIndex": 1000,
+    },
+  }));
