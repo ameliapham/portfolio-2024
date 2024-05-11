@@ -3,12 +3,17 @@ import { MenuButton } from 'shared/MenuButton';
 import { tss } from 'tss-react/mui';
 import { alpha } from "@mui/material/styles";
 
-export function Header() {
+type Props = {
+    className?: string;
+};
 
-    const { classes } = useStyle();
+export function Header(props: Props) {
+
+    const { className } = props;
+    const { cx, classes } = useStyle();
 
     return (
-        <div className={classes.root}>
+        <div className={cx( classes.root, className )}>
             <img
                 className={classes.logo}
                 src={logo}
@@ -50,6 +55,7 @@ const useStyle = tss
             "padding": `0 ${theme.spacing(10)}`,
             "borderBottom": `1px solid ${alpha("#FFFFFF", 0.1)}`,
             "height": theme.spacing(8),
+            "width": "100%",
         },
         "logo": {
             "width": theme.spacing(15),
