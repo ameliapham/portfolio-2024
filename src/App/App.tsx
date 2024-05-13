@@ -1,5 +1,5 @@
 import { GlobalStyles } from "tss-react";
-import { Header } from "shared/Header"
+import { Header } from "App/Header"
 import { tss } from "tss-react/mui";
 import { Home } from "pages/Home"; 
 
