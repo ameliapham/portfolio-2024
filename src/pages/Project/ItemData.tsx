@@ -11,26 +11,26 @@ export const initialItems: ItemData[] = [
     {
         "img": project1,
         "name": "Project 1",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
+        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
     }, {
         "img": project1,
-        "name": "Project 1",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
+        "name": "Project 2",
+        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
     }, {
         "img": project1,
-        "name": "Project 1",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
+        "name": "Project 3",
+        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
     }, {
         "img": project1,
-        "name": "Project 1",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
+        "name": "Project 4",
+        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
     }, {
         "img": project1,
-        "name": "Project 1",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
+        "name": "Project 5",
+        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
     }, {
         "img": project1,
-        "name": "Project 1",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
+        "name": "Project 6",
+        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
     }
 ];
