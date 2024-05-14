@@ -1,11 +1,7 @@
 import { tss, keyframes } from "tss-react";
+import { type ItemData } from "./ItemData";
 
-export type ItemData = {
-    img: string;
-    name: string;
-    des: string;
-    link?: string;
-}
+
 
 type ItemProps = {
     className?: string;

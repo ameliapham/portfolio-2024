@@ -1,35 +1,8 @@
 import { tss } from "tss-react/mui";
 import { useState } from "react";
-import { Item, type ItemData } from "./Item";
+import { Item, } from "./Item";
+import { initialItems} from "./ItemData";
 
-
-const initialItems: ItemData[] = [
-    {
-        "img": "https://i.ibb.co/qCkd9jS/img1.jpg",
-        "name": "1 - Switzerland",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
-    }, {
-        "img": "https://i.ibb.co/jrRb11q/img2.jpg",
-        "name": "2 - Finland",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
-    }, {
-        "img": "https://i.ibb.co/NSwVv8D/img3.jpg",
-        "name": "3 - Iceland",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
-    }, {
-        "img": "https://i.ibb.co/Bq4Q0M8/img4.jpg",
-        "name": "4 - Australia",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
-    }, {
-        "img": "https://i.ibb.co/jTQfmTq/img5.jpg",
-        "name": "5 - Netherland",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
-    }, {
-        "img": "https://i.ibb.co/RNkk6L0/img6.jpg",
-        "name": "6 - Ireland",
-        "des": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!",
-    }
-];
 
 
 
@@ -78,7 +51,7 @@ const useStyle = tss
             "width": "100%",
             "height": "100%",
             "background": "#f5f5f5",
-            
+
             "border": "1px solid red",
         },
         "button": {
