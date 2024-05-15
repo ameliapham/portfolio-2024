@@ -1,5 +1,5 @@
 import { tss } from "tss-react/mui";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Item } from "./Item";
 import { initialItems } from "./ItemData";
 
@@ -22,6 +22,22 @@ export function Project() {
             slideRef.current.prepend(lastChild);
         }
     };
+
+    useEffect(() => {
+        const onWheel = (e: WheelEvent) => {
+            if (e.deltaY < 0) {
+                handlePrev();
+            } else {
+                handleNext();
+            }
+        };
+
+        window.addEventListener('wheel', onWheel);
+
+        return () => {
+            window.removeEventListener('wheel', onWheel);
+        };
+    }, []);
 
     return (
         <div className={classes.container}>
@@ -49,7 +65,7 @@ export function Project() {
 
 const useStyle = tss
     .withName({ Project })
-    .create(() => ({
+    .create(({ theme }) => ({
         "container": {
             "boxSizing": "border-box",
             "position": "absolute",
@@ -58,7 +74,7 @@ const useStyle = tss
             "transform": "translate(-50%, -50%)",
             "width": "100%",
             "height": "100%",
-            "background": "#f5f5f5",
+            "background": theme.palette.background.default,
             "overflow": "hidden",
         },
         "button": {
