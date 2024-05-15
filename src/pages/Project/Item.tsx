@@ -1,5 +1,7 @@
-import { tss, keyframes } from "tss-react";
+import { keyframes } from "tss-react";
+import { tss } from "tss-react/mui";
 import { type ItemData } from "./ItemData";
+import Typography from "@mui/material/Typography";
 
 
 
@@ -13,16 +15,27 @@ export function Item(props: ItemProps) {
     const { cx, classes } = useStyle();
 
     return (
-        <div 
+        <div
+            key={itemData.name}
             className={cx(classes.item, className)}
             style={({ backgroundImage: `url(${itemData.img})` })}
         >
             <div className={classes.content}>
-                <div className={classes.name}>{itemData.name}</div>
-                <div className={classes.des}>{itemData.des}</div>
+                <Typography
+                    variant="h2"
+                    className={classes.name}
+                >
+                    {itemData.name}
+                </Typography>
+                <Typography
+                    variant="body1"
+                    className={classes.des}
+                >
+                    {itemData.des}
+                </Typography>
                 <button>See More</button>
             </div>
-        </div>
+        </div >
     );
 }
 
@@ -42,21 +55,20 @@ const animate = keyframes({
 const useStyle = tss
     .withName({ Item })
     .withNestedSelectors<"content">()
-    .create(({classes}) => ({
+    .create(({ classes, theme }) => ({
         "item": {
             "boxSizing": "border-box",
             "width": "250px",
-            "height": "300px",
+            "height": theme.spacing(35),
             "position": "absolute",
             "top": "50%",
             "transform": "translate(0, -50%)",
-            "borderRadius": "20px",
+            "borderRadius": "10px",
             "backgroundPosition": "50% 50%",
             "backgroundSize": "cover",
-            "display": "flex",
-            "gap": "10px",
             "transition": "0.5s",
-            "&:nth-child(1), &:nth-child(2)": {
+
+            "&:nth-of-type(1), &:nth-of-type(2)": {
                 "top": 0,
                 "left": 0,
                 "transform": "translate(0, 0)",
@@ -64,21 +76,25 @@ const useStyle = tss
                 "width": "100%",
                 "height": "100%",
             },
-            "&:nth-child(3)": {
+
+            "&:nth-of-type(3)": {
                 "left": "50%",
             },
-            "&:nth-child(4)": {
-                "left": "calc(50% + 220px)",
+
+            "&:nth-of-type(4)": {
+                "left": "calc(50% + 280px)",
             },
-            "&:nth-child(5)": {
-                "left": "calc(50% + 440px)",
+
+            "&:nth-of-type(5)": {
+                "left": "calc(50% + 560px)",
             },
-            "&:nth-child(n + 6)": {
-                "left": "calc(50% + 660px)",
+
+            "&:nth-of-type(n + 6)": {
+                "left": "calc(50% + 840px)",
                 "opacity": 0,
             },
 
-            [`&:nth-child(2) .${classes.content}`]: {
+            [`&:nth-of-type(2) .${classes.content}`]: {
                 "display": "block"
             }
 
@@ -86,12 +102,13 @@ const useStyle = tss
         "content": {
             "position": "absolute",
             "top": "50%",
-            "left": "100px",
+            "left": theme.spacing(10),
             "width": "300px",
             "textAlign": "left",
             "color": "#eee",
             "transform": "translate(0, -50%)",
             "display": "none",
+
             "& button": {
                 "padding": "10px 20px",
                 "border": "none",
@@ -101,14 +118,11 @@ const useStyle = tss
             }
         },
         "name": {
-            "fontSize": "40px",
-            "textTransform": "uppercase",
-            "fontWeight": "bold",
             "opacity": 0,
             "animation": `${animate} 1s ease-in-out 1 forwards`,
         },
         "des": {
-            "marginTop": "10px",
+            "marginTop": "20px",
             "marginBottom": "20px",
             "opacity": 0,
             "animation": `${animate} 1s ease-in-out 0.3s 1 forwards`,

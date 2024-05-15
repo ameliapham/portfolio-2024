@@ -51,8 +51,7 @@ const useStyle = tss
             "width": "100%",
             "height": "100%",
             "background": "#f5f5f5",
-
-            "border": "1px solid red",
+            "overflow": "hidden",
         },
         "button": {
             "width": "100%",
