@@ -5,6 +5,9 @@ const typography = {
     h1: {
         fontFamily: "PlayfairDisplay",
     },
+    h2: {
+        fontFamily: "PlayfairDisplay",
+    },
 };
 
 export const theme = createTheme({
