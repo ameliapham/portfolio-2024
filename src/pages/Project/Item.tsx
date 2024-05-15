@@ -16,7 +16,6 @@ export function Item(props: ItemProps) {
 
     return (
         <div
-            key={itemData.name}
             className={cx(classes.item, className)}
             style={({ backgroundImage: `url(${itemData.img})` })}
         >

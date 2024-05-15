@@ -1,36 +1,44 @@
 import { tss } from "tss-react/mui";
-import { useState } from "react";
-import { Item, } from "./Item";
-import { initialItems} from "./ItemData";
-
-
+import { useRef } from "react";
+import { Item } from "./Item";
+import { initialItems } from "./ItemData";
 
 
 export function Project() {
 
     const { classes } = useStyle();
-    const [items, setItems] = useState(initialItems);
+    const slideRef = useRef<HTMLDivElement>(null);
+
+    const handleNext = () => {
+        if (slideRef.current) {
+            const firstChild = slideRef.current.children[0];
+            slideRef.current.appendChild(firstChild);
+        }
+    };
+
+    const handlePrev = () => {
+        if (slideRef.current) {
+            const lastChild = slideRef.current.children[slideRef.current.children.length - 1];
+            slideRef.current.prepend(lastChild);
+        }
+    };
 
     return (
         <div className={classes.container}>
-            <div>
-                {items.map(itemData => <Item key={itemData.name} itemData={itemData} />)}
+            <div
+                ref={slideRef}
+            >
+                {initialItems.map(itemData => <Item key={itemData.name} itemData={itemData} />)}
             </div>
 
             <div className={classes.button}>
                 <button
-                    onClick={() => {
-                        const [lastItem, ...otherItemsReversed] = [...items].reverse();
-                        setItems([lastItem, ...otherItemsReversed.reverse()]);
-                    }}
+                    onClick={handlePrev}
                 >
                     <i className="fa-solid fa-arrow-left" />
                 </button>
                 <button
-                    onClick={() => {
-                        const [firstItem, ...otherItems] = items;
-                        setItems([...otherItems, firstItem]);
-                    }}
+                    onClick={handleNext}
                 >
                     <i className="fa-solid fa-arrow-right" />
                 </button>
