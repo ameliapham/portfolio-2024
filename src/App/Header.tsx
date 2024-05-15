@@ -1,5 +1,5 @@
 import logo from 'assets/logo.svg';
-import { MenuButton } from 'shared/MenuButton';
+import { MenuButton } from './MenuButton';
 import { tss } from 'tss-react/mui';
 import { alpha } from "@mui/material/styles";
 
