@@ -1,5 +1,5 @@
 import { tss } from "tss-react/mui";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { Item } from "./Item";
 import { initialItems } from "./ItemData";
 
@@ -8,20 +8,41 @@ export function Project() {
 
     const { classes } = useStyle();
     const slideRef = useRef<HTMLDivElement>(null);
+    const isAnimating = useRef(false);
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
+        if (isAnimating.current) {
+            return;
+        }
+
+        isAnimating.current = true;
+
         if (slideRef.current) {
             const firstChild = slideRef.current.children[0];
             slideRef.current.appendChild(firstChild);
         }
-    };
 
-    const handlePrev = () => {
+        setTimeout(() => {
+            isAnimating.current = false;
+        }, 500);
+    }, []);
+
+    const handlePrev = useCallback(() => {
+        if (isAnimating.current) {
+            return;
+        }
+
+        isAnimating.current = true;
+
         if (slideRef.current) {
             const lastChild = slideRef.current.children[slideRef.current.children.length - 1];
             slideRef.current.prepend(lastChild);
         }
-    };
+        
+        setTimeout(() => {
+            isAnimating.current = false;
+        }, 500);
+    }, []);
 
     useEffect(() => {
         const onWheel = (e: WheelEvent) => {
@@ -37,7 +58,7 @@ export function Project() {
         return () => {
             window.removeEventListener('wheel', onWheel);
         };
-    }, []);
+    }, [handleNext, handlePrev]);
 
     return (
         <div className={classes.container}>
