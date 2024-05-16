@@ -49,14 +49,14 @@ const useStyle = tss
                 "content": "''",
                 "left": "0%",
                 "width": "0",
-                "height": "1px",
+                "height": theme.spacing(0.1),
                 "backgroundColor": `${alpha(theme.palette.text.primary, 0.5)}`,
                 "transform": "translateX(-10px)",
                 "transition": "all 0.5s ease",
             },
 
             "&:hover::before": {
-                "width": "80px",
+                "width": theme.spacing(8),
             },
         },
 

@@ -28,6 +28,7 @@ export function MenuButton(props: MenuButtonProps) {
 }
 
 const useStyle = tss
+    .withName({ MenuButton })
     .create(({ theme }) => ({
         "root": {
             "justifyContent": "center",
@@ -41,13 +42,17 @@ const useStyle = tss
             "overflow": "hidden",
             "cursor": "pointer",
 
+            "&:hover": {
+                backgroundColor: "transparent",
+            },
+
             "&::after": {
                 "content": "''",
                 "position": "absolute",
                 "bottom": "10px",
                 "left": "50%",
                 "width": "0",
-                "height": "1px",
+                "height": theme.spacing(0.1),
                 "backgroundColor": `${alpha(theme.palette.text.primary, 0.5)}`,
                 "transform": "translateX(-50%)",
                 "transition": "all 0.5s ease",
