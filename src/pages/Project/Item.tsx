@@ -106,9 +106,9 @@ const useStyle = tss
             "left": theme.spacing(10),
             "width": "300px",
             "textAlign": "left",
-            "color": "#eee",
             "transform": "translate(0, -50%)",
             "display": "none",
+            "color": theme.palette.text.primary,
 
             "& button": {
                 "opacity": 0,

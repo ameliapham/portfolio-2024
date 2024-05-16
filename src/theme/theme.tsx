@@ -16,7 +16,7 @@ export const theme = createTheme({
             default: "#0E0E10"
         },
         text: {
-            primary: "#FFEEDD"
+            primary: "#8e97a3"
         },
     },
     typography,

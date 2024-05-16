@@ -1,4 +1,4 @@
-import logo from 'assets/logo.svg';
+import logo from 'assets/logo-color.svg';
 import { MenuButton } from './MenuButton';
 import { tss } from 'tss-react/mui';
 import { alpha } from "@mui/material/styles";
@@ -53,7 +53,7 @@ const useStyle = tss
             "justifyContent": "space-between",
             "alignItems": "center",
             "padding": `0 ${theme.spacing(10)}`,
-            "borderBottom": `1px solid ${alpha("#FFFFFF", 0.1)}`,
+            "borderBottom": `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
             "height": theme.spacing(8),
             "width": "100%",
         },
