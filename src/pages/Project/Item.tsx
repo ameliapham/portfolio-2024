@@ -2,7 +2,7 @@ import { keyframes } from "tss-react";
 import { tss } from "tss-react/mui";
 import { type ItemData } from "./ItemData";
 import Typography from "@mui/material/Typography";
-
+import { SeeMoreButton } from "./SeeMoreButton";
 
 
 type ItemProps = {
@@ -32,7 +32,9 @@ export function Item(props: ItemProps) {
                 >
                     {itemData.des}
                 </Typography>
-                <button>See More</button>
+                <SeeMoreButton>
+                    See More
+                </SeeMoreButton>
             </div>
         </div >
     );
@@ -109,9 +111,6 @@ const useStyle = tss
             "display": "none",
 
             "& button": {
-                "padding": "10px 20px",
-                "border": "none",
-                "cursor": "pointer",
                 "opacity": 0,
                 "animation": `${animate} 1s ease-in-out 0.6s 1 forwards`,
             }
