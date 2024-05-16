@@ -47,9 +47,9 @@ const useStyle = tss
 
             "&::before": {
                 "content": "''",
-                "left": "0%",
-                "width": "0",
-                "height": theme.spacing(0.1),
+                "left": 0,
+                "width": 0,
+                "height": theme.spacing(0.15),
                 "backgroundColor": `${alpha(theme.palette.text.primary, 0.5)}`,
                 "transform": "translateX(-10px)",
                 "transition": "all 0.5s ease",
