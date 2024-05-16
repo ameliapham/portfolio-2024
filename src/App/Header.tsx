@@ -24,7 +24,7 @@ export function Header(props: Props) {
                 <MenuButton
                     onClick={() => alert("Hello")}
                 >
-                    About
+                    About Me
                 </MenuButton>
                 <MenuButton
                     onClick={() => alert("Hello")}
