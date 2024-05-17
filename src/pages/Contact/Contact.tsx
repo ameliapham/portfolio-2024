@@ -35,14 +35,17 @@ export function Contact(props: Props) {
     return (
         <>
             <div className={cx(classes.root, className)}>
-                <Typography variant="h2">
-                    Let's move forward together!
-                </Typography>
+                <div className={classes.textZone}>
+                    <Typography variant="h3" className={classes.title}>
+                    Let's progress together !
+                    </Typography>
 
-                <Typography variant="body1">
-                    A new project in mind? Need help evolving your digital tools? Let's get in touch and discuss it!
-                    I would be happy to share my experience and guide you in the realization of your projects.
-                </Typography>
+                    <Typography variant="body1">
+                        A new project in mind? Need help evolving your digital tools? Let's get in touch and discuss it!
+                        I would be happy to share my experience and guide you in the realization of your projects.
+                    </Typography>
+                </div>
+
 
                 <div className={classes.social}>
                     {social.map((social, index) => (
@@ -52,7 +55,7 @@ export function Contact(props: Props) {
                     ))}
                 </div>
             </div>
-            
+
             <BackgroundBeams />
         </>
 
@@ -70,23 +73,36 @@ const useStyles = tss
             "transform": "translate(-50%, -50%)",
             "display": "flex",
             "flexDirection": "column",
-            "gap": "30px",
+            "gap": "50px",
             "alignItems": "center",
             "textAlign": "center",
-            "width": "50%",
+            "width": "45%",
             "boxSizing": "border-box",
             "color": theme.palette.text.primary
         },
+        "textZone": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": "20px",
+        },
+        "title": {
+            "fontFamily": "PlayfairDisplay",
+            "letterSpacing": "0.5px",
+        },
         "social": {
             "display": "flex",
-            "gap": theme.spacing(2),
+            "gap": theme.spacing(3),
             "justifyContent": "center",
             "alignItems": "center",
             "height": theme.spacing(6),
         },
         "icon": {
-            "width": "25px",
-            "height": "25px",
+            "width": theme.spacing(4),
+            "height": theme.spacing(4),
             "color": theme.palette.text.primary,
+            "transition": "0.3s ease-in-out",
+            "&:hover": {
+                transform: "translateY(-5px)",
+            }
         },
     }));
