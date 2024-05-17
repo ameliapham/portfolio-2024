@@ -36,7 +36,7 @@ export function Contact(props: Props) {
         <>
             <div className={cx(classes.root, className)}>
                 <div className={classes.textZone}>
-                    <Typography variant="h3" className={classes.title}>
+                    <Typography variant="h3">
                     Let's progress together !
                     </Typography>
 
@@ -84,10 +84,6 @@ const useStyles = tss
             "display": "flex",
             "flexDirection": "column",
             "gap": "20px",
-        },
-        "title": {
-            "fontFamily": "PlayfairDisplay",
-            "letterSpacing": "0.5px",
         },
         "social": {
             "display": "flex",
