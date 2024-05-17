@@ -5,7 +5,7 @@ import { alpha } from "@mui/material/styles";
 
 type Props = {
     className?: string;
-    onClick?: () => void;
+    onClick: () => void;
     children: React.ReactNode;
 };
 

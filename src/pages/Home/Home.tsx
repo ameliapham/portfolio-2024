@@ -29,7 +29,8 @@ export function Home(props: Props) {
             </Typography>
 
             <SeeMoreButton
-                className={classes.button}    
+                className={classes.button}
+                onClick={() => alert("View My Work")} 
             >
                 View My Work
             </SeeMoreButton>
