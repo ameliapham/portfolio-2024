@@ -6,7 +6,7 @@ import { initialItems } from "./ItemData";
 
 export function Project() {
 
-    const { classes } = useStyle();
+    const { classes } = useStyles();
     const slideRef = useRef<HTMLDivElement>(null);
     const isAnimating = useRef(false);
 
@@ -84,7 +84,7 @@ export function Project() {
     );
 }
 
-const useStyle = tss
+const useStyles = tss
     .withName({ Project })
     .create(({ theme }) => ({
         "container": {

@@ -12,7 +12,7 @@ type ItemProps = {
 
 export function Item(props: ItemProps) {
     const { className, itemData } = props;
-    const { cx, classes } = useStyle();
+    const { cx, classes } = useStyles();
 
     return (
         <div
@@ -53,7 +53,7 @@ const animate = keyframes({
     }
 });
 
-const useStyle = tss
+const useStyles = tss
     .withName({ Item })
     .withNestedSelectors<"content">()
     .create(({ classes, theme }) => ({

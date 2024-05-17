@@ -10,7 +10,7 @@ type Props = {
 export function Header(props: Props) {
 
     const { className } = props;
-    const { cx, classes } = useStyle();
+    const { cx, classes } = useStyles();
 
     return (
         <div className={cx( classes.root, className )}>
@@ -44,7 +44,7 @@ export function Header(props: Props) {
     )
 }
 
-const useStyle = tss
+const useStyles = tss
     .withName({ Header })
     .create(({ theme }) => ({
         "root": {

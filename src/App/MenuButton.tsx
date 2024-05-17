@@ -12,7 +12,7 @@ type MenuButtonProps = {
 export function MenuButton(props: MenuButtonProps) {
 
     const { className, onClick, children } = props;
-    const { cx, classes } = useStyle()
+    const { cx, classes } = useStyles()
 
     return (
         <div
@@ -27,7 +27,7 @@ export function MenuButton(props: MenuButtonProps) {
 
 }
 
-const useStyle = tss
+const useStyles = tss
     .withName({ MenuButton })
     .create(({ theme }) => ({
         "root": {

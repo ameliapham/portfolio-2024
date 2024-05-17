@@ -12,7 +12,7 @@ type Props = {
 export function SeeMoreButton(props: Props) {
 
     const { className, onClick, children } = props;
-    const { classes } = useStyle()
+    const { classes } = useStyles()
 
     return (
         <div
@@ -29,7 +29,7 @@ export function SeeMoreButton(props: Props) {
 
 }
 
-const useStyle = tss
+const useStyles = tss
     .create(({ theme }) => ({
         "button": {
             "position": "relative",

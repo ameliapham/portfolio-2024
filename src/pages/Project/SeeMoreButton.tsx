@@ -12,7 +12,7 @@ type Props = {
 export function SeeMoreButton(props: Props) {
 
     const { className, onClick, children } = props;
-    const { cx, classes } = useStyle()
+    const { cx, classes } = useStyles()
 
     return (
         <div
@@ -27,7 +27,7 @@ export function SeeMoreButton(props: Props) {
 
 }
 
-const useStyle = tss
+const useStyles = tss
     .create(({ theme }) => ({
         "root": {
             "justifyContent": "center",
