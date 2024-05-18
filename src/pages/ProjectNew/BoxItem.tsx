@@ -46,16 +46,17 @@ const useStyles = tss
             "box": {
                 "width": sideLength,
                 "height": sideLength,
-                "background": theme.palette.text.primary,
-                "border": "1px solid black",
+                "background": "transparent",
+                "border": "1px solid grey",
                 "borderRadius": "10px",
                 "position": "relative",
                 "overflow": "hidden",
+                "cursor": "pointer",
 
                 "&::before, &::after": {
                     "content": "''",
                     "position": "absolute",
-                    "backgroundColor": "black",
+                    "backgroundColor": "grey",
                 },
 
                 "&::before": {

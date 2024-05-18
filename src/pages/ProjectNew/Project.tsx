@@ -1,6 +1,7 @@
 import { tss } from "tss-react/mui";
 import { BoxItem } from "./BoxItem";
 import { initialItems } from "./ItemData";
+import { BackgroundBeams } from "shared/BackgroundBeams";
 
 
 export function Project() {
@@ -12,7 +13,7 @@ export function Project() {
             <div className={classes.boxZone}>
                 {initialItems.map(itemData => <BoxItem key={itemData.name} itemData={itemData} />)}
             </div>
-
+            <BackgroundBeams />
 
         </div>
     );
@@ -38,4 +39,4 @@ const useStyle = tss
             "gap": theme.spacing(2),
             "flexDirection": "row",
         },
-    }));
+    }))
