@@ -2,12 +2,15 @@ import { GlobalStyles } from "tss-react";
 import { Header } from "App/Header"
 import { tss } from "tss-react/mui";
 import { Home } from "pages/Home"; 
+// import { Project } from "pages/ProjectNew";
+// import { Contact } from "pages/Contact";
+// import { About } from "pages/About";
 
 
 
 export function App() {
 
-  const { classes, theme } = useStyle();
+  const { classes, theme } = useStyles();
 
   return (
     <>
@@ -31,7 +34,8 @@ export function App() {
   )
 }
 
-const useStyle = tss
+const useStyles = tss
+  .withName({ App })
   .create(() => ({
     "header": {
       "position": "absolute",
