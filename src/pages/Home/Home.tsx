@@ -3,6 +3,8 @@ import headVideo from "assets/headVideo.mp4";
 import headText from "assets/headText.png";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "./SeeMoreButton";
+import { SparklesCore } from "shared/Sparkles";
+import { CustomGradients } from "./Gradients";
 
 type Props = {
     className?: string;
@@ -11,7 +13,7 @@ type Props = {
 export function Home(props: Props) {
 
     const { className } = props;
-    const { cx, classes } = useStyle();
+    const { cx, classes } = useStyles();
 
     return (
         <div className={cx(classes.root, className)}>
@@ -20,7 +22,7 @@ export function Home(props: Props) {
             </video>
 
             <img className={classes.img} src={headText} alt="headText" />
-            
+
             <Typography
                 className={classes.des}
                 variant="h6"
@@ -28,9 +30,25 @@ export function Home(props: Props) {
                 UX UI Designer / Front End Developer
             </Typography>
 
+
+            <div className={classes.sparklesZone}>
+                <CustomGradients/>
+                <SparklesCore
+                    className={classes.sparkles}
+                    background="transparent"
+                    minSize={0.4}
+                    maxSize={1}
+                    particleDensity={1200}
+                    particleColor="#FFFFFF"
+                />
+
+                <div className={classes.sparklesBottom}></div>
+            </div>
+
+
             <SeeMoreButton
                 className={classes.button}
-                onClick={() => alert("View My Work")} 
+                onClick={() => alert("View My Work")}
             >
                 View My Work
             </SeeMoreButton>
@@ -38,7 +56,7 @@ export function Home(props: Props) {
     )
 }
 
-const useStyle = tss
+const useStyles = tss
     .withName({ Home })
     .create(({ theme }) => ({
         "root": {
@@ -65,6 +83,31 @@ const useStyle = tss
             "transform": "translate(-50%, -50%)",
             "color": theme.palette.text.primary,
             "textAlign": "center",
+        },
+        "sparklesZone": {
+            "position": "absolute",
+            "top": "80%",
+            "left": "50%",
+            "transform": "translate(-50%, -50%)",
+            "width": "800px",
+            "height": "200px",
+            "overflow": "hidden",
+        },
+        "sparkles": {
+            "canvas": {
+                "height": "350px !important",
+            },
+        },
+        "sparklesBottom": {
+            "position": "absolute",
+            "top": "50%",
+            "left": "50%",
+            "transform": "translate(-50%, -50%)",
+            "width": "100%",
+            "height": "100%",
+            "backgroundColor": "black",
+            "maskImage": "radial-gradient(400px 200px at top, transparent 20%, white)",
+
         },
         "button": {
             "position": "absolute",
