@@ -8,7 +8,7 @@ export type ItemData = {
     link?: string;
 }
 
-export const initialItems: ItemData[] = [
+export const projectData: ItemData[] = [
     {
         "img": project2,
         "name": "Project n",
