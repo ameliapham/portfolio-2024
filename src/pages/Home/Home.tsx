@@ -33,14 +33,7 @@ export function Home(props: Props) {
 
             <div className={classes.sparklesZone}>
                 <CustomGradients/>
-                <SparklesCore
-                    className={classes.sparkles}
-                    background="transparent"
-                    minSize={0.4}
-                    maxSize={1}
-                    particleDensity={1200}
-                    particleColor="#FFFFFF"
-                />
+            
 
                 <div className={classes.sparklesBottom}></div>
             </div>
