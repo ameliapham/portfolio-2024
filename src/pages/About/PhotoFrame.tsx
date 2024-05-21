@@ -41,14 +41,14 @@ const useStyles = tss
     .create(({ theme }) => {
         const background = theme.palette.text.primary;
         const top = "0%";
-        const right = "20%";
+        const right = "15%";
 
         return {
             "root": {
                 "display": "flex",
                 "boxSizing": "border-box",
-                "height": "50%",
-                "width": "30%",
+                "height": "70%",
+                "width": "45%",
             },
             "fakeBorder": {
                 "content": "''",
@@ -82,6 +82,12 @@ const useStyles = tss
                 "right": right,
                 "height": "100%",
                 "width": "60%",
+                "transition": "0.4s ease",
+
+                "&:hover": {
+                    "top": `calc(${top} - 15px)`,
+                    "right": `calc(${right} - 5px)`,
+                },
             },
             "fakeBorderDiv1": {
                 "background": `linear-gradient(to right bottom, ${alpha(background, 0.4)}, ${alpha(background, 0.8)}, ${alpha(background, 0.4)})`,
