@@ -1,48 +1,56 @@
 import { tss } from "tss-react/mui";
-import { useRef, useEffect, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Item } from "./Item";
-import { initialItems } from "./ItemData";
+import { projectData } from "data/projectData";
+import { useConstCallback } from "powerhooks/useConstCallback";
+import { assert } from "tsafe/assert";
+import project1 from "assets/food-pho.webp";
+import project2 from "assets/5webp.webp";
 
 
-export function Project() {
+export function ItemSlider() {
 
-    const { classes } = useStyles();
-    const slideRef = useRef<HTMLDivElement>(null);
-    const isAnimating = useRef(false);
+    const [selectedItemName, setSelectedItemName] = useState<string | undefined>(undefined);
 
-    const handleNext = useCallback(() => {
-        if (isAnimating.current) {
+    const { classes } = useStyles({ selectedItemName});
+    const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
+    const [refIsAnimating] = useState({ "current": false });
+
+    //const [isAnimating, setIsAnimating]= useState(false);
+
+    const handleNext = useConstCallback(() => {
+        if (refIsAnimating.current) {
             return;
         }
 
-        isAnimating.current = true;
+        refIsAnimating.current = true;
 
-        if (slideRef.current) {
-            const firstChild = slideRef.current.children[0];
-            slideRef.current.appendChild(firstChild);
-        }
+        assert(sliderElement !== null);
+
+        const firstChild = sliderElement.children[0];
+        sliderElement.appendChild(firstChild);
 
         setTimeout(() => {
-            isAnimating.current = false;
+            refIsAnimating.current = false;
         }, 500);
-    }, []);
+    });
 
-    const handlePrev = useCallback(() => {
-        if (isAnimating.current) {
+    const handlePrev = useConstCallback(() => {
+        if (refIsAnimating.current) {
             return;
         }
 
-        isAnimating.current = true;
+        refIsAnimating.current = true;
 
-        if (slideRef.current) {
-            const lastChild = slideRef.current.children[slideRef.current.children.length - 1];
-            slideRef.current.prepend(lastChild);
-        }
-        
+        assert(sliderElement !== null);
+
+        const lastChild = sliderElement.children[sliderElement.children.length - 1];
+        sliderElement.prepend(lastChild);
+
         setTimeout(() => {
-            isAnimating.current = false;
+            refIsAnimating.current = false;
         }, 500);
-    }, []);
+    });
 
     useEffect(() => {
         const onWheel = (e: WheelEvent) => {
@@ -58,14 +66,14 @@ export function Project() {
         return () => {
             window.removeEventListener('wheel', onWheel);
         };
-    }, [handleNext, handlePrev]);
+    }, []);
 
     return (
         <div className={classes.container}>
             <div
-                ref={slideRef}
+                ref={setSliderElement}
             >
-                {initialItems.map(itemData => <Item key={itemData.name} itemData={itemData} />)}
+                {projectData.map(itemData => <Item key={itemData.name} itemData={itemData} onMouseEnter={()=> setSelectedItemName(itemData.name)} />)}
             </div>
 
             <div className={classes.button}>
@@ -85,8 +93,9 @@ export function Project() {
 }
 
 const useStyles = tss
-    .withName({ Project })
-    .create(({ theme }) => ({
+    .withName({ Project: ItemSlider })
+    .withParams<{ selectedItemName: string | undefined; }>()
+    .create(({ theme, selectedItemName,  }) => ({
         "container": {
             "boxSizing": "border-box",
             "position": "absolute",
@@ -97,6 +106,14 @@ const useStyles = tss
             "height": "100%",
             "background": theme.palette.background.default,
             "overflow": "hidden",
+            "backgroundImage": (()=>{
+                switch(selectedItemName){
+                    case "resto": return project1;
+                    case "dame": return project2;
+                    default: return "black";
+                }
+            })(),
+            "transition": "background-image 0.5s",
         },
         "button": {
             "width": "100%",

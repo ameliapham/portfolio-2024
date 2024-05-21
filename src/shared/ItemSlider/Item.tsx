@@ -1,6 +1,6 @@
 import { keyframes } from "tss-react";
 import { tss } from "tss-react/mui";
-import { type ItemData } from "./ItemData";
+import { type ItemData } from "data/projectData";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "./SeeMoreButton";
 
@@ -8,16 +8,18 @@ import { SeeMoreButton } from "./SeeMoreButton";
 type ItemProps = {
     className?: string;
     itemData: ItemData;
+    onMouseEnter: () => void;
 }
 
 export function Item(props: ItemProps) {
-    const { className, itemData } = props;
+    const { className, itemData, onMouseEnter } = props;
     const { cx, classes } = useStyles();
 
     return (
         <div
             className={cx(classes.item, className)}
             style={({ backgroundImage: `url(${itemData.img})` })}
+            onMouseEnter={onMouseEnter}
         >
             <div className={classes.content}>
                 <Typography
