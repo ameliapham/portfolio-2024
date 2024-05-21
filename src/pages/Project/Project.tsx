@@ -1,6 +1,6 @@
 import { tss } from "tss-react/mui";
 import { BoxItem } from "./BoxItem";
-import { initialItems } from "./ItemData";
+import { projectData } from "data/projectData"
 import { BackgroundBeams } from "shared/BackgroundBeams";
 
 
@@ -11,7 +11,7 @@ export function Project() {
     return (
         <div className={classes.root}>
             <div className={classes.boxZone}>
-                {initialItems.map(itemData => <BoxItem key={itemData.name} itemData={itemData} />)}
+                {projectData.map(itemData => <BoxItem key={itemData.name} itemData={itemData} />)}
             </div>
             <BackgroundBeams />
 
