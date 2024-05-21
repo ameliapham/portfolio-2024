@@ -42,7 +42,6 @@ const useStyles = tss
     .withName({ About })
     .create(({ theme }) => ({
         "root": {
-            "border": "1px solid green",
             "padding": "20px",
             "height": "100vh",
             "boxSizing": "border-box",
