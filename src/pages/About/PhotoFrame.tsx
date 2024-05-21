@@ -41,7 +41,7 @@ const useStyles = tss
     .create(({ theme }) => {
         const background = theme.palette.text.primary;
         const top = "0%";
-        const right = "10%";
+        const right = "20%";
 
         return {
             "root": {
