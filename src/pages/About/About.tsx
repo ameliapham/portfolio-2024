@@ -2,6 +2,7 @@ import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography"
 import { PhotoFrame } from "./PhotoFrame";
 import { SeeMoreButton } from "shared/SeeMoreButton";
+import { BackgroundBeams } from "shared/BackgroundBeams";
 
 type Props = {
     className?: string;
@@ -32,6 +33,7 @@ export function About(props: Props) {
                     Download CV
                 </SeeMoreButton>
             </div>
+            <BackgroundBeams />
         </div>
     )
 }
