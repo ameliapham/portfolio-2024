@@ -3,7 +3,6 @@ import headVideo from "assets/headVideo.mp4";
 import headText from "assets/headText.png";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "./SeeMoreButton";
-import { SparklesCore } from "shared/Sparkles";
 import { CustomGradients } from "./Gradients";
 
 type Props = {
@@ -85,11 +84,6 @@ const useStyles = tss
             "width": "800px",
             "height": "200px",
             "overflow": "hidden",
-        },
-        "sparkles": {
-            "canvas": {
-                "height": "350px !important",
-            },
         },
         "sparklesBottom": {
             "position": "absolute",
