@@ -74,8 +74,6 @@ const useStyles = tss
             "display": "flex",
             "flexDirection": "column",
             "gap": "50px",
-            "alignItems": "center",
-            "textAlign": "center",
             "width": "45%",
             "boxSizing": "border-box",
             "color": theme.palette.text.primary
@@ -88,8 +86,6 @@ const useStyles = tss
         "social": {
             "display": "flex",
             "gap": theme.spacing(3),
-            "justifyContent": "center",
-            "alignItems": "center",
             "height": theme.spacing(6),
         },
         "icon": {
