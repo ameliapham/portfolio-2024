@@ -9,7 +9,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-export function SeeMoreButton(props: Props) {
+export function HomeSeeMoreButton(props: Props) {
 
     const { className, onClick, children } = props;
     const { classes } = useStyles()

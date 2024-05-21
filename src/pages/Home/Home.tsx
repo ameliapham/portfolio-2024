@@ -2,7 +2,7 @@ import { tss } from "tss-react/mui";
 import headVideo from "assets/headVideo.mp4";
 import headText from "assets/headText.png";
 import Typography from "@mui/material/Typography";
-import { SeeMoreButton } from "./SeeMoreButton";
+import { HomeSeeMoreButton } from "./HomeSeeMoreButton";
 import { CustomGradients } from "./Gradients";
 
 type Props = {
@@ -38,12 +38,12 @@ export function Home(props: Props) {
             </div>
 
 
-            <SeeMoreButton
+            <HomeSeeMoreButton
                 className={classes.button}
                 onClick={() => alert("View My Work")}
             >
                 View My Work
-            </SeeMoreButton>
+            </HomeSeeMoreButton>
         </div>
     )
 }
