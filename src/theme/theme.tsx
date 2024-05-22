@@ -29,7 +29,7 @@ const typography = {
 export const theme = createTheme({
     palette: {
         background: {
-            default: "#0E0E10"
+            default: "#000"
         },
         text: {
             //primary: "#8e97a3"
