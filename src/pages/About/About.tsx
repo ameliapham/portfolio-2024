@@ -1,32 +1,47 @@
-import { tss } from "tss-react/mui";
-import { keyframes } from "tss-react";
-import Typography from "@mui/material/Typography"
-import { PhotoFrame } from "./PhotoFrame";
-import { SeeMoreButton } from "shared/SeeMoreButton";
-import { BackgroundBeams } from "shared/BackgroundBeams";
+import { useState } from 'react';
+import { tss } from 'tss-react/mui';
+import Typography from '@mui/material/Typography';
+import { PhotoFrame } from './PhotoFrame';
+import { SeeMoreButton } from 'shared/SeeMoreButton';
+import { BackgroundBeams } from 'shared/BackgroundBeams';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 
 type Props = {
     className?: string;
 };
 
-
-
 export function About(props: Props) {
-
     const { className } = props;
     const { cx, classes } = useStyles();
+
+    const [showObject2, setShowObject2] = useState(false);
+
+    const handleScroll = (e: any) => {
+        const content = e.target;
+        const scrollPosition = content.scrollTop;
+        const threshold = 300;
+
+        if (scrollPosition > threshold) {
+            setShowObject2(true);
+        } else {
+            setShowObject2(false);
+        }
+    };
 
     return (
         <div className={cx(classes.root, className)}>
             <PhotoFrame className={classes.frameZone} />
-            <div className={classes.content}>
-                <div className={classes.object1}>
-                    <Typography variant="h3" className={classes.name}>
+            <div className={classes.content} onScroll={handleScroll}>
+                <div className={cx(classes.object1, { [classes.hidden]: showObject2 })}>
+                    <Typography variant="h3">
                         Amélia Pham
                     </Typography>
 
-                    <Typography variant="body1" className={classes.des}>
+                    <Typography variant="body1">
                         Welcome to my portfolio!
                         <br /><br />
                         I am Huong PHAM, also known as Amélia PHAM.
@@ -39,40 +54,55 @@ export function About(props: Props) {
                     </SeeMoreButton>
                 </div>
 
-                <div className={classes.object2}>
-                    <Typography variant="h3" className={classes.name}>
-                        What I do
+                <div className={cx(classes.object2, { [classes.visible]: showObject2 })}>
+                    <Typography variant="h3">
+                        What I can do
                     </Typography>
 
-                    <Typography variant="body1" className={classes.des}>
-                        <ul>
-                            <li>UI/UX Design</li>
-                            <li>Web Design</li>
-                            <li>Front-End Development</li>
-                            <li>Prototyping</li>
-                            <li>User Testing</li>
-                        </ul>
+                    <Typography variant="body1">
+                        If you wander what I can do, here is a list of my skills and expertise.
                     </Typography>
+
+                    <Accordion className={classes.accordion}>
+                        <AccordionSummary
+                            expandIcon={<ArrowDropDownIcon className={classes.icons} />}
+                            aria-controls="panel2-content"
+                            id="panel2-header"
+                        >
+                            <Typography variant="button">
+                                Web Development
+                            </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography variant="body1">
+                                HTML - CSS - JavaScript - React - Redux - NodeJS - Express - MongoDB - SQL - RESTful API - GraphQL
+                            </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+
+                    <Accordion className={classes.accordion}>
+                        <AccordionSummary
+                            expandIcon={<ArrowDropDownIcon className={classes.icons} />}
+                            aria-controls="panel2-content"
+                            id="panel2-header"
+                        >
+                            <Typography variant="button">
+                                UI/UX Design
+                            </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography variant="body1">
+                                Brand Systems - Design Systems - Visual Identities - Interaction Design - Visal Design - Motion Design
+                            </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+
                 </div>
-
             </div>
             <BackgroundBeams />
         </div>
-    )
+    );
 }
-
-const animate = keyframes({
-    "from": {
-        "opacity": 0,
-        "transform": "translate(0, 100px)",
-        "filter": "blur(33px)"
-    },
-    "to": {
-        "opacity": 1,
-        "transform": "translate(0)",
-        "filter": "blur(0)"
-    }
-});
 
 const useStyles = tss
     .withName({ About })
@@ -97,18 +127,10 @@ const useStyles = tss
             "left": "60%",
             "transform": "translateY(-50%) translateX(-20%)",
             "width": "30%",
-            "height": "50%",
-            "display": "flex",
-            "flexDirection": "column",
-            "gap": "60px",
+            "height": "60%",
             "color": theme.palette.text.primary,
             "padding": "20px",
-            "overflow": "scroll",
-
-            "& button": {
-                "opacity": 0,
-                "animation": `${animate} 1s ease-in-out 0.6s 1 forwards`,
-            },
+            "overflowY": "auto",
 
             // Hide scrollbar for webkit browsers
             "&::-webkit-scrollbar": {
@@ -116,20 +138,45 @@ const useStyles = tss
             },
             // Hide scrollbar for IE, Edge, and Firefox
             "&": {
-                "msOverflowStyle": "none", // IE and Edge
-                "scrollbarWidth": "none",  // Firefox
+                "msOverflowStyle": "none",
+                "scrollbarWidth": "none",
             },
-            
         },
-        "name": {
-            "opacity": 0,
-            "animation": `${animate} 1s ease-in-out 1 forwards`,
-        },
-        "des": {
-            "marginTop": "20px",
-            "marginBottom": "20px",
-            "opacity": 0,
-            "animation": `${animate} 1s ease-in-out 0.3s 1 forwards`,
 
-        }
+        "object1": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": "20px",
+            "padding": "20px",
+            "height": "100%",
+            "transition": "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
+            "transform": "translateY(0)",
+        },
+        "object2": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": "20px",
+            "padding": "20px",
+            "height": "100%",
+            "transition": "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
+            "opacity": 0,
+            "transform": "translateY(-20px)",
+        },
+        "hidden": {
+            "opacity": 0,
+            "transform": "translateY(20px)", // Adjust this value to control the final position
+        },
+        "visible": {
+            "opacity": 1,
+            "transform": "translateY(0)",
+        },
+        "accordion": {
+            "backgroundColor": "transparent",
+            "borderBottom": `1px solid ${theme.palette.text.primary}`,
+            "borderRadius": "none",
+        },
+        "icons": {
+            "color": theme.palette.text.primary,
+        },
     }));
+
