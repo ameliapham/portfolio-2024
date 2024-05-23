@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { tss } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import { PhotoFrame } from './PhotoFrame';
@@ -9,7 +9,6 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-
 type Props = {
     className?: string;
 };
@@ -19,23 +18,40 @@ export function About(props: Props) {
     const { cx, classes } = useStyles();
 
     const [showObject2, setShowObject2] = useState(false);
+    const contentRef = useRef<HTMLDivElement>(null);
 
-    const handleScroll = (e: any) => {
-        const content = e.target;
-        const scrollPosition = content.scrollTop;
-        const threshold = 300;
+    const handleScroll = () => {
+        const content = contentRef.current;
+        if (content) {
+            const scrollPosition = content.scrollTop;
+            const threshold = 300;
 
-        if (scrollPosition > threshold) {
-            setShowObject2(true);
-        } else {
-            setShowObject2(false);
+            if (scrollPosition > threshold) {
+                setShowObject2(true);
+            } else {
+                setShowObject2(false);
+            }
         }
     };
+
+    const propagateScroll = (e: any) => {
+        const content = contentRef.current;
+        if (content) {
+            content.scrollTop += e.deltaY;
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('wheel', propagateScroll);
+        return () => {
+            document.removeEventListener('wheel', propagateScroll);
+        };
+    }, []);
 
     return (
         <div className={cx(classes.root, className)}>
             <PhotoFrame className={classes.frameZone} />
-            <div className={classes.content} onScroll={handleScroll}>
+            <div className={classes.content} onScroll={handleScroll} ref={contentRef}>
                 <div className={cx(classes.object1, { [classes.hidden]: showObject2 })}>
                     <Typography variant="h3">
                         Amélia Pham
@@ -92,11 +108,10 @@ export function About(props: Props) {
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography variant="body1">
-                                Brand Systems - Design Systems - Visual Identities - Interaction Design - Visal Design - Motion Design
+                                Brand Systems - Design Systems - Visual Identities - Interaction Design - Visual Design - Motion Design
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
-
                 </div>
             </div>
             <BackgroundBeams />
@@ -112,26 +127,24 @@ const useStyles = tss
             "height": "100vh",
             "boxSizing": "border-box",
             "position": "relative",
+            "overflow": "hidden", // Ensure the root container does not scroll
         },
-
         "frameZone": {
             "position": "absolute",
             "top": "50%",
             "right": "50%",
             "transform": "translateY(-50%)",
         },
-
         "content": {
             "position": "absolute",
             "top": "50%",
             "left": "60%",
             "transform": "translateY(-50%) translateX(-20%)",
             "width": "30%",
-            "height": "60%",
+            "height": "55%",
             "color": theme.palette.text.primary,
             "padding": "20px",
             "overflowY": "auto",
-
             // Hide scrollbar for webkit browsers
             "&::-webkit-scrollbar": {
                 "display": "none",
@@ -142,7 +155,6 @@ const useStyles = tss
                 "scrollbarWidth": "none",
             },
         },
-
         "object1": {
             "display": "flex",
             "flexDirection": "column",
@@ -164,7 +176,7 @@ const useStyles = tss
         },
         "hidden": {
             "opacity": 0,
-            "transform": "translateY(20px)", // Adjust this value to control the final position
+            "transform": "translateY(20px)",
         },
         "visible": {
             "opacity": 1,
@@ -179,4 +191,3 @@ const useStyles = tss
             "color": theme.palette.text.primary,
         },
     }));
-
