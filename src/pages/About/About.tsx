@@ -1,13 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import { tss } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
-import { PhotoFrame } from './PhotoFrame';
-import { SeeMoreButton } from 'shared/SeeMoreButton';
-import { BackgroundBeams } from 'shared/BackgroundBeams';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
+//import { TracingBeam } from 'shared/TracingBeam';
+import { PhotoFrame } from './PhotoFrame';
+import { SeeMoreButton } from 'shared/SeeMoreButton';
+import { BackgroundBeams } from 'shared/BackgroundBeams';
+
 
 type Props = {
     className?: string;
@@ -24,17 +27,11 @@ export function About(props: Props) {
         const content = contentRef.current;
         if (content) {
             const scrollPosition = content.scrollTop;
-            const threshold = 300;
-
-            if (scrollPosition > threshold) {
-                setShowObject2(true);
-            } else {
-                setShowObject2(false);
-            }
+            setShowObject2(scrollPosition > 100);
         }
     };
 
-    const propagateScroll = (e: any) => {
+    const propagateScroll = (e: WheelEvent) => {
         const content = contentRef.current;
         if (content) {
             content.scrollTop += e.deltaY;
@@ -49,8 +46,10 @@ export function About(props: Props) {
     }, []);
 
     return (
+
         <div className={cx(classes.root, className)}>
             <PhotoFrame className={classes.frameZone} />
+
             <div className={classes.content} onScroll={handleScroll} ref={contentRef}>
                 <div className={cx(classes.object1, { [classes.hidden]: showObject2 })}>
                     <Typography variant="h3">
@@ -86,12 +85,12 @@ export function About(props: Props) {
                             id="panel2-header"
                         >
                             <Typography variant="button">
-                                Web Development
+                                Frontend Development
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography variant="body1">
-                                HTML - CSS - JavaScript - React - Redux - NodeJS - Express - MongoDB - SQL - RESTful API - GraphQL
+                                HTML - CSS - JavaScript - React - TypeScript - Tailwind CSS - MUI - Framer Motion
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
@@ -108,12 +107,14 @@ export function About(props: Props) {
                         </AccordionSummary>
                         <AccordionDetails>
                             <Typography variant="body1">
-                                Brand Systems - Design Systems - Visual Identities - Interaction Design - Visual Design - Motion Design
+                                Brand Systems - Design Systems - Visual Identities - Interaction Design - Visual Design - Motion Design - Prototyping - User Testing
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
                 </div>
+
             </div>
+
             <BackgroundBeams />
         </div>
     );
@@ -127,7 +128,7 @@ const useStyles = tss
             "height": "100vh",
             "boxSizing": "border-box",
             "position": "relative",
-            "overflow": "hidden", // Ensure the root container does not scroll
+            "overflow": "hidden",
         },
         "frameZone": {
             "position": "absolute",
@@ -144,7 +145,10 @@ const useStyles = tss
             "height": "55%",
             "color": theme.palette.text.primary,
             "padding": "20px",
-            "overflowY": "auto",
+            "overflowY": "scroll",
+            "scrollSnapType": "y mandatory",
+
+
             // Hide scrollbar for webkit browsers
             "&::-webkit-scrollbar": {
                 "display": "none",
@@ -158,21 +162,23 @@ const useStyles = tss
         "object1": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": "20px",
+            "gap": "10px",
             "padding": "20px",
             "height": "100%",
-            "transition": "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
-            "transform": "translateY(0)",
+            "transition": "opacity 0.5s ease-in-out",
+            "scrollSnapAlign": "start",
+
         },
         "object2": {
             "display": "flex",
             "flexDirection": "column",
-            "gap": "20px",
+            "gap": "10px",
             "padding": "20px",
             "height": "100%",
-            "transition": "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
+            "transition": "opacity 0.5s ease-in-out",
             "opacity": 0,
-            "transform": "translateY(-20px)",
+            "scrollSnapAlign": "center",
+
         },
         "hidden": {
             "opacity": 0,
