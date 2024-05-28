@@ -1,7 +1,8 @@
+import { tss } from 'tss-react/mui';
 import logo from 'assets/logo-color.svg';
 import { MenuButton } from './MenuButton';
-import { tss } from 'tss-react/mui';
 import { alpha } from "@mui/material/styles";
+import { useSelectedPage } from 'hooks/useSelectedPage'
 
 type Props = {
     className?: string;
@@ -11,28 +12,33 @@ export function Header(props: Props) {
 
     const { className } = props;
     const { cx, classes } = useStyles();
+    const { selectedPage, setSelectedPage } = useSelectedPage();
 
     return (
-        <div className={cx( classes.root, className )}>
+        <div className={cx(classes.root, className)}>
             <img
                 className={classes.logo}
                 src={logo}
                 alt="Logo"
+                onClick={() => setSelectedPage("home")}
             />
 
             <div className={classes.buttonZone}>
                 <MenuButton
-                    onClick={() => alert("Hello")}
+                    onClick={() => setSelectedPage("about")}
+                    selected={selectedPage === "about"}
                 >
                     About Me
                 </MenuButton>
                 <MenuButton
-                    onClick={() => alert("Hello")}
+                    onClick={() => setSelectedPage("projects")}
+                    selected={selectedPage === "projects"}
                 >
                     Projects
                 </MenuButton>
                 <MenuButton
-                    onClick={() => alert("Hello")}
+                    onClick={() => setSelectedPage("contact")}
+                    selected={selectedPage === "contact"}
                 >
                     Contact
                 </MenuButton>

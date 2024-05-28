@@ -1,15 +1,18 @@
 import { GlobalStyles } from "tss-react";
 import { Header } from "App/Header"
 import { tss } from "tss-react/mui";
-import { Home } from "pages/Home"; 
-// import { Project } from "pages/ProjectNew";
-// import { Contact } from "pages/Contact";
-// import { About } from "pages/About";
+import { Home } from "pages/Home";
+// import { ItemSlider } from "shared/ItemSlider";
+import { Contact } from "pages/Contact";
+import { About } from "pages/About";
+import { Project } from "pages/Project";
+import { useSelectedPage } from "hooks/useSelectedPage";
 
 
 
 export function App() {
 
+  const { selectedPage } = useSelectedPage();
   const { classes, theme } = useStyles();
 
   return (
@@ -27,7 +30,18 @@ export function App() {
       <Header className={classes.header} />
 
       <main>
-        <Home />
+        {(() => {
+          switch (selectedPage) {
+            case "home":
+              return <Home />
+            case "about":
+              return <About />
+            case "projects":
+              return <Project />
+            case "contact":
+              return <Contact />
+          }
+        })()}
       </main>
 
     </>
