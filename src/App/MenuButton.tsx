@@ -7,22 +7,21 @@ type MenuButtonProps = {
     className?: string;
     onClick?: () => void;
     children: React.ReactNode;
+    selected?: boolean;
 };
 
 export function MenuButton(props: MenuButtonProps) {
 
-    const { className, onClick, children } = props;
+    const { className, onClick, children, selected } = props;
     const { cx, classes } = useStyles()
 
     return (
-        <div
-            className={cx(classes.root, className)}
+        <Button
+            className={cx(classes.button, { [classes.selected]: selected }, className)}
             onClick={onClick}
         >
-            <Button className={classes.button}>
-                {children}
-            </Button>
-        </div>
+            {children}
+        </Button>
     )
 
 }
@@ -30,10 +29,6 @@ export function MenuButton(props: MenuButtonProps) {
 const useStyles = tss
     .withName({ MenuButton })
     .create(({ theme }) => ({
-        "root": {
-            "justifyContent": "center",
-            "alignItems": "center",
-        },
         "button": {
             "position": "relative",
             "color": theme.palette.text.primary,
@@ -59,6 +54,11 @@ const useStyles = tss
             },
 
             "&:hover::after": {
+                "width": "100%",
+            },
+        },
+        "selected": {
+            "&::after": {
                 "width": "100%",
             },
         },
