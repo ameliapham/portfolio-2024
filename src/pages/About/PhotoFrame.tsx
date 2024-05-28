@@ -38,17 +38,34 @@ export function PhotoFrame(props: Props) {
 
 const useStyles = tss
     .withName({ PhotoFrame })
-    .create(({ theme }) => {
+    .withNestedSelectors<"div1" | "div2" | "div3" | "div4">()
+    .create(({ theme, classes }) => {
         const background = theme.palette.text.primary;
         const top = "0%";
-        const right = "15%";
+        const right = "1%";
 
         return {
             "root": {
                 "display": "flex",
                 "boxSizing": "border-box",
                 "height": "70%",
-                "width": "45%",
+                "width": "30%",
+
+                [`&:hover .${classes.div1}`]: {
+                    "top": `calc(${top} + 30px)`,
+                    "right": `calc(${right} + 30px)`,
+                },
+
+                [`&:hover .${classes.div3}`]: {
+                    "top": `calc(${top} + 30px)`,
+                    "right": `calc(${right} + 30px)`,
+                },
+
+                [`&:hover .${classes.div4}`]: {
+                    "top": `calc(${top} + 30px)`,
+                    "right": `calc(${right} + 30px)`,
+                },
+
             },
             "fakeBorder": {
                 "content": "''",
@@ -81,13 +98,8 @@ const useStyles = tss
                 "top": top,
                 "right": right,
                 "height": "100%",
-                "width": "60%",
+                "width": "100%",
                 "transition": "0.4s ease",
-
-                "&:hover": {
-                    "top": `calc(${top} - 15px)`,
-                    "right": `calc(${right} - 5px)`,
-                },
             },
             "fakeBorderDiv1": {
                 "background": `linear-gradient(to right bottom, ${alpha(background, 0.4)}, ${alpha(background, 0.8)}, ${alpha(background, 0.4)})`,
@@ -98,7 +110,8 @@ const useStyles = tss
                 "top": `calc(${top} + 30px)`,
                 "right": `calc(${right} + 30px)`,
                 "height": "100%",
-                "width": "60%",
+                "width": "100%",
+
             },
             "fakeBorderDiv2": {
                 "background": `linear-gradient(to right bottom, ${alpha(background, 0.25)}, ${alpha(background, 0.5)}, ${alpha(background, 0.25)})`,
@@ -109,7 +122,8 @@ const useStyles = tss
                 "top": `calc(${top} + 60px)`,
                 "right": `calc(${right} + 60px)`,
                 "height": "100%",
-                "width": "60%",
+                "width": "100%",
+                "transition": "0.4s ease",
             },
             "fakeBorderDiv3": {
                 "background": `linear-gradient(to right bottom, ${alpha(background, 0.1)}, ${alpha(background, 0.3)}, ${alpha(background, 0.1)})`,
@@ -120,7 +134,8 @@ const useStyles = tss
                 "top": `calc(${top} + 90px)`,
                 "right": `calc(${right} + 90px)`,
                 "height": "100%",
-                "width": "60%",
+                "width": "100%",
+                "transition": "0.4s ease",
             },
 
             "fakeBorderDiv4": {
