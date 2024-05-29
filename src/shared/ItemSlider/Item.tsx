@@ -2,7 +2,7 @@ import { keyframes } from "tss-react";
 import { tss } from "tss-react/mui";
 import { type ItemData } from "data/projectData";
 import Typography from "@mui/material/Typography";
-import { SeeMoreButton } from "./SeeMoreButton";
+import { SeeMoreButton } from "shared/SeeMoreButton";
 
 
 type ItemProps = {
@@ -17,7 +17,7 @@ export function Item(props: ItemProps) {
 
     return (
         <div
-            className={cx(classes.item, className)}
+            className={cx(classes.root, className)}
             style={({ backgroundImage: `url(${itemData.img})` })}
             onMouseEnter={onMouseEnter}
         >
@@ -59,7 +59,7 @@ const useStyles = tss
     .withName({ Item })
     .withNestedSelectors<"content">()
     .create(({ classes, theme }) => ({
-        "item": {
+        "root": {
             "boxSizing": "border-box",
             "width": "250px",
             "height": theme.spacing(35),
