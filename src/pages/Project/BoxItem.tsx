@@ -11,11 +11,14 @@ type Props = {
 
 export function BoxItem(props: Props) {
 
-    const { className, itemData } = props;
+    const { className, itemData, onClick } = props;
     const { cx, classes } = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div
+            className={classes.root}
+            onClick={onClick}
+        >
             <div className={cx(classes.box, className)}></div>
             <div className={classes.text}>
                 <Typography variant="h5">
@@ -37,11 +40,45 @@ const useStyles = tss
         const sideLength = "200px";
         const diagonalLength = Math.sqrt(2) * parseInt(sideLength);
 
+        const left = "30%";
+
         return {
             "root": {
+                "boxSizing": "border-box",
+                "position": "absolute",
+                "top": "60%",
                 "display": "flex",
                 "flexDirection": "column",
                 "gap": "20px",
+                "transition": "0.5s",
+
+                "&:nth-of-type(1)": {
+                    "left": left,
+                },
+
+                "&:nth-of-type(2)": {
+                    "left": `calc(${left} + 240px)`,
+                },
+
+
+                "&:nth-of-type(3)": {
+                    "left": `calc(${left} + 480px)`,
+                },
+
+                "&:nth-of-type(4)": {
+                    "left": `calc(${left} + 720px)`,
+                },
+
+                "&:nth-of-type(5)": {
+                    "left": `calc(${left} + 960px)`,
+                },
+
+                "&:nth-of-type(n + 6)": {
+                    "left": `calc(${left} + 1200px)`,
+                    "opacity": 0,
+                },
+
+
             },
             "box": {
                 "width": sideLength,
@@ -75,7 +112,7 @@ const useStyles = tss
                     "right": 0,
                     "transform": "rotate(45deg)",
                     "transformOrigin": "top right"
-                }
+                },
             },
             "text": {
                 "color": theme.palette.text.primary,

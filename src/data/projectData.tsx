@@ -1,5 +1,5 @@
-import project1 from '../../assets/food-pho.webp';
-import project2 from '../../assets/5webp.webp';
+import project1 from 'assets/food-pho.webp';
+import project2 from 'assets/5webp.webp';
 
 export type ItemData = {
     img: string;
@@ -12,7 +12,7 @@ export type ItemData = {
 export const projectData: ItemData[] = [
     {
         "img": project2,
-        "name": "Project n",
+        "name": "Project 0",
         "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
         "year": "2024"
     }, {
@@ -38,6 +38,11 @@ export const projectData: ItemData[] = [
     }, {
         "img": project1,
         "name": "Project 5",
+        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
+        "year": "2019"
+    }, {
+        "img": project1,
+        "name": "Project 6",
         "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
         "year": "2019"
     }

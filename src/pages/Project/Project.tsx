@@ -2,16 +2,74 @@ import { tss } from "tss-react/mui";
 import { BoxItem } from "./BoxItem";
 import { projectData } from "data/projectData"
 import { BackgroundBeams } from "shared/BackgroundBeams";
+import { useState, useEffect } from "react";
+import { useConstCallback } from "powerhooks/useConstCallback";
+import { assert } from "tsafe/assert";
 
 
 export function Project() {
 
     const { classes } = useStyle();
+    const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
+    const [refIsAnimating] = useState({ "current": false });
+
+
+    const handleNext = useConstCallback(() => {
+        if (refIsAnimating.current) {
+            return;
+        }
+
+        refIsAnimating.current = true;
+
+        assert(sliderElement !== null);
+
+        const firstChild = sliderElement.children[0];
+        sliderElement.appendChild(firstChild);
+
+        setTimeout(() => {
+            refIsAnimating.current = false;
+        }, 500);
+    });
+
+    const handlePrev = useConstCallback(() => {
+        if (refIsAnimating.current) {
+            return;
+        }
+
+        refIsAnimating.current = true;
+
+        assert(sliderElement !== null);
+
+        const lastChild = sliderElement.children[sliderElement.children.length - 1];
+        sliderElement.prepend(lastChild);
+
+        setTimeout(() => {
+            refIsAnimating.current = false;
+        }, 500);
+    });
+
+    useEffect(() => {
+        const onWheel = (e: WheelEvent) => {
+            if (e.deltaY < 0) {
+                handlePrev();
+            } else {
+                handleNext();
+            }
+        };
+
+        window.addEventListener('wheel', onWheel);
+
+        return () => {
+            window.removeEventListener('wheel', onWheel);
+        };
+    }, []);
 
     return (
         <div className={classes.root}>
-            <div className={classes.boxZone}>
-                {projectData.map(itemData => <BoxItem key={itemData.name} itemData={itemData} />)}
+            <div
+                ref={setSliderElement}
+            >
+                {projectData.map((itemData, i) => <BoxItem key={itemData.name} itemData={itemData} onClick={() => alert(`Hello ${i}`)} />)}
             </div>
             <BackgroundBeams />
 
@@ -30,13 +88,5 @@ const useStyle = tss
             "width": "100%",
             "background": theme.palette.background.default,
             "overflow": "hidden",
-        },
-        "boxZone": {
-            "position": "absolute",
-            "top": "55%",
-            "left": "35%",
-            "display": "flex",
-            "gap": theme.spacing(2),
-            "flexDirection": "row",
         },
     }))
