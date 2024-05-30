@@ -7,7 +7,7 @@ type MenuButtonProps = {
     className?: string;
     onClick?: () => void;
     children: React.ReactNode;
-    selected?: boolean;
+    selected: boolean;
 };
 
 export function MenuButton(props: MenuButtonProps) {
