@@ -2,7 +2,7 @@ import { GlobalStyles } from "tss-react";
 import { Header } from "App/Header"
 import { tss } from "tss-react/mui";
 import { Home } from "pages/Home";
-// import { ItemSlider } from "shared/ItemSlider";
+import { ItemSlider } from "shared/ItemSlider";
 import { Contact } from "pages/Contact";
 import { About } from "pages/About";
 import { Project } from "pages/Project";
@@ -30,6 +30,7 @@ export function App() {
       <Header className={classes.header} />
 
       <main>
+        
         {(() => {
           switch (selectedPage) {
             case "home":

@@ -1,9 +1,7 @@
 import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
-import { keyframes } from "tss-react";
 
 import { ItemData } from "data/projectData"
-import { SeeMoreButton } from "shared/SeeMoreButton";
 
 
 
@@ -19,7 +17,7 @@ type Props = {
 export function BoxItem(props: Props) {
 
     const { className, itemData, onClick, onMouseEnter, onMouseLeave, selected } = props;
-    const { cx, classes } = useStyles({ itemData });
+    const { cx, classes } = useStyles({itemData});
 
     return (
         <div
@@ -28,25 +26,7 @@ export function BoxItem(props: Props) {
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
-            <div className={classes.content}>
-                <Typography
-                    variant="h2"
-                    className={classes.name}
-                >
-                    {itemData.name}
-                </Typography>
-                <Typography
-                    variant="body1"
-                    className={classes.des}
-                >
-                    {itemData.des}
-                </Typography>
-                <SeeMoreButton>
-                    See More
-                </SeeMoreButton>
-            </div>
-
-            <div className={cx(classes.box, className)}>
+            <div className={cx(classes.box, className, { [classes.selectedBox]: selected })}>
 
             </div>
             <div className={classes.text}>
@@ -63,23 +43,10 @@ export function BoxItem(props: Props) {
     )
 }
 
-const animate = keyframes({
-    "from": {
-        "opacity": 0,
-        "transform": "translate(0, 100px)",
-        "filter": "blur(33px)"
-    },
-    "to": {
-        "opacity": 1,
-        "transform": "translate(0)",
-        "filter": "blur(0)"
-    }
-});
-
 const useStyles = tss
     .withName({ BoxItem })
     .withParams<{ itemData: ItemData }>()
-    .withNestedSelectors<"content" | "box">()
+    .withNestedSelectors<"box">()
     .create(({ theme, itemData, classes }) => {
 
         const sideLength = "200px";
@@ -96,12 +63,10 @@ const useStyles = tss
                 "flexDirection": "column",
                 "gap": "20px",
                 "transition": "0.5s",
-                "border": "1px solid red",
 
                 "&:nth-of-type(1)": {
                     "left": left,
                 },
-
                 "&:nth-of-type(2)": {
                     "left": `calc(${left} + 240px)`,
                 },
@@ -119,26 +84,25 @@ const useStyles = tss
                     "opacity": 0,
                 },
 
-                [`&:hover .${classes.content}`]: {
-                    "display": "block",
-
-                },
-
                 "&:hover": {
                     "top": "55%",
                 },
 
-                "&:nth-of-type(1):hover, &:nth-of-type(n+1):hover": {
-                    "top": 0,
-                    "left": 0,
-                    "transform": "translate(0, 0)",
-                    "borderRadius": 0,
-                    "width": "100%",
-                    "height": "100%",
+                [`&:hover .${classes.box}`]: {
+                    "transition": "1s ease",
+                    "backgroundImage": `url(${itemData.img})`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center",
+                    "backgroundRepeat": "no-repeat",
+                },
+
+                [`&:hover .${classes.box}::before, &:hover .${classes.box}::after`]: {
+                    "transition": "0.2s",
+                    "width": "0",
+                    "height": "0",
                 },
 
             },
-
             "box": {
                 "width": sideLength,
                 "height": sideLength,
@@ -148,47 +112,48 @@ const useStyles = tss
                 "overflow": "hidden",
                 "cursor": "pointer",
                 "transition": "background 0.5s ease",
+
+                "&::before, &::after": {
+                    "content": "''",
+                    "position": "absolute",
+                    "backgroundColor": "grey",
+                },
+
+                "&::before": {
+                    "width": diagonalLength,
+                    "height": "1px",
+                    "top": 0,
+                    "left": 0,
+                    "transform": "rotate(45deg)",
+                    "transformOrigin": "top left",
+                    "transition": "0.5s",
+                },
+
+                "&::after": {
+                    "width": "1px",
+                    "height": diagonalLength,
+                    "top": 0,
+                    "right": 0,
+                    "transform": "rotate(45deg)",
+                    "transformOrigin": "top right",
+                    "transition": "0.5s",
+
+                },
+
+            },
+            "selectedBox": {
                 "backgroundImage": `url(${itemData.img})`,
                 "backgroundSize": "cover",
                 "backgroundPosition": "center",
                 "backgroundRepeat": "no-repeat",
-
             },
-
             "text": {
                 "color": theme.palette.text.primary,
                 "textTransform": "uppercase",
             },
 
             "selected": {
-                "display": "none",
+                "display": "none"
             },
-
-            "content": {
-                "position": "absolute",
-                "top": "-50%",
-                "left": "-100%",
-                "width": "600px",
-                "textAlign": "left",
-                "transform": "translate(-10%, -80%)",
-                "display": "none",
-                "color": theme.palette.text.primary,
-
-                "& button": {
-                    "opacity": 0,
-                    "animation": `${animate} 1s ease-in-out 0.6s 1 forwards`,
-                }
-            },
-            "name": {
-                "opacity": 0,
-                "animation": `${animate} 1s ease-in-out 1 forwards`,
-            },
-            "des": {
-                "marginTop": "20px",
-                "marginBottom": "20px",
-                "opacity": 0,
-                "animation": `${animate} 1s ease-in-out 0.3s 1 forwards`,
-
-            }
         }
     });

@@ -93,7 +93,7 @@ export function ItemSlider() {
 }
 
 const useStyles = tss
-    .withName({ Project: ItemSlider })
+    .withName({ ItemSlider })
     .withParams<{ selectedItemName: string | undefined; }>()
     .create(({ theme, selectedItemName,  }) => ({
         "container": {

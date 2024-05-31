@@ -8,8 +8,9 @@ import { assert } from "tsafe/assert";
 
 
 export function Project() {
+    const [selectedItemName, setSelectedItemName] = useState<string | undefined>(undefined);
 
-    const { classes } = useStyle();
+    const { classes } = useStyle({ selectedItemName });
     const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
     const [refIsAnimating] = useState({ "current": false });
 
@@ -69,7 +70,13 @@ export function Project() {
             <div
                 ref={setSliderElement}
             >
-                {projectData.map((itemData, i) => <BoxItem key={itemData.name} itemData={itemData} onClick={() => alert(`Hello ${i}`)} />)}
+                {projectData.map((itemData) =>
+                    <BoxItem
+                        key={itemData.name}
+                        itemData={itemData}
+                        onClick={() => setSelectedItemName(itemData.name)}
+                        selected={selectedItemName === itemData.name}
+                    />)}
             </div>
             <BackgroundBeams />
 
@@ -79,14 +86,22 @@ export function Project() {
 
 const useStyle = tss
     .withName({ Project })
-    .create(({ theme }) => ({
+    .withParams<{ selectedItemName: string | undefined; }>()
+    .create(({ theme, selectedItemName }) => ({
         "root": {
             "boxSizing": "border-box",
             "position": "relative",
             "display": "flex",
             "height": "100vh",
             "width": "100%",
-            "background": theme.palette.background.default,
-            "overflow": "hidden",
+            "background": (() => {
+                switch (selectedItemName) {
+                    case "Project 0": return "yellow";
+                    case "Project 1": return "red";
+                    default: return "black";
+                }
+            })(),
+            //"overflow": "hidden",
+
         },
     }))
