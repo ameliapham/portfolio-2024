@@ -4,6 +4,9 @@ import headText from "assets/headText.png";
 import Typography from "@mui/material/Typography";
 import { HomeSeeMoreButton } from "./HomeSeeMoreButton";
 import { CustomGradients } from "./Gradients";
+import { GlobalStyles } from "tss-react";
+import { useSelectedPage } from "hooks/useSelectedPage";
+import { useScrollNavigation } from "hooks/useScrollNavigation";
 
 type Props = {
     className?: string;
@@ -14,37 +17,55 @@ export function Home(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
+    
+    const { setSelectedPage } = useSelectedPage();
+
+    useScrollNavigation(direction => {
+        if( direction === "down" ){
+            setSelectedPage("about");
+        }
+    });
+
     return (
-        <div className={cx(classes.root, className)}>
-            <video className={classes.video} autoPlay muted loop>
-                <source src={headVideo} type="video/mp4" />
-            </video>
+        <>
+            <GlobalStyles
+                styles={{
+                    "body": {
+                        "overflow": "hidden",
+                    },
+                }}
+            />
+            <div className={cx(classes.root, className)}>
+                <video className={classes.video} autoPlay muted loop>
+                    <source src={headVideo} type="video/mp4" />
+                </video>
 
-            <img className={classes.img} src={headText} alt="headText" />
+                <img className={classes.img} src={headText} alt="headText" />
 
-            <Typography
-                className={classes.des}
-                variant="h6"
-            >
-                UX UI Designer / Front End Developer
-            </Typography>
+                <Typography
+                    className={classes.des}
+                    variant="h6"
+                >
+                    UX UI Designer / Front End Developer
+                </Typography>
 
 
-            <div className={classes.sparklesZone}>
-                <CustomGradients/>
-            
+                <div className={classes.sparklesZone}>
+                    <CustomGradients />
 
-                <div className={classes.sparklesBottom}></div>
+
+                    <div className={classes.sparklesBottom}></div>
+                </div>
+
+
+                <HomeSeeMoreButton
+                    className={classes.button}
+                    onClick={() => alert("View My Work")}
+                >
+                    View My Work
+                </HomeSeeMoreButton>
             </div>
-
-
-            <HomeSeeMoreButton
-                className={classes.button}
-                onClick={() => alert("View My Work")}
-            >
-                View My Work
-            </HomeSeeMoreButton>
-        </div>
+        </>
     )
 }
 
