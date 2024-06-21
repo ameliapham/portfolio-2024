@@ -21,6 +21,12 @@ export function Item(props: ItemProps) {
         >
             <div className={classes.content}>
                 <Typography
+                    variant="body1"
+                    className={classes.year}
+                >
+                    {itemData.year}
+                </Typography>
+                <Typography
                     variant="h2"
                     className={classes.name}
                 >
@@ -67,7 +73,7 @@ const useStyles = tss
             "borderRadius": "10px",
             "backgroundPosition": "50% 50%",
             "backgroundSize": "cover",
-            "transition": "0.5s",
+            "transition": "0.5s ease-in-out",
             "overflow": "hidden",
 
             "&:nth-of-type(1), &:nth-of-type(2)": {
@@ -77,7 +83,7 @@ const useStyles = tss
                 "borderRadius": 0,
                 "width": "100%",
                 "height": "100%",
-                "transition": "0.5s",
+                "transition": "0.5s ease-in-out",
 
                 "&::before": {
                     "content": '""',
@@ -86,7 +92,6 @@ const useStyles = tss
                     "left": 0,
                     "width": "100%",
                     "height": "100%",
-                    "transition": "0.5s",
                     "backgroundColor": "rgba(0, 0, 0, 0.5)",
                     "zIndex": 1,
                 }
@@ -134,6 +139,10 @@ const useStyles = tss
         "name": {
             "opacity": 0,
             "animation": `${animate} 1s ease-in-out 1 forwards`,
+        },
+        "year": {
+            "opacity": 0,
+            "animation": `${animate} 1s ease-in-out 0.2s 1 forwards`,
         },
         "des": {
             "marginTop": "20px",
