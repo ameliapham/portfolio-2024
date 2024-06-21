@@ -1,18 +1,18 @@
 import { tss } from "tss-react/mui";
-import { BoxItem } from "./BoxItem";
-import { projectData } from "data/projectData"
-import { BackgroundBeams } from "shared/BackgroundBeams";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Item } from "./Item";
+import { projectData } from "data/projectData";
 import { useConstCallback } from "powerhooks/useConstCallback";
 import { assert } from "tsafe/assert";
 
 
 export function Project() {
 
-    const { classes } = useStyle();
+    const { classes } = useStyles();
     const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
     const [refIsAnimating] = useState({ "current": false });
 
+    //const [isAnimating, setIsAnimating]= useState(false);
 
     const handleNext = useConstCallback(() => {
         if (refIsAnimating.current) {
@@ -65,28 +65,29 @@ export function Project() {
     }, []);
 
     return (
-        <div className={classes.root}>
+        <div className={classes.container}>
             <div
                 ref={setSliderElement}
             >
-                {projectData.map((itemData, i) => <BoxItem key={itemData.name} itemData={itemData} onClick={() => alert(`Hello ${i}`)} />)}
+                {projectData.map(itemData => <Item key={itemData.name} itemData={itemData} />)}
             </div>
-            <BackgroundBeams />
-
         </div>
     );
 }
 
-const useStyle = tss
+const useStyles = tss
     .withName({ Project })
     .create(({ theme }) => ({
-        "root": {
+        "container": {
             "boxSizing": "border-box",
-            "position": "relative",
-            "display": "flex",
-            "height": "100vh",
+            "position": "absolute",
+            "top": "50%",
+            "left": "50%",
+            "transform": "translate(-50%, -50%)",
             "width": "100%",
+            "height": "100%",
             "background": theme.palette.background.default,
             "overflow": "hidden",
+            "transition": "background-image 0.5s",
         },
-    }))
+    }));
