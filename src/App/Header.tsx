@@ -62,6 +62,7 @@ const useStyles = tss
             "borderBottom": `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
             "height": theme.spacing(8),
             "width": "100%",
+            "zIndex": 1000,
         },
         "logo": {
             "width": theme.spacing(15),
