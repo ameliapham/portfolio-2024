@@ -4,6 +4,7 @@ import headText from "assets/headText.png";
 import Typography from "@mui/material/Typography";
 import { HomeSeeMoreButton } from "./HomeSeeMoreButton";
 import { CustomGradients } from "./Gradients";
+import { useSelectedPage } from 'hooks/useSelectedPage'
 
 type Props = {
     className?: string;
@@ -13,6 +14,7 @@ export function Home(props: Props) {
 
     const { className } = props;
     const { cx, classes } = useStyles();
+    const { setSelectedPage } = useSelectedPage();
 
     return (
         <div className={cx(classes.root, className)}>
@@ -40,7 +42,7 @@ export function Home(props: Props) {
 
             <HomeSeeMoreButton
                 className={classes.button}
-                onClick={() => alert("View My Work")}
+                onClick={() => setSelectedPage("projects")}
             >
                 View My Work
             </HomeSeeMoreButton>
