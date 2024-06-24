@@ -1,16 +1,24 @@
 import { tss } from "tss-react/mui";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Item } from "./Item";
 import { projectData } from "data/projectData";
 import { useConstCallback } from "powerhooks/useConstCallback";
 import { assert } from "tsafe/assert";
+import { useScrollHeight } from "hooks/useScrollHeight";
+import LinearProgress from '@mui/material/LinearProgress';
+import { useDomRect } from "powerhooks/useDomRect";
 
 
 export function Project() {
 
-    const { classes } = useStyles();
     const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
     const [refIsAnimating] = useState({ "current": false });
+
+    //const { ref: headerRef, domRect: { height: headerHeight } } = useDomRect();
+    const { ref: scrollableContentRef, domRect: { height: scrollableContentHeight } } = useDomRect();
+
+    const { classes } = useStyles();
+    const { scrollHeight } = useScrollHeight();
 
     //const [isAnimating, setIsAnimating]= useState(false);
 
@@ -65,12 +73,18 @@ export function Project() {
     }, []);
 
     return (
-        <div className={classes.container}>
-            <div
-                ref={setSliderElement}
-            >
-                {projectData.map(itemData => <Item key={itemData.name} itemData={itemData} />)}
+        <div className={classes.container} >
+            <div ref={setSliderElement} >
+                    {projectData.map(itemData => <Item key={itemData.name} itemData={itemData} />)}
             </div>
+            <LinearProgress
+                classes={{
+                    "bar": classes.progressBar
+                }}
+                className={classes.progress}
+                variant="determinate"
+                value={(scrollHeight / (scrollableContentHeight - 991)) * 100}
+            />
         </div>
     );
 }
@@ -89,5 +103,17 @@ const useStyles = tss
             "background": theme.palette.background.default,
             "overflow": "hidden",
             "transition": "background-image 0.5s",
+        },
+        "progress": {
+            "position": "absolute",
+            "width": "50%",
+            "bottom": "30px",
+            "left": "50%",
+            "transform": "translate(-50%, 0)",
+            "zIndex": 2,
+            "backgroundColor": "black",
+        },
+        "progressBar": {
+            "backgroundColor": "white"
         },
     }));
