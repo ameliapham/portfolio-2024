@@ -1,5 +1,5 @@
 import { tss } from "tss-react/mui";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Item } from "./Item";
 import { projectData } from "data/projectData";
 import { useConstCallback } from "powerhooks/useConstCallback";
@@ -7,15 +7,19 @@ import { assert } from "tsafe/assert";
 import { useScrollHeight } from "hooks/useScrollHeight";
 import LinearProgress from '@mui/material/LinearProgress';
 import { useDomRect } from "powerhooks/useDomRect";
+import { useMergeRefs } from "powerhooks/useMergeRefs";
 
 
 export function Project() {
 
+
     const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
     const [refIsAnimating] = useState({ "current": false });
 
-    //const { ref: headerRef, domRect: { height: headerHeight } } = useDomRect();
     const { ref: scrollableContentRef, domRect: { height: scrollableContentHeight } } = useDomRect();
+
+    const ref = useMergeRefs([scrollableContentRef, setSliderElement]);
+    //const { ref: headerRef, domRect: { height: headerHeight } } = useDomRect();
 
     const { classes } = useStyles();
     const { scrollHeight } = useScrollHeight();
@@ -74,7 +78,7 @@ export function Project() {
 
     return (
         <div className={classes.container} >
-            <div ref={setSliderElement} >
+            <div ref={ref} >
                     {projectData.map(itemData => <Item key={itemData.name} itemData={itemData} />)}
             </div>
             <LinearProgress
