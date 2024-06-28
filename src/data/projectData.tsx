@@ -1,5 +1,9 @@
-import project1 from 'assets/food-pho.webp';
-import project2 from 'assets/5webp.webp';
+import p24zen from 'assets/p-zen.webp';
+import p23dame from 'assets/p-dame.webp';
+import p23gmeta from 'assets/p-gmeta.webp';
+import p23iso from 'assets/p-iso.webp';
+import p21arti from 'assets/p-arti.svg';
+import p23gili from 'assets/p-gili.svg';
 
 export type ItemData = {
     img: string;
@@ -11,39 +15,44 @@ export type ItemData = {
 
 export const projectData: ItemData[] = [
     {
-        "img": project2,
-        "name": "Project 0",
-        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
-        "year": "2024"
+        "year": "2021",
+        "img": p21arti,
+        "name": "ARTI",
+        "des": "“ARTI” is an interactive application project exploring the critical question: “Will artificial intelligence surpass humans?” Our objective is to provoke thought and encourage users to reflect on this significant issue. Through the ARTI application, we aim to delve deeper into these inquiries and inspire users to reconsider their understanding of the current and future capabilities of artificial intelligence in relation to human abilities.",
     }, {
-        "img": project1,
-        "name": "Project 1",
+        "year": "2024",
+        "img": p24zen,
+        "name": "Zen Gourmet",
         "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
-        "year": "2023"
     }, {
-        "img": project2,
-        "name": "Project 2",
-        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
-        "year": "2022"
+        "year": "2023",
+        "img": p23gili,
+        "name": "GILI Platforms",
+        "des": "For three years, I had the opportunity to work as the website manager of an online training platform for a start-up specializing in LegalTech. My role involved designing prototypes with Figma and implementing these concepts using WordPress and Elementor. This experience allowed me to hone my technical skills while learning to manage large-scale projects effectively.",
     }, {
-        "img": project1,
-        "name": "Project 3",
-        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
-        "year": "2021"
+        "year": "2023",
+        "img": p23gmeta,
+        "name": "Gméta",
+        "des": "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom.",
     }, {
-        "img": project2,
-        "name": "Project 4",
-        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
-        "year": "2020"
+        "year": "2023",
+        "img": p24zen,
+        "name": "Badgeur",
+        "des": "One of my key achievements during my university career was designing an innovative mobile application from scratch to prevent losing keys. Using Figma, I meticulously crafted the UX and UI design, and built a library of reusable components to ensure design consistency. Click here to test the prototype and explore my systematic approach to interface design.",
     }, {
-        "img": project1,
-        "name": "Project 5",
-        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
-        "year": "2019"
+        "year": "2023",
+        "img": p23iso,
+        "name": "“ISO 668”",
+        "des": "ISO 668 is an artistic project developed as part of a cooperative program between Paris 8 University and the University of the Aegean in Syros. This project combines virtual reality (VR) and sound to create an immersive experience of Syros culture. Through a 3D landscape representing the island, players can interact with symbolic elements such as a container highlighting Syros' maritime aspect and blue eyes representing Greek culture. Each blue eye reveals a unique story narrated by a local, immersing the player in the island's collective memory.",
     }, {
-        "img": project1,
-        "name": "Project 6",
-        "des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.",
-        "year": "2019"
-    }
+        "year": "2022",
+        "img": p23dame,
+        "name": "In the Shadow of La Dame de Canton",
+        "des": "“In the Shadow of La Dame de Canton” is an immersive cultural experience that merges traditional Chinese arts with modern technology. The show features elements such as Chinese shadow puppetry, dance, music, and projection. This creation is the result of a collaboration with Philippe Holvoet, an entrepreneur specializing in catering and events. The show is currently in the prototype stage.",
+    }, {
+        "year": "2021",
+        "img": p24zen,
+        "name": "Famed",
+        "des": "The “FAMED” project is an innovative initiative poised to transform the retail landscape. Developed in an academic setting, FAMED aims to redefine the shopping experience by combining advanced technologies (VR & AI) and personalization.",
+    },
 ];
