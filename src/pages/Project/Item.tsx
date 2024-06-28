@@ -68,7 +68,7 @@ const useStyles = tss
             "width": "250px",
             "height": theme.spacing(35),
             "position": "absolute",
-            "top": "50%",
+            "top": "70%",
             "transform": "translate(0, -50%)",
             "borderRadius": "10px",
             "backgroundPosition": "50% 50%",
@@ -98,20 +98,20 @@ const useStyles = tss
             },
 
             "&:nth-of-type(3)": {
-                "left": "50%",
+                "left": "65%",
                 "zIndex": 2,
             },
 
             "&:nth-of-type(4)": {
-                "left": "calc(50% + 280px)",
+                "left": "calc(65% + 280px)",
             },
 
             "&:nth-of-type(5)": {
-                "left": "calc(50% + 560px)",
+                "left": "calc(65% + 560px)",
             },
 
             "&:nth-of-type(n + 6)": {
-                "left": "calc(50% + 840px)",
+                "left": "calc(65% + 840px)",
                 "opacity": 0,
             },
 
