@@ -1,5 +1,5 @@
 import { tss } from 'tss-react/mui';
-import logo from 'assets/logo-color.svg';
+import logo from 'assets/logo.svg';
 import { MenuButton } from './MenuButton';
 import { alpha } from "@mui/material/styles";
 import { useSelectedPage } from 'hooks/useSelectedPage'
