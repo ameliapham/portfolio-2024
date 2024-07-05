@@ -88,7 +88,7 @@ const useStyles = tss
                     "width": "100%",
                     "height": "100%",
                     "transition": "0.5s ease-in-out",
-
+                    
                     "&::before": {
                         "content": '""',
                         "position": "absolute",
@@ -96,9 +96,10 @@ const useStyles = tss
                         "left": 0,
                         "width": "100%",
                         "height": "100%",
-                        "backgroundColor": "rgba(0, 0, 0, 0.5)",
+                        "backgroundColor": "rgba(0, 0, 0, 0.3)",
                         "zIndex": 1,
                     }
+                        
                 },
 
                 "&:nth-of-type(3)": {
@@ -138,6 +139,10 @@ const useStyles = tss
                 "display": "none",
                 "color": theme.palette.text.primary,
                 "zIndex": 2,
+                "padding": theme.spacing(5),
+                "borderRadius": "10px",
+                "backdropFilter": "brightness(70%)",
+
 
                 "& button": {
                     "opacity": 0,
