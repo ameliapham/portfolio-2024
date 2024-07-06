@@ -3,7 +3,9 @@ import p23dame from 'assets/p-dame.webp';
 import p23gmeta from 'assets/p-gmeta.webp';
 import p23iso from 'assets/p-iso.webp';
 import p21arti from 'assets/p-arti.svg';
-import p23gili from 'assets/p-gili.svg';
+import p23gili from 'assets/p-gili.webp';
+import p21famed from 'assets/p-famed.webp';
+import p23badgeur from 'assets/p-badgeur.webp';
 
 export type ItemData = {
     img: string;
@@ -36,7 +38,7 @@ export const projectData: ItemData[] = [
         "des": "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom.",
     }, {
         "year": "2023",
-        "img": p24zen,
+        "img": p23badgeur,
         "name": "Badgeur",
         "des": "One of my key achievements during my university career was designing an innovative mobile application from scratch to prevent losing keys. Using Figma, I meticulously crafted the UX and UI design, and built a library of reusable components to ensure design consistency. Click here to test the prototype and explore my systematic approach to interface design.",
     }, {
@@ -51,7 +53,7 @@ export const projectData: ItemData[] = [
         "des": "“In the Shadow of La Dame de Canton” is an immersive cultural experience that merges traditional Chinese arts with modern technology. The show features elements such as Chinese shadow puppetry, dance, music, and projection. This creation is the result of a collaboration with Philippe Holvoet, an entrepreneur specializing in catering and events. The show is currently in the prototype stage.",
     }, {
         "year": "2021",
-        "img": p24zen,
+        "img": p21famed,
         "name": "Famed",
         "des": "The “FAMED” project is an innovative initiative poised to transform the retail landscape. Developed in an academic setting, FAMED aims to redefine the shopping experience by combining advanced technologies (VR & AI) and personalization.",
     },
