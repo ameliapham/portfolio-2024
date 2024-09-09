@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from 'react';
 import { tss } from 'tss-react/mui';
 import Typography from '@mui/material/Typography';
 import Accordion from '@mui/material/Accordion';
@@ -6,7 +5,6 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-//import { TracingBeam } from 'shared/TracingBeam';
 import { PhotoFrame } from './PhotoFrame';
 import { SeeMoreButton } from 'shared/SeeMoreButton';
 import { BackgroundBeams } from 'shared/BackgroundBeams';
@@ -20,28 +18,13 @@ export function About(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
-    const contentRef = useRef<HTMLDivElement>(null);
-
-    const propagateScroll = (e: WheelEvent) => {
-        const content = contentRef.current;
-        if (content) {
-            content.scrollTop += e.deltaY;
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('wheel', propagateScroll);
-        return () => {
-            document.removeEventListener('wheel', propagateScroll);
-        };
-    }, []);
-
+   
     return (
 
         <div className={cx(classes.root, className)}>
             <PhotoFrame className={classes.frameZone} />
 
-            <div  className={classes.content}  ref={contentRef}>
+            <div  className={classes.content}>
                     <Typography variant="h3">
                         Amélia Pham
                     </Typography>
