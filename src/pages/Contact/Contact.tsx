@@ -4,6 +4,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { BackgroundBeams } from "shared/BackgroundBeams";
+import { alpha } from "@mui/material/styles";
 
 type Props = {
     className?: string;
@@ -37,7 +38,7 @@ export function Contact(props: Props) {
             <div className={cx(classes.root, className)}>
                 <div className={classes.textZone}>
                     <Typography variant="h3">
-                    Let's progress together !
+                        Let's progress together !
                     </Typography>
 
                     <Typography variant="body1">
@@ -49,7 +50,7 @@ export function Contact(props: Props) {
 
                 <div className={classes.social}>
                     {social.map((social, index) => (
-                        <a key={index} href={social.url} target="_blank" rel="noreferrer">
+                        <a key={index} href={social.url} target="_blank" rel="noreferrer" className={classes.a}>
                             <social.Icon className={classes.icon} />
                         </a>
                     ))}
@@ -88,6 +89,25 @@ const useStyles = tss
             "gap": theme.spacing(3),
             "height": theme.spacing(6),
         },
+        "a": {
+            "position": "relative",
+
+            "&::after": {
+                "content": "''",
+                "position": "absolute",
+                "bottom": "10px",
+                "left": "50%",
+                "width": "0",
+                "height": theme.spacing(0.1),
+                "backgroundColor": `${alpha(theme.palette.text.primary, 0.5)}`,
+                "transform": "translateX(-50%)",
+                "transition": "all 0.5s ease",
+            },
+
+            "&:hover::after": {
+                "width": "100%",
+            },
+        },
         "icon": {
             "width": theme.spacing(4),
             "height": theme.spacing(4),
@@ -95,6 +115,7 @@ const useStyles = tss
             "transition": "0.3s ease-in-out",
             "&:hover": {
                 transform: "translateY(-5px)",
-            }
+            },
+            
         },
     }));
