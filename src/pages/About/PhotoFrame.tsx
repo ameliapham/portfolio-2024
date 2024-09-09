@@ -48,8 +48,8 @@ const useStyles = tss
             "root": {
                 "display": "flex",
                 "boxSizing": "border-box",
-                "height": "70%",
-                "width": "30%",
+                "height": "60%",
+                "width": "25%",
 
                 [`&:hover .${classes.div1}`]: {
                     "top": `calc(${top} + 30px)`,

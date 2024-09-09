@@ -20,16 +20,7 @@ export function About(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
-    const [showObject2, setShowObject2] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
-
-    const handleScroll = () => {
-        const content = contentRef.current;
-        if (content) {
-            const scrollPosition = content.scrollTop;
-            setShowObject2(scrollPosition > 100);
-        }
-    };
 
     const propagateScroll = (e: WheelEvent) => {
         const content = contentRef.current;
@@ -50,32 +41,15 @@ export function About(props: Props) {
         <div className={cx(classes.root, className)}>
             <PhotoFrame className={classes.frameZone} />
 
-            <div className={classes.content} onScroll={handleScroll} ref={contentRef}>
-                <div className={cx(classes.object1, { [classes.hidden]: showObject2 })}>
+            <div  className={classes.content}  ref={contentRef}>
                     <Typography variant="h3">
                         Amélia Pham
                     </Typography>
 
                     <Typography variant="body1">
-                        Welcome to my portfolio!
-                        <br /><br />
                         I am Huong PHAM, also known as Amélia PHAM.
                         <br /><br />
-                        As a UI/UX Designer, Web Designer, and Front-End Developer, my expertise spans a wide range of activities in the design field, including user research, the creation of interactive prototypes, web design and development, as well as user testing. My goal is to transform innovative ideas into rational and functional digital experiences, ensuring a seamless blend of creativity and practicality.
-                    </Typography>
-
-                    <SeeMoreButton>
-                        Download CV
-                    </SeeMoreButton>
-                </div>
-
-                <div className={cx(classes.object2, { [classes.visible]: showObject2 })}>
-                    <Typography variant="h3">
-                        What I can do
-                    </Typography>
-
-                    <Typography variant="body1">
-                        If you wander what I can do, here is a list of my skills and expertise.
+                        As a UI/UX Designer, Web Designer, and Front-End Developer, my expertise spans a wide range of activities in the design field, including user research, the creation of interactive prototypes, web design and development, as well as user testing.
                     </Typography>
 
                     <Accordion className={classes.accordion}>
@@ -111,8 +85,9 @@ export function About(props: Props) {
                             </Typography>
                         </AccordionDetails>
                     </Accordion>
-                </div>
-
+                    <SeeMoreButton>
+                        Download CV
+                    </SeeMoreButton>
             </div>
 
             <BackgroundBeams />
@@ -134,19 +109,21 @@ const useStyles = tss
             "position": "absolute",
             "top": "50%",
             "right": "50%",
-            "transform": "translateY(-50%)",
+            "transform": "translate(-30%,-50%)",
         },
         "content": {
             "position": "absolute",
             "top": "50%",
             "left": "60%",
-            "transform": "translateY(-50%) translateX(-20%)",
-            "width": "30%",
-            "height": "55%",
+            "transform": "translateY(-45%) translateX(-20%)",
+            "width": "35%",
             "color": theme.palette.text.primary,
             "padding": "20px",
             "overflowY": "scroll",
             "scrollSnapType": "y mandatory",
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": "20px",
 
 
             // Hide scrollbar for webkit browsers
@@ -158,35 +135,6 @@ const useStyles = tss
                 "msOverflowStyle": "none",
                 "scrollbarWidth": "none",
             },
-        },
-        "object1": {
-            "display": "flex",
-            "flexDirection": "column",
-            "gap": "10px",
-            "padding": "20px",
-            "height": "100%",
-            "transition": "opacity 0.5s ease-in-out",
-            "scrollSnapAlign": "start",
-
-        },
-        "object2": {
-            "display": "flex",
-            "flexDirection": "column",
-            "gap": "10px",
-            "padding": "20px",
-            "height": "100%",
-            "transition": "opacity 0.5s ease-in-out",
-            "opacity": 0,
-            "scrollSnapAlign": "center",
-
-        },
-        "hidden": {
-            "opacity": 0,
-            "transform": "translateY(20px)",
-        },
-        "visible": {
-            "opacity": 1,
-            "transform": "translateY(0)",
         },
         "accordion": {
             "backgroundColor": "transparent",
