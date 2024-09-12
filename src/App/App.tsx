@@ -7,12 +7,17 @@ import { Contact } from "pages/Contact";
 import { About } from "pages/About";
 import { Project } from "pages/Project";
 import { useSelectedPage } from "hooks/useSelectedPage";
+import { useState } from "react";
 
 
 
 export function App() {
 
   const { selectedPage } = useSelectedPage();
+
+  const [isGalleryVisible, setIsGalleryVisible] = useState(true);
+  const [pageId, setPageId] = useState<"zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur">("zen");
+
   const { classes, theme } = useStyles();
 
   return (
@@ -37,7 +42,12 @@ export function App() {
             case "about":
               return <About />
             case "projects":
-              return <Project />
+              return (
+                isGalleryVisible && <Project className={classes.project} initialPage={pageId} onPageSelected={pageId => {
+                  setIsGalleryVisible(false);
+                  setPageId(pageId);
+                }}/>
+              )
             case "contact":
               return <Contact />
           }
@@ -56,4 +66,15 @@ const useStyles = tss
       "top": 0,
       "zIndex": 1000,
     },
+    "project": {
+      "border": "3px solid red",
+      "position": "absolute",
+      "top": "50%",
+      "left": "50%",
+      "transform": "translate(-50%, -50%)",
+      "width": "1000px",
+      "height": "600px",
+      "background": "#f5f5f5",
+      "boxShadow": "0 30px 50px #dbdbdb"
+    }
   }));
