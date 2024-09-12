@@ -1,130 +1,102 @@
 import { tss } from "tss-react/mui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Item } from "./Item";
-import { projectData } from "data/projectData";
-import { useConstCallback } from "powerhooks/useConstCallback";
-import { assert } from "tsafe/assert";
-import { useScrollWidth } from "hooks/useScrollHeight";
-//import LinearProgress from '@mui/material/LinearProgress';
-import { useDomRect } from "powerhooks/useDomRect";
-import { useMergeRefs } from "powerhooks/useMergeRefs";
+import { projectData, ItemData } from "data/projectData";
+
+type Props = {
+    className?: string;
+    initialPage: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur";
+    onPageSelected: (pageId: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur") => void;
+};
 
 
-export function Project() {
+export function Project(props: Props) {
 
-
-    const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
-    const [refIsAnimating] = useState({ "current": false });
-
-    const { ref: scrollableContentRef, domRect: { width: scrollableContentWidth } } = useDomRect();
-
-    const ref = useMergeRefs([scrollableContentRef, setSliderElement]);
+    const { className, initialPage } = props;
 
     const { classes } = useStyles();
-    const { scrollWidth } = useScrollWidth();
 
-    //const [isAnimating, setIsAnimating]= useState(false);
+    const [items, setItems] = useState(() => {
+        let items = projectData; structuredClone(initialPage);
 
-    const handleNext = useConstCallback(() => {
-        if (refIsAnimating.current) {
-            return;
-        }
-
-        refIsAnimating.current = true;
-
-        assert(sliderElement !== null);
-
-        const firstChild = sliderElement.children[0];
-        sliderElement.appendChild(firstChild);
-
-        setTimeout(() => {
-            refIsAnimating.current = false;
-        }, 500);
-    });
-
-    const handlePrev = useConstCallback(() => {
-        if (refIsAnimating.current) {
-            return;
-        }
-
-        refIsAnimating.current = true;
-
-        assert(sliderElement !== null);
-
-        const lastChild = sliderElement.children[sliderElement.children.length - 1];
-        sliderElement.prepend(lastChild);
-
-        setTimeout(() => {
-            refIsAnimating.current = false;
-        }, 500);
-    });
-
-    useEffect(() => {
-        const onWheel = (e: WheelEvent) => {
-            if (e.deltaY < 0) {
-                handlePrev();
-            } else {
-                handleNext();
+        // eslint-disable-next-line no-constant-condition
+        while (true) {
+            if (items[1].nameId === initialPage) {
+                break;
             }
-        };
-
-        window.addEventListener('wheel', onWheel);
-
-        return () => {
-            window.removeEventListener('wheel', onWheel);
-        };
-    }, []);
-
-    console.log('Scroll Height:', scrollWidth);
-    console.log('Scrollable Content Height:', scrollableContentWidth);
-
+            items = rotateToTheRight(items);
+        }
+        return items;
+    });
 
     return (
-        <div className={classes.container} >
-            <div ref={ref} >
-                {projectData.map(itemData => <Item key={itemData.name} itemData={itemData} />)}
+        <div className={className}>
+            <div>
+                {items.map((itemData, i) => (
+                    <Item
+                        key={itemData.nameId}
+                        position={i + 1}
+                        itemData={itemData}
+                        //onClick={() => onPageSelected(itemData.nameId)}
+                    />
+                ))}
             </div>
-            {/*
-                <LinearProgress
-                    classes={{
-                        "bar": classes.progressBar
+            <div className={classes.button}>
+                <button
+                    onClick={() => {
+                        const newItems = rotateToTheRight(items);
+                        setItems(newItems);
                     }}
-                    className={classes.progress}
-                    variant="determinate"
-                    value={(scrollWidth / (scrollableContentWidth - window.innerHeight)) * 100}
-                />
-            */}
+                >
+                    <i className="fa-solid fa-arrow-left" />
+                </button>
+                <button
+                    onClick={() => {
+                        const newItems = rotateToTheLeft(items);
+                        setItems(newItems);
+                    }}
+                >
+                    <i className="fa-solid fa-arrow-right" />
+                </button>
+            </div>
         </div>
-    );
+
+    )
 }
+
+function rotateToTheRight(items: ItemData[]): ItemData[] {
+    const [lastItem, ...otherItemsReversed] = structuredClone(items).reverse();
+    return [lastItem, ...otherItemsReversed.reverse()];
+}
+
+function rotateToTheLeft(items: ItemData[]): ItemData[] {
+    const [firstItem, ...otherItems] = structuredClone(items);
+    return [...otherItems, firstItem];
+}
+
+
 
 const useStyles = tss
     .withName({ Project })
-    .create(({ theme }) => ({
-        "container": {
-            "boxSizing": "border-box",
-            "position": "absolute",
-            "top": "50%",
-            "left": "50%",
-            "transform": "translate(-50%, -50%)",
+    .create({
+        "button": {
             "width": "100%",
-            "height": "100%",
-            "background": theme.palette.background.default,
-            "overflow": "hidden",
-            "transition": "background-image 0.5s",
-        },
-        /*
-        "progress": {
+            "textAlign": "center",
             "position": "absolute",
-            "width": "50%",
-            "bottom": "30px",
-            "left": "50%",
-            "transform": "translate(-50%, 0)",
-            "zIndex": 2,
-            "backgroundColor": "black",
+            "bottom": 20,
+            "& button": {
+                "width": 40,
+                "height": 35,
+                "borderRadius": 8,
+                "cursor": "pointer",
+                "margin": "0 5px",
+                "border": "1px solid #000",
+                "transition": "0.3s",
+                "&:hover": {
+                    "background": "#ababab",
+                    "color": "#fff"
+                }
+            }
+
         },
-        "progressBar": {
-            "backgroundColor": "white"
-        },
-        */
-    }));
+    });
