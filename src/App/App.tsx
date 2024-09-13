@@ -46,7 +46,7 @@ export function App() {
                 isGalleryVisible && <Project className={classes.project} initialPage={pageId} onPageSelected={pageId => {
                   setIsGalleryVisible(false);
                   setPageId(pageId);
-                }}/>
+                }} />
               )
             case "contact":
               return <Contact />
@@ -60,21 +60,21 @@ export function App() {
 
 const useStyles = tss
   .withName({ App })
-  .create(() => ({
+  .create(({ theme }) => ({
     "header": {
       "position": "absolute",
       "top": 0,
       "zIndex": 1000,
     },
     "project": {
-      "border": "3px solid red",
       "position": "absolute",
       "top": "50%",
       "left": "50%",
       "transform": "translate(-50%, -50%)",
-      "width": "1000px",
-      "height": "600px",
-      "background": "#f5f5f5",
-      "boxShadow": "0 30px 50px #dbdbdb"
+      "width": "100%",
+      "height": "100%",
+      "background": theme.palette.background.default,
+      "overflow": "hidden",
+      "boxSizing": "border-box",
     }
   }));
