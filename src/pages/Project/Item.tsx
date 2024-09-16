@@ -1,6 +1,9 @@
 import { keyframes } from 'tss-react';
 import { tss } from 'tss-react/mui';
 import { ItemData } from 'data/projectData';
+import { SeeMoreButton } from 'shared/SeeMoreButton';
+import Typography from "@mui/material/Typography";
+
 
 type Props = {
     className?: string;
@@ -20,10 +23,19 @@ export function Item(props: Props) {
             style={{ "backgroundImage": `url(${itemData.img})` }}
         >
             <div className={classes.content}>
-                <div >{itemData.year}</div>
-                <div className={classes.name}>{itemData.name}</div>
-                <div className={classes.des}>{itemData.des}</div>
-                <button onClick={onClick}>See More</button>
+                <Typography
+                    variant="body1"
+                    className={classes.year}
+                >{itemData.year}</Typography>
+                <Typography
+                    variant="h2"
+                    className={classes.name}
+                >{itemData.name}</Typography>
+                <Typography
+                    variant="body1"
+                    className={classes.des}
+                >{itemData.des}</Typography>
+                <SeeMoreButton onClick={onClick}>See More</SeeMoreButton>
             </div>
         </div>
     );
@@ -38,6 +50,17 @@ const animate = keyframes({
     "to": {
         "opacity": 1,
         "transform": "translate(0)",
+        "filter": "blur(0)"
+    }
+});
+
+const animateContent = keyframes({
+    "from": {
+        "opacity": 0,
+        "filter": "blur(10px)"
+    },
+    "to": {
+        "opacity": 1,
         "filter": "blur(0)"
     }
 });
@@ -71,6 +94,7 @@ const useStyles = tss
                         "borderRadius": 0,
                         "width": "100%",
                         "height": "100%",
+
                     } as const;
 
                     switch (position) {
@@ -105,15 +129,18 @@ const useStyles = tss
                 "position": "absolute",
                 "top": "50%",
                 "left": theme.spacing(10),
-                "width": "300px",
-                "textAlign": "left",
-                "color": "#eee",
                 "transform": "translate(0, -50%)",
+                "width": "30%",
+                "textAlign": "left",
+                "color": theme.palette.text.primary,
                 "display": "none",
+                "padding": theme.spacing(5),
+                "borderRadius": "10px",
+                "backdropFilter": "brightness(70%)",
+                "opacity": 0,
+                "animation": `${animateContent} 1s ease-in-out 0s 1 forwards`,
+
                 "& button": {
-                    "padding": "10px 20px",
-                    "border": "none",
-                    "cursor": "pointer",
                     "opacity": 0,
                     "animation": `${animate} 1s ease-in-out 0.6s 1 forwards`,
                 }
@@ -130,7 +157,10 @@ const useStyles = tss
                 "marginBottom": "20px",
                 "opacity": 0,
                 "animation": `${animate} 1s ease-in-out 0.3s 1 forwards`,
-
-            }
+            },
+            year: {
+                "opacity": 0,
+                "animation": `${animate} 1s ease-in-out 0.2s 1 forwards`,
+            },
         }
     })
