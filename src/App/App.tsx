@@ -8,6 +8,7 @@ import { About } from "pages/About";
 import { Project } from "pages/Project";
 import { useSelectedPage } from "hooks/useSelectedPage";
 import { useState } from "react";
+import { Zen } from "pages/Project/pages/Zen";
 
 
 
@@ -43,10 +44,50 @@ export function App() {
               return <About />
             case "projects":
               return (
-                isGalleryVisible && <Project className={classes.project} initialPage={pageId} onPageSelected={pageId => {
-                  setIsGalleryVisible(false);
-                  setPageId(pageId);
-                }} />
+                <>
+                  {isGalleryVisible && <Project className={classes.project} initialPage={pageId} onPageSelected={pageId => {
+                    setIsGalleryVisible(false);
+                    setPageId(pageId);
+                  }} />}
+                  {(() => {
+
+                    if (isGalleryVisible) return null;
+
+                    switch (pageId) {
+                      case undefined: return null;
+                      case "zen": return (
+                        <Zen
+                          onClick={() => setIsGalleryVisible(true)}
+                        />
+                      );
+                      case "gili": return (
+                        <>
+                          <h1>Gili</h1>
+                          <button onClick={() => setIsGalleryVisible(true)}>Back</button>
+                        </>
+                      );
+                      case "gmeta": return (
+                        <>
+                          <h1>Gmeta</h1>
+                          <button onClick={() => setIsGalleryVisible(true)}>Back</button>
+                        </>
+                      );
+                      case "badgeur": return (
+                        <>
+                          <h1>Badgeur</h1>
+                          <button onClick={() => setIsGalleryVisible(true)}>Back</button>
+                        </>
+                      );
+                      case "iso": return (
+                        <>
+                          <h1>Iso</h1>
+                          <button onClick={() => setIsGalleryVisible(true)}>Back</button>
+                        </>
+                      );
+                    }
+                  })()}
+                </>
+
               )
             case "contact":
               return <Contact />
