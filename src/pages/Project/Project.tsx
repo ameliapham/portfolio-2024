@@ -6,18 +6,19 @@ import { projectData, ItemData } from "data/projectData";
 type Props = {
     className?: string;
     initialPage: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur";
-    onPageSelected: (pageId: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur") => void;
+    onPageSelected: (
+        pageId: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur"
+    ) => void;
 };
 
-
 export function Project(props: Props) {
-
     const { className, initialPage, onPageSelected } = props;
 
     const { classes } = useStyles();
 
     const [items, setItems] = useState(() => {
-        let items = projectData; structuredClone(initialPage);
+        let items = projectData;
+        structuredClone(initialPage);
 
         // eslint-disable-next-line no-constant-condition
         while (true) {
@@ -60,8 +61,7 @@ export function Project(props: Props) {
                 </button>
             </div>
         </div>
-
-    )
+    );
 }
 
 function rotateToTheRight(items: ItemData[]): ItemData[] {
@@ -74,29 +74,24 @@ function rotateToTheLeft(items: ItemData[]): ItemData[] {
     return [...otherItems, firstItem];
 }
 
-
-
-const useStyles = tss
-    .withName({ Project })
-    .create({
-        "button": {
-            "width": "100%",
-            "textAlign": "center",
-            "position": "absolute",
-            "bottom": 20,
-            "& button": {
-                "width": 40,
-                "height": 35,
-                "borderRadius": 8,
-                "cursor": "pointer",
-                "margin": "0 5px",
-                "border": "1px solid #000",
-                "transition": "0.3s",
-                "&:hover": {
-                    "background": "#ababab",
-                    "color": "#fff"
-                }
+const useStyles = tss.withName({ Project }).create({
+    button: {
+        width: "100%",
+        textAlign: "center",
+        position: "absolute",
+        bottom: 20,
+        "& button": {
+            width: 40,
+            height: 35,
+            borderRadius: 8,
+            cursor: "pointer",
+            margin: "0 5px",
+            border: "1px solid #000",
+            transition: "0.3s",
+            "&:hover": {
+                background: "#ababab",
+                color: "#fff"
             }
-
-        },
-    });
+        }
+    }
+});

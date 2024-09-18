@@ -1,27 +1,19 @@
-
 import { useEffect, useState } from "react";
 
+export function useScrollWidth() {
+    const [scrollWidth, setScrollWidth] = useState(0);
 
-export function useScrollHeight(){
+    useEffect(() => {
+        const onScroll = () => {
+            setScrollWidth(window.scrollX);
+        };
 
-    const [scrollHeight, setScrollHeight] = useState(0);
+        window.addEventListener("scroll", onScroll);
 
-    useEffect(
-        () => {
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+        };
+    }, []);
 
-            const onScroll = () => {
-                setScrollHeight(window.scrollY);
-            };
-
-            window.addEventListener("scroll", onScroll);
-
-            return () => {
-                window.removeEventListener("scroll", onScroll);
-            };
-
-        },
-        []
-    );
-
-    return { scrollHeight };
+    return { scrollWidth };
 }

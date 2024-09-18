@@ -8,19 +8,11 @@ type ThemeProviderProps = {
 export function ThemeProvider(props: ThemeProviderProps) {
     const { children } = props;
 
-    return (
-        <ThemeProviderContextualized>
-            {children}
-        </ThemeProviderContextualized>
-    )
+    return <ThemeProviderContextualized>{children}</ThemeProviderContextualized>;
 }
 
 function ThemeProviderContextualized(props: ThemeProviderProps) {
     const { children } = props;
 
-    return (
-        <MuiThemeProvider theme={theme}>
-            {children}
-        </MuiThemeProvider>
-    )
+    return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
 }

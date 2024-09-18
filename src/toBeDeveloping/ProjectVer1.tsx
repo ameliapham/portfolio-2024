@@ -10,20 +10,20 @@ import { useDomRect } from "powerhooks/useDomRect";
 import { useMergeRefs } from "powerhooks/useMergeRefs";
 import { Zen } from "../pages/Project/pages/zen/Zen";
 
-
 type Props = {
     pages: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur";
 };
 
-
 export function Project(props: Props) {
-
     const { pages } = props;
 
     const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
-    const [refIsAnimating] = useState({ "current": false });
+    const [refIsAnimating] = useState({ current: false });
 
-    const { ref: scrollableContentRef, domRect: { width: scrollableContentWidth } } = useDomRect();
+    const {
+        ref: scrollableContentRef,
+        domRect: { width: scrollableContentWidth }
+    } = useDomRect();
 
     const ref = useMergeRefs([scrollableContentRef, setSliderElement]);
 
@@ -75,15 +75,15 @@ export function Project(props: Props) {
             }
         };
 
-        window.addEventListener('wheel', onWheel);
+        window.addEventListener("wheel", onWheel);
 
         return () => {
-            window.removeEventListener('wheel', onWheel);
+            window.removeEventListener("wheel", onWheel);
         };
     }, []);
 
-    console.log('Scroll Height:', scrollWidth);
-    console.log('Scrollable Content Height:', scrollableContentWidth);
+    console.log("Scroll Height:", scrollWidth);
+    console.log("Scrollable Content Height:", scrollableContentWidth);
 
     const pageData = (() => {
         switch (pages) {
@@ -93,8 +93,8 @@ export function Project(props: Props) {
     })();
 
     return (
-        <div className={classes.container} >
-            <div ref={ref} >
+        <div className={classes.container}>
+            <div ref={ref}>
                 {projectData.map(itemData => (
                     <Item
                         className={css({ border: "3px solid red !important" })}
@@ -120,22 +120,20 @@ export function Project(props: Props) {
     );
 }
 
-const useStyles = tss
-    .withName({ Project })
-    .create(({ theme }) => ({
-        "container": {
-            "boxSizing": "border-box",
-            "position": "absolute",
-            "top": "50%",
-            "left": "50%",
-            "transform": "translate(-50%, -50%)",
-            "width": "100%",
-            "height": "100%",
-            "background": theme.palette.background.default,
-            "overflow": "hidden",
-            "transition": "background-image 0.5s",
-        },
-        /*
+const useStyles = tss.withName({ Project }).create(({ theme }) => ({
+    container: {
+        boxSizing: "border-box",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "100%",
+        height: "100%",
+        background: theme.palette.background.default,
+        overflow: "hidden",
+        transition: "background-image 0.5s"
+    }
+    /*
         "progress": {
             "position": "absolute",
             "width": "50%",
@@ -149,4 +147,4 @@ const useStyles = tss
             "backgroundColor": "white"
         },
         */
-    }));
+}));

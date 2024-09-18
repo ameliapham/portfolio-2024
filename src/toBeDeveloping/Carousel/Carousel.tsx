@@ -1,18 +1,15 @@
 import { tss } from "tss-react/mui";
 import { CarouselItem } from "./CarouselItem";
-import { projectData } from "data/projectData"
+import { projectData } from "data/projectData";
 import { BackgroundBeams } from "shared/BackgroundBeams";
 import { useState, useEffect } from "react";
 import { useConstCallback } from "powerhooks/useConstCallback";
 import { assert } from "tsafe/assert";
 
-
 export function Carousel() {
-
     const { classes } = useStyle();
     const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
-    const [refIsAnimating] = useState({ "current": false });
-
+    const [refIsAnimating] = useState({ current: false });
 
     const handleNext = useConstCallback(() => {
         if (refIsAnimating.current) {
@@ -57,36 +54,37 @@ export function Carousel() {
             }
         };
 
-        window.addEventListener('wheel', onWheel);
+        window.addEventListener("wheel", onWheel);
 
         return () => {
-            window.removeEventListener('wheel', onWheel);
+            window.removeEventListener("wheel", onWheel);
         };
     }, []);
 
     return (
         <div className={classes.root}>
-            <div
-                ref={setSliderElement}
-            >
-                {projectData.map((itemData, i) => <CarouselItem key={itemData.name} itemData={itemData} onClick={() => alert(`Hello ${i}`)} />)}
+            <div ref={setSliderElement}>
+                {projectData.map((itemData, i) => (
+                    <CarouselItem
+                        key={itemData.name}
+                        itemData={itemData}
+                        onClick={() => alert(`Hello ${i}`)}
+                    />
+                ))}
             </div>
             <BackgroundBeams />
-
         </div>
     );
 }
 
-const useStyle = tss
-    .withName({ Carousel })
-    .create(({ theme }) => ({
-        "root": {
-            "boxSizing": "border-box",
-            "position": "relative",
-            "display": "flex",
-            "height": "100vh",
-            "width": "100%",
-            "background": theme.palette.background.default,
-            "overflow": "hidden",
-        },
-    }))
+const useStyle = tss.withName({ Carousel }).create(({ theme }) => ({
+    root: {
+        boxSizing: "border-box",
+        position: "relative",
+        display: "flex",
+        height: "100vh",
+        width: "100%",
+        background: theme.palette.background.default,
+        overflow: "hidden"
+    }
+}));

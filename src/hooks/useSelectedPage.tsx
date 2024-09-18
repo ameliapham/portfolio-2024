@@ -3,10 +3,12 @@ import { assert } from "tsafe/assert";
 
 type SelectedPage = "home" | "about" | "projects" | "contact";
 
-type ContextValue = {
-    selectedPage: SelectedPage;
-    setSelectedPage: (selectedPage: SelectedPage) => void;
-} | undefined;
+type ContextValue =
+    | {
+          selectedPage: SelectedPage;
+          setSelectedPage: (selectedPage: SelectedPage) => void;
+      }
+    | undefined;
 
 const context = createContext<ContextValue>(undefined);
 
@@ -20,25 +22,19 @@ export function SelectedPageProvider(props: SelectedPageProviderProps) {
 
     const [selectedPage, setSelectedPage] = useState(defaultSelectedPage);
 
-    return (
-        <context.Provider value={{ selectedPage, setSelectedPage }}>
-            {children}
-        </context.Provider>
-    );
+    return <context.Provider value={{ selectedPage, setSelectedPage }}>{children}</context.Provider>;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useSelectedPage() {
-
     const contextValue = useContext(context);
 
     assert(
-        contextValue !== undefined, 
+        contextValue !== undefined,
         "This hook must be called in a descendant of SelectedPageProvider"
     );
 
     const { selectedPage, setSelectedPage } = contextValue;
 
     return { selectedPage, setSelectedPage };
-
 }
