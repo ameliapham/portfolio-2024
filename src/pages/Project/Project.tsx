@@ -12,7 +12,7 @@ type Props = {
 
 export function Project(props: Props) {
 
-    const { className, initialPage } = props;
+    const { className, initialPage, onPageSelected } = props;
 
     const { classes } = useStyles();
 
@@ -37,7 +37,7 @@ export function Project(props: Props) {
                         key={itemData.nameId}
                         position={i + 1}
                         itemData={itemData}
-                        //onClick={() => onPageSelected(itemData.nameId)}
+                        onClick={() => onPageSelected(itemData.nameId)}
                     />
                 ))}
             </div>
