@@ -8,8 +8,10 @@ import { About } from "pages/About";
 import { Project } from "pages/Project";
 import { useSelectedPage } from "hooks/useSelectedPage";
 import { useState } from "react";
-import { Zen } from "pages/Project/pages/Zen";
+import { Contain } from "pages/Project/Contain";
 
+import { Zen } from "pages/Project/pages/zen/Zen";
+import p24zen from 'assets/p-zen.webp';
 
 
 export function App() {
@@ -56,15 +58,18 @@ export function App() {
                     switch (pageId) {
                       case undefined: return null;
                       case "zen": return (
-                        <Zen
+                        <Contain
                           onClick={() => setIsGalleryVisible(true)}
+                          content={<Zen />}
+                          background={p24zen}
                         />
                       );
                       case "gili": return (
-                        <>
-                          <h1>Gili</h1>
-                          <button onClick={() => setIsGalleryVisible(true)}>Back</button>
-                        </>
+                        <Contain
+                          onClick={() => setIsGalleryVisible(true)}
+                          content={<Zen />}
+                          background={p24zen}
+                        />
                       );
                       case "gmeta": return (
                         <>
