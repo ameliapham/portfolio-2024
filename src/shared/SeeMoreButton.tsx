@@ -47,7 +47,7 @@ const useStyles = tss.create(({ theme }) => ({
         },
 
         "&:hover::before": {
-            width: theme.spacing(8)
+            width: theme.spacing(3)
         }
     }
 }));
