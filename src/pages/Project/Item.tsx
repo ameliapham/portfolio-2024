@@ -3,6 +3,7 @@ import { tss } from "tss-react/mui";
 import { ItemData } from "data/projectData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
+import { alpha } from "@mui/material/styles";
 
 type Props = {
     className?: string;
@@ -17,7 +18,7 @@ export function Item(props: Props) {
 
     return (
         <div className={cx(classes.root, className)} style={{ backgroundImage: `url(${itemData.img})` }}>
-            <div className={classes.content}>
+            <div className={classes.content} onClick={onClick}>
                 <Typography variant="body1" className={classes.year}>
                     {itemData.year}
                 </Typography>
@@ -27,7 +28,7 @@ export function Item(props: Props) {
                 <Typography variant="body1" className={classes.des}>
                     {itemData.des}
                 </Typography>
-                <SeeMoreButton onClick={onClick}>See More</SeeMoreButton>
+                <SeeMoreButton onClick={onClick} className={classes.seeMoreButton}>See More</SeeMoreButton>
             </div>
         </div>
     );
@@ -60,7 +61,7 @@ const animateContent = keyframes({
 const useStyles = tss
     .withName({ Item })
     .withParams<{ position: number }>()
-    .withNestedSelectors<"content">()
+    .withNestedSelectors<"content" | "seeMoreButton">()
     .create(({ classes, position, theme }) => {
         const sideLength = "200px";
         const left = "58%";
@@ -135,12 +136,57 @@ const useStyles = tss
                 backdropFilter: "brightness(70%)",
                 opacity: 0,
                 animation: `${animateContent} 1s ease-in-out 0s 1 forwards`,
+                cursor: "pointer",
+                transition: "all 0.4s ease",
+
 
                 "& button": {
                     opacity: 0,
-                    animation: `${animate} 1s ease-in-out 0.6s 1 forwards`
+                    animation: `${animate} 1s ease-in-out 0.6s 1 forwards`,
+                },
+
+                "&:hover": {
+                    backdropFilter: "brightness(30%)",
+                    top: `calc(50% - 10px)`,
+                    transition: "all 0.5s ease",
+                },
+
+             
+
+                [`&:hover .${classes.seeMoreButton}`]: {
+                    "&::before": {
+                        width: theme.spacing(3)
+                    },
+
+                },
+
+
+
+
+            },
+            seeMoreButton: {
+                position: "relative",
+                color: theme.palette.text.primary,
+                height: theme.spacing(6),
+                padding: 0,
+                overflow: "hidden",
+                cursor: "pointer",
+
+                "&::before": {
+                    content: "''",
+                    left: 0,
+                    width: 0,
+                    height: theme.spacing(0.15),
+                    backgroundColor: `${alpha(theme.palette.text.primary, 0.5)}`,
+                    transform: "translateX(-10px)",
+                    transition: "all 0.5s ease"
+                },
+
+                "&:hover::before": {
+                    width: theme.spacing(3),
                 }
             },
+
             name: {
                 fontSize: "40px",
                 textTransform: "uppercase",
