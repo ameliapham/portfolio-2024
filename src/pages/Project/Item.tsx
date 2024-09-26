@@ -77,7 +77,7 @@ const useStyles = tss
                 backgroundPosition: "50% 50%",
                 backgroundSize: "cover",
                 display: "inline-block",
-                transition: "0.5s",
+                transition: "0.4s",
                 ...(() => {
                     const oneAndTwo = {
                         top: 0,
@@ -96,11 +96,13 @@ const useStyles = tss
                                 ...oneAndTwo,
                                 [`& .${classes.content}`]: {
                                     display: "block"
-                                }
+                                },
+                                
                             };
                         case 3:
                             return {
-                                left: left
+                                left: left,
+                             
                             };
                         case 4:
                             return {
@@ -135,14 +137,14 @@ const useStyles = tss
                 borderRadius: "10px",
                 backdropFilter: "brightness(70%)",
                 opacity: 0,
-                animation: `${animateContent} 1s ease-in-out 0s 1 forwards`,
+                animation: `${animateContent} 0.5s ease-in-out 0s 1 forwards`,
                 cursor: "pointer",
                 transition: "all 0.4s ease",
 
 
                 "& button": {
                     opacity: 0,
-                    animation: `${animate} 1s ease-in-out 0.6s 1 forwards`,
+                    animation: `${animate} 0.6s ease-in-out 0.6s 1 forwards`,
                 },
 
                 "&:hover": {
@@ -192,17 +194,17 @@ const useStyles = tss
                 textTransform: "uppercase",
                 fontWeight: "bold",
                 opacity: 0,
-                animation: `${animate} 1s ease-in-out 1 forwards`
+                animation: `${animate} 0.6s ease-in-out 0s 1 forwards`
             },
             des: {
                 marginTop: "10px",
                 marginBottom: "20px",
                 opacity: 0,
-                animation: `${animate} 1s ease-in-out 0.3s 1 forwards`
+                animation: `${animate} 0.6s ease-in-out 0.3s 1 forwards`
             },
             year: {
                 opacity: 0,
-                animation: `${animate} 1s ease-in-out 0.2s 1 forwards`
+                animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`
             }
         };
     });
