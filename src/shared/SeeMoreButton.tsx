@@ -1,7 +1,6 @@
 import { tss } from "tss-react/mui";
 import Button from "@mui/material/Button";
 import { alpha } from "@mui/material/styles";
-import { useEffect, useState } from "react";
 
 type Props = {
     className?: string;
@@ -12,17 +11,9 @@ type Props = {
 export function SeeMoreButton(props: Props) {
     const { className, onClick, children } = props;
     const { cx, classes } = useStyles();
-    const [isHovered, setIsHovered] = useState(false);
-
-    useEffect(() => {}, [isHovered]);
 
     return (
-        <div
-            className={cx(classes.root, className)}
-            onClick={onClick}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
+        <div className={cx(classes.root, className)} onClick={onClick}>
             <Button className={classes.button}>
                 <span className={classes.buttonText}>{children}</span>
             </Button>
