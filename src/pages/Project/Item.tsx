@@ -3,7 +3,6 @@ import { tss } from "tss-react/mui";
 import { ItemData } from "data/projectData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
-import { alpha } from "@mui/material/styles";
 
 type Props = {
     className?: string;
@@ -28,7 +27,9 @@ export function Item(props: Props) {
                 <Typography variant="body1" className={classes.des}>
                     {itemData.des}
                 </Typography>
-                <SeeMoreButton onClick={onClick} className={classes.seeMoreButton}>See More</SeeMoreButton>
+                <SeeMoreButton onClick={onClick} className={classes.seeMoreButton}>
+                    See More
+                </SeeMoreButton>
             </div>
         </div>
     );
@@ -96,13 +97,11 @@ const useStyles = tss
                                 ...oneAndTwo,
                                 [`& .${classes.content}`]: {
                                     display: "block"
-                                },
-                                
+                                }
                             };
                         case 3:
                             return {
-                                left: left,
-                             
+                                left: left
                             };
                         case 4:
                             return {
@@ -141,52 +140,25 @@ const useStyles = tss
                 cursor: "pointer",
                 transition: "all 0.4s ease",
 
-
                 "& button": {
                     opacity: 0,
-                    animation: `${animate} 0.6s ease-in-out 0.6s 1 forwards`,
+                    animation: `${animate} 0.6s ease-in-out 0.6s 1 forwards`
                 },
 
                 "&:hover": {
                     backdropFilter: "brightness(30%)",
                     top: `calc(50% - 10px)`,
-                    transition: "all 0.5s ease",
+                    transition: "all 0.5s ease"
                 },
-
-             
 
                 [`&:hover .${classes.seeMoreButton}`]: {
                     "&::before": {
                         width: theme.spacing(3)
-                    },
-
-                },
-
-
-
-
+                    }
+                }
             },
             seeMoreButton: {
-                position: "relative",
-                color: theme.palette.text.primary,
-                height: theme.spacing(6),
-                padding: 0,
-                overflow: "hidden",
-                cursor: "pointer",
-
-                "&::before": {
-                    content: "''",
-                    left: 0,
-                    width: 0,
-                    height: theme.spacing(0.15),
-                    backgroundColor: `${alpha(theme.palette.text.primary, 0.5)}`,
-                    transform: "translateX(-10px)",
-                    transition: "all 0.5s ease"
-                },
-
-                "&:hover::before": {
-                    width: theme.spacing(3),
-                }
+                //width: "fit-content",
             },
 
             name: {

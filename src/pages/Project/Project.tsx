@@ -27,8 +27,7 @@ export function Project(props: Props) {
         return items;
     });
 
-    const containerRef = useRef<HTMLDivElement | null>(null)
-
+    const containerRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -36,19 +35,19 @@ export function Project(props: Props) {
         const handleScroll = (event: WheelEvent) => {
             event.preventDefault();
             if (event.deltaY < 0) {
-                setItems((prevItems) => rotateToTheRight(prevItems));
+                setItems(prevItems => rotateToTheRight(prevItems));
             } else {
-                setItems((prevItems) => rotateToTheLeft(prevItems));
+                setItems(prevItems => rotateToTheLeft(prevItems));
             }
         };
 
         if (container) {
-            container.addEventListener('wheel', handleScroll);
+            container.addEventListener("wheel", handleScroll);
         }
 
         return () => {
             if (container) {
-                container.removeEventListener('wheel', handleScroll);
+                container.removeEventListener("wheel", handleScroll);
             }
         };
     }, []);
