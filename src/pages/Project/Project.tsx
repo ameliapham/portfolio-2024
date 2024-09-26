@@ -28,17 +28,29 @@ export function Project(props: Props) {
     });
 
     const containerRef = useRef<HTMLDivElement | null>(null);
+    const isAnimatingRef = useRef(false);
 
     useEffect(() => {
         const container = containerRef.current;
 
         const handleScroll = (event: WheelEvent) => {
             event.preventDefault();
+
+            if (isAnimatingRef.current) {
+                return;
+            }
+
+            isAnimatingRef.current = true;
+
             if (event.deltaY < 0) {
                 setItems(prevItems => rotateToTheRight(prevItems));
             } else {
                 setItems(prevItems => rotateToTheLeft(prevItems));
             }
+
+            setTimeout(() => {
+                isAnimatingRef.current = false;
+            }, 300);
         };
 
         if (container) {
