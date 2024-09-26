@@ -1,6 +1,7 @@
 import { tss } from "tss-react/mui";
 import Button from "@mui/material/Button";
 import { alpha } from "@mui/material/styles";
+import { useEffect, useState } from "react";
 
 type Props = {
     className?: string;
@@ -11,19 +12,23 @@ type Props = {
 export function SeeMoreButton(props: Props) {
     const { className, onClick, children } = props;
     const { cx, classes } = useStyles();
+    const [isHovered, setIsHovered] = useState(false);
 
-    
+    useEffect(() => {}, [isHovered]);
 
     return (
-        <div className={cx(classes.root, className)} onClick={onClick}>
+        <div
+            className={cx(classes.root, className)}
+            onClick={onClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <Button className={classes.button}>
                 <span className={classes.buttonText}>{children}</span>
-                </Button>
+            </Button>
         </div>
     );
 }
-
-
 
 const useStyles = tss.create(({ theme }) => ({
     root: {
@@ -36,18 +41,21 @@ const useStyles = tss.create(({ theme }) => ({
         height: theme.spacing(6),
         padding: 0,
         cursor: "pointer",
+        width: "200px",
+        left: "0",
 
         "&:hover": {
-            backgroundColor: "transparent",
+            backgroundColor: "transparent"
         },
 
         "&::before": {
             content: "''",
-            left: 0,
-            width:  theme.spacing(8),
+            position: "absolute",
+            left: "0",
+            width: theme.spacing(8),
             height: theme.spacing(0.15),
             backgroundColor: `${alpha(theme.palette.text.primary, 0.5)}`,
-            transition: "all 0.5s ease",
+            transition: "all 0.4s ease"
         },
 
         "&:hover::before": {
@@ -57,13 +65,14 @@ const useStyles = tss.create(({ theme }) => ({
         },
 
         "&:hover span": {
-            transform: "translateX(60px)",
-            transition: "all 0.5s ease"
-        },
+            transform: "translateX(20px)",
+            transition: "all 0.4s ease"
+        }
     },
     buttonText: {
-        transition: "transform 0.5s ease",
+        position: "absolute",
+        left: theme.spacing(8),
+        transition: "all 0.4s ease",
         transform: "translateX(10px)"
     }
-
 }));
