@@ -1,5 +1,4 @@
-import { tss } from "tss-react/mui";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Item } from "./Item";
 import { projectData, ItemData } from "data/projectData";
 
@@ -13,8 +12,6 @@ type Props = {
 
 export function Project(props: Props) {
     const { className, initialPage, onPageSelected } = props;
-
-    const { classes } = useStyles();
 
     const [items, setItems] = useState(() => {
         let items = projectData;
@@ -30,8 +27,34 @@ export function Project(props: Props) {
         return items;
     });
 
+    const containerRef = useRef<HTMLDivElement | null>(null)
+
+
+    useEffect(() => {
+        const container = containerRef.current;
+
+        const handleScroll = (event: WheelEvent) => {
+            event.preventDefault();
+            if (event.deltaY < 0) {
+                setItems((prevItems) => rotateToTheRight(prevItems));
+            } else {
+                setItems((prevItems) => rotateToTheLeft(prevItems));
+            }
+        };
+
+        if (container) {
+            container.addEventListener('wheel', handleScroll);
+        }
+
+        return () => {
+            if (container) {
+                container.removeEventListener('wheel', handleScroll);
+            }
+        };
+    }, []);
+
     return (
-        <div className={className}>
+        <div className={className} ref={containerRef}>
             <div>
                 {items.map((itemData, i) => (
                     <Item
@@ -41,24 +64,6 @@ export function Project(props: Props) {
                         onClick={() => onPageSelected(itemData.nameId)}
                     />
                 ))}
-            </div>
-            <div className={classes.button}>
-                <button
-                    onClick={() => {
-                        const newItems = rotateToTheRight(items);
-                        setItems(newItems);
-                    }}
-                >
-                    <i className="fa-solid fa-arrow-left" />
-                </button>
-                <button
-                    onClick={() => {
-                        const newItems = rotateToTheLeft(items);
-                        setItems(newItems);
-                    }}
-                >
-                    <i className="fa-solid fa-arrow-right" />
-                </button>
             </div>
         </div>
     );
@@ -73,25 +78,3 @@ function rotateToTheLeft(items: ItemData[]): ItemData[] {
     const [firstItem, ...otherItems] = structuredClone(items);
     return [...otherItems, firstItem];
 }
-
-const useStyles = tss.withName({ Project }).create({
-    button: {
-        width: "100%",
-        textAlign: "center",
-        position: "absolute",
-        bottom: 20,
-        "& button": {
-            width: 40,
-            height: 35,
-            borderRadius: 8,
-            cursor: "pointer",
-            margin: "0 5px",
-            border: "1px solid #000",
-            transition: "0.3s",
-            "&:hover": {
-                background: "#ababab",
-                color: "#fff"
-            }
-        }
-    }
-});
