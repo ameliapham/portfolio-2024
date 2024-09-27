@@ -50,7 +50,7 @@ export function Project(props: Props) {
 
             setTimeout(() => {
                 isAnimatingRef.current = false;
-            }, 300);
+            }, 500);
         };
 
         if (container) {

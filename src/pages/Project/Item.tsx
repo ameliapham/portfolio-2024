@@ -78,7 +78,7 @@ const useStyles = tss
                 backgroundPosition: "50% 50%",
                 backgroundSize: "cover",
                 display: "inline-block",
-                transition: "0.4s",
+                transition: "0.5s",
                 ...(() => {
                     const oneAndTwo = {
                         top: 0,
