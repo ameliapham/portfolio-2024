@@ -49,16 +49,14 @@ const useStyles = tss.withName({ Header }).create(({ theme }) => ({
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: `0 ${theme.spacing(10)}`,
         borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
-        height: theme.spacing(8),
+        height: "100%",
         width: "100%",
         zIndex: 1000
     },
     logo: {
         width: theme.spacing(15),
         cursor: "pointer",
-        padding: `${theme.spacing(1)}`
     },
     buttonZone: {
         display: "flex",

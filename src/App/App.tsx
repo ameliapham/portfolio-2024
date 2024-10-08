@@ -2,7 +2,6 @@ import { GlobalStyles } from "tss-react";
 import { Header } from "App/Header";
 import { tss } from "tss-react/mui";
 import { Home } from "pages/Home";
-// import { ItemSlider } from "shared/ItemSlider";
 import { Contact } from "pages/Contact";
 import { About } from "pages/About";
 import { Project } from "pages/Project";
@@ -131,7 +130,10 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
     header: {
         position: "absolute",
         top: 0,
-        zIndex: 1000
+        zIndex: 1000,
+        height: theme.spacing(8),
+        width: "100%",
+        padding: `0 ${theme.spacing(10)}`,
     },
     project: {
         position: "absolute",
