@@ -45,11 +45,6 @@ const useStyles = tss
 
         return {
             root: {
-                display: "flex",
-                boxSizing: "border-box",
-                height: "60%",
-                width: "25%",
-
                 [`&:hover .${classes.div1}`]: {
                     top: `calc(${top} + 30px)`,
                     right: `calc(${right} + 30px)`

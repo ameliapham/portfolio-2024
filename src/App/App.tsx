@@ -28,7 +28,8 @@ export function App() {
                 styles={{
                     "*": {
                         margin: 0,
-                        padding: 0
+                        padding: 0,
+                        boxSizing: "border-box",
                     },
                     "html, body": {
                         backgroundColor: theme.palette.background.default
@@ -38,7 +39,7 @@ export function App() {
 
             <Header className={classes.header} />
 
-            <main>
+            <main className={classes.main}>
                 {(() => {
                     switch (selectedPage) {
                         case "home":
@@ -132,18 +133,16 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
         top: 0,
         zIndex: 1000,
         height: theme.spacing(8),
-        width: "100%",
         padding: `0 ${theme.spacing(10)}`,
+    },
+    main: {
+        flex: 1,
     },
     project: {
         position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
         width: "100%",
         height: "100%",
         background: theme.palette.background.default,
         overflow: "hidden",
-        boxSizing: "border-box"
     }
 }));

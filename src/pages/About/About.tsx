@@ -15,10 +15,10 @@ type Props = {
 
 export function About(props: Props) {
     const { className } = props;
-    const { cx, classes } = useStyles();
+    const { classes } = useStyles();
 
     return (
-        <div className={cx(classes.root, className)}>
+        <div className={className}>
             <PhotoFrame className={classes.frameZone} />
 
             <div className={classes.content}>
@@ -73,25 +73,19 @@ export function About(props: Props) {
 }
 
 const useStyles = tss.withName({ About }).create(({ theme }) => ({
-    root: {
-        padding: "20px",
-        height: "100vh",
-        boxSizing: "border-box",
-        position: "relative",
-        overflow: "hidden"
-    },
     frameZone: {
         position: "absolute",
         top: "50%",
         right: "50%",
-        transform: "translate(-30%,-50%)"
+        transform: "translate(-30%,-50%)",
+        height: "60%",
+        width: "25%",
     },
     content: {
         position: "absolute",
         top: "50%",
         left: "60%",
         transform: "translateY(-45%) translateX(-20%)",
-        width: "35%",
         color: theme.palette.text.primary,
         padding: "20px",
         overflowY: "scroll",
