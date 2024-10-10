@@ -2,7 +2,7 @@ import { tss } from "tss-react/mui";
 import logo from "assets/logo.svg";
 import { MenuButton } from "./MenuButton";
 import { alpha } from "@mui/material/styles";
-import { useSelectedPage } from "hooks/useSelectedPage";
+import { usePageId } from "hooks/usePageId";
 
 type Props = {
     className?: string;
@@ -11,7 +11,7 @@ type Props = {
 export function Header(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
-    const { selectedPage, setSelectedPage } = useSelectedPage();
+    const { pageId: selectedPage, setPageId: setSelectedPage } = usePageId();
 
     return (
         <div className={cx(classes.root, className)}>
@@ -56,7 +56,7 @@ const useStyles = tss.withName({ Header }).create(({ theme }) => ({
     },
     logo: {
         width: theme.spacing(15),
-        cursor: "pointer",
+        cursor: "pointer"
     },
     buttonZone: {
         display: "flex",

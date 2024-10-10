@@ -4,7 +4,7 @@ import headText from "assets/headText.png";
 import Typography from "@mui/material/Typography";
 import { HomeSeeMoreButton } from "./HomeSeeMoreButton";
 import { CustomGradients } from "./Gradients";
-import { useSelectedPage } from "hooks/useSelectedPage";
+import { usePageId } from "hooks/usePageId";
 
 type Props = {
     className?: string;
@@ -13,7 +13,7 @@ type Props = {
 export function Home(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
-    const { setSelectedPage } = useSelectedPage();
+    const { setPageId: setPageId } = usePageId();
 
     return (
         <div className={cx(classes.root, className)}>
@@ -33,7 +33,7 @@ export function Home(props: Props) {
                 <div className={classes.sparklesBottom}></div>
             </div>
 
-            <HomeSeeMoreButton className={classes.button} onClick={() => setSelectedPage("projects")}>
+            <HomeSeeMoreButton className={classes.button} onClick={() => setPageId("projects")}>
                 View My Work
             </HomeSeeMoreButton>
         </div>

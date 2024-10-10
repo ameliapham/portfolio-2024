@@ -5,18 +5,18 @@ import { Home } from "pages/Home";
 import { Contact } from "pages/Contact";
 import { About } from "pages/About";
 import { Project } from "pages/Project";
-import { useSelectedPage } from "hooks/useSelectedPage";
+import { usePageId } from "hooks/usePageId";
 import { useState } from "react";
 import { Contain } from "pages/Project/Contain";
 
-import { Zen } from "pages/Project/pages/zen/Zen";
+import { Zen } from "pages/Project/Projects/Zen/Zen";
 import p24zen from "assets/p-zen.webp";
 
 export function App() {
-    const { selectedPage } = useSelectedPage();
+    const { pageId: pageId } = usePageId();
 
     const [isGalleryVisible, setIsGalleryVisible] = useState(true);
-    const [pageId, setPageId] = useState<
+    const [projectId, setProjectId] = useState<
         "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur"
     >("zen");
 
@@ -29,7 +29,7 @@ export function App() {
                     "*": {
                         margin: 0,
                         padding: 0,
-                        boxSizing: "border-box",
+                        boxSizing: "border-box"
                     },
                     "html, body": {
                         backgroundColor: theme.palette.background.default
@@ -41,7 +41,7 @@ export function App() {
 
             <main className={classes.main}>
                 {(() => {
-                    switch (selectedPage) {
+                    switch (pageId) {
                         case "home":
                             return <Home />;
                         case "about":
@@ -52,17 +52,17 @@ export function App() {
                                     {isGalleryVisible && (
                                         <Project
                                             className={classes.project}
-                                            initialPage={pageId}
+                                            initialPage={projectId}
                                             onPageSelected={pageId => {
                                                 setIsGalleryVisible(false);
-                                                setPageId(pageId);
+                                                setProjectId(pageId);
                                             }}
                                         />
                                     )}
                                     {(() => {
                                         if (isGalleryVisible) return null;
 
-                                        switch (pageId) {
+                                        switch (projectId) {
                                             case undefined:
                                                 return null;
                                             case "zen":
@@ -133,16 +133,16 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
         top: 0,
         zIndex: 1000,
         height: theme.spacing(8),
-        padding: `0 ${theme.spacing(10)}`,
+        padding: `0 ${theme.spacing(10)}`
     },
     main: {
-        flex: 1,
+        flex: 1
     },
     project: {
         position: "absolute",
         width: "100%",
         height: "100%",
         background: theme.palette.background.default,
-        overflow: "hidden",
+        overflow: "hidden"
     }
 }));
