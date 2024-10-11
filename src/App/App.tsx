@@ -9,7 +9,7 @@ import { usePageId } from "hooks/usePageId";
 import { useState } from "react";
 import { Contain } from "pages/Project/Contain";
 
-import { Zen } from "pages/Project/Projects/Zen/Zen";
+import { Zen } from "pages/Project/projects/Zen/Zen";
 import p24zen from "assets/p-zen.webp";
 
 export function App() {
@@ -20,7 +20,7 @@ export function App() {
         "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur"
     >("zen");
 
-    const { classes, theme } = useStyles();
+    const { cx, classes, theme } = useStyles();
 
     return (
         <>
@@ -43,15 +43,14 @@ export function App() {
                 {(() => {
                     switch (pageId) {
                         case "home":
-                            return <Home />;
+                            return <Home className={classes.page} />;
                         case "about":
-                            return <About />;
+                            return <About className={classes.page} />;
                         case "projects":
                             return (
                                 <>
                                     {isGalleryVisible && (
                                         <Project
-                                            className={classes.project}
                                             initialPage={projectId}
                                             onPageSelected={pageId => {
                                                 setIsGalleryVisible(false);
@@ -119,7 +118,7 @@ export function App() {
                                 </>
                             );
                         case "contact":
-                            return <Contact />;
+                            return <Contact className={cx(classes.page, classes.contact)} />;
                     }
                 })()}
             </main>
@@ -138,11 +137,14 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
     main: {
         flex: 1
     },
-    project: {
+    page: {
+        display: "flex"
+    },
+    contact: {
+        justifyContent: "center",
         position: "absolute",
-        width: "100%",
-        height: "100%",
-        background: theme.palette.background.default,
-        overflow: "hidden"
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)"
     }
 }));

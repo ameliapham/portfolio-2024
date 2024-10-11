@@ -67,10 +67,6 @@ export function Contact(props: Props) {
 
 const useStyles = tss.withName({ Contact }).create(({ theme }) => ({
     root: {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
         display: "flex",
         flexDirection: "column",
         gap: "50px",

@@ -79,7 +79,7 @@ const useStyles = tss.withName({ About }).create(({ theme }) => ({
         right: "50%",
         transform: "translate(-30%,-50%)",
         height: "60%",
-        width: "25%",
+        width: "25%"
     },
     content: {
         position: "absolute",

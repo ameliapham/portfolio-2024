@@ -12,11 +12,11 @@ type Props = {
 
 export function Home(props: Props) {
     const { className } = props;
-    const { cx, classes } = useStyles();
+    const { classes } = useStyles();
     const { setPageId: setPageId } = usePageId();
 
     return (
-        <div className={cx(classes.root, className)}>
+        <div className={className}>
             <video className={classes.video} autoPlay muted loop>
                 <source src={headVideo} type="video/mp4" />
             </video>
@@ -41,13 +41,6 @@ export function Home(props: Props) {
 }
 
 const useStyles = tss.withName({ Home }).create(({ theme }) => ({
-    root: {
-        position: "relative",
-        display: "flex",
-        boxSizing: "border-box",
-        height: "100vh",
-        width: "100%"
-    },
     video: {
         objectFit: "cover",
         width: "100%",
