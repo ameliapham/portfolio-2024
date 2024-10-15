@@ -45,7 +45,6 @@ export function Header(props: Props) {
 
 const useStyles = tss.withName({ Header }).create(({ theme }) => ({
     root: {
-        boxSizing: "border-box",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
