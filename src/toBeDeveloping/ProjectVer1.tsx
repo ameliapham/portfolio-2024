@@ -1,14 +1,14 @@
 import { tss } from "tss-react/mui";
 import { useEffect, useState } from "react";
 import { Item } from "./ItemVer1";
-import { projectData } from "data/projectData";
+import { projectData } from "pages/Project/projectData";
 import { useConstCallback } from "powerhooks/useConstCallback";
 import { assert } from "tsafe/assert";
 import { useScrollWidth } from "hooks/useScrollHeight";
 //import LinearProgress from '@mui/material/LinearProgress';
 import { useDomRect } from "powerhooks/useDomRect";
 import { useMergeRefs } from "powerhooks/useMergeRefs";
-import { Zen } from "../pages/Project/pages/zen/Zen";
+import { Zen } from "../pages/Project/ProjectDetails/Zen/Zen";
 
 type Props = {
     pages: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur";

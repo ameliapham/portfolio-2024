@@ -1,6 +1,6 @@
 import { keyframes } from "tss-react";
 import { tss } from "tss-react/mui";
-import { type ItemData } from "data/projectData";
+import { type ItemData } from "pages/Project/projectData";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 

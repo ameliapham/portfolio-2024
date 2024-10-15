@@ -1,7 +1,7 @@
 import { tss } from "tss-react/mui";
 import { useEffect, useState } from "react";
 import { Item } from "./Item";
-import { projectData } from "data/projectData";
+import { projectData } from "pages/Project/projectData";
 import { useConstCallback } from "powerhooks/useConstCallback";
 import { assert } from "tsafe/assert";
 import project1 from "assets/food-pho.webp";

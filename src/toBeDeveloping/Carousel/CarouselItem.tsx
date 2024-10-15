@@ -1,5 +1,5 @@
 import { tss } from "tss-react/mui";
-import { ItemData } from "data/projectData";
+import { ItemData } from "pages/Project/projectData";
 import Typography from "@mui/material/Typography";
 
 type Props = {

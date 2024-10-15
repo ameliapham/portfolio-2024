@@ -8,9 +8,10 @@ type Props = {
 };
 
 export function Zen(props: Props) {
-    const { classes } = useStyles();
+    const { className } = props;
+    const { cx, classes } = useStyles();
     return (
-        <div className={classes.root}>
+        <div className={cx(classes.root, className)}>
             <div className={classes.contain}>
                 <Typography variant="body1" className={classes.year}>
                     2024

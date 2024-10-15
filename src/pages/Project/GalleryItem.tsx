@@ -1,6 +1,6 @@
 import { keyframes } from "tss-react";
 import { tss } from "tss-react/mui";
-import { ItemData } from "data/projectData";
+import { ItemData } from "pages/Project/projectData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
 
@@ -11,7 +11,7 @@ type Props = {
     onClick?: () => void;
 };
 
-export function Item(props: Props) {
+export function GalleryItem(props: Props) {
     const { className, itemData, position, onClick } = props;
     const { cx, classes } = useStyles({ position });
 
@@ -60,7 +60,7 @@ const animateContent = keyframes({
 });
 
 const useStyles = tss
-    .withName({ Item })
+    .withName({ GalleryItem })
     .withParams<{ position: number }>()
     .withNestedSelectors<"content" | "seeMoreButton">()
     .create(({ classes, position, theme }) => {

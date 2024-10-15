@@ -1,6 +1,6 @@
 import { tss } from "tss-react/mui";
 import { CarouselItem } from "./CarouselItem";
-import { projectData } from "data/projectData";
+import { projectData } from "pages/Project/projectData";
 import { BackgroundBeams } from "shared/BackgroundBeams";
 import { useState, useEffect } from "react";
 import { useConstCallback } from "powerhooks/useConstCallback";

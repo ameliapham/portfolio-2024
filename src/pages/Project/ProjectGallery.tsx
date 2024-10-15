@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { Item } from "./Item";
-import { projectData, ItemData } from "data/projectData";
+import { GalleryItem } from "./GalleryItem";
+import { projectData, ItemData } from "pages/Project/projectData";
+import { projectIds, ProjectId } from "./projectIds";
 
 type Props = {
     className?: string;
@@ -10,7 +11,7 @@ type Props = {
     ) => void;
 };
 
-export function Project(props: Props) {
+export function ProjectGallery(props: Props) {
     const { className, initialPage, onPageSelected } = props;
 
     const [items, setItems] = useState(() => {
@@ -68,7 +69,7 @@ export function Project(props: Props) {
         <div className={className} ref={containerRef}>
             <div>
                 {items.map((itemData, i) => (
-                    <Item
+                    <GalleryItem
                         key={itemData.nameId}
                         position={i + 1}
                         itemData={itemData}

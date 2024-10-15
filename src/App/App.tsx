@@ -9,7 +9,7 @@ import { usePageId } from "hooks/usePageId";
 import { useState } from "react";
 import { Contain } from "pages/Project/Contain";
 
-import { Zen } from "pages/Project/projects/Zen/Zen";
+import { Zen } from "pages/Project/ProjectDetails/Zen/Zen";
 import p24zen from "assets/p-zen.webp";
 
 export function App() {
