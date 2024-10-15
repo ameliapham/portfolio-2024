@@ -1,26 +1,25 @@
 import { useState, useEffect, useRef } from "react";
 import { GalleryItem } from "./GalleryItem";
 import { projectData, ItemData } from "pages/Project/projectData";
-import { projectIds, ProjectId } from "./projectIds";
+import { projectIds, type ProjectId } from "./projectIds";
 
 type Props = {
     className?: string;
-    initialPage: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur";
-    onPageSelected: (
-        pageId: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur"
-    ) => void;
+    projectId: ProjectId;
+    onChangeProjectId: (pageId: ProjectId) => void;
+    onSeeProjectDetails: () => void;
 };
 
 export function ProjectGallery(props: Props) {
-    const { className, initialPage, onPageSelected } = props;
+    const { className, projectId, onChangeProjectId, onSeeProjectDetails } = props;
 
     const [items, setItems] = useState(() => {
         let items = projectData;
-        structuredClone(initialPage);
+        structuredClone(projectId);
 
         // eslint-disable-next-line no-constant-condition
         while (true) {
-            if (items[1].nameId === initialPage) {
+            if (items[1].nameId === projectId) {
                 break;
             }
             items = rotateToTheRight(items);
@@ -73,7 +72,10 @@ export function ProjectGallery(props: Props) {
                         key={itemData.nameId}
                         position={i + 1}
                         itemData={itemData}
-                        onClick={() => onPageSelected(itemData.nameId)}
+                        onClick={() => {
+                            onChangeProjectId(itemData.nameId);
+                            onSeeProjectDetails()
+                        }}
                     />
                 ))}
             </div>

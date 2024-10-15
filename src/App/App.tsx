@@ -47,7 +47,9 @@ export function App() {
                         case "about":
                             return <About className={classes.page} />;
                         case "projects":
-                            return (
+                            return <Project className={classes.page} />;
+                            /*
+                            (
                                 <>
                                     {isGalleryVisible && (
                                         <Project
@@ -117,6 +119,7 @@ export function App() {
                                     })()}
                                 </>
                             );
+                            */
                         case "contact":
                             return <Contact className={cx(classes.page, classes.contact)} />;
                     }
