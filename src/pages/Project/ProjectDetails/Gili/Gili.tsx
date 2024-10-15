@@ -63,56 +63,54 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss
-    .withName({ Gili })
-    .create(({ theme }) => {
-        return {
-            root: {
-                color: theme.palette.text.primary
-            },
-            contain: {
-                position: "absolute",
-                top: "50%",
-                right: theme.spacing(30),
-                left: theme.spacing(30),
-                transform: "translate(0, -50%)",
-                zIndex: 1,
-                display: "flex",
-                flexDirection: "column",
-                gap: theme.spacing(2),
-                border: "1px solid yellow"
-            },
-            year: {
-                opacity: 0,
-                animation: `${animate} 1s ease-in-out 0.2s 1 forwards`
-            },
-            name: {
-                fontWeight: "bold",
-                animation: `${animate} 1s ease-in-out 0s 1 forwards`,
-                opacity: 0
-            },
-            content: {
-                display: "flex",
-                gap: theme.spacing(10),
-                opacity: 0,
-                animation: `${animate} 1s ease-in-out 0.2s 1 forwards`
-            },
-            column1: {
-                flex: 2,
-                display: "flex",
-                flexDirection: "column",
-                gap: theme.spacing(2),
+const useStyles = tss.withName({ Gili }).create(({ theme }) => {
+    return {
+        root: {
+            color: theme.palette.text.primary
+        },
+        contain: {
+            position: "absolute",
+            top: "50%",
+            right: theme.spacing(30),
+            left: theme.spacing(30),
+            transform: "translate(0, -50%)",
+            zIndex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: theme.spacing(2),
+            border: "1px solid yellow"
+        },
+        year: {
+            opacity: 0,
+            animation: `${animate} 1s ease-in-out 0.2s 1 forwards`
+        },
+        name: {
+            fontWeight: "bold",
+            animation: `${animate} 1s ease-in-out 0s 1 forwards`,
+            opacity: 0
+        },
+        content: {
+            display: "flex",
+            gap: theme.spacing(10),
+            opacity: 0,
+            animation: `${animate} 1s ease-in-out 0.2s 1 forwards`
+        },
+        column1: {
+            flex: 2,
+            display: "flex",
+            flexDirection: "column",
+            gap: theme.spacing(2),
 
-                "& button": {
-                    opacity: 0,
-                    animation: `${animate} 1s ease-in-out 0.4s 1 forwards`
-                }
-            },
-            column2: {
-                flex: 1,
-                display: "flex",
-                flexDirection: "column",
-                gap: theme.spacing(2)
+            "& button": {
+                opacity: 0,
+                animation: `${animate} 1s ease-in-out 0.4s 1 forwards`
             }
-        };
-    });
+        },
+        column2: {
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: theme.spacing(2)
+        }
+    };
+});

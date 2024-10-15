@@ -26,12 +26,10 @@ export function Zen(props: Props) {
     );
 }
 
-
 const useStyles = tss.create(() => {
     return {
         root: {
-            border: "1px solid red",
-        },
-
+            border: "1px solid red"
+        }
     };
 });

@@ -6,19 +6,9 @@ import { Contact } from "pages/Contact";
 import { About } from "pages/About";
 import { Project } from "pages/Project";
 import { usePageId } from "hooks/usePageId";
-import { useState } from "react";
-import { Contain } from "pages/Project/Contain";
-
-import { Zen } from "pages/Project/ProjectDetails/Zen/Zen";
-import p24zen from "assets/p-zen.webp";
 
 export function App() {
     const { pageId: pageId } = usePageId();
-
-    const [isGalleryVisible, setIsGalleryVisible] = useState(true);
-    const [projectId, setProjectId] = useState<
-        "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur"
-    >("zen");
 
     const { cx, classes, theme } = useStyles();
 
@@ -48,78 +38,6 @@ export function App() {
                             return <About className={classes.page} />;
                         case "projects":
                             return <Project className={classes.page} />;
-                            /*
-                            (
-                                <>
-                                    {isGalleryVisible && (
-                                        <Project
-                                            initialPage={projectId}
-                                            onPageSelected={pageId => {
-                                                setIsGalleryVisible(false);
-                                                setProjectId(pageId);
-                                            }}
-                                        />
-                                    )}
-                                    {(() => {
-                                        if (isGalleryVisible) return null;
-
-                                        switch (projectId) {
-                                            case undefined:
-                                                return null;
-                                            case "zen":
-                                                return (
-                                                    <Contain
-                                                        onClick={() => setIsGalleryVisible(true)}
-                                                        content={<Zen />}
-                                                        background={p24zen}
-                                                    />
-                                                );
-                                            case "gili":
-                                                return (
-                                                    <Contain
-                                                        onClick={() => setIsGalleryVisible(true)}
-                                                        content={<Zen />}
-                                                        background={p24zen}
-                                                    />
-                                                );
-                                            case "gmeta":
-                                                return (
-                                                    <>
-                                                        <h1>Gmeta</h1>
-                                                        <button
-                                                            onClick={() => setIsGalleryVisible(true)}
-                                                        >
-                                                            Back
-                                                        </button>
-                                                    </>
-                                                );
-                                            case "badgeur":
-                                                return (
-                                                    <>
-                                                        <h1>Badgeur</h1>
-                                                        <button
-                                                            onClick={() => setIsGalleryVisible(true)}
-                                                        >
-                                                            Back
-                                                        </button>
-                                                    </>
-                                                );
-                                            case "iso":
-                                                return (
-                                                    <>
-                                                        <h1>Iso</h1>
-                                                        <button
-                                                            onClick={() => setIsGalleryVisible(true)}
-                                                        >
-                                                            Back
-                                                        </button>
-                                                    </>
-                                                );
-                                        }
-                                    })()}
-                                </>
-                            );
-                            */
                         case "contact":
                             return <Contact className={cx(classes.page, classes.contact)} />;
                     }

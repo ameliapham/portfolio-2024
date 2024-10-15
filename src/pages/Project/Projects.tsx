@@ -4,9 +4,6 @@ import { ProjectGallery } from "./ProjectGallery";
 import { ProjectDetails } from "./ProjectDetails";
 import { useState } from "react";
 
-
-
-
 export type Props = {
     className?: string;
 };
@@ -38,18 +35,16 @@ export function Project(props: Props) {
     );
 }
 
-const useStyles = tss
-    .withName("Project")
-    .create({
-        root: {
-            border: "1px solid red"
-        },
-        gallery: {
-            height: "100%",
-            border: '5px solid pink',
-        },
-        details: {
-            height: "100%",
-            border: "5px solid white",
-        }
-    })
+const useStyles = tss.withName("Project").create({
+    root: {
+        border: "1px solid red"
+    },
+    gallery: {
+        height: "100%",
+        border: "5px solid pink"
+    },
+    details: {
+        height: "100%",
+        border: "5px solid white"
+    }
+});

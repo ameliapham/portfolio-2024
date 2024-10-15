@@ -3,13 +3,11 @@ import { throttleTime } from "evt/operators";
 import { useEvt } from "evt/hooks";
 import { useConstCallback } from "powerhooks/useConstCallback";
 
-
 const evtScrollNavigation = Evt.create<"up" | "down">();
 
 let lastDeltaYAbs = 0;
 
-window.addEventListener('wheel', event => {
-
+window.addEventListener("wheel", event => {
     const deltaYAbs = Math.abs(event.deltaY);
 
     if (deltaYAbs - lastDeltaYAbs > 2) {
@@ -17,21 +15,16 @@ window.addEventListener('wheel', event => {
     }
 
     lastDeltaYAbs = deltaYAbs;
-
 });
 
 const evtScrollNavigationThrottled = evtScrollNavigation.pipe(throttleTime(500));
 
 export function useScrollNavigation(onScrollNavigation: (direction: "up" | "down") => void) {
-
     const onScrollNavigation_stable = useConstCallback(onScrollNavigation);
 
     useEvt(ctx => {
-
         evtScrollNavigationThrottled.attach(ctx, direction => {
             onScrollNavigation_stable(direction);
         });
-
     }, []);
-
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { GalleryItem } from "./GalleryItem";
 import { projectData, ItemData } from "pages/Project/projectData";
-import { projectIds, type ProjectId } from "./projectIds";
+import { type ProjectId } from "./projectIds";
 
 type Props = {
     className?: string;
@@ -74,7 +74,7 @@ export function ProjectGallery(props: Props) {
                         itemData={itemData}
                         onClick={() => {
                             onChangeProjectId(itemData.nameId);
-                            onSeeProjectDetails()
+                            onSeeProjectDetails();
                         }}
                     />
                 ))}

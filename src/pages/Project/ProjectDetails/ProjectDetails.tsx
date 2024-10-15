@@ -18,17 +18,17 @@ export function ProjectDetails(props: Props) {
 
     const [detailsIndex, setDetailsIndex] = useState(0);
 
-    const incrementDetailsIndex = () => {   
+    const incrementDetailsIndex = () => {
         setDetailsIndex(prevIndex => prevIndex + 1);
-    }
+    };
 
     const decrementDetailsIndex = () => {
         setDetailsIndex(prevIndex => prevIndex - 1);
-    }
+    };
 
     useScrollNavigation(direction => {
         switch (direction) {
-            case "up": 
+            case "up":
                 decrementDetailsIndex();
                 break;
             case "down":
@@ -47,38 +47,35 @@ export function ProjectDetails(props: Props) {
             <div className={classes.content}>
                 {(() => {
                     switch (projectId) {
-                        case 'zen':
-                            return <Zen detailsIndex = {detailsIndex}/>;
-                        case 'gili':
-                            return <Gili/>;
-                        case 'badgeur':
-                            return <Zen detailsIndex={detailsIndex}/>;
+                        case "zen":
+                            return <Zen detailsIndex={detailsIndex} />;
+                        case "gili":
+                            return <Gili />;
+                        case "badgeur":
+                            return <Zen detailsIndex={detailsIndex} />;
                     }
                 })()}
             </div>
         </div>
-
     );
 }
 
-const useStyles = tss
-    .withName("ProjectDetails")
-    .create(({ theme }) => {
-        return {
-            root: {
-                border: "1px solid red"
-            },
-            buttonBack: {
-                position: "absolute",
-                top: "100px",
-                zIndex: 1,
-                left: theme.spacing(10)
-            },
-            content: {
-                flex: 1,
-                marginLeft: 40,
-                marginRight: 40,
-                border: '5px solid orange',
-            },
-        };
-    })
+const useStyles = tss.withName("ProjectDetails").create(({ theme }) => {
+    return {
+        root: {
+            border: "1px solid red"
+        },
+        buttonBack: {
+            position: "absolute",
+            top: "100px",
+            zIndex: 1,
+            left: theme.spacing(10)
+        },
+        content: {
+            flex: 1,
+            marginLeft: 40,
+            marginRight: 40,
+            border: "5px solid orange"
+        }
+    };
+});
