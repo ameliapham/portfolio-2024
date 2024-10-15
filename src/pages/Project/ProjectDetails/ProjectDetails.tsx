@@ -18,6 +18,25 @@ export function ProjectDetails(props: Props) {
 
     const [detailsIndex, setDetailsIndex] = useState(0);
 
+    const incrementDetailsIndex = () => {   
+        setDetailsIndex(prevIndex => prevIndex + 1);
+    }
+
+    const decrementDetailsIndex = () => {
+        setDetailsIndex(prevIndex => prevIndex - 1);
+    }
+
+    useScrollNavigation(direction => {
+        switch (direction) {
+            case "up": 
+                decrementDetailsIndex();
+                break;
+            case "down":
+                incrementDetailsIndex();
+                break;
+        }
+    });
+
     return (
         <div className={cx(classes.root, className)}>
             <div>
@@ -29,11 +48,11 @@ export function ProjectDetails(props: Props) {
                 {(() => {
                     switch (projectId) {
                         case 'zen':
-                            return <Zen/>;
+                            return <Zen detailsIndex = {detailsIndex}/>;
                         case 'gili':
                             return <Gili/>;
                         case 'badgeur':
-                            return <Zen/>;
+                            return <Zen detailsIndex={detailsIndex}/>;
                     }
                 })()}
             </div>

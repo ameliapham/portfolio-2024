@@ -1,6 +1,5 @@
 import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
-import p24zen from "assets/p-zen.webp";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
 
@@ -9,21 +8,17 @@ type Props = {
     onClick?: () => void;
 };
 
-export function Zen(props: Props) {
-    const { onClick } = props;
-    const { classes } = useStyles();
+export function Page1(props: Props) {
+    const { className } = props;
+    const { cx, classes } = useStyles();
     return (
-        <div className={classes.root}>
-            <SeeMoreButton className={classes.buttonBack} onClick={onClick}>
-                Back
-            </SeeMoreButton>
-
+        <div className={cx(classes.root, className)}>
             <div className={classes.contain}>
                 <Typography variant="body1" className={classes.year}>
                     2024
                 </Typography>
                 <Typography variant="h2" className={classes.name}>
-                    ZenAsia
+                    ZenAsia Page 1
                 </Typography>
                 <div className={classes.content}>
                     <div className={classes.column1}>
@@ -52,8 +47,6 @@ export function Zen(props: Props) {
                     </div>
                 </div>
             </div>
-
-            <div className={classes.background} />
         </div>
     );
 }
@@ -76,22 +69,6 @@ const useStyles = tss.create(({ theme }) => {
         root: {
             color: theme.palette.text.primary
         },
-        background: {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: `url(${p24zen}) center center/cover`,
-            filter: "blur(30px)",
-            opacity: 0.5
-        },
-        buttonBack: {
-            position: "absolute",
-            top: "100px",
-            zIndex: 1,
-            left: theme.spacing(10)
-        },
         contain: {
             position: "absolute",
             top: "50%",
@@ -102,7 +79,7 @@ const useStyles = tss.create(({ theme }) => {
             display: "flex",
             flexDirection: "column",
             gap: theme.spacing(2),
-            border: "1px solid red"
+            border: "1px solid yellow"
         },
         year: {
             opacity: 0,
