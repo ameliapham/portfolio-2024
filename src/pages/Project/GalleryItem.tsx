@@ -51,10 +51,12 @@ const animate = keyframes({
 const animateContent = keyframes({
     from: {
         opacity: 0,
+        transform: "translate(-100px, 0px)",
         filter: "blur(10px)"
     },
     to: {
         opacity: 1,
+        transform: "translate(0, -50%)",
         filter: "blur(0)"
     }
 });
@@ -70,9 +72,9 @@ const useStyles = tss
         return {
             root: {
                 width: sideLength,
-                height: `calc(${sideLength} * 1.2)`,
+                height: `calc(${sideLength} * 1)`,
                 position: "absolute",
-                top: "75%",
+                top: "80%",
                 transform: "translate(0, -50%)",
                 borderRadius: "10px",
                 backgroundPosition: "50% 50%",
@@ -127,14 +129,13 @@ const useStyles = tss
                 position: "absolute",
                 top: "50%",
                 left: theme.spacing(10),
-                transform: "translate(0, -50%)",
-                width: "30%",
+                width: "40%",
                 textAlign: "left",
                 color: theme.palette.text.primary,
                 display: "none",
                 padding: theme.spacing(5),
                 borderRadius: "10px",
-                backdropFilter: "brightness(70%)",
+                backdropFilter: "brightness(60%) blur(0px)",
                 opacity: 0,
                 animation: `${animateContent} 0.5s ease-in-out 0s 1 forwards`,
                 cursor: "pointer",
