@@ -26,10 +26,8 @@ export function App() {
                     }
                 }}
             />
-
-            <Header className={classes.header} />
-
-            <main className={classes.main}>
+            <div className={classes.root}>
+                <Header className={classes.header} />
                 {(() => {
                     switch (pageId) {
                         case "home":
@@ -42,12 +40,17 @@ export function App() {
                             return <Contact className={cx(classes.page, classes.contact)} />;
                     }
                 })()}
-            </main>
+            </div>
         </>
     );
 }
 
 const useStyles = tss.withName({ App }).create(({ theme }) => ({
+    root: {
+        height: "100vh",
+        width: "100vw",
+        overflow: "hidden"
+    },
     header: {
         position: "absolute",
         top: 0,
@@ -55,11 +58,9 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
         height: theme.spacing(8),
         padding: `0 ${theme.spacing(10)}`
     },
-    main: {
-        flex: 1
-    },
     page: {
-        display: "flex"
+        display: "flex",
+        flex: 1
     },
     contact: {
         justifyContent: "center",

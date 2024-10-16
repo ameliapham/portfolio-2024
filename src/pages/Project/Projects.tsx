@@ -37,11 +37,15 @@ export function Project(props: Props) {
 
 const useStyles = tss.withName("Project").create({
     root: {
-        border: "1px solid red"
+        height: "100%",
+        width: "100%",
+        border: "1px solid red",
+        overflow: "hidden",
+        position: "relative"
     },
     gallery: {
         height: "100%",
-        border: "5px solid pink"
+        border: "5px solid blue"
     },
     details: {
         height: "100%",
