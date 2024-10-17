@@ -8,8 +8,7 @@ import { Project } from "pages/Project";
 import { usePageId } from "hooks/usePageId";
 
 export function App() {
-    const { pageId: pageId } = usePageId();
-
+    const { pageId } = usePageId();
     const { cx, classes, theme } = useStyles();
 
     return (
