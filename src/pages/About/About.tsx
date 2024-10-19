@@ -56,7 +56,6 @@ export function About(props: Props) {
                         }
                     })()}
                 </div>
-
             </div>
             <BackgroundBeams className={classes.backgroundBeams} />
         </>
@@ -128,17 +127,17 @@ const useStyles = tss.withName({ About }).create(({ theme }) => {
         root: {
             alignContent: "center",
             gap: "5vw",
-            zIndex: 1,
+            zIndex: 1
         },
         backgroundBeams: {
             position: "absolute",
             height: "100%",
             width: "100%",
-            overflow: "hidden",
+            overflow: "hidden"
         },
         frameZone: {
             height: "35vw",
-            width: "25vw",
+            width: "25vw"
         },
         content: {
             flex: 1,
@@ -167,5 +166,5 @@ const useStyles = tss.withName({ About }).create(({ theme }) => {
         icons: {
             color: theme.palette.text.primary
         }
-    }
+    };
 });

@@ -19,7 +19,7 @@ export function App() {
                     "*": {
                         margin: 0,
                         padding: 0,
-                        boxSizing: "border-box",
+                        boxSizing: "border-box"
                     },
                     "html, body": {
                         backgroundColor: theme.palette.background.default
@@ -52,7 +52,7 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "center"
     },
     header: {
         position: "absolute",
@@ -72,6 +72,6 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
     },
     contact: {
         width: "45%",
-        justifyContent: "center",
-    },
+        justifyContent: "center"
+    }
 }));
