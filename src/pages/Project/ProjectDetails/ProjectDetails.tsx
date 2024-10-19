@@ -73,10 +73,10 @@ const useStyles = tss
         return {
             root: {
                 padding: `${headerHeight} ${theme.spacing(10)} 0 ${theme.spacing(10)}`,
-                border: "10px solid brown",
                 position: "relative",
                 display: "flex",
-                flexDirection: "column"
+                flexDirection: "column",
+                overflow: "hidden"
             },
             background: {
                 position: "absolute",
@@ -92,12 +92,13 @@ const useStyles = tss
                 transition: "background 0.5s"
             },
             buttonBack: {
-                border: "5px solid red"
+                paddingTop: theme.spacing(5),
+                //border: "5px solid red"
             },
             content: {
                 flex: 1,
-                border: "5px solid pink",
-                height: "100%"
+                //border: "5px solid pink",
+                height: "100%",
             }
         };
     });

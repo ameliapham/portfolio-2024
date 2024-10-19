@@ -2,6 +2,7 @@ import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
+import { headerHeight } from "App";
 
 type Props = {
     className?: string;
@@ -13,38 +14,36 @@ export function Page1(props: Props) {
     const { cx, classes } = useStyles();
     return (
         <div className={cx(classes.root, className)}>
-            <div className={classes.contain}>
-                <Typography variant="body1" className={classes.year}>
-                    2024
-                </Typography>
-                <Typography variant="h2" className={classes.name}>
-                    ZenAsia Page 1
-                </Typography>
-                <div className={classes.content}>
-                    <div className={classes.column1}>
-                        <Typography variant="body1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac placerat
-                            eros. Donec nec nisl auctor, lacinia sapien vitae, dapibus nunc. Nulla
-                            facilisi. Nam nec justo in massa sodales aliquam. Nulla facilisi. Nam nec
-                            justo in massa sodales aliquam.
-                        </Typography>
-                        <SeeMoreButton>View it online</SeeMoreButton>
-                    </div>
-                    <div className={classes.column2}>
-                        <Typography variant="body1" style={{ textTransform: "uppercase" }}>
-                            My role
-                        </Typography>
-                        <Typography variant="body1">
-                            - UI & UX design <br />
-                            - Front-end development <br />- Technical development
-                        </Typography>
-                    </div>
-                    <div className={classes.column2}>
-                        <Typography variant="body1" style={{ textTransform: "uppercase" }}>
-                            Credits
-                        </Typography>
-                        <Typography variant="body1">- ZenAsia Restaurant</Typography>
-                    </div>
+            <Typography variant="body1" className={classes.year}>
+                2024
+            </Typography>
+            <Typography variant="h2" className={classes.name}>
+                ZenAsia Page 1
+            </Typography>
+            <div className={classes.content}>
+                <div className={classes.column1}>
+                    <Typography variant="body1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac placerat
+                        eros. Donec nec nisl auctor, lacinia sapien vitae, dapibus nunc. Nulla
+                        facilisi. Nam nec justo in massa sodales aliquam. Nulla facilisi. Nam nec
+                        justo in massa sodales aliquam.
+                    </Typography>
+                    <SeeMoreButton>View it online</SeeMoreButton>
+                </div>
+                <div className={classes.column2}>
+                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
+                        My role
+                    </Typography>
+                    <Typography variant="body1">
+                        - UI & UX design <br />
+                        - Front-end development <br />- Technical development
+                    </Typography>
+                </div>
+                <div className={classes.column2}>
+                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
+                        Credits
+                    </Typography>
+                    <Typography variant="body1">- ZenAsia Restaurant</Typography>
                 </div>
             </div>
         </div>
@@ -67,19 +66,10 @@ const animate = keyframes({
 const useStyles = tss.create(({ theme }) => {
     return {
         root: {
-            color: theme.palette.text.primary
-        },
-        contain: {
-            position: "absolute",
-            top: "50%",
-            right: theme.spacing(30),
-            left: theme.spacing(30),
-            transform: "translate(0, -50%)",
-            zIndex: 1,
+            color: theme.palette.text.primary,
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(2),
-            border: "1px solid yellow"
+            gap: theme.spacing(2)
         },
         year: {
             opacity: 0,

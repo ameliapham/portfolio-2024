@@ -39,16 +39,16 @@ const useStyles = tss.withName("Project").create({
     root: {
         height: "100%",
         width: "100%",
-        border: "1px solid red",
+        //border: "1px solid red",
         overflow: "hidden",
         position: "relative"
     },
     gallery: {
         height: "100%",
-        border: "5px solid blue"
     },
     details: {
         height: "100%",
-        border: "5px solid white"
+        width: "100%",
+        //border: "5px solid green"
     }
 });

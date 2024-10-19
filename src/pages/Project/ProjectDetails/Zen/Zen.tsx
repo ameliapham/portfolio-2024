@@ -30,6 +30,10 @@ export function Zen(props: Props) {
 
 const useStyles = tss.create(() => {
     return {
-        root: {}
+        root: {
+            height: "100%",
+            width: "100%",
+            padding: "80px 10% 0 10%"
+        }
     };
 });
