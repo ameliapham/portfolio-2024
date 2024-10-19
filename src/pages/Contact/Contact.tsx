@@ -60,7 +60,7 @@ export function Contact(props: Props) {
                 </div>
             </div>
 
-            <BackgroundBeams />
+            <BackgroundBeams className={classes.backgroundBeams}/>
         </>
     );
 }
@@ -70,9 +70,14 @@ const useStyles = tss.withName({ Contact }).create(({ theme }) => ({
         display: "flex",
         flexDirection: "column",
         gap: "50px",
-        width: "45%",
-        boxSizing: "border-box",
-        color: theme.palette.text.primary
+        color: theme.palette.text.primary,
+        zIndex: 1,
+    },
+    backgroundBeams: {
+        position: "absolute",
+        height: "100%",
+        width: "100%",
+        overflow: "hidden",
     },
     textZone: {
         display: "flex",
