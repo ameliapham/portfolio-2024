@@ -17,7 +17,7 @@ type Props = {
 
 export function About(props: Props) {
     const { className } = props;
-    const { classes } = useStyles();
+    const { cx, classes } = useStyles();
     const [detailsIndex, setDetailsIndex] = useState(0);
 
     const incrementDetailsIndex = () => {
@@ -42,22 +42,24 @@ export function About(props: Props) {
     });
 
     return (
-        <div className={className}>
-            <PhotoFrame className={classes.frameZone} />
+        <>
+            <div className={cx(classes.root, className)}>
+                <PhotoFrame className={classes.frameZone} />
 
-            <div className={classes.content}>
-                {(() => {
-                    switch (detailsIndex % 2) {
-                        case 0:
-                            return <Content1 />;
-                        case 1:
-                            return <Content2 />;
-                    }
-                })()}
+                <div className={classes.content}>
+                    {(() => {
+                        switch (detailsIndex % 2) {
+                            case 0:
+                                return <Content1 />;
+                            case 1:
+                                return <Content2 />;
+                        }
+                    })()}
+                </div>
+
             </div>
-
-            <BackgroundBeams />
-        </div>
+            <BackgroundBeams className={classes.backgroundBeams} />
+        </>
     );
 }
 
@@ -121,45 +123,49 @@ function Content2() {
     );
 }
 
-const useStyles = tss.withName({ About }).create(({ theme }) => ({
-    frameZone: {
-        position: "absolute",
-        top: "50%",
-        right: "50%",
-        transform: "translate(-30%,-50%)",
-        height: "60%",
-        width: "25%"
-    },
-    content: {
-        flex: 1,
-        position: "absolute",
-        top: "50%",
-        left: "60%",
-        transform: "translateY(-45%) translateX(-20%)",
-        color: theme.palette.text.primary,
-        padding: "20px",
-        overflowY: "scroll",
-        scrollSnapType: "y mandatory",
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-
-        // Hide scrollbar for webkit browsers
-        "&::-webkit-scrollbar": {
-            display: "none"
+const useStyles = tss.withName({ About }).create(({ theme }) => {
+    return {
+        root: {
+            alignContent: "center",
+            gap: "5vw",
+            zIndex: 1,
         },
-        // Hide scrollbar for IE, Edge, and Firefox
-        "&": {
-            msOverflowStyle: "none",
-            scrollbarWidth: "none"
+        backgroundBeams: {
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            overflow: "hidden",
+        },
+        frameZone: {
+            height: "35vw",
+            width: "25vw",
+        },
+        content: {
+            flex: 1,
+            color: theme.palette.text.primary,
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            //overflowY: "scroll",
+            //scrollSnapType: "y mandatory",
+
+            // Hide scrollbar for webkit browsers
+            "&::-webkit-scrollbar": {
+                display: "none"
+            },
+            // Hide scrollbar for IE, Edge, and Firefox
+            "&": {
+                msOverflowStyle: "none",
+                scrollbarWidth: "none"
+            }
+        },
+        accordion: {
+            backgroundColor: "transparent",
+            borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
+            borderRadius: "none"
+        },
+        icons: {
+            color: theme.palette.text.primary
         }
-    },
-    accordion: {
-        backgroundColor: "transparent",
-        borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
-        borderRadius: "none"
-    },
-    icons: {
-        color: theme.palette.text.primary
     }
-}));
+});

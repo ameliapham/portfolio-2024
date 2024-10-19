@@ -45,6 +45,8 @@ const useStyles = tss
 
         return {
             root: {
+                position: "relative",
+
                 [`&:hover .${classes.div1}`]: {
                     top: `calc(${top} + 30px)`,
                     right: `calc(${right} + 30px)`
