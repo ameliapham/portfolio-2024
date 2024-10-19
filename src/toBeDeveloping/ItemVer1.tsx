@@ -7,11 +7,11 @@ import { SeeMoreButton } from "shared/SeeMoreButton";
 type ItemProps = {
     className?: string;
     itemData: ItemData;
-    onClick: (src: string) => void;
+    onClick?: (src: string) => void;
 };
 
 export function Item(props: ItemProps) {
-    const { className, itemData, onClick } = props;
+    const { className, itemData } = props;
     const { cx, classes } = useStyles();
 
     return (

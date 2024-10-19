@@ -8,14 +8,16 @@ import { useScrollWidth } from "hooks/useScrollHeight";
 //import LinearProgress from '@mui/material/LinearProgress';
 import { useDomRect } from "powerhooks/useDomRect";
 import { useMergeRefs } from "powerhooks/useMergeRefs";
-import { Zen } from "../pages/Project/ProjectDetails/Zen/Zen";
+//import { Zen } from "../pages/Project/ProjectDetails/Zen/Zen";
 
+/*
 type Props = {
     pages: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur";
 };
+*/
 
-export function Project(props: Props) {
-    const { pages } = props;
+export function Project() {
+    //const { pages } = props;
 
     const [sliderElement, setSliderElement] = useState<HTMLElement | null>(null);
     const [refIsAnimating] = useState({ current: false });
@@ -84,13 +86,14 @@ export function Project(props: Props) {
 
     console.log("Scroll Height:", scrollWidth);
     console.log("Scrollable Content Height:", scrollableContentWidth);
-
+    /*
     const pageData = (() => {
         switch (pages) {
             case "zen":
                 return <Zen />;
         }
     })();
+    */
 
     return (
         <div className={classes.container}>

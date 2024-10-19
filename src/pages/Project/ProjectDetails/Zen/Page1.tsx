@@ -2,7 +2,6 @@ import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
-import { headerHeight } from "App";
 
 type Props = {
     className?: string;
