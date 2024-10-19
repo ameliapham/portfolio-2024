@@ -5,6 +5,8 @@ import { useScrollNavigation } from "hooks/useScrollNavigation";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { Zen } from "./Zen";
 import { Gili } from "./Gili";
+import { headerHeight } from "App";
+import { projectData } from "../projectData";
 
 export type Props = {
     className?: string;
@@ -14,7 +16,7 @@ export type Props = {
 
 export function ProjectDetails(props: Props) {
     const { className, projectId, onBackToGallery } = props;
-    const { cx, classes } = useStyles();
+    const { cx, classes } = useStyles({ projectId });
 
     const [detailsIndex, setDetailsIndex] = useState(0);
 
@@ -39,6 +41,7 @@ export function ProjectDetails(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
+            <div className={classes.background} />
             <div>
                 <SeeMoreButton className={classes.buttonBack} onClick={onBackToGallery}>
                     Back to Gallery
@@ -60,22 +63,41 @@ export function ProjectDetails(props: Props) {
     );
 }
 
-const useStyles = tss.withName("ProjectDetails").create(({ theme }) => {
-    return {
-        root: {
-            border: "1px solid red"
-        },
-        buttonBack: {
-            position: "absolute",
-            top: "100px",
-            zIndex: 1,
-            left: theme.spacing(10)
-        },
-        content: {
-            flex: 1,
-            marginLeft: 40,
-            marginRight: 40,
-            border: "5px solid orange"
-        }
-    };
-});
+const useStyles = tss
+    .withName("ProjectDetails")
+    .withParams<{ projectId: ProjectId }>()
+    .create(({ theme, projectId }) => {
+        const project = projectData.find(item => item.nameId === projectId);
+        const backgroundImage = project ? `url(${project.img})` : "none";
+
+        return {
+            root: {
+                padding: `${headerHeight} ${theme.spacing(10)} 0 ${theme.spacing(10)}`,
+                border: "10px solid brown",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column"
+            },
+            background: {
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: backgroundImage,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                filter: "blur(30px)",
+                opacity: 0.5,
+                transition: "background 0.5s"
+            },
+            buttonBack: {
+                border: "5px solid red"
+            },
+            content: {
+                flex: 1,
+                border: "5px solid pink",
+                height: "100%"
+            }
+        };
+    });
