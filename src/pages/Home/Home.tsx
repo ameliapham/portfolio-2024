@@ -42,7 +42,9 @@ export function Home(props: Props) {
 
 const useStyles = tss.withName({ Home }).create(({ theme }) => ({
     root: {
-        position: "relative"
+        position: "relative",
+        width: "90%",
+        height: "100%",
     },
     video: {
         objectFit: "cover",
