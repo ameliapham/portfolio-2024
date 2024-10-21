@@ -1,4 +1,5 @@
 import { tss } from "tss-react/mui";
+import { keyframes } from "tss-react";
 
 type Props = {
     className?: string;
@@ -25,26 +26,43 @@ export function Page2(props: Props) {
     );
 }
 
-const useStyles = tss.create(({ theme }) => {
-    return {
-        root: {
-            display: "flex",
-            flexDirection: "column",
-            color: theme.palette.text.primary,
-            position: "relative",
-        },
-        videoContainer: {
-            position: "relative",
-            paddingTop: "56.25%",
-            width: "100%"
-        },
-        videoIframe: {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            borderRadius: theme.spacing(2)
-        },
-    };
+const animate = keyframes({
+    from: {
+        opacity: 0,
+        transform: "translate(0, 100px)",
+        filter: "blur(30px)"
+    },
+    to: {
+        opacity: 1,
+        transform: "translate(0)",
+        filter: "blur(0)"
+    }
 });
+
+const useStyles = tss
+    .withName({ name: "GmetaPage2" })
+    .create(({ theme }) => {
+        return {
+            root: {
+                display: "flex",
+                flexDirection: "column",
+                color: theme.palette.text.primary,
+                position: "relative",
+            },
+            videoContainer: {
+                position: "relative",
+                paddingTop: "56.25%",
+                width: "100%",
+                opacity: 0,
+                animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+            },
+            videoIframe: {
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                borderRadius: theme.spacing(2)
+            },
+        };
+    });
