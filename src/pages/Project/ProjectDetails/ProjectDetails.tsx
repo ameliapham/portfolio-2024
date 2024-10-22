@@ -73,7 +73,7 @@ const useStyles = tss
 
         return {
             root: {
-                padding: `${headerHeight} ${theme.spacing(10)} 0 ${theme.spacing(10)}`,
+                padding: `${headerHeight} ${theme.spacing(10)}`,
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
@@ -94,20 +94,18 @@ const useStyles = tss
                 transition: "background 0.5s"
             },
             buttonBack: {
-                paddingTop: theme.spacing(5),
+                padding: `${theme.spacing(2)} 0`,
                 opacity: 0.4,
                 transition: "opacity 0.5s",
                 ":hover": {
                     opacity: 1,
                     transition: "opacity 0.5s"
                 },
-                //border: "5px solid red"
             },
             content: {
                 flex: 1,
-                //border: "5px solid pink",
-                height: "100%",
-                padding: `2% 15% 0 15%`,
+                //order: "5px solid pink",
+                padding: "0 10%",
             }
         };
     });
