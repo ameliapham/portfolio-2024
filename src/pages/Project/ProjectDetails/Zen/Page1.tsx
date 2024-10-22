@@ -2,6 +2,7 @@ import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
+import { projectData } from "pages/Project/projectData";
 
 type Props = {
     className?: string;
@@ -11,21 +12,25 @@ type Props = {
 export function Page1(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
+
+    const zenProject = projectData.find(project => project.nameId === "zen");
+
+    if (!zenProject) {
+        return <Typography variant="body1">Project not found</Typography>;
+    }
+
     return (
         <div className={cx(classes.root, className)}>
             <Typography variant="body1" className={classes.year}>
-                2024
+                {zenProject.year}
             </Typography>
             <Typography variant="h2" className={classes.name}>
-                ZenAsia Page 1
+                {zenProject.name}
             </Typography>
             <div className={classes.content}>
                 <div className={classes.column1}>
                     <Typography variant="body1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac placerat
-                        eros. Donec nec nisl auctor, lacinia sapien vitae, dapibus nunc. Nulla
-                        facilisi. Nam nec justo in massa sodales aliquam. Nulla facilisi. Nam nec
-                        justo in massa sodales aliquam.
+                        Zen Gourmet is the website for an upcoming Vietnamese restaurant in Mannheim. The site was designed entirely from scratch, encompassing the selection of the color palette, logo and icon creation, promotional imagery developed with AI assistance, and a custom UI design with FIgma. The development was subsequently executed using React and TypeScript.
                     </Typography>
                     <SeeMoreButton>View it online</SeeMoreButton>
                 </div>
@@ -62,45 +67,47 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.create(({ theme }) => {
-    return {
-        root: {
-            color: theme.palette.text.primary,
-            display: "flex",
-            flexDirection: "column",
-            gap: theme.spacing(2)
-        },
-        year: {
-            opacity: 0,
-            animation: `${animate} 1s ease-in-out 0.2s 1 forwards`
-        },
-        name: {
-            fontWeight: "bold",
-            animation: `${animate} 1s ease-in-out 0s 1 forwards`,
-            opacity: 0
-        },
-        content: {
-            display: "flex",
-            gap: theme.spacing(10),
-            opacity: 0,
-            animation: `${animate} 1s ease-in-out 0.2s 1 forwards`
-        },
-        column1: {
-            flex: 2,
-            display: "flex",
-            flexDirection: "column",
-            gap: theme.spacing(2),
-
-            "& button": {
+const useStyles = tss
+    .withName({ name: "ZenPage1" })
+    .create(({ theme }) => {
+        return {
+            root: {
+                color: theme.palette.text.primary,
+                display: "flex",
+                flexDirection: "column",
+                gap: theme.spacing(2)
+            },
+            year: {
                 opacity: 0,
-                animation: `${animate} 1s ease-in-out 0.4s 1 forwards`
+                animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+            },
+            name: {
+                fontWeight: "bold",
+                animation: `${animate} 0.5s ease-in-out 0s 1 forwards`,
+                opacity: 0
+            },
+            content: {
+                display: "flex",
+                gap: theme.spacing(10),
+                opacity: 0,
+                animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`
+            },
+            column1: {
+                flex: 2,
+                display: "flex",
+                flexDirection: "column",
+                gap: theme.spacing(2),
+
+                "& button": {
+                    opacity: 0,
+                    animation: `${animate} 0.6s ease-in-out 0.4s 1 forwards`
+                }
+            },
+            column2: {
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                gap: theme.spacing(2)
             }
-        },
-        column2: {
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            gap: theme.spacing(2)
-        }
-    };
-});
+        };
+    });
