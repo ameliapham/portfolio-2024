@@ -5,6 +5,7 @@ import { useScrollNavigation } from "hooks/useScrollNavigation";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { Zen } from "./Zen";
 import { Gili } from "./Gili";
+import { Gmeta } from "./Gmeta";
 import { headerHeight } from "App";
 import { projectData } from "../projectData";
 
@@ -44,7 +45,7 @@ export function ProjectDetails(props: Props) {
             <div className={classes.background} />
             <div>
                 <SeeMoreButton className={classes.buttonBack} onClick={onBackToGallery}>
-                    Back to Gallery
+                    Back
                 </SeeMoreButton>
             </div>
             <div className={classes.content}>
@@ -54,8 +55,8 @@ export function ProjectDetails(props: Props) {
                             return <Zen detailsIndex={detailsIndex} />;
                         case "gili":
                             return <Gili />;
-                        case "badgeur":
-                            return <Zen detailsIndex={detailsIndex} />;
+                        case "gmeta":
+                            return <Gmeta detailsIndex={detailsIndex} />;
                     }
                 })()}
             </div>
@@ -64,11 +65,11 @@ export function ProjectDetails(props: Props) {
 }
 
 const useStyles = tss
-    .withName("ProjectDetails")
+    .withName({ ProjectDetails })
     .withParams<{ projectId: ProjectId }>()
     .create(({ theme, projectId }) => {
         const project = projectData.find(item => item.nameId === projectId);
-        const backgroundImage = project ? `url(${project.img})` : "none";
+        const backgroundImage = project ? `url(${project.background})` : "none";
 
         return {
             root: {
@@ -76,7 +77,8 @@ const useStyles = tss
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                overflow: "hidden"
+                overflow: "hidden",
+                //border: "5px solid red",
             },
             background: {
                 position: "absolute",
@@ -87,18 +89,25 @@ const useStyles = tss
                 background: backgroundImage,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                filter: "blur(30px)",
+                filter: "blur(10px)",
                 opacity: 0.5,
                 transition: "background 0.5s"
             },
             buttonBack: {
                 paddingTop: theme.spacing(5),
+                opacity: 0.4,
+                transition: "opacity 0.5s",
+                ":hover": {
+                    opacity: 1,
+                    transition: "opacity 0.5s"
+                },
                 //border: "5px solid red"
             },
             content: {
                 flex: 1,
                 //border: "5px solid pink",
                 height: "100%",
+                padding: `2% 15% 0 15%`,
             }
         };
     });
