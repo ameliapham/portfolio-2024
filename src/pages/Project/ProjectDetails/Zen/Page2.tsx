@@ -15,13 +15,18 @@ export function Page2(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <Typography variant="body1" className={classes.lightMode}>
-                Light mode
-            </Typography>
+
+            <div className={classes.lightModeGridContainer}>
+                <Typography variant="body1" className={classes.lightMode}>
+                    Light mode
+                </Typography>
+            </div>
             <img src={zenPhone} alt="Zen Gourmet website on a phone" className={classes.image} />
-            <Typography variant="body1" className={classes.darkMode}>
-                Dark mode
-            </Typography>
+            <div className={classes.darkModeGridContainer}>
+                <Typography variant="body1" className={classes.darkMode}>
+                    Dark mode
+                </Typography>
+            </div>
         </div>
     );
 }
@@ -45,23 +50,29 @@ const useStyles = tss
         return {
             root: {
                 color: theme.palette.text.primary,
-                height: "100%",
-                display: "flex",
-                position: "relative",
+                //height: "100%",
+                display: "grid",
+                gridTemplateColumns: "1fr 6fr 1fr",
+                alignItems: "center"
             },
             image: {
+                gridColumn: "2",
                 width: "100%",
-                height: "80%",
                 objectFit: "contain",
                 opacity: 0,
                 animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
                 zIndex: 1
             },
+            lightModeGridContainer: {
+                height: "100%",
+                gridColumn: "1",
+                display: "grid",
+                gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+                alignItems: "center"
+            },
             lightMode: {
+                gridRow: "5",
                 position: "relative",
-                height: theme.spacing(6),
-                width: "300px",
-                marginTop: "40%",
                 opacity: 0,
                 animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
 
@@ -76,12 +87,17 @@ const useStyles = tss
                     transition: "all 0.5s ease"
                 },
             },
+            darkModeGridContainer: {
+                height: "100%",
+                gridColumn: "3",
+                display: "grid",
+                gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr",
+                alignItems: "center",
+            },
             darkMode: {
+                gridRow: "2",
                 position: "relative",
-                height: theme.spacing(6),
-                width: "300px",
                 textAlign: "right",
-                marginTop: "10%",
                 opacity: 0,
                 animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
 
@@ -93,8 +109,6 @@ const useStyles = tss
                     width: "200%",
                     height: theme.spacing(0.1),
                     backgroundColor: `${alpha(theme.palette.text.primary, 0.5)}`,
-
-                    //transform: "translateX(-50%)",
                     transition: "all 0.5s ease"
                 },
             }
