@@ -1,6 +1,7 @@
 import { tss } from "tss-react/mui";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
+import { Page3 } from "./Page3";
 
 type Props = {
     className?: string;
@@ -20,7 +21,7 @@ export function Zen(props: Props) {
                         case 1:
                             return <Page2 />;
                         case 2:
-                            return <Page1 />;
+                            return <Page3 />;
                     }
                 })()}
             </div>
@@ -28,12 +29,13 @@ export function Zen(props: Props) {
     );
 }
 
-const useStyles = tss.create(() => {
-    return {
-        root: {
-            height: "100%",
-            width: "100%",
-            padding: "80px 10% 0 10%"
-        }
-    };
-});
+const useStyles = tss
+    .withName({ Zen })
+    .create(() => {
+        return {
+            root: {
+                height: "100%",
+                width: "100%",
+            }
+        };
+    });
