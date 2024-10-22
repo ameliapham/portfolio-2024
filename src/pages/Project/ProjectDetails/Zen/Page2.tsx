@@ -50,7 +50,6 @@ const useStyles = tss
         return {
             root: {
                 color: theme.palette.text.primary,
-                //height: "100%",
                 display: "grid",
                 gridTemplateColumns: "1fr 6fr 1fr",
                 alignItems: "center"
@@ -58,10 +57,12 @@ const useStyles = tss
             image: {
                 gridColumn: "2",
                 width: "100%",
+                height: "100%",
+                maxHeight: "700px",
                 objectFit: "contain",
                 opacity: 0,
                 animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
-                zIndex: 1
+                zIndex: 1,
             },
             lightModeGridContainer: {
                 height: "100%",
