@@ -32,13 +32,11 @@ export function Zen(props: Props) {
     );
 }
 
-const useStyles = tss
-    .withName({ Zen })
-    .create(() => {
-        return {
-            root: {
-                height: "100%",
-                width: "100%",
-            }
-        };
-    });
+const useStyles = tss.withName({ Zen }).create(() => {
+    return {
+        root: {
+            height: "100%",
+            width: "100%"
+        }
+    };
+});

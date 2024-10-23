@@ -33,7 +33,7 @@ export const projectData: ItemData[] = [
         img: p24zen,
         background: p24zen,
         name: "Zen Gourmet",
-        des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et elementum purus."
+        des: "Zen Gourmet is the website for an upcoming Vietnamese restaurant in Mannheim. The site was designed entirely from scratch with Figma and built using React and TypeScript."
     },
     {
         nameId: "gili",

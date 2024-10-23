@@ -40,6 +40,8 @@ export function Page1(props: Props) {
                     </Typography>
                     <Typography variant="body1">
                         - UI & UX design <br />
+                        - Logo design <br />
+                        - Graphics design <br />
                         - Front-end development <br />- Technical development
                     </Typography>
                 </div>
@@ -47,7 +49,10 @@ export function Page1(props: Props) {
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         Credits
                     </Typography>
-                    <Typography variant="body1">- ZenAsia Restaurant</Typography>
+                    <Typography variant="body1">
+                        - ZenAsia Restaurant <br />
+                        - Conception & Development of website : Amélia Pham
+                    </Typography>
                 </div>
             </div>
         </div>

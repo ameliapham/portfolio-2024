@@ -15,11 +15,11 @@ export function Page4(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             <Typography variant="body1" className={classes.infoGauche}>
-                Responsive with
+                Four responsive main pages optimized for
                 <ul>
                     <li>Phone</li>
                     <li>Tablet</li>
-                    <li>Computer screen</li>
+                    <li>Computer screens</li>
                 </ul>
             </Typography>
             <img src={zenIpad} alt="Zen Gourmet website on a phone" className={classes.image} />
@@ -50,66 +50,63 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss
-    .withName({ name: "ZenPage4" })
-    .create(({ theme }) => {
-        return {
-            root: {
-                color: theme.palette.text.primary,
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr 1fr",
-                gridTemplateRows: "1fr 1fr 1fr",
-                alignItems: "center"
-            },
-            image: {
-                gridColumn: "1/5",
-                gridRow: "1/4",
+const useStyles = tss.withName({ name: "ZenPage4" }).create(({ theme }) => {
+    return {
+        root: {
+            color: theme.palette.text.primary,
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr 1fr",
+            gridTemplateRows: "1fr 1fr 1fr",
+            alignItems: "center"
+        },
+        image: {
+            gridColumn: "1/5",
+            gridRow: "1/4",
+            width: "100%",
+            height: "100%",
+            maxHeight: "700px",
+            objectFit: "contain",
+            zIndex: 1,
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+        },
+        infoGauche: {
+            gridColumn: "1/3",
+            gridRow: "1",
+            position: "relative",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+
+            "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: "0%",
+                left: "0%",
                 width: "100%",
-                height: "100%",
-                maxHeight: "700px",
-                objectFit: "contain",
-                zIndex: 1,
-                opacity: 0,
-                animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
-            },
-            infoGauche: {
-                gridColumn: "1/3",
-                gridRow: "1",
-                position: "relative",
-                opacity: 0,
-                animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+                height: theme.spacing(0.1),
+                backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
+                transition: "all 0.5s ease"
+            }
+        },
+        infoDroit: {
+            gridColumn: "3/5",
+            gridRow: "3",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+            display: "flex",
+            justifyContent: "end",
+            position: "relative",
 
-                "&::after": {
-                    content: "''",
-                    position: "absolute",
-                    bottom: "0%",
-                    left: "0%",
-                    width: "100%",
-                    height: theme.spacing(0.1),
-                    backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
-                    transition: "all 0.5s ease"
-                },
-            },
-            infoDroit: {
-                gridColumn: "3/5",
-                gridRow: "3",
-                opacity: 0,
-                animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
-                display: "flex",
-                justifyContent: "end",
-                position: "relative",
-
-                "&::after": {
-                    content: "''",
-                    position: "absolute",
-                    bottom: "0%",
-                    right: "0%",
-                    width: "100%",
-                    height: theme.spacing(0.1),
-                    backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
-                    transition: "all 0.5s ease"
-                },
-            },
-
-        };
-    });
+            "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: "0%",
+                right: "0%",
+                width: "100%",
+                height: theme.spacing(0.1),
+                backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
+                transition: "all 0.5s ease"
+            }
+        }
+    };
+});

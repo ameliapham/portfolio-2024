@@ -4,7 +4,6 @@ import zenPhone from "assets/zen-phone.png";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 
-
 type Props = {
     className?: string;
 };
@@ -15,7 +14,6 @@ export function Page2(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-
             <div className={classes.infoGaucheGridContainer}>
                 <Typography variant="body1" className={classes.infoGauche}>
                     Light mode
@@ -44,74 +42,72 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss
-    .withName({ name: "ZenPage2" })
-    .create(({ theme }) => {
-        return {
-            root: {
-                color: theme.palette.text.primary,
-                display: "grid",
-                gridTemplateColumns: "1fr 6fr 1fr",
-                alignItems: "center",
-            },
-            image: {
-                gridColumn: "2",
-                width: "100%",
-                height: "100%",
-                maxHeight: "700px",
-                objectFit: "contain",
-                opacity: 0,
-                animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
-                zIndex: 1,
-            },
-            infoGaucheGridContainer: {
-                height: "100%",
-                gridColumn: "1",
-                display: "grid",
-                gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
-                alignItems: "center"
-            },
-            infoGauche: {
-                gridRow: "5",
-                position: "relative",
-                opacity: 0,
-                animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+const useStyles = tss.withName({ name: "ZenPage2" }).create(({ theme }) => {
+    return {
+        root: {
+            color: theme.palette.text.primary,
+            display: "grid",
+            gridTemplateColumns: "1fr 6fr 1fr",
+            alignItems: "center"
+        },
+        image: {
+            gridColumn: "2",
+            width: "100%",
+            height: "100%",
+            maxHeight: "700px",
+            objectFit: "contain",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+            zIndex: 1
+        },
+        infoGaucheGridContainer: {
+            height: "100%",
+            gridColumn: "1",
+            display: "grid",
+            gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+            alignItems: "center"
+        },
+        infoGauche: {
+            gridRow: "5",
+            position: "relative",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
 
-                "&::after": {
-                    content: "''",
-                    position: "absolute",
-                    bottom: "0%",
-                    left: "0%",
-                    width: "200%",
-                    height: theme.spacing(0.1),
-                    backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
-                    transition: "all 0.5s ease"
-                },
-            },
-            infoDroitGridContainer: {
-                height: "100%",
-                gridColumn: "3",
-                display: "grid",
-                gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr",
-                alignItems: "center",
-            },
-            infoDroit: {
-                gridRow: "2",
-                position: "relative",
-                textAlign: "right",
-                opacity: 0,
-                animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
-
-                "&::after": {
-                    content: "''",
-                    position: "absolute",
-                    bottom: "0%",
-                    right: "0%",
-                    width: "200%",
-                    height: theme.spacing(0.1),
-                    backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
-                    transition: "all 0.5s ease"
-                },
+            "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: "0%",
+                left: "0%",
+                width: "200%",
+                height: theme.spacing(0.1),
+                backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
+                transition: "all 0.5s ease"
             }
-        };
-    });
+        },
+        infoDroitGridContainer: {
+            height: "100%",
+            gridColumn: "3",
+            display: "grid",
+            gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr",
+            alignItems: "center"
+        },
+        infoDroit: {
+            gridRow: "2",
+            position: "relative",
+            textAlign: "right",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+
+            "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: "0%",
+                right: "0%",
+                width: "200%",
+                height: theme.spacing(0.1),
+                backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
+                transition: "all 0.5s ease"
+            }
+        }
+    };
+});
