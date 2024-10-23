@@ -28,13 +28,11 @@ export function Gmeta(props: Props) {
     );
 }
 
-const useStyles = tss
-    .withName({ Gmeta })
-    .create(() => {
-        return {
-            root: {
-                height: "100%",
-                width: "100%",
-            }
-        };
-    });
+const useStyles = tss.withName({ Gmeta }).create(() => {
+    return {
+        root: {
+            height: "100%",
+            width: "100%"
+        }
+    };
+});

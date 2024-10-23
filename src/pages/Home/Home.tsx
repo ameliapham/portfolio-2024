@@ -44,7 +44,7 @@ const useStyles = tss.withName({ Home }).create(({ theme }) => ({
     root: {
         position: "relative",
         width: "90%",
-        height: "100%",
+        height: "100%"
     },
     video: {
         objectFit: "cover",

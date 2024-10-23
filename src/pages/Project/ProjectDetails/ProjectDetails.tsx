@@ -77,7 +77,7 @@ const useStyles = tss
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                overflow: "hidden",
+                overflow: "hidden"
                 //border: "5px solid red",
             },
             background: {
@@ -100,12 +100,12 @@ const useStyles = tss
                 ":hover": {
                     opacity: 1,
                     transition: "opacity 0.5s"
-                },
+                }
             },
             content: {
                 flex: 1,
                 //order: "5px solid pink",
-                padding: "0 10%",
+                padding: "0 10%"
             }
         };
     });
