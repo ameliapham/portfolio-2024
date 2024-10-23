@@ -16,14 +16,14 @@ export function Page2(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
 
-            <div className={classes.lightModeGridContainer}>
-                <Typography variant="body1" className={classes.lightMode}>
+            <div className={classes.infoGaucheGridContainer}>
+                <Typography variant="body1" className={classes.infoGauche}>
                     Light mode
                 </Typography>
             </div>
             <img src={zenPhone} alt="Zen Gourmet website on a phone" className={classes.image} />
-            <div className={classes.darkModeGridContainer}>
-                <Typography variant="body1" className={classes.darkMode}>
+            <div className={classes.infoDroitGridContainer}>
+                <Typography variant="body1" className={classes.infoDroit}>
                     Dark mode
                 </Typography>
             </div>
@@ -52,7 +52,7 @@ const useStyles = tss
                 color: theme.palette.text.primary,
                 display: "grid",
                 gridTemplateColumns: "1fr 6fr 1fr",
-                alignItems: "center"
+                alignItems: "center",
             },
             image: {
                 gridColumn: "2",
@@ -64,14 +64,14 @@ const useStyles = tss
                 animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
                 zIndex: 1,
             },
-            lightModeGridContainer: {
+            infoGaucheGridContainer: {
                 height: "100%",
                 gridColumn: "1",
                 display: "grid",
                 gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
                 alignItems: "center"
             },
-            lightMode: {
+            infoGauche: {
                 gridRow: "5",
                 position: "relative",
                 opacity: 0,
@@ -84,18 +84,18 @@ const useStyles = tss
                     left: "0%",
                     width: "200%",
                     height: theme.spacing(0.1),
-                    backgroundColor: `${alpha(theme.palette.text.primary, 0.5)}`,
+                    backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                     transition: "all 0.5s ease"
                 },
             },
-            darkModeGridContainer: {
+            infoDroitGridContainer: {
                 height: "100%",
                 gridColumn: "3",
                 display: "grid",
                 gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr",
                 alignItems: "center",
             },
-            darkMode: {
+            infoDroit: {
                 gridRow: "2",
                 position: "relative",
                 textAlign: "right",
@@ -109,7 +109,7 @@ const useStyles = tss
                     right: "0%",
                     width: "200%",
                     height: theme.spacing(0.1),
-                    backgroundColor: `${alpha(theme.palette.text.primary, 0.5)}`,
+                    backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                     transition: "all 0.5s ease"
                 },
             }
