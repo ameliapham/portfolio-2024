@@ -12,16 +12,14 @@ export function Page2(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <div className={classes.videoContainer}>
-                <iframe
-                    src="https://app.videas.fr/embed/media/23926476-9bb9-4499-837e-c5fbdae422f4/?title=false"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen={true}
-                    className={classes.videoIframe}
-                    referrerPolicy="unsafe-url"
-                ></iframe>
-            </div>
+            <iframe
+                src="https://app.videas.fr/embed/media/23926476-9bb9-4499-837e-c5fbdae422f4/?title=false"
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen={true}
+                className={classes.videoIframe}
+                referrerPolicy="unsafe-url"
+            ></iframe>
         </div>
     );
 }
@@ -39,30 +37,25 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss
-    .withName({ name: "GmetaPage2" })
-    .create(({ theme }) => {
-        return {
-            root: {
-                display: "flex",
-                flexDirection: "column",
-                color: theme.palette.text.primary,
-                position: "relative",
-            },
-            videoContainer: {
-                position: "relative",
-                paddingTop: "56.25%",
-                width: "100%",
-                opacity: 0,
-                animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
-            },
-            videoIframe: {
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                borderRadius: theme.spacing(2)
-            },
-        };
-    });
+const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
+    return {
+        root: {
+            display: "flex",
+            justifyContent: "center",
+            position: "relative",
+            paddingTop: "56.25%",
+            width: "100%",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+        },
+        videoIframe: {
+            position: "absolute",
+            top: 0,
+            width: "100%",
+            maxWidth: "1244px",
+            height: "100%",
+            maxHeight: "700px",
+            borderRadius: theme.spacing(2)
+        }
+    };
+});
