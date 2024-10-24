@@ -8,6 +8,7 @@ import p21famed from "assets/p-famed.webp";
 import p23badgeur from "assets/p-badgeur.webp";
 
 import bgGmeta from "assets/bg-gmeta.webp";
+import bgBadgeur from "assets/bg-badgeur.svg";
 
 export type ItemData = {
     nameId: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur";
@@ -49,15 +50,15 @@ export const projectData: ItemData[] = [
         img: p23gmeta,
         background: bgGmeta,
         name: "Gméta",
-        des: "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom."
+        des: "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing at University Saint-Denis, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom."
     },
     {
         nameId: "badgeur",
         year: "2023",
         img: p23badgeur,
-        background: p23badgeur,
+        background: bgBadgeur,
         name: "Badgeur",
-        des: "One of my key achievements during my university career was designing an innovative mobile application from scratch to prevent losing keys. Using Figma, I meticulously crafted the UX and UI design, and built a library of reusable components to ensure design consistency. Click here to test the prototype and explore my systematic approach to interface design."
+        des: "Badgeur is an innovative academic project initially developed during my Bachelor's in Management at IAE Lyon 3 and later expanded during my Master's in Digital Creation and Publishing at Paris 8. The project aims to replace traditional keychains with a compact chip and mobile app for seamless, secure access to personal spaces."
     },
     {
         nameId: "iso",
