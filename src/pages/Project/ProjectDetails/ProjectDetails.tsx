@@ -8,6 +8,7 @@ import { Gili } from "./Gili";
 import { Gmeta } from "./Gmeta";
 import { headerHeight } from "App";
 import { projectData } from "../projectData";
+import { Badgeur } from "./Badgeur";
 
 export type Props = {
     className?: string;
@@ -57,6 +58,8 @@ export function ProjectDetails(props: Props) {
                             return <Gili />;
                         case "gmeta":
                             return <Gmeta detailsIndex={detailsIndex} />;
+                        case "badgeur":
+                            return <Badgeur detailsIndex={detailsIndex}/>;
                     }
                 })()}
             </div>
