@@ -14,13 +14,11 @@ export function Gmeta(props: Props) {
         <>
             <div className={cx(classes.root, className)}>
                 {(() => {
-                    switch (detailsIndex % 3) {
+                    switch (detailsIndex % 2) {
                         case 0:
                             return <Page1 />;
                         case 1:
                             return <Page2 />;
-                        case 2:
-                            return <Page1 />;
                     }
                 })()}
             </div>
