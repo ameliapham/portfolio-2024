@@ -52,9 +52,9 @@ const useStyles = tss.withName({ name: "BadgeurPage2" }).create(({ theme }) => {
             position: "absolute",
             top: 0,
             width: "100%",
-            maxWidth: "1244px",
+            maxWidth: "1066px",
             height: "100%",
-            maxHeight: "700px",
+            maxHeight: "600px",
             borderRadius: theme.spacing(2)
         }
     };
