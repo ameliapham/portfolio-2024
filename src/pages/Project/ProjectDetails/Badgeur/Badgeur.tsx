@@ -1,6 +1,8 @@
 import { tss } from "tss-react/mui";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
+import { Page3 } from "./Page3";
+import { Page4 } from "./Page4";
 
 type Props = {
     className?: string;
@@ -14,13 +16,15 @@ export function Badgeur(props: Props) {
         <>
             <div className={cx(classes.root, className)}>
                 {(() => {
-                    switch (detailsIndex % 3) {
+                    switch (detailsIndex % 4) {
                         case 0:
                             return <Page1 />;
                         case 1:
                             return <Page2 />;
                         case 2:
-                            return <Page1 />;
+                            return <Page3 />;
+                        case 3: 
+                            return <Page4 />;
                     }
                 })()}
             </div>
