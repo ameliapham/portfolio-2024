@@ -1,6 +1,8 @@
 import { tss } from "tss-react/mui";
 import { keyframes } from "tss-react";
 import wfBadgeur from "assets/badgeur-wf.png";
+import Typography from "@mui/material/Typography";
+import { alpha } from "@mui/material/styles";
 
 type Props = {
     className?: string;
@@ -12,6 +14,9 @@ export function Page4(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
+            <Typography variant="body1" className={classes.details}>
+                From the wireframe......
+            </Typography>
             <img src={wfBadgeur} alt="Badgeur wireframe" className={classes.image} />
         </div>
     );
@@ -34,15 +39,38 @@ const useStyles = tss.withName({ name: "BadgeurPage4" }).create(({ theme }) => {
     return {
         root: {
             color: theme.palette.text.primary,
-            border: "1px solid red"
+            display: "grid",
+            gridTemplateColumns: "1fr 2fr 1fr",
+            gridTemplateRows: "1fr 1fr 1fr",
+            alignItems: "center"
         },
         image: {
+            gridColumn: "2 / 4",
+            gridRow: "1 / 4",
             width: "100%",
             height: "100%",
-            maxHeight: "700px",
+            maxHeight: "600px",
             objectFit: "cover",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+        },
+        details: {
+            gridColumn: "1/2",
+            gridRow: "1",
+            position: "relative",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+
+            "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: "0%",
+                left: "0%",
+                width: "100%",
+                height: theme.spacing(0.1),
+                backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
+                transition: "all 0.5s ease"
+            }
         }
     };
 });
