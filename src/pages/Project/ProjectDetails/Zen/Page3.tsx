@@ -14,7 +14,7 @@ export function Page3(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             <img src={zenMac} alt="Zen Gourmet website on a phone" className={classes.image} />
-            <img src={zenLogo} alt="Zen Gourmet website on a phone" className={classes.des} />
+            <img src={zenLogo} alt="Zen Gourmet website on a phone" className={classes.details} />
         </div>
     );
 }
@@ -51,7 +51,7 @@ const useStyles = tss.withName({ name: "ZenPage3" }).create(({ theme }) => {
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
         },
-        des: {
+        details: {
             gridColumn: "3/5",
             gridRow: "1/3",
             opacity: 0,
