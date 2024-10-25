@@ -59,7 +59,7 @@ const useStyles = tss.withName({ name: "BadgeurPage4" }).create(({ theme }) => {
             gridRow: "3",
             position: "relative",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
 
             "&::after": {
                 content: "''",

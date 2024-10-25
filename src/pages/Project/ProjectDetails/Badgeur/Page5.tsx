@@ -60,7 +60,7 @@ const useStyles = tss.withName({ name: "ZenPage5" }).create(({ theme }) => {
             gridRow: "1",
             textAlign: "right",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
 
             "&::after": {
                 content: "''",
