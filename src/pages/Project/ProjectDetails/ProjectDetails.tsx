@@ -96,7 +96,8 @@ const useStyles = tss
                 background: backgroundImage,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                filter: "blur(10px)",
+                filter: "blur(15px)",
+                margin: "-20px",
                 opacity: 0.5,
                 transition: "background 0.5s"
             },
