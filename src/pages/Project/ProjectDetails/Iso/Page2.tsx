@@ -37,7 +37,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "IsoPage2" }).create(({ theme }) => {
     return {
         root: {
             display: "flex",

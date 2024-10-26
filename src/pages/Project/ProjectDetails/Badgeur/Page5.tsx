@@ -35,7 +35,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "ZenPage5" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "BadgeurPage5" }).create(({ theme }) => {
     return {
         root: {
             color: theme.palette.text.primary,

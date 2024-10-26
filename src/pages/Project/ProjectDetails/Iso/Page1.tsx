@@ -72,7 +72,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPage1" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "IsoPage1" }).create(({ theme }) => {
     return {
         root: {
             color: theme.palette.text.primary,
