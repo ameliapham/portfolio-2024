@@ -3,12 +3,14 @@ import { useState } from "react";
 import { type ProjectId } from "../projectIds";
 import { useScrollNavigation } from "hooks/useScrollNavigation";
 import { SeeMoreButton } from "shared/SeeMoreButton";
+import { headerHeight } from "App";
+import { projectData } from "../projectData";
+
 import { Zen } from "./Zen";
 import { Gili } from "./Gili";
 import { Gmeta } from "./Gmeta";
-import { headerHeight } from "App";
-import { projectData } from "../projectData";
 import { Badgeur } from "./Badgeur";
+import { Iso } from "./Iso";
 
 export type Props = {
     className?: string;
@@ -59,7 +61,9 @@ export function ProjectDetails(props: Props) {
                         case "gmeta":
                             return <Gmeta detailsIndex={detailsIndex} />;
                         case "badgeur":
-                            return <Badgeur detailsIndex={detailsIndex}/>;
+                            return <Badgeur detailsIndex={detailsIndex} />;
+                        case "iso":
+                            return <Iso detailsIndex={detailsIndex} />;
                     }
                 })()}
             </div>

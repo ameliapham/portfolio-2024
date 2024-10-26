@@ -50,7 +50,7 @@ export const projectData: ItemData[] = [
         img: p23gmeta,
         background: bgGmeta,
         name: "Gméta",
-        des: "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing at University Saint-Denis, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom."
+        des: "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing at Saint-Denis University, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom."
     },
     {
         nameId: "badgeur",
@@ -58,7 +58,7 @@ export const projectData: ItemData[] = [
         img: p23badgeur,
         background: bgBadgeur,
         name: "Badgeur",
-        des: "Badgeur is an innovative academic project initially developed during my Bachelor's in Management at IAE Lyon 3 and later expanded during my Master's in Digital Creation and Publishing at Paris 8. The project aims to replace traditional keychains with a compact chip and mobile app for seamless, secure access to personal spaces."
+        des: "Badgeur is an innovative academic project initially developed during my Bachelor's in Management at IAE Lyon 3 and later expanded during my Master's in Digital Creation and Publishing at Saint-Denis University. The project aims to replace traditional keychains with a compact chip and mobile app for seamless, secure access to personal spaces."
     },
     {
         nameId: "iso",
@@ -66,7 +66,7 @@ export const projectData: ItemData[] = [
         img: p23iso,
         background: p23iso,
         name: "“ISO 668”",
-        des: "ISO 668 is an artistic project developed as part of a cooperative program between Paris 8 University and the University of the Aegean in Syros. This project combines virtual reality (VR) and sound to create an immersive experience of Syros culture. Through a 3D landscape representing the island, players can interact with symbolic elements such as a container highlighting Syros' maritime aspect and blue eyes representing Greek culture. Each blue eye reveals a unique story narrated by a local, immersing the player in the island's collective memory."
+        des: "“ISO 668” is part of the MétaversCity initiative at Saint-Denis University, which aims to explore the potential applications of the metaverse in across a wide range of fields such as culture, education, economics, and politics. The 2023 edition, developed in collaboration with the University of the Aegean in Syros, received academic support and artistic evaluation from Maurice Benayoun, a renowned French pioneer in contemporary new-media art, curation, and theory. The project has been widely acclaimed for its innovative approach to cultural and artistic expression, as well as its practical applications within the metaverse."
     },
     {
         nameId: "dame",
