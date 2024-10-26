@@ -13,19 +13,19 @@ export function Page1(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
-    const gmetaProject = projectData.find(project => project.nameId === "gmeta");
+    const project = projectData.find(project => project.nameId === "gmeta");
 
-    if (!gmetaProject) {
+    if (!project) {
         return <Typography variant="body1">Project not found</Typography>;
     }
 
     return (
         <div className={cx(classes.root, className)}>
             <Typography variant="body1" className={classes.year}>
-                {gmetaProject.year}
+                {project.year}
             </Typography>
             <Typography variant="h2" className={classes.name}>
-                {gmetaProject.name}
+                {project.name}
             </Typography>
             <div className={classes.content}>
                 <div className={classes.column1}>

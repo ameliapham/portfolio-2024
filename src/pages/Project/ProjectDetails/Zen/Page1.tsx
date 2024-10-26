@@ -13,19 +13,19 @@ export function Page1(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
-    const zenProject = projectData.find(project => project.nameId === "zen");
+    const project = projectData.find(project => project.nameId === "zen");
 
-    if (!zenProject) {
+    if (!project) {
         return <Typography variant="body1">Project not found</Typography>;
     }
 
     return (
         <div className={cx(classes.root, className)}>
             <Typography variant="body1" className={classes.year}>
-                {zenProject.year}
+                {project.year}
             </Typography>
             <Typography variant="h2" className={classes.name}>
-                {zenProject.name}
+                {project.name}
             </Typography>
             <div className={classes.content}>
                 <div className={classes.column1}>
