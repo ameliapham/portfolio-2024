@@ -5,7 +5,7 @@ import {
     type Route
 } from "type-route";
 export const routeDefs = {
-    aboutMe: defineRoute("/about")
+    about: defineRoute("/about")
 };
 
 export const routeGroup = createGroup(Object.values(createRouter(routeDefs).routes));
