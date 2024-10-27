@@ -15,7 +15,7 @@ type Props = {
     className?: string;
 };
 
-export function About(props: Props) {
+export default function About(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
     const [detailsIndex, setDetailsIndex] = useState(0);

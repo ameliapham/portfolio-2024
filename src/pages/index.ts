@@ -1,4 +1,4 @@
-import * as aboutMe from "./About";
+import * as about from "./About";
 import * as projects from "./Projects";
 import * as contact from "./Contact";
 import * as home from "./Home";
@@ -12,7 +12,7 @@ import type { RouterOpts } from "type-route";
 export const pages = {
     home,
     projects,
-    aboutMe,
+    about,
     contact
 };
 

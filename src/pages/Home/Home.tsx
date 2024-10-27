@@ -10,7 +10,7 @@ type Props = {
     className?: string;
 };
 
-export function Home(props: Props) {
+export default function Home(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
     const { setPageId: setPageId } = usePageId();

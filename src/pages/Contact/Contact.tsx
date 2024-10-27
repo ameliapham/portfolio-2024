@@ -28,7 +28,7 @@ const social = [
     }
 ];
 
-export function Contact(props: Props) {
+export default function Contact(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 

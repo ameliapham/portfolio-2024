@@ -8,7 +8,7 @@ export type Props = {
     className?: string;
 };
 
-export function Project(props: Props) {
+export default function Project(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
