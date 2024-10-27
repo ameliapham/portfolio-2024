@@ -7,7 +7,6 @@ import { headerHeight } from "App";
 import { projectData } from "../projectData";
 
 import { Zen } from "./Zen";
-import { Gili } from "./Gili";
 import { Gmeta } from "./Gmeta";
 import { Badgeur } from "./Badgeur";
 import { Iso } from "./Iso";
@@ -57,8 +56,6 @@ export function ProjectDetails(props: Props) {
                     switch (projectId) {
                         case "zen":
                             return <Zen detailsIndex={detailsIndex} />;
-                        case "gili":
-                            return <Gili />;
                         case "gmeta":
                             return <Gmeta detailsIndex={detailsIndex} />;
                         case "badgeur":
