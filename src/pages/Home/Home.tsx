@@ -5,9 +5,12 @@ import Typography from "@mui/material/Typography";
 import { HomeSeeMoreButton } from "./HomeSeeMoreButton";
 import { CustomGradients } from "./Gradients";
 import { usePageId } from "hooks/usePageId";
+import { routes } from "routes";
+import { PageRoute } from "./route";
 
 type Props = {
     className?: string;
+    route: PageRoute;
 };
 
 export default function Home(props: Props) {
@@ -33,7 +36,13 @@ export default function Home(props: Props) {
                 <div className={classes.sparklesBottom}></div>
             </div>
 
-            <HomeSeeMoreButton className={classes.button} onClick={() => setPageId("projects")}>
+            <HomeSeeMoreButton 
+                className={classes.button} 
+                onClick={() => {
+                    setPageId("projects");
+                    routes.projects().push();
+                }}
+            >
                 View My Work
             </HomeSeeMoreButton>
         </div>

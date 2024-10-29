@@ -6,8 +6,11 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { BackgroundBeams } from "shared/BackgroundBeams";
 import { alpha } from "@mui/material/styles";
 
+import { PageRoute } from "./route";
+
 type Props = {
     className?: string;
+    route: PageRoute;
 };
 
 const social = [
@@ -68,10 +71,12 @@ export default function Contact(props: Props) {
 const useStyles = tss.withName({ Contact }).create(({ theme }) => ({
     root: {
         display: "flex",
+        justifyContent: "center",
         flexDirection: "column",
         gap: "50px",
         color: theme.palette.text.primary,
-        zIndex: 1
+        zIndex: 1,
+        padding: `0 ${theme.spacing(30)}`
     },
     backgroundBeams: {
         position: "absolute",

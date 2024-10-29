@@ -1,16 +1,28 @@
 import { GlobalStyles } from "tss-react";
 import { Header } from "App/Header";
+import { Suspense } from "react";
 import { tss } from "tss-react/mui";
-import { Home } from "pages/Home";
-import { Contact } from "pages/Contact";
-import { About } from "pages/About";
-import { Project } from "pages/Project";
-import { usePageId } from "hooks/usePageId";
+//import { Home } from "pages/Home";
+//import { Contact } from "pages/Contact";
+//import { About } from "pages/About";
+//import { Project } from "pages/Projects";
+//import { usePageId } from "hooks/usePageId";
 import { headerHeight } from "App";
+import { useRoute, RouteProvider } from "routes";
+import { pages, pageIds } from "pages";
 
 export function App() {
-    const { pageId } = usePageId();
-    const { cx, classes, theme } = useStyles();
+    return (
+        <RouteProvider>
+            <AppContextualized />
+        </RouteProvider>
+    );
+}
+
+export function AppContextualized() {
+    //const { pageId } = usePageId();
+    const { classes, theme } = useStyles();
+    const route = useRoute();
 
     return (
         <>
@@ -27,19 +39,35 @@ export function App() {
                 }}
             />
             <div className={classes.root}>
-                <Header className={classes.header} />
-                {(() => {
-                    switch (pageId) {
-                        case "home":
-                            return <Home className={classes.page} />;
-                        case "about":
-                            return <About className={cx(classes.page, classes.about)} />;
-                        case "projects":
-                            return <Project className={classes.page} />;
-                        case "contact":
-                            return <Contact className={cx(classes.page, classes.contact)} />;
-                    }
-                })()}
+                <Header 
+                    className={classes.header} 
+                    pageId={route.name}
+                />
+                <main className={classes.main}>
+                    <Suspense fallback={<p>Loading...</p>}>
+                        {(() => {
+                            for (const pageId of pageIds) {
+                                const page = pages[pageId as "home"];
+
+                                if (page.routeGroup.has(route)) {
+                                    return (
+                                        <page.LazyComponent
+                                            className={classes.page}
+                                            route={route}
+                                        />
+                                    );
+                                }
+                            }
+
+                            return <pages.page404.LazyComponent />;
+                        })()}
+                    </Suspense>
+                </main>
+
+
+
+
+                
             </div>
         </>
     );
@@ -61,17 +89,15 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
         height: headerHeight,
         padding: `0 ${theme.spacing(10)}`
     },
+    main: {
+        display: "flex",
+        flex: 1,
+        overflow: "auto",
+        alignItems: "center",
+        justifyContent: "center",
+    },
     page: {
         display: "flex",
         flex: 1
-    },
-    about: {
-        justifyContent: "center",
-        alignItems: "center",
-        padding: `0 10vw 0 15vw`
-    },
-    contact: {
-        width: "45%",
-        justifyContent: "center"
     }
 }));

@@ -2,42 +2,34 @@ import { tss } from "tss-react/mui";
 import logo from "assets/logo.svg";
 import { MenuButton } from "./MenuButton";
 import { alpha } from "@mui/material/styles";
-import { usePageId } from "hooks/usePageId";
+import { routes, useRoute } from "routes";
+import { type PageId, pageIds } from "pages";
 
 type Props = {
     className?: string;
+    pageId: PageId | false;
 };
 
 export function Header(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
-    const { pageId: selectedPage, setPageId: setSelectedPage } = usePageId();
+    const route = useRoute();
 
     return (
         <div className={cx(classes.root, className)}>
-            <img
-                className={classes.logo}
-                src={logo}
-                alt="Logo"
-                onClick={() => setSelectedPage("home")}
-            />
-
+            <img className={classes.logo} src={logo} alt="Logo" onClick={() => routes.home().push()} />
             <div className={classes.buttonZone}>
-                <MenuButton onClick={() => setSelectedPage("about")} selected={selectedPage === "about"}>
-                    About Me
-                </MenuButton>
-                <MenuButton
-                    onClick={() => setSelectedPage("projects")}
-                    selected={selectedPage === "projects"}
-                >
-                    Projects
-                </MenuButton>
-                <MenuButton
-                    onClick={() => setSelectedPage("contact")}
-                    selected={selectedPage === "contact"}
-                >
-                    Contact
-                </MenuButton>
+                {pageIds
+                    .filter(pageId => pageId !== "page404" && pageId !== "home")
+                    .map(pageId_i => (
+                        <MenuButton
+                            key={pageId_i}
+                            {...routes[pageId_i]().link}
+                            selected={route.name === pageId_i}
+                        >
+                            {pageId_i}
+                        </MenuButton>
+                    ))}
             </div>
         </div>
     );

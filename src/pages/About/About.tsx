@@ -11,8 +11,11 @@ import { PhotoFrame } from "./PhotoFrame";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { BackgroundBeams } from "shared/BackgroundBeams";
 
+import { PageRoute } from "./route";
+
 type Props = {
     className?: string;
+    route: PageRoute;
 };
 
 export default function About(props: Props) {
@@ -127,7 +130,10 @@ const useStyles = tss.withName({ About }).create(({ theme }) => {
         root: {
             alignContent: "center",
             gap: "5vw",
-            zIndex: 1
+            zIndex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            padding: `0 10vw 0 15vw`
         },
         backgroundBeams: {
             position: "absolute",
