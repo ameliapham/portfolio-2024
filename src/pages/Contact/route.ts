@@ -1,9 +1,4 @@
-import {
-    createRouter,
-    defineRoute,
-    createGroup,
-    type Route
-} from "type-route";
+import { createRouter, defineRoute, createGroup, type Route } from "type-route";
 export const routeDefs = {
     contact: defineRoute("/contact")
 };

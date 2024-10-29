@@ -1,4 +1,3 @@
-
 import { tss } from "tss-react";
 
 export type Props = {
@@ -6,7 +5,6 @@ export type Props = {
 };
 
 export default function Page(props: Props) {
-
     const { className } = props;
 
     const { cx, classes } = useStyles();
@@ -18,14 +16,14 @@ export default function Page(props: Props) {
             </div>
         </div>
     );
-
 }
 
 const useStyles = tss.withName({ Page }).create({
     root: {
-        border: '5px solid yellow',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        color: "red",
+        border: "5px solid yellow",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
     }
 });

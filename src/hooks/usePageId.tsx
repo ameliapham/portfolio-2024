@@ -1,19 +1,19 @@
 import { createContext, useContext, useState } from "react";
 import { assert } from "tsafe/assert";
 
-type pageId = "home" | "about" | "projects" | "contact";
+type PageId = "home" | "about" | "projects" | "contact";
 
 type ContextValue =
     | {
-          pageId: pageId;
-          setPageId: (pageId: pageId) => void;
+          pageId: PageId;
+          setPageId: (pageId: PageId) => void;
       }
     | undefined;
 
 const context = createContext<ContextValue>(undefined);
 
 type PageIdProviderProps = {
-    defaultPageId: pageId;
+    defaultPageId: PageId;
     children: React.ReactNode;
 };
 
