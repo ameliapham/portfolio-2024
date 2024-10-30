@@ -10,7 +10,7 @@ import p23badgeur from "assets/p-badgeur.webp";
 import bgGmeta from "assets/bg-gmeta.webp";
 import bgBadgeur from "assets/bg-badgeur.svg";
 
-export type ItemData = {
+export type Project = {
     nameId: "zen" | "dame" | "gmeta" | "iso" | "arti" | "gili" | "famed" | "badgeur";
     img: string;
     background: string;
@@ -19,7 +19,7 @@ export type ItemData = {
     year: string;
 };
 
-export const projectData: ItemData[] = [
+export const projects: Project[] = [
     {
         nameId: "arti",
         year: "2021",
