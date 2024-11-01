@@ -26,7 +26,7 @@ export default function Page(props: Props) {
 
     const { ref: rootRef, domRect: { width: rootWidth }} = useDomRect();
 
-    const { cx, classes, css } = useStyles({ rootWidth});
+    const { cx, classes } = useStyles({ rootWidth});
 
     useEnableFixedScrollBySections({
         sectionCount: aboutDetailsIds.length,

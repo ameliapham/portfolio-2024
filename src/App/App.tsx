@@ -4,7 +4,7 @@ import { tss, GlobalStyles } from "tss";
 import { useRoute, RouteProvider } from "routes";
 import { pages, pageIds } from "pages";
 import { ThemeProvider } from "theme";
-import { FixedScrollProvider } from "utils/fixed-scroll";
+import { FixedScrollProvider, useIsFixedScrollEnabled } from "utils/fixed-scroll";
 
 export function App() {
     return (
@@ -19,7 +19,9 @@ export function App() {
 }
 
 function AppContextualized() {
-    const { classes, theme } = useStyles();
+    const { isFixedScrollEnabled } = useIsFixedScrollEnabled();
+
+    const { classes, theme } = useStyles({ isFixedScrollEnabled });
     const route = useRoute();
 
     return (
@@ -58,19 +60,35 @@ function AppContextualized() {
     );
 }
 
-const useStyles = tss.withName({ App }).create(({ headerHeight }) => ({
-    root: {
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-    },
-    header: {
-        height: headerHeight,
-    },
-    main: {
-        flex: 1,
-    },
-    page: {
-        height: "100%"
-    }
-}));
+const useStyles = tss
+    .withName({ App })
+    .withParams<{
+        isFixedScrollEnabled: boolean;
+    }>()
+    .create(({ headerHeight, isFixedScrollEnabled }) => ({
+        root: isFixedScrollEnabled
+            ? {
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column"
+              }
+            : {},
+        header: isFixedScrollEnabled
+            ? {
+                  height: headerHeight
+              }
+            : {
+                  height: headerHeight,
+                  position: "fixed",
+                  top: 0,
+                  width: "100%"
+              },
+        main: isFixedScrollEnabled
+            ? {
+                  flex: 1
+              }
+            : {
+                  marginTop: headerHeight
+              },
+        page: isFixedScrollEnabled ? { height: "100%" } : {}
+    }));

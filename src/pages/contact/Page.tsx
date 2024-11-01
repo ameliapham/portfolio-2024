@@ -41,11 +41,14 @@ export default function Page(props: Props) {
                 <div className={classes.textZone}>
                     <Typography variant="h3">Let's progress together !</Typography>
 
-                    <Typography variant="body1">
+
+                    {(new Array(100).fill(0)).map((_, index) => (
+                    <Typography key={index} variant="body1">
                         A new project in mind? Need help evolving your digital tools? Let's get in touch
                         and discuss it! I would be happy to share my experience and guide you in the
                         realization of your projects.
                     </Typography>
+                    ))}
                 </div>
 
                 <div className={classes.social}>
@@ -63,7 +66,7 @@ export default function Page(props: Props) {
                 </div>
             </div>
 
-            <BackgroundBeams className={classes.backgroundBeams} />
+            {/*<BackgroundBeams className={classes.backgroundBeams} />*/}
         </>
     );
 }
@@ -78,12 +81,14 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         zIndex: 1,
         padding: `0 ${theme.spacing(30)}`
     },
+    /*
     backgroundBeams: {
         position: "absolute",
         height: "100%",
         width: "100%",
         overflow: "hidden"
     },
+    */
     textZone: {
         display: "flex",
         flexDirection: "column",

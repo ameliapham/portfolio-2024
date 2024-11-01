@@ -1,7 +1,6 @@
 import { tss } from "tss";
 import { useState } from "react";
 import { type ProjectId } from "../projectIds";
-import { useScrollNavigation } from "utils/useScrollNavigation";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { projects } from "../projectData";
 
@@ -31,17 +30,6 @@ export function ProjectDetails(props: Props) {
     const decrementDetailsIndex = () => {
         setDetailsIndex(prevIndex => prevIndex - 1);
     };
-
-    useScrollNavigation(direction => {
-        switch (direction) {
-            case "up":
-                decrementDetailsIndex();
-                break;
-            case "down":
-                incrementDetailsIndex();
-                break;
-        }
-    });
 
     return (
         <div className={cx(classes.root, className)}>
