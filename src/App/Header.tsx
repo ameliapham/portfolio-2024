@@ -24,7 +24,9 @@ export function Header(props: Props) {
                     .map(pageId_i => (
                         <MenuButton
                             key={pageId_i}
-                            {...routes[pageId_i]().link}
+
+
+                            {...routes[pageId_i]({ }).link}
                             selected={route.name === pageId_i}
                         >
                             {pageId_i}

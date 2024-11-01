@@ -1,12 +1,10 @@
 import { tss } from "tss-react/mui";
-import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { useScrollNavigation } from "utils/useScrollNavigation";
 import { PhotoFrame } from "./PhotoFrame";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { BackgroundBeams } from "shared/BackgroundBeams";
@@ -19,30 +17,8 @@ type Props = {
 };
 
 export default function Page(props: Props) {
-    const { className } = props;
+    const { className, route } = props;
     const { cx, classes } = useStyles();
-    const [detailsIndex, setDetailsIndex] = useState(0);
-
-    const incrementDetailsIndex = () => {
-        setDetailsIndex(prevIndex => prevIndex + 1);
-    };
-
-    const decrementDetailsIndex = () => {
-        setDetailsIndex(prevIndex => prevIndex - 1);
-    };
-
-    useScrollNavigation(direction => {
-        switch (direction) {
-            case "up":
-                decrementDetailsIndex();
-                console.log("up");
-                break;
-            case "down":
-                incrementDetailsIndex();
-                console.log("down");
-                break;
-        }
-    });
 
     return (
         <>
@@ -51,11 +27,11 @@ export default function Page(props: Props) {
 
                 <div className={classes.content}>
                     {(() => {
-                        switch (detailsIndex % 2) {
-                            case 0:
-                                return <Content1 />;
-                            case 1:
-                                return <Content2 />;
+                        switch (route.params.aboutDetailsId) {
+                            case "cv":
+                                return <Cv />;
+                            case "skills":
+                                return <Skills />;
                         }
                     })()}
                 </div>
@@ -65,7 +41,7 @@ export default function Page(props: Props) {
     );
 }
 
-function Content1() {
+function Cv() {
     return (
         <>
             <Typography variant="h3">Amélia Pham</Typography>
@@ -84,7 +60,7 @@ function Content1() {
     );
 }
 
-function Content2() {
+function Skills() {
     const { classes } = useStyles();
 
     return (
