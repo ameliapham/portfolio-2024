@@ -8,7 +8,7 @@ import {
     type ValueSerializer
 } from "type-route";
 import { id } from "tsafe/id";
-import { aboutDetailsIds, type AboutDetailsId } from "./aboutDetailsIndex";
+import { aboutDetailsIds, type AboutDetailsId } from "./aboutDetailsIds";
 
 export const routeDefs = {
     about: defineRoute(

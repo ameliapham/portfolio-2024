@@ -4,13 +4,16 @@ import { tss, GlobalStyles } from "tss";
 import { useRoute, RouteProvider } from "routes";
 import { pages, pageIds } from "pages";
 import { ThemeProvider } from "theme";
+import { FixedScrollProvider } from "utils/fixed-scroll";
 
 export function App() {
     return (
         <RouteProvider>
-            <ThemeProvider>
-                <AppContextualized />
-            </ThemeProvider>
+            <FixedScrollProvider>
+                <ThemeProvider>
+                    <AppContextualized />
+                </ThemeProvider>
+            </FixedScrollProvider>
         </RouteProvider>
     );
 }
@@ -55,31 +58,19 @@ function AppContextualized() {
     );
 }
 
-const useStyles = tss.withName({ App }).create(({ theme, headerHeight }) => ({
+const useStyles = tss.withName({ App }).create(({ headerHeight }) => ({
     root: {
-        height: "100vh",
-        width: "100vw",
-        overflow: "hidden",
+        height: "100%",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
     },
     header: {
-        position: "absolute",
-        top: 0,
-        zIndex: 1000,
         height: headerHeight,
-        padding: `0 ${theme.spacing(10)}`
     },
     main: {
-        display: "flex",
         flex: 1,
-        overflow: "auto",
-        alignItems: "center",
-        justifyContent: "center"
     },
     page: {
-        display: "flex",
-        flex: 1
+        height: "100%"
     }
 }));

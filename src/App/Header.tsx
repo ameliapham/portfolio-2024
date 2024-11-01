@@ -43,9 +43,7 @@ const useStyles = tss.withName({ Header }).create(({ theme }) => ({
         justifyContent: "space-between",
         alignItems: "center",
         borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
-        height: "100%",
-        width: "100%",
-        zIndex: 1000
+        padding: `0 ${theme.spacing(10)}`
     },
     logo: {
         width: theme.spacing(15),

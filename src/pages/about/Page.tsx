@@ -8,6 +8,10 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { PhotoFrame } from "./PhotoFrame";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { BackgroundBeams } from "shared/BackgroundBeams";
+import { useEnableFixedScrollBySections } from "utils/fixed-scroll";
+import { aboutDetailsIds} from "./aboutDetailsIds";
+import { routes } from "routes";
+import { useDomRect } from "powerhooks/useDomRect";
 
 import { PageRoute } from "./route";
 
@@ -18,11 +22,29 @@ type Props = {
 
 export default function Page(props: Props) {
     const { className, route } = props;
-    const { cx, classes } = useStyles();
+
+    const { ref: rootRef, domRect: { width: rootWidth }} = useDomRect();
+
+    const { cx, classes } = useStyles({ rootWidth});
+
+    useEnableFixedScrollBySections({
+        sectionCount: aboutDetailsIds.length,
+        initialSectionIndex: aboutDetailsIds.indexOf(route.params.aboutDetailsId),
+        onSectionChange: sectionIndex => {
+
+            console.log("Section index changed to: ", sectionIndex);
+
+            routes[route.name]({
+                ...route.params,
+                aboutDetailsId: aboutDetailsIds[sectionIndex]
+            }).replace();
+
+        }
+    });
 
     return (
         <>
-            <div className={cx(classes.root, className)}>
+            <div ref={rootRef} className={cx(classes.root, className)}>
                 <PhotoFrame className={classes.frameZone} />
 
                 <div className={classes.content}>
@@ -61,7 +83,7 @@ function Cv() {
 }
 
 function Skills() {
-    const { classes } = useStyles();
+    const { classes } = useStyles({ rootWidth: 0 });
 
     return (
         <>
@@ -101,52 +123,56 @@ function Skills() {
     );
 }
 
-const useStyles = tss.withName({ Page }).create(({ theme }) => {
-    return {
-        root: {
-            alignContent: "center",
-            gap: "5vw",
-            zIndex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            padding: `0 10vw 0 15vw`
-        },
-        backgroundBeams: {
-            position: "absolute",
-            height: "100%",
-            width: "100%",
-            overflow: "hidden"
-        },
-        frameZone: {
-            height: "35vw",
-            width: "25vw"
-        },
-        content: {
-            flex: 1,
-            color: theme.palette.text.primary,
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            //overflowY: "scroll",
-            //scrollSnapType: "y mandatory",
-
-            // Hide scrollbar for webkit browsers
-            "&::-webkit-scrollbar": {
-                display: "none"
+const useStyles = tss
+    .withName({ Page })
+    .withParams<{ rootWidth: number }>()
+    .create(({ theme, rootWidth }) => {
+        return {
+            root: {
+                alignContent: "center",
+                gap: "5vw",
+                zIndex: 1,
+                justifyContent: "center",
+                display: "flex",
+                alignItems: "center",
+                padding: `0 10vw 0 15vw`
             },
-            // Hide scrollbar for IE, Edge, and Firefox
-            "&": {
-                msOverflowStyle: "none",
-                scrollbarWidth: "none"
+            backgroundBeams: {
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                overflow: "hidden"
+            },
+            frameZone: {
+                height: 0.35 * rootWidth,
+                width: 0.25 * rootWidth
+            },
+            content: {
+                flex: 1,
+                color: theme.palette.text.primary,
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+                //overflowY: "scroll",
+                //scrollSnapType: "y mandatory",
+
+                // Hide scrollbar for webkit browsers
+                "&::-webkit-scrollbar": {
+                    display: "none"
+                },
+                // Hide scrollbar for IE, Edge, and Firefox
+                "&": {
+                    msOverflowStyle: "none",
+                    scrollbarWidth: "none"
+                }
+            },
+            accordion: {
+                backgroundColor: "transparent",
+                borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
+                borderRadius: "none"
+            },
+            icons: {
+                color: theme.palette.text.primary
             }
-        },
-        accordion: {
-            backgroundColor: "transparent",
-            borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
-            borderRadius: "none"
-        },
-        icons: {
-            color: theme.palette.text.primary
-        }
-    };
-});
+        };
+    });
