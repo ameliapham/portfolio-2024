@@ -1,8 +1,8 @@
-import * as about from "./about_";
-import * as projects from "./projects_";
-import * as contact from "./contact_";
-import * as home from "./home_";
-import * as page404 from "./page404_";
+import * as about from "./about";
+import * as projects from "./projects";
+import * as contact from "./contact";
+import * as home from "./home";
+import * as page404 from "./page404";
 
 import { objectKeys } from "tsafe/objectKeys";
 import type { UnionToIntersection } from "tsafe";
