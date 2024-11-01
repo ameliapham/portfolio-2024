@@ -1,26 +1,21 @@
-import { GlobalStyles } from "tss-react";
 import { Header } from "App/Header";
 import { Suspense } from "react";
-import { tss } from "tss-react/mui";
-//import { Home } from "pages/Home";
-//import { Contact } from "pages/Contact";
-//import { About } from "pages/About";
-//import { Project } from "pages/Projects";
-//import { usePageId } from "hooks/usePageId";
-import { headerHeight } from "App";
+import { tss, GlobalStyles } from "tss";
 import { useRoute, RouteProvider } from "routes";
 import { pages, pageIds } from "pages";
+import { ThemeProvider } from "theme";
 
 export function App() {
     return (
         <RouteProvider>
-            <AppContextualized />
+            <ThemeProvider>
+                <AppContextualized />
+            </ThemeProvider>
         </RouteProvider>
     );
 }
 
-export function AppContextualized() {
-    //const { pageId } = usePageId();
+function AppContextualized() {
     const { classes, theme } = useStyles();
     const route = useRoute();
 
@@ -39,10 +34,7 @@ export function AppContextualized() {
                 }}
             />
             <div className={classes.root}>
-                <Header 
-                    className={classes.header} 
-                    pageId={route.name}
-                />
+                <Header className={classes.header} pageId={route.name} />
                 <main className={classes.main}>
                     <Suspense fallback={<p>Loading...</p>}>
                         {(() => {
@@ -50,12 +42,7 @@ export function AppContextualized() {
                                 const page = pages[pageId as "home"];
 
                                 if (page.routeGroup.has(route)) {
-                                    return (
-                                        <page.LazyComponent
-                                            className={classes.page}
-                                            route={route}
-                                        />
-                                    );
+                                    return <page.LazyComponent className={classes.page} route={route} />;
                                 }
                             }
 
@@ -63,17 +50,12 @@ export function AppContextualized() {
                         })()}
                     </Suspense>
                 </main>
-
-
-
-
-                
             </div>
         </>
     );
 }
 
-const useStyles = tss.withName({ App }).create(({ theme }) => ({
+const useStyles = tss.withName({ App }).create(({ theme, headerHeight }) => ({
     root: {
         height: "100vh",
         width: "100vw",
@@ -94,7 +76,7 @@ const useStyles = tss.withName({ App }).create(({ theme }) => ({
         flex: 1,
         overflow: "auto",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center"
     },
     page: {
         display: "flex",
