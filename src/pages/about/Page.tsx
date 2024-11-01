@@ -12,6 +12,7 @@ import { useEnableFixedScrollBySections } from "utils/fixed-scroll";
 import { aboutDetailsIds} from "./aboutDetailsIds";
 import { routes } from "routes";
 import { useDomRect } from "powerhooks/useDomRect";
+import LinearProgress from "@mui/material/LinearProgress";
 
 import { PageRoute } from "./route";
 
@@ -25,20 +26,18 @@ export default function Page(props: Props) {
 
     const { ref: rootRef, domRect: { width: rootWidth }} = useDomRect();
 
-    const { cx, classes } = useStyles({ rootWidth});
+    const { cx, classes, css } = useStyles({ rootWidth});
 
-    useEnableFixedScrollBySections({
+    const { currentScrollPercentage } = useEnableFixedScrollBySections({
         sectionCount: aboutDetailsIds.length,
+        //initialSectionIndex: aboutDetailsIds.indexOf(route.params.aboutDetailsId),
         initialSectionIndex: aboutDetailsIds.indexOf(route.params.aboutDetailsId),
         onSectionChange: sectionIndex => {
-
-            console.log("Section index changed to: ", sectionIndex);
 
             routes[route.name]({
                 ...route.params,
                 aboutDetailsId: aboutDetailsIds[sectionIndex]
             }).replace();
-
         }
     });
 
@@ -57,6 +56,13 @@ export default function Page(props: Props) {
                         }
                     })()}
                 </div>
+                <LinearProgress 
+                classes={{
+                    bar: css({
+                        transition: "none",
+                    })
+                }}
+                className={classes.progressBar} variant="determinate" value={currentScrollPercentage} />
             </div>
             <BackgroundBeams className={classes.backgroundBeams} />
         </>
@@ -135,7 +141,8 @@ const useStyles = tss
                 justifyContent: "center",
                 display: "flex",
                 alignItems: "center",
-                padding: `0 10vw 0 15vw`
+                padding: `0 10vw 0 15vw`,
+                position: "relative"
             },
             backgroundBeams: {
                 position: "absolute",
@@ -173,6 +180,13 @@ const useStyles = tss
             },
             icons: {
                 color: theme.palette.text.primary
+            },
+            progressBar: {
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                zIndex: 2
             }
         };
     });

@@ -147,8 +147,9 @@ export function useEnableFixedScrollBySections(params: {
   sectionCount: number;
   initialSectionIndex: number;
   onSectionChange: (sectionIndex: number) => void;
+  onCurrentScrollPercentageChange?: (currentPercentage: number) => void;
 }) {
-  const { sectionCount, initialSectionIndex, onSectionChange } = params;
+  const { sectionCount, initialSectionIndex, onSectionChange, onCurrentScrollPercentageChange } = params;
 
 
   const { windowInnerHeight } = useWindowInnerHeight();
@@ -162,6 +163,10 @@ export function useEnableFixedScrollBySections(params: {
     height: windowInnerHeight + (windowInnerHeight / 2) * sectionCount,
     initialScrollPercentage,
   });
+
+  useEffect(()=>{
+    onCurrentScrollPercentageChange?.(currentScrollPercentage);
+  }, [currentScrollPercentage]);
 
   const currentSectionIndex = useMemo(
     () =>
@@ -193,6 +198,8 @@ export function useEnableFixedScrollBySections(params: {
   useEffect(() => {
     onSectionChange(currentSectionIndex);
   }, [currentSectionIndex]);
+
+  return { currentSectionIndex, currentScrollPercentage };
 }
 
 export function useIsFixedScrollEnabled() {
