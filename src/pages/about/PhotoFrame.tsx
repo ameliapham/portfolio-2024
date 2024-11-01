@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import { alpha } from "@mui/material/styles";
 import avatar from "assets/avatarAnime.jpg";
 

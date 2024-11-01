@@ -1,5 +1,5 @@
 import { keyframes } from "tss-react";
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import type { Project } from "./projectData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";

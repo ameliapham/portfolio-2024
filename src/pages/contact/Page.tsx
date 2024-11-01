@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";

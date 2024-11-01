@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import { keyframes } from "tss-react";
 import badgeurPhone from "assets/badgeur-phone.svg";
 import badgeurLogo from "assets/badgeur-logo.svg";

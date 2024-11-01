@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import Button from "@mui/material/Button";
 import { alpha } from "@mui/material/styles";
 

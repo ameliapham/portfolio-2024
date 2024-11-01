@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 
 type Props = {
     className?: string;

@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss, keyframes } from "tss";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import Accordion from "@mui/material/Accordion";
@@ -7,12 +7,12 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { PhotoFrame } from "./PhotoFrame";
 import { SeeMoreButton } from "shared/SeeMoreButton";
-import { BackgroundBeams } from "shared/BackgroundBeams";
 import { useEnableFixedScrollBySections } from "utils/fixed-scroll";
 import { aboutDetailsIds} from "./aboutDetailsIds";
 import { routes } from "routes";
 import { useDomRect } from "powerhooks/useDomRect";
 import LinearProgress from "@mui/material/LinearProgress";
+
 
 import { PageRoute } from "./route";
 
@@ -28,7 +28,7 @@ export default function Page(props: Props) {
 
     const { cx, classes, css } = useStyles({ rootWidth});
 
-    const { currentScrollPercentage } = useEnableFixedScrollBySections({
+    useEnableFixedScrollBySections({
         sectionCount: aboutDetailsIds.length,
         //initialSectionIndex: aboutDetailsIds.indexOf(route.params.aboutDetailsId),
         initialSectionIndex: aboutDetailsIds.indexOf(route.params.aboutDetailsId),
@@ -42,7 +42,6 @@ export default function Page(props: Props) {
     });
 
     return (
-        <>
             <div ref={rootRef} className={cx(classes.root, className)}>
                 <PhotoFrame className={classes.frameZone} />
 
@@ -57,15 +56,16 @@ export default function Page(props: Props) {
                     })()}
                 </div>
                 <LinearProgress 
-                classes={{
-                    bar: css({
-                        transition: "none",
-                    })
-                }}
-                className={classes.progressBar} variant="determinate" value={currentScrollPercentage} />
+                className={classes.progressBar} variant="determinate" value={(()=>{
+                    switch (route.params.aboutDetailsId) {
+                        case "cv":
+                            return 0;
+                        case "skills":
+                            return 100;
+                    }
+                })()} />
+            {/*<BackgroundBeams className={classes.backgroundBeams} />*/}
             </div>
-            <BackgroundBeams className={classes.backgroundBeams} />
-        </>
     );
 }
 
@@ -132,7 +132,7 @@ function Skills() {
 const useStyles = tss
     .withName({ Page })
     .withParams<{ rootWidth: number }>()
-    .create(({ theme, rootWidth }) => {
+    .create(({ theme, rootWidth, windowInnerWidth }) => {
         return {
             root: {
                 alignContent: "center",
@@ -140,16 +140,35 @@ const useStyles = tss
                 zIndex: 1,
                 justifyContent: "center",
                 display: "flex",
+                flexDirection: (()=>{
+
+                    if( theme.breakpoints.values.md <= windowInnerWidth){
+                        return "row";
+                    }
+                    return "column";
+
+                })(),
                 alignItems: "center",
-                padding: `0 10vw 0 15vw`,
-                position: "relative"
+                padding: `0 ${0.1 * rootWidth}px 0 ${0.15 * rootWidth}px`,
+                position: "relative",
+                animation: `${keyframes`
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                    `} 400ms`
             },
+            /*
             backgroundBeams: {
                 position: "absolute",
                 height: "100%",
                 width: "100%",
-                overflow: "hidden"
+                overflow: "hidden",
+                zIndex: -1
             },
+            */
             frameZone: {
                 height: 0.35 * rootWidth,
                 width: 0.25 * rootWidth

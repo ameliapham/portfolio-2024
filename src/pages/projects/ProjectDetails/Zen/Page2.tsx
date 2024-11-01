@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import { keyframes } from "tss-react";
 import zenPhone from "assets/zen-phone.png";
 import Typography from "@mui/material/Typography";

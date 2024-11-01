@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import headVideo from "assets/headVideo.mp4";
 import headText from "assets/headText.png";
 import Typography from "@mui/material/Typography";

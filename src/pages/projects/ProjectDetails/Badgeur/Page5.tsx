@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import { keyframes } from "tss-react";
 import badgeurTest from "assets/badgeur-test.png";
 import Typography from "@mui/material/Typography";

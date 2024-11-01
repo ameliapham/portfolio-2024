@@ -160,7 +160,7 @@ export function useEnableFixedScrollBySections(params: {
 
 
   const { currentScrollPercentage } = useEnableFixedScroll({
-    height: windowInnerHeight + (windowInnerHeight / 2) * sectionCount,
+    height: windowInnerHeight + (windowInnerHeight / 5) * sectionCount,
     initialScrollPercentage,
   });
 

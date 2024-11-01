@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import logo from "assets/logo.svg";
 import { MenuButton } from "./MenuButton";
 import { alpha } from "@mui/material/styles";

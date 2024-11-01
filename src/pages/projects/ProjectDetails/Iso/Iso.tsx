@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
