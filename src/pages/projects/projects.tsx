@@ -1,17 +1,20 @@
 import p24zen from "assets/p-zen.png";
-import p23dame from "assets/p-dame.webp";
-import p23gmeta from "assets/p-gmeta.webp";
+//import p23dame from "assets/p-dame.webp";
+//import p23gmeta from "assets/p-gmeta.webp";
 import p23iso from "assets/p-iso.webp";
 import p21arti from "assets/p-arti.svg";
 import p23gili from "assets/p-gili.webp";
-import p21famed from "assets/p-famed.webp";
-import p23badgeur from "assets/p-badgeur.webp";
+//import p21famed from "assets/p-famed.webp";
+//import p23badgeur from "assets/p-badgeur.webp";
 import { assert } from "tsafe/assert";
 
 import bgGmeta from "assets/bg-gmeta.webp";
 import bgBadgeur from "assets/bg-badgeur.svg";
 
-export const projectIds = ["arti", "zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed"] as const;
+export const projectIds = ["arti", "zen", "gili", "gmeta", "badgeur", "iso", 
+    //"dame", 
+    //"famed"
+] as const;
 
 type ProjectId = (typeof projectIds)[number];
 
@@ -28,7 +31,8 @@ export const projects: Project[] = [
     {
         id: projectIds[0],
         year: "2021",
-        imageUrl: p21arti,
+        //imageUrl: p21arti,
+        imageUrl: "https://i.ibb.co/qCkd9jS/img1.jpg",
         background: p21arti,
         name: "ARTI",
         description:
@@ -37,7 +41,8 @@ export const projects: Project[] = [
     {
         id: projectIds[1],
         year: "2024",
-        imageUrl: p24zen,
+        //imageUrl: p24zen,
+        imageUrl: "https://i.ibb.co/jrRb11q/img2.jpg",
         background: p24zen,
         name: "Zen Gourmet",
         description:
@@ -46,7 +51,8 @@ export const projects: Project[] = [
     {
         id: projectIds[2],
         year: "2023",
-        imageUrl: p23gili,
+        //imageUrl: p23gili,
+        imageUrl: "https://i.ibb.co/NSwVv8D/img3.jpg",
         background: p23gili,
         name: "GILI Platforms",
         description:
@@ -55,7 +61,8 @@ export const projects: Project[] = [
     {
         id: projectIds[3],
         year: "2023",
-        imageUrl: p23gmeta,
+        //imageUrl: p23gmeta,
+        imageUrl: "https://i.ibb.co/Bq4Q0M8/img4.jpg",
         background: bgGmeta,
         name: "Gméta",
         description:
@@ -64,7 +71,8 @@ export const projects: Project[] = [
     {
         id: projectIds[4],
         year: "2023",
-        imageUrl: p23badgeur,
+        //imageUrl: p23badgeur,
+        imageUrl: "https://i.ibb.co/jTQfmTq/img5.jpg",
         background: bgBadgeur,
         name: "Badgeur",
         description:
@@ -73,12 +81,14 @@ export const projects: Project[] = [
     {
         id: projectIds[5],
         year: "2023",
-        imageUrl: p23iso,
+        //imageUrl: p23iso,
+        imageUrl: "https://i.ibb.co/RNkk6L0/img6.jpg",
         background: p23iso,
         name: "“ISO 668”",
         description:
             "“ISO 668” is part of the MétaversCity initiative at Saint-Denis University, which aims to explore the potential applications of the metaverse in across a wide range of fields such as culture, education, economics, and politics. The 2023 edition, developed in collaboration with the University of the Aegean in Syros, received academic support and artistic evaluation from Maurice Benayoun, a renowned French pioneer in contemporary new-media art, curation, and theory. The project has been widely acclaimed for its innovative approach to cultural and artistic expression, as well as its practical applications within the metaverse."
-    },
+    }
+    /*
     {
         id: projectIds[6],
         year: "2022",
@@ -97,6 +107,7 @@ export const projects: Project[] = [
         description:
             "The “FAMED” project is an innovative initiative poised to transform the retail landscape. Developed in an academic setting, FAMED aims to redefine the shopping experience by combining advanced technologies (VR & AI) and personalization."
     }
+    */
 ];
 
 // Make sure we didn't messed up

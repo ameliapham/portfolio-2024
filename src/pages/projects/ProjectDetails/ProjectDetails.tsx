@@ -7,7 +7,7 @@ import { Zen } from "./Zen";
 import { Gmeta } from "./Gmeta";
 import { Badgeur } from "./Badgeur";
 import { Iso } from "./Iso";
-import { DameCanton } from "./DameCanton";
+//import { DameCanton } from "./DameCanton";
 import { assert } from "tsafe/assert";
 
 export type Props = {
@@ -51,8 +51,12 @@ export function ProjectDetails(props: Props) {
                             return <Badgeur detailsIndex={detailsIndex} />;
                         case "iso":
                             return <Iso detailsIndex={detailsIndex} />;
+                            /*
                         case "dame":
                             return <DameCanton detailsIndex={detailsIndex} />;
+                            */
+
+
                     }
                 })()}
             </div>
