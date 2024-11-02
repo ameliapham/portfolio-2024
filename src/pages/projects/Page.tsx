@@ -13,7 +13,6 @@ export default function Page(props: Props) {
     const { className, route } = props;
     const { cx, classes } = useStyles();
 
-
     return (
         <div className={cx(classes.root, className)}>
             {route.params.isGalleryVisible ? (

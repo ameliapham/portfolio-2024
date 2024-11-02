@@ -1,10 +1,11 @@
 import { useMemo } from "react";
-import { projects, projectIds, type Project } from "./projects";
+import { projects, projectIds } from "./projects";
 import { useEnableFixedScrollBySections } from "utils/fixed-scroll";
 import type { PageRoute } from "./route";
 import { routes } from "routes";
 import { tss } from "tss";
 import { GalleryItem } from "./GalleryItem";
+import { rotateArrayRight } from "utils/rotateArray";
 
 type Props = {
     className?: string;
@@ -15,26 +16,20 @@ type Props = {
 export function ProjectGallery(props: Props) {
     const { className, route, onSeeProjectDetails } = props;
 
-    const rotatedProjects = useMemo(() => {
+    const { cx, classes } = useStyles();
 
-        function rotateToTheRight(projects: Project[]): Project[] {
-            const [lastItem, ...otherItemsReversed] = [...projects].reverse();
-            return [lastItem, ...otherItemsReversed.reverse()];
-        }
+    const rotatedProjects = useMemo(() => {
 
         let rotatedProjects = [...projects];
 
-        // eslint-disable-next-line no-constant-condition
-        while (true) {
-            if (rotatedProjects[1].id === route.params.projectId) {
-                break;
-            }
-            rotatedProjects = rotateToTheRight(rotatedProjects);
+        while (rotatedProjects[1].id !== route.params.projectId) {
+            rotatedProjects = rotateArrayRight(rotatedProjects);
         }
 
         return rotatedProjects;
 
     }, [route.params.projectId]);
+
 
     useEnableFixedScrollBySections({
         sectionCount: projectIds.length,
@@ -46,8 +41,6 @@ export function ProjectGallery(props: Props) {
             }).replace();
         }
     });
-
-    const { cx, classes } = useStyles();
 
     return (
         <div className={cx(classes.root, className)}>
