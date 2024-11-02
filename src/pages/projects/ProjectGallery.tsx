@@ -1,80 +1,63 @@
-import { useState, useEffect, useRef } from "react";
+import { useMemo } from "react";
+import { projects, projectIds, type Project } from "./projects";
+import { useEnableFixedScrollBySections } from "utils/fixed-scroll";
+import type { PageRoute } from "./route";
+import { routes } from "routes";
+import { tss } from "tss";
 import { GalleryItem } from "./GalleryItem";
-import { projects, type Project } from "./projectData";
-import { type ProjectId } from "./projectIds";
 
 type Props = {
     className?: string;
-    projectId: ProjectId;
-    onChangeProjectId: (pageId: ProjectId) => void;
+    route: PageRoute;
     onSeeProjectDetails: () => void;
 };
 
 export function ProjectGallery(props: Props) {
-    const { className, projectId, onChangeProjectId, onSeeProjectDetails } = props;
+    const { className, route, onSeeProjectDetails } = props;
 
-    const [items, setItems] = useState(() => {
-        let newProjects = structuredClone(projects);
+    const rotatedProjects = useMemo(() => {
+
+        function rotateToTheRight(projects: Project[]): Project[] {
+            const [lastItem, ...otherItemsReversed] = [...projects].reverse();
+            return [lastItem, ...otherItemsReversed.reverse()];
+        }
+
+        let rotatedProjects = [...projects];
 
         // eslint-disable-next-line no-constant-condition
         while (true) {
-            if (newProjects[1].nameId === projectId) {
+            if (rotatedProjects[1].id === route.params.projectId) {
                 break;
             }
-            newProjects = rotateToTheRight(newProjects);
+            rotatedProjects = rotateToTheRight(rotatedProjects);
         }
-        return newProjects;
+
+        return rotatedProjects;
+
+    }, [route.params.projectId]);
+
+    useEnableFixedScrollBySections({
+        sectionCount: projectIds.length,
+        initialSectionIndex: projectIds.indexOf(route.params.projectId),
+        onSectionChange: sectionIndex => {
+            routes[route.name]({
+                ...route.params,
+                projectId: projectIds[sectionIndex]
+            }).replace();
+        }
     });
 
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const isAnimatingRef = useRef(false);
-
-    useEffect(() => {
-        const container = containerRef.current;
-
-        const handleScroll = (event: WheelEvent) => {
-            event.preventDefault();
-
-            if (isAnimatingRef.current) {
-                return;
-            }
-
-            isAnimatingRef.current = true;
-
-            if (event.deltaY < 0) {
-                setItems(prevItems => rotateToTheRight(prevItems));
-            } else {
-                setItems(prevItems => rotateToTheLeft(prevItems));
-            }
-
-            setTimeout(() => {
-                isAnimatingRef.current = false;
-            }, 500);
-        };
-
-        if (container) {
-            container.addEventListener("wheel", handleScroll);
-        }
-
-        return () => {
-            if (container) {
-                container.removeEventListener("wheel", handleScroll);
-            }
-        };
-    }, []);
+    const { cx, classes } = useStyles();
 
     return (
-        <div className={className} ref={containerRef}>
+        <div className={cx(classes.root, className)}>
             <div>
-                {items.map((itemData, i) => (
+                {rotatedProjects.map((itemData, i) => (
                     <GalleryItem
-                        key={itemData.nameId}
+                        key={itemData.id}
                         position={i + 1}
                         itemData={itemData}
-                        onClick={() => {
-                            onChangeProjectId(itemData.nameId);
-                            onSeeProjectDetails();
-                        }}
+                        onClick={onSeeProjectDetails}
                     />
                 ))}
             </div>
@@ -82,12 +65,8 @@ export function ProjectGallery(props: Props) {
     );
 }
 
-function rotateToTheRight(projects: Project[]): Project[] {
-    const [lastItem, ...otherItemsReversed] = structuredClone(projects).reverse();
-    return [lastItem, ...otherItemsReversed.reverse()];
-}
-
-function rotateToTheLeft(projects: Project[]): Project[] {
-    const [firstItem, ...otherItems] = structuredClone(projects);
-    return [...otherItems, firstItem];
-}
+const useStyles = tss.withName({ ProjectGallery }).create(()=> ({
+    root: {
+        //border: "1px solid red",
+    }
+}));

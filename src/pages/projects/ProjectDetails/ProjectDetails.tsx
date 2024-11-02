@@ -1,8 +1,7 @@
 import { tss } from "tss";
 import { useState } from "react";
-import { type ProjectId } from "../projectIds";
 import { SeeMoreButton } from "shared/SeeMoreButton";
-import { projects } from "../projectData";
+import { projects, type Project } from "../projects";
 
 import { Zen } from "./Zen";
 import { Gmeta } from "./Gmeta";
@@ -13,7 +12,7 @@ import { assert } from "tsafe/assert";
 
 export type Props = {
     className?: string;
-    projectId: ProjectId;
+    projectId: Project["id"];
     onBackToGallery: () => void;
 };
 
@@ -21,8 +20,9 @@ export function ProjectDetails(props: Props) {
     const { className, projectId, onBackToGallery } = props;
     const { cx, classes } = useStyles({ projectId });
 
-    const [detailsIndex, setDetailsIndex] = useState(0);
+    const [detailsIndex, /*setDetailsIndex*/] = useState(0);
 
+    /*
     const incrementDetailsIndex = () => {
         setDetailsIndex(prevIndex => prevIndex + 1);
     };
@@ -30,6 +30,7 @@ export function ProjectDetails(props: Props) {
     const decrementDetailsIndex = () => {
         setDetailsIndex(prevIndex => prevIndex - 1);
     };
+    */
 
     return (
         <div className={cx(classes.root, className)}>
@@ -61,9 +62,9 @@ export function ProjectDetails(props: Props) {
 
 const useStyles = tss
     .withName({ ProjectDetails })
-    .withParams<{ projectId: ProjectId }>()
+    .withParams<{ projectId: Project["id"] }>()
     .create(({ theme, headerHeight, projectId }) => {
-        const project = projects.find(item => item.nameId === projectId);
+        const project = projects.find(project => project.id === projectId);
 
         assert(project !== undefined);
         return {

@@ -2,7 +2,7 @@ import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
-import { getProjectByNameId } from "../../projectData";
+import { getProjectByNameId } from "../../projects";
 
 type Props = {
     className?: string;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const project = getProjectByNameId({
-    nameId: "iso"
+    projectId: "iso"
 });
 
 export function Page1(props: Props) {

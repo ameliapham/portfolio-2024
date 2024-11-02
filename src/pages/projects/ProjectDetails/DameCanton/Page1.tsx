@@ -1,7 +1,7 @@
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { keyframes } from "tss-react";
-import { getProjectByNameId } from "../../projectData";
+import { getProjectByNameId } from "../../projects";
 
 
 
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const project = getProjectByNameId({
-    nameId: "dame"
+    projectId: "dame"
 });
 
 export function Page1(props: Props) {

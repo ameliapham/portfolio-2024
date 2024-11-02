@@ -30,7 +30,6 @@ export default function Page(props: Props) {
 
     useEnableFixedScrollBySections({
         sectionCount: aboutDetailsIds.length,
-        //initialSectionIndex: aboutDetailsIds.indexOf(route.params.aboutDetailsId),
         initialSectionIndex: aboutDetailsIds.indexOf(route.params.aboutDetailsId),
         onSectionChange: sectionIndex => {
 

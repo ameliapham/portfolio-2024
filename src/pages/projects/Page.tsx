@@ -1,34 +1,42 @@
 import { tss } from "tss";
-import { ProjectId, projectIds } from "./projectIds";
 import { ProjectGallery } from "./ProjectGallery";
 import { ProjectDetails } from "./ProjectDetails";
-import { useState } from "react";
+import type { PageRoute} from "./route";
+import { routes } from "routes";
 
 export type Props = {
     className?: string;
+    route: PageRoute;
 };
 
 export default function Page(props: Props) {
-    const { className } = props;
+    const { className, route } = props;
     const { cx, classes } = useStyles();
 
-    const [isGalleryVisible, setGalleryVisible] = useState(true);
-    const [projectId, setProjectId] = useState<ProjectId>(projectIds[0]);
 
     return (
         <div className={cx(classes.root, className)}>
-            {isGalleryVisible ? (
+            {route.params.isGalleryVisible ? (
                 <ProjectGallery
                     className={classes.gallery}
-                    projectId={projectId}
-                    onChangeProjectId={setProjectId}
-                    onSeeProjectDetails={() => setGalleryVisible(false)}
+                    route={route}
+                    onSeeProjectDetails={() => {
+                        routes[route.name]({
+                            ...route.params,
+                            isGalleryVisible: false
+                        }).push();
+                    }}
                 />
             ) : (
                 <ProjectDetails
                     className={classes.details}
-                    projectId={projectId}
-                    onBackToGallery={() => setGalleryVisible(true)}
+                    projectId={route.params.projectId}
+                    onBackToGallery={() => {
+                        routes[route.name]({
+                            ...route.params,
+                            isGalleryVisible: true
+                        }).push();
+                    }}
                 />
             )}
         </div>
@@ -37,11 +45,7 @@ export default function Page(props: Props) {
 
 const useStyles = tss.withName({ Page }).create({
     root: {
-        height: "100%",
-        width: "100%",
         //border: "1px solid red",
-        overflow: "hidden",
-        position: "relative"
     },
     gallery: {
         height: "100%"

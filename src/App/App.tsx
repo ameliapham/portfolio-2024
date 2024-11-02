@@ -35,7 +35,13 @@ function AppContextualized() {
                     },
                     "html, body": {
                         backgroundColor: theme.palette.background.default
+                    },
+                    html: {
+                        ":root": {
+                            colorScheme: theme.palette.mode
+                        }
                     }
+
                 }}
             />
             <div className={classes.root}>
