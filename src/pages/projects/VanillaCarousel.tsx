@@ -67,7 +67,8 @@ const useStyles = tss
     .create(({ classes }) => ({
         root: {
             background: "#f5f5f5",
-            boxShadow: "0 30px 50px #dbdbdb"
+            boxShadow: "0 30px 50px #dbdbdb",
+            position: "relative",
         },
         slide: {},
         item: {

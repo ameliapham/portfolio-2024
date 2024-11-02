@@ -20,7 +20,6 @@ export function ProjectGallery(props: Props) {
     const { cx, classes } = useStyles();
 
     const rotatedProjects = useMemo(() => {
-
         let rotatedProjects = [...projects];
 
         while (rotatedProjects[1].id !== route.params.projectId) {
@@ -28,9 +27,7 @@ export function ProjectGallery(props: Props) {
         }
 
         return rotatedProjects;
-
     }, [route.params.projectId]);
-
 
     useEnableFixedScrollBySections({
         sectionCount: projectIds.length,
@@ -44,43 +41,30 @@ export function ProjectGallery(props: Props) {
     });
 
     return (
-        <div className={cx(classes.root, className)}>
-            <VanillaCarousel
-                rotatedProjects={rotatedProjects}
-                onPreviousProject={() => {
-                    const previousProjectIndex = projectIds.indexOf(rotatedProjects[1].id) - 1;
-                    routes[route.name]({
-                        ...route.params,
-                        projectId: projectIds[previousProjectIndex]
-                    }).replace();
-                }}
-                onNextProject={() => {
-                    const nextProjectIndex = projectIds.indexOf(rotatedProjects[1].id) + 1;
-                    routes[route.name]({
-                        ...route.params,
-                        projectId: projectIds[nextProjectIndex]
-                    }).replace();
-                }}
-                onSeeMore={onSeeProjectDetails}
-            />
-            {/*
-            <div>
-                {rotatedProjects.map((itemData, i) => (
-                    <GalleryItem
-                        key={itemData.id}
-                        position={i + 1}
-                        itemData={itemData}
-                        onClick={onSeeProjectDetails}
-                    />
-                ))}
-            </div>
-            */}
-        </div>
+        <VanillaCarousel
+            className={cx(classes.root, className)}
+            rotatedProjects={rotatedProjects}
+            onPreviousProject={() => {
+                const previousProjectIndex = projectIds.indexOf(rotatedProjects[1].id) - 1;
+                routes[route.name]({
+                    ...route.params,
+                    projectId: projectIds[previousProjectIndex]
+                }).replace();
+            }}
+            onNextProject={() => {
+                const nextProjectIndex = projectIds.indexOf(rotatedProjects[1].id) + 1;
+                routes[route.name]({
+                    ...route.params,
+                    projectId: projectIds[nextProjectIndex]
+                }).replace();
+            }}
+            onSeeMore={onSeeProjectDetails}
+        />
     );
 }
 
-const useStyles = tss.withName({ ProjectGallery }).create(()=> ({
+const useStyles = tss.withName({ ProjectGallery }).create(() => ({
     root: {
-        //border: "1px solid red",
-    }
+        height: "100%",
+    },
 }));
