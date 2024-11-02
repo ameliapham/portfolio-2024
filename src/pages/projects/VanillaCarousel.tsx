@@ -1,5 +1,7 @@
 import { tss, keyframes } from "tss";
 import { Project } from "./projects";
+//import { useConst } from "powerhooks/useConst";
+import { useState, useEffect } from "react";
 
 type Props = {
     className?: string;
@@ -12,16 +14,60 @@ type Props = {
 export function VanillaCarousel(props: Props) {
     const { className, rotatedProjects, onPreviousProject, onNextProject, onSeeMore } = props;
 
+    console.log(JSON.stringify(rotatedProjects.map(p => p.id)));
+
     const { classes, cx } = useStyles();
+
+    const { isAnimating } = (function useClosure() {
+        const [firstProjectId, setFirstProjectId] = useState(rotatedProjects[0].id);
+
+        const [isAnimating, setIsAnimating] = useState(false);
+
+        useEffect(() => {
+            if (firstProjectId === rotatedProjects[0].id) {
+                return;
+            }
+
+            setFirstProjectId(rotatedProjects[0].id);
+            setIsAnimating(true);
+
+            let isActive = true;
+
+            setTimeout(() => {
+                if (!isActive) {
+                    return;
+                }
+                setIsAnimating(false);
+            }, TRANSITION_DURATION_SECONDS * 1000);
+
+            return () => {
+                isActive = false;
+            };
+        }, [rotatedProjects[0].id]);
+
+        return { isAnimating };
+    })();
 
     return (
         <div className={cx(classes.root, className)}>
-            <div className={classes.slide + " slide"}>
-                {rotatedProjects.map(({ imageUrl, description, name }) => (
+            <div className={classes.slide}>
+                {rotatedProjects.map(({ id, imageUrl, imageHighResUrl , description, name }, i) => (
                     <div
                         key={name}
-                        className={classes.item + " item"}
-                        style={{ backgroundImage: `url(${imageUrl})` }}
+                        className={classes.item}
+                        data-project-id={id}
+                        style={{ 
+                            //backgroundImage: `url(${imageUrl})`,
+                            backgroundImage: (()=>{
+
+                                if( i === 0 || (i === 1 && !isAnimating) ){
+                                    return `url(${imageHighResUrl}), url(${imageUrl})`;   
+                                }
+
+                                return `url(${imageUrl})`;
+
+                            })()
+                        }}
                     >
                         <div className={classes.content}>
                             <div className={classes.name}>{name}</div>
@@ -61,28 +107,30 @@ const animate = keyframes({
     }
 });
 
+const TRANSITION_DURATION_SECONDS = 0.5;
+
 const useStyles = tss
     .withName({ VanillaCarousel })
     .withNestedSelectors<"content">()
     .create(({ classes }) => ({
         root: {
             background: "#f5f5f5",
-            boxShadow: "0 30px 50px #dbdbdb",
-            position: "relative",
+            position: "relative"
         },
         slide: {},
         item: {
+
             width: "200px",
             height: "300px",
             position: "absolute",
             top: "50%",
             transform: "translate(0, -50%)",
             borderRadius: "20px",
-            boxShadow: "0 30px 50px #505050",
             backgroundPosition: "50% 50%",
             backgroundSize: "cover",
             display: "inline-block",
-            transition: "0.5s",
+            transition: `${TRANSITION_DURATION_SECONDS}s`,
+            //transition: `${TRANSITION_DURATION_SECONDS}s width, ${TRANSITION_DURATION_SECONDS}s height, ${TRANSITION_DURATION_SECONDS}s top, ${TRANSITION_DURATION_SECONDS}s left`,
             "&:nth-child(1), &:nth-child(2)": {
                 top: 0,
                 left: 0,
@@ -102,7 +150,8 @@ const useStyles = tss
             },
             "&:nth-child(n + 6)": {
                 left: "calc(50% + 660px)",
-                opacity: 0
+                //opacity: 0
+                display: "none"
             },
 
             [`&:nth-child(2) .${classes.content}`]: {

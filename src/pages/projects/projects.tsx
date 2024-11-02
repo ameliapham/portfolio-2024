@@ -11,6 +11,9 @@ import { assert } from "tsafe/assert";
 import bgGmeta from "assets/bg-gmeta.webp";
 import bgBadgeur from "assets/bg-badgeur.svg";
 
+import img1UpsScaledUrl from "assets/upscaled/img1.jpg";
+import img2UpsScaledUrl from "assets/upscaled/img2.jpg";
+
 export const projectIds = ["arti", "zen", "gili", "gmeta", "badgeur", "iso", 
     //"dame", 
     //"famed"
@@ -21,6 +24,7 @@ type ProjectId = (typeof projectIds)[number];
 export type Project = {
     id: ProjectId;
     imageUrl: string;
+    imageHighResUrl: string;
     background: string;
     name: string;
     description: string;
@@ -33,6 +37,7 @@ export const projects: Project[] = [
         year: "2021",
         //imageUrl: p21arti,
         imageUrl: "https://i.ibb.co/qCkd9jS/img1.jpg",
+        imageHighResUrl: img1UpsScaledUrl,
         background: p21arti,
         name: "ARTI",
         description:
@@ -43,6 +48,7 @@ export const projects: Project[] = [
         year: "2024",
         //imageUrl: p24zen,
         imageUrl: "https://i.ibb.co/jrRb11q/img2.jpg",
+        imageHighResUrl: img2UpsScaledUrl,
         background: p24zen,
         name: "Zen Gourmet",
         description:
@@ -53,6 +59,7 @@ export const projects: Project[] = [
         year: "2023",
         //imageUrl: p23gili,
         imageUrl: "https://i.ibb.co/NSwVv8D/img3.jpg",
+        imageHighResUrl: "https://i.ibb.co/NSwVv8D/img3.jpg",
         background: p23gili,
         name: "GILI Platforms",
         description:
@@ -63,6 +70,7 @@ export const projects: Project[] = [
         year: "2023",
         //imageUrl: p23gmeta,
         imageUrl: "https://i.ibb.co/Bq4Q0M8/img4.jpg",
+        imageHighResUrl: "https://i.ibb.co/Bq4Q0M8/img4.jpg",
         background: bgGmeta,
         name: "Gméta",
         description:
@@ -73,6 +81,7 @@ export const projects: Project[] = [
         year: "2023",
         //imageUrl: p23badgeur,
         imageUrl: "https://i.ibb.co/jTQfmTq/img5.jpg",
+        imageHighResUrl: "https://i.ibb.co/jTQfmTq/img5.jpg",
         background: bgBadgeur,
         name: "Badgeur",
         description:
@@ -83,6 +92,7 @@ export const projects: Project[] = [
         year: "2023",
         //imageUrl: p23iso,
         imageUrl: "https://i.ibb.co/RNkk6L0/img6.jpg",
+        imageHighResUrl: "https://i.ibb.co/RNkk6L0/img6.jpg",
         background: p23iso,
         name: "“ISO 668”",
         description:
