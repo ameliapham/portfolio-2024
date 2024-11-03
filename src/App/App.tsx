@@ -4,25 +4,32 @@ import { tss, GlobalStyles } from "tss";
 import { useRoute, RouteProvider } from "routes";
 import { pages, pageIds } from "pages";
 import { ThemeProvider } from "theme";
-import { FixedScrollProvider, useIsFixedScrollEnabled } from "utils/fixed-scroll";
 
 export function App() {
     return (
         <RouteProvider>
-            <FixedScrollProvider>
-                <ThemeProvider>
-                    <AppContextualized />
-                </ThemeProvider>
-            </FixedScrollProvider>
+            <ThemeProvider>
+                <AppContextualized />
+            </ThemeProvider>
         </RouteProvider>
     );
 }
 
 function AppContextualized() {
-    const { isFixedScrollEnabled } = useIsFixedScrollEnabled();
-
-    const { classes, theme } = useStyles({ isFixedScrollEnabled });
     const route = useRoute();
+
+    const { classes, theme } = useStyles({
+        isScrollablePage: (() => {
+            switch (route.name) {
+                case "projects":
+                    return false;
+                case "about":
+                    return false;
+                default:
+                    return true;
+            }
+        })()
+    });
 
     return (
         <>
@@ -41,7 +48,6 @@ function AppContextualized() {
                             colorScheme: theme.palette.mode
                         }
                     }
-
                 }}
             />
             <div className={classes.root}>
@@ -69,32 +75,36 @@ function AppContextualized() {
 const useStyles = tss
     .withName({ App })
     .withParams<{
-        isFixedScrollEnabled: boolean;
+        isScrollablePage: boolean;
     }>()
-    .create(({ headerHeight, isFixedScrollEnabled }) => ({
-        root: isFixedScrollEnabled
-            ? {
-                  height: "100%",
+    .create(({ headerHeight, isScrollablePage }) => ({
+        root: isScrollablePage
+            ? {}
+            : {
+                  height: "100vh",
                   display: "flex",
                   flexDirection: "column"
-              }
-            : {},
-        header: isFixedScrollEnabled
+              },
+        header: isScrollablePage
             ? {
-                  height: headerHeight
-              }
-            : {
                   height: headerHeight,
                   position: "fixed",
                   top: 0,
                   width: "100%"
-              },
-        main: isFixedScrollEnabled
-            ? {
-                  flex: 1
               }
             : {
-                  marginTop: headerHeight
+                  height: headerHeight
               },
-        page: isFixedScrollEnabled ? { height: "100%" } : {}
+        main: isScrollablePage
+            ? {
+                  marginTop: headerHeight
+              }
+            : {
+                  flex: 1
+              },
+        page: isScrollablePage
+            ? {}
+            : {
+                  height: "100%"
+              }
     }));

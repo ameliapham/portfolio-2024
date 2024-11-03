@@ -3,21 +3,13 @@ import { assert } from "tsafe/assert";
 import backgroundUrl from "assets/p-arti.svg";
 
 import pArtiWebpUrl from "assets/p-arti.webp";
-import pArtiLowWebpUrl from "assets/p-arti-low.webp";
 import pZenWebpUrl from "assets/p-zen.webp";
-import pZenLowWebpUrl from "assets/p-zen-low.webp";
 import pGiliWebpUrl from "assets/p-gili.webp";
-import pGiliLowWebpUrl from "assets/p-gili-low.webp";
 import pGmetaWebpUrl from "assets/p-gmeta.webp";
-import pGmetaLowWebpUrl from "assets/p-gmeta-low.webp";
 import pBadgeurWebpUrl from "assets/p-badgeur.webp";
-import pBadgeurLowWebpUrl from "assets/p-badgeur-low.webp";
 import pIsoWebpUrl from "assets/p-iso.webp";
-import pIsoLowWebpUrl from "assets/p-iso-low.webp";
 import pDameWebpUrl from "assets/p-dame.webp";
-import pDameLowWebpUrl from "assets/p-dame-low.webp";
 import pFamedWebpUrl from "assets/p-famed.webp";
-import pFamedLowWebpUrl from "assets/p-famed-low.webp";
 
 export const projectIds = ["arti", "zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed" ] as const;
 
@@ -26,7 +18,6 @@ type ProjectId = (typeof projectIds)[number];
 export type Project = {
     id: ProjectId;
     imageUrl: string;
-    imageHighResUrl: string;
     background: string;
     name: string;
     description: string;
@@ -37,8 +28,7 @@ export const projects: Project[] = [
     {
         id: projectIds[0],
         year: "2021",
-        imageUrl: pArtiLowWebpUrl,
-        imageHighResUrl: pArtiWebpUrl,
+        imageUrl: pArtiWebpUrl,
         background: backgroundUrl,
         name: "ARTI",
         description:
@@ -47,8 +37,7 @@ export const projects: Project[] = [
     {
         id: projectIds[1],
         year: "2024",
-        imageUrl: pZenLowWebpUrl,
-        imageHighResUrl: pZenWebpUrl,
+        imageUrl: pZenWebpUrl,
         background: backgroundUrl,
         name: "Zen Gourmet",
         description:
@@ -57,8 +46,7 @@ export const projects: Project[] = [
     {
         id: projectIds[2],
         year: "2023",
-        imageUrl: pGiliLowWebpUrl,
-        imageHighResUrl: pGiliWebpUrl,
+        imageUrl: pGiliWebpUrl,
         background: backgroundUrl,
         name: "GILI Platforms",
         description:
@@ -67,8 +55,7 @@ export const projects: Project[] = [
     {
         id: projectIds[3],
         year: "2023",
-        imageUrl: pGmetaLowWebpUrl,
-        imageHighResUrl: pGmetaWebpUrl,
+        imageUrl: pGmetaWebpUrl,
         background: backgroundUrl,
         name: "Gméta",
         description:
@@ -77,8 +64,7 @@ export const projects: Project[] = [
     {
         id: projectIds[4],
         year: "2023",
-        imageUrl: pBadgeurLowWebpUrl,
-        imageHighResUrl: pBadgeurWebpUrl,
+        imageUrl: pBadgeurWebpUrl,
         background: backgroundUrl,
         name: "Badgeur",
         description:
@@ -87,8 +73,7 @@ export const projects: Project[] = [
     {
         id: projectIds[5],
         year: "2023",
-        imageUrl: pIsoLowWebpUrl,
-        imageHighResUrl: pIsoWebpUrl,
+        imageUrl: pIsoWebpUrl,
         background: backgroundUrl,
         name: "“ISO 668”",
         description:
@@ -97,8 +82,7 @@ export const projects: Project[] = [
     {
         id: projectIds[6],
         year: "2022",
-        imageUrl: pDameLowWebpUrl,
-        imageHighResUrl: pDameWebpUrl,
+        imageUrl: pDameWebpUrl,
         background: backgroundUrl,
         name: "In the Shadow of La Dame de Canton",
         description:
@@ -107,8 +91,7 @@ export const projects: Project[] = [
     {
         id: projectIds[7],
         year: "2021",
-        imageUrl: pFamedLowWebpUrl,
-        imageHighResUrl: pFamedWebpUrl,
+        imageUrl: pFamedWebpUrl,
         background: backgroundUrl,
         name: "Famed",
         description:

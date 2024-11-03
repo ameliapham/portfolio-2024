@@ -1,10 +1,8 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo } from "react";
 import { projects, projectIds } from "./projects";
-import { useEnableFixedScrollBySections } from "utils/fixed-scroll";
 import type { PageRoute } from "./route";
 import { routes } from "routes";
 import { tss, keyframes } from "tss";
-//import { GalleryItem } from "./GalleryItem";
 import { rotateArrayRight } from "utils/rotateArray";
 import Button from "@mui/material/Button";
 
@@ -29,71 +27,16 @@ export function ProjectGallery(props: Props) {
         return rotatedProjects;
     }, [route.params.projectId]);
 
-    useEnableFixedScrollBySections({
-        sectionCount: projectIds.length,
-        initialSectionIndex: projectIds.indexOf(route.params.projectId),
-        onSectionChange: sectionIndex => {
-            /*
-            routes[route.name]({
-                ...route.params,
-                projectId: projectIds[sectionIndex]
-            }).replace();
-            */
-        }
-    });
-
-    const { isAnimating } = (function useClosure() {
-        const [firstProjectId, setFirstProjectId] = useState(rotatedProjects[0].id);
-
-        const [isAnimating, setIsAnimating] = useState(false);
-
-        useEffect(() => {
-            if (firstProjectId === rotatedProjects[0].id) {
-                return;
-            }
-
-            setFirstProjectId(rotatedProjects[0].id);
-            setIsAnimating(true);
-
-            let isActive = true;
-
-            setTimeout(() => {
-                if (!isActive) {
-                    return;
-                }
-                setIsAnimating(false);
-            }, TRANSITION_DURATION_SECONDS * 1000);
-
-            return () => {
-                isActive = false;
-            };
-        }, [rotatedProjects[0].id]);
-
-        return { isAnimating };
-    })();
-
     return (
         <div className={cx(classes.root, className)}>
             <div className={classes.slide}>
-                {rotatedProjects.map(({ id, imageUrl, imageHighResUrl, description, name }, i) => (
+                {rotatedProjects.map(({ id, imageUrl, description, name }) => (
                     <div
                         key={name}
                         className={classes.item}
                         data-project-id={id}
                         style={{
-                            backgroundImage: (() => {
-
-                                return `url(${imageHighResUrl})`;
-
-                                /*
-                                if (i === 0 || (i === 1 && !isAnimating)) {
-                                    return `url(${imageHighResUrl}), url(${imageUrl})`;
-                                }
-
-                                return `url(${imageUrl})`;
-                                */
-                            })()
-
+                            backgroundImage: `url(${imageUrl})`,
                         }}
                     >
                         <div className={classes.content}>

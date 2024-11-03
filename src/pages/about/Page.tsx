@@ -7,9 +7,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { PhotoFrame } from "./PhotoFrame";
 import { SeeMoreButton } from "shared/SeeMoreButton";
-import { useEnableFixedScrollBySections } from "utils/fixed-scroll";
-import { aboutDetailsIds} from "./aboutDetailsIds";
-import { routes } from "routes";
 import { useDomRect } from "powerhooks/useDomRect";
 import LinearProgress from "@mui/material/LinearProgress";
 
@@ -27,18 +24,6 @@ export default function Page(props: Props) {
     const { ref: rootRef, domRect: { width: rootWidth }} = useDomRect();
 
     const { cx, classes } = useStyles({ rootWidth});
-
-    useEnableFixedScrollBySections({
-        sectionCount: aboutDetailsIds.length,
-        initialSectionIndex: aboutDetailsIds.indexOf(route.params.aboutDetailsId),
-        onSectionChange: sectionIndex => {
-
-            routes[route.name]({
-                ...route.params,
-                aboutDetailsId: aboutDetailsIds[sectionIndex]
-            }).replace();
-        }
-    });
 
     return (
             <div ref={rootRef} className={cx(classes.root, className)}>
