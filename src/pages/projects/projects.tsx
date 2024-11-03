@@ -1,23 +1,25 @@
-import p24zen from "assets/p-zen.png";
-//import p23dame from "assets/p-dame.webp";
-//import p23gmeta from "assets/p-gmeta.webp";
-import p23iso from "assets/p-iso.webp";
-import p21arti from "assets/p-arti.svg";
-import p23gili from "assets/p-gili.webp";
-//import p21famed from "assets/p-famed.webp";
-//import p23badgeur from "assets/p-badgeur.webp";
 import { assert } from "tsafe/assert";
 
-import bgGmeta from "assets/bg-gmeta.webp";
-import bgBadgeur from "assets/bg-badgeur.svg";
+import backgroundUrl from "assets/p-arti.svg";
 
-import img1UpsScaledUrl from "assets/upscaled/img1.jpg";
-import img2UpsScaledUrl from "assets/upscaled/img2.jpg";
+import pArtiWebpUrl from "assets/p-arti.webp";
+import pArtiLowWebpUrl from "assets/p-arti-low.webp";
+import pZenWebpUrl from "assets/p-zen.webp";
+import pZenLowWebpUrl from "assets/p-zen-low.webp";
+import pGiliWebpUrl from "assets/p-gili.webp";
+import pGiliLowWebpUrl from "assets/p-gili-low.webp";
+import pGmetaWebpUrl from "assets/p-gmeta.webp";
+import pGmetaLowWebpUrl from "assets/p-gmeta-low.webp";
+import pBadgeurWebpUrl from "assets/p-badgeur.webp";
+import pBadgeurLowWebpUrl from "assets/p-badgeur-low.webp";
+import pIsoWebpUrl from "assets/p-iso.webp";
+import pIsoLowWebpUrl from "assets/p-iso-low.webp";
+import pDameWebpUrl from "assets/p-dame.webp";
+import pDameLowWebpUrl from "assets/p-dame-low.webp";
+import pFamedWebpUrl from "assets/p-famed.webp";
+import pFamedLowWebpUrl from "assets/p-famed-low.webp";
 
-export const projectIds = ["arti", "zen", "gili", "gmeta", "badgeur", "iso", 
-    //"dame", 
-    //"famed"
-] as const;
+export const projectIds = ["arti", "zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed" ] as const;
 
 type ProjectId = (typeof projectIds)[number];
 
@@ -35,10 +37,9 @@ export const projects: Project[] = [
     {
         id: projectIds[0],
         year: "2021",
-        //imageUrl: p21arti,
-        imageUrl: "https://i.ibb.co/qCkd9jS/img1.jpg",
-        imageHighResUrl: img1UpsScaledUrl,
-        background: p21arti,
+        imageUrl: pArtiLowWebpUrl,
+        imageHighResUrl: pArtiWebpUrl,
+        background: backgroundUrl,
         name: "ARTI",
         description:
             "“ARTI” is an interactive application project exploring the critical question: “Will artificial intelligence surpass humans?” Our objective is to provoke thought and encourage users to reflect on this significant issue. Through the ARTI application, we aim to delve deeper into these inquiries and inspire users to reconsider their understanding of the current and future capabilities of artificial intelligence in relation to human abilities."
@@ -46,10 +47,9 @@ export const projects: Project[] = [
     {
         id: projectIds[1],
         year: "2024",
-        //imageUrl: p24zen,
-        imageUrl: "https://i.ibb.co/jrRb11q/img2.jpg",
-        imageHighResUrl: img2UpsScaledUrl,
-        background: p24zen,
+        imageUrl: pZenLowWebpUrl,
+        imageHighResUrl: pZenWebpUrl,
+        background: backgroundUrl,
         name: "Zen Gourmet",
         description:
             "Zen Gourmet is the website for an upcoming Vietnamese restaurant in Mannheim. The site was designed entirely from scratch with Figma and built using React and TypeScript."
@@ -57,10 +57,9 @@ export const projects: Project[] = [
     {
         id: projectIds[2],
         year: "2023",
-        //imageUrl: p23gili,
-        imageUrl: "https://i.ibb.co/NSwVv8D/img3.jpg",
-        imageHighResUrl: "https://i.ibb.co/NSwVv8D/img3.jpg",
-        background: p23gili,
+        imageUrl: pGiliLowWebpUrl,
+        imageHighResUrl: pGiliWebpUrl,
+        background: backgroundUrl,
         name: "GILI Platforms",
         description:
             "For three years, I had the opportunity to work as the website manager of an online training platform for a start-up specializing in LegalTech. My role involved designing prototypes with Figma and implementing these concepts using WordPress and Elementor. This experience allowed me to hone my technical skills while learning to manage large-scale projects effectively."
@@ -68,10 +67,9 @@ export const projects: Project[] = [
     {
         id: projectIds[3],
         year: "2023",
-        //imageUrl: p23gmeta,
-        imageUrl: "https://i.ibb.co/Bq4Q0M8/img4.jpg",
-        imageHighResUrl: "https://i.ibb.co/Bq4Q0M8/img4.jpg",
-        background: bgGmeta,
+        imageUrl: pGmetaLowWebpUrl,
+        imageHighResUrl: pGmetaWebpUrl,
+        background: backgroundUrl,
         name: "Gméta",
         description:
             "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing at Saint-Denis University, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom."
@@ -79,10 +77,9 @@ export const projects: Project[] = [
     {
         id: projectIds[4],
         year: "2023",
-        //imageUrl: p23badgeur,
-        imageUrl: "https://i.ibb.co/jTQfmTq/img5.jpg",
-        imageHighResUrl: "https://i.ibb.co/jTQfmTq/img5.jpg",
-        background: bgBadgeur,
+        imageUrl: pBadgeurLowWebpUrl,
+        imageHighResUrl: pBadgeurWebpUrl,
+        background: backgroundUrl,
         name: "Badgeur",
         description:
             "Badgeur is an innovative academic project initially developed during my Bachelor's in Management at IAE Lyon 3 and later expanded during my Master's in Digital Creation and Publishing at Saint-Denis University. The project aims to replace traditional keychains with a compact chip and mobile app for seamless, secure access to personal spaces."
@@ -90,20 +87,19 @@ export const projects: Project[] = [
     {
         id: projectIds[5],
         year: "2023",
-        //imageUrl: p23iso,
-        imageUrl: "https://i.ibb.co/RNkk6L0/img6.jpg",
-        imageHighResUrl: "https://i.ibb.co/RNkk6L0/img6.jpg",
-        background: p23iso,
+        imageUrl: pIsoLowWebpUrl,
+        imageHighResUrl: pIsoWebpUrl,
+        background: backgroundUrl,
         name: "“ISO 668”",
         description:
             "“ISO 668” is part of the MétaversCity initiative at Saint-Denis University, which aims to explore the potential applications of the metaverse in across a wide range of fields such as culture, education, economics, and politics. The 2023 edition, developed in collaboration with the University of the Aegean in Syros, received academic support and artistic evaluation from Maurice Benayoun, a renowned French pioneer in contemporary new-media art, curation, and theory. The project has been widely acclaimed for its innovative approach to cultural and artistic expression, as well as its practical applications within the metaverse."
-    }
-    /*
+    },
     {
         id: projectIds[6],
         year: "2022",
-        imageUrl: p23dame,
-        background: p23dame,
+        imageUrl: pDameLowWebpUrl,
+        imageHighResUrl: pDameWebpUrl,
+        background: backgroundUrl,
         name: "In the Shadow of La Dame de Canton",
         description:
             "“In the Shadow of La Dame de Canton” is an immersive cultural experience that merges traditional Chinese arts with modern technology. The show features elements such as Chinese shadow puppetry, dance, music, and projection. This creation is the result of a collaboration with Philippe Holvoet, an entrepreneur specializing in catering and events. The show is currently in the prototype stage."
@@ -111,13 +107,13 @@ export const projects: Project[] = [
     {
         id: projectIds[7],
         year: "2021",
-        imageUrl: p21famed,
-        background: p21famed,
+        imageUrl: pFamedLowWebpUrl,
+        imageHighResUrl: pFamedWebpUrl,
+        background: backgroundUrl,
         name: "Famed",
         description:
             "The “FAMED” project is an innovative initiative poised to transform the retail landscape. Developed in an academic setting, FAMED aims to redefine the shopping experience by combining advanced technologies (VR & AI) and personalization."
     }
-    */
 ];
 
 // Make sure we didn't messed up
