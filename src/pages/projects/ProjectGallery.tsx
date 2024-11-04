@@ -5,6 +5,8 @@ import { routes } from "routes";
 import { tss, keyframes } from "tss";
 import { rotateArrayRight } from "utils/rotateArray";
 import Button from "@mui/material/Button";
+import { useDelay } from "utils/useDelay";
+import { SplashScreen } from "shared/SplashScreen";
 
 type Props = {
     className?: string;
@@ -15,7 +17,7 @@ type Props = {
 export function ProjectGallery(props: Props) {
     const { className, route, onSeeProjectDetails } = props;
 
-    const { cx, classes } = useStyles();
+    const { cx, classes, css } = useStyles();
 
     const rotatedProjects = useMemo(() => {
         let rotatedProjects = [...projects];
@@ -27,6 +29,23 @@ export function ProjectGallery(props: Props) {
         return rotatedProjects;
     }, [route.params.projectId]);
 
+    const { isDelayed } = useDelay(2_000);
+
+    if (isDelayed) {
+        return (
+            <div
+                className={css({
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                })}
+            >
+                <SplashScreen className={css({ width: "20%" })} />
+            </div>
+        );
+    }
+
     return (
         <div className={cx(classes.root, className)}>
             <div className={classes.slide}>
@@ -36,7 +55,7 @@ export function ProjectGallery(props: Props) {
                         className={classes.item}
                         data-project-id={id}
                         style={{
-                            backgroundImage: `url(${imageUrl})`,
+                            backgroundImage: `url(${imageUrl})`
                         }}
                     >
                         <div className={classes.content}>
@@ -49,24 +68,24 @@ export function ProjectGallery(props: Props) {
             </div>
 
             <div className={classes.button}>
-                    <Button
-                        disabled={projectIds.indexOf(route.params.projectId) === 0}
-                        {...routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        }).link}
-                    >
-                        Previous
-                    </Button>
-                    <Button
-                        disabled={projectIds.indexOf(route.params.projectId) === projectIds.length - 1}
-                        {...routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                        }).link}
-                    >
-                        Next
-                    </Button>
+                <Button
+                    disabled={projectIds.indexOf(route.params.projectId) === 0}
+                    {...routes[route.name]({
+                        ...route.params,
+                        projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+                    }).link}
+                >
+                    Previous
+                </Button>
+                <Button
+                    disabled={projectIds.indexOf(route.params.projectId) === projectIds.length - 1}
+                    {...routes[route.name]({
+                        ...route.params,
+                        projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+                    }).link}
+                >
+                    Next
+                </Button>
             </div>
         </div>
     );
@@ -93,7 +112,16 @@ const useStyles = tss
     .create(({ classes }) => ({
         root: {
             background: "#f5f5f5",
-            position: "relative"
+            position: "relative",
+            overflow: "hidden",
+            animation: `${keyframes`
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                    `} 1s`
         },
         slide: {},
         item: {
@@ -127,7 +155,7 @@ const useStyles = tss
             },
             "&:nth-child(n + 6)": {
                 left: "calc(50% + 660px)",
-                opacity: 0,
+                opacity: 0
                 //display: "none"
             },
 
