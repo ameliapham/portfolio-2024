@@ -2,7 +2,7 @@ import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
-import { projects } from "pages/projects_/projectData";
+import { projects } from "pages/projects/projectData";
 
 type Props = {
     className?: string;

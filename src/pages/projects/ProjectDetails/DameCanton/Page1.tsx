@@ -1,8 +1,7 @@
 import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
-import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
-import { projects } from "pages/projects_/projectData";
+import { projects } from "pages/projects/projectData";
 
 type Props = {
     className?: string;
@@ -13,7 +12,7 @@ export function Page1(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
-    const project = projects.find(project => project.nameId === "gmeta");
+    const project = projects.find(project => project.nameId === "dame");
 
     if (!project) {
         return <Typography variant="body1">Project not found</Typography>;
@@ -29,30 +28,32 @@ export function Page1(props: Props) {
             </Typography>
             <div className={classes.content}>
                 <div className={classes.column1}>
-                    <Typography variant="body1">
-                        Gméta is a Master's thesis project in Digital Creation and Publishing, carried
-                        out in collaboration with the company Global Institute for Law and Innovation. My
-                        work focused on the UX/UI design of an educational metaverse. The objective was
-                        to create an immersive application prototype aimed at replicating the natural
-                        cohesion that develops in a classroom, particularly designed for users with
-                        limited digital experience.
-                    </Typography>
-                    <SeeMoreButton>View it online</SeeMoreButton>
+                    <Typography variant="body1">{project.description }</Typography>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         My role
                     </Typography>
                     <Typography variant="body1">
-                        - UI design <br />
-                        - UX research <br />
+                        - Artistic Directrice <br />
+                        - Graphic design <br />
+                        - Sound design <br />
+                        - Animation <br />
+                        - Video editing <br />
                     </Typography>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         Credits
                     </Typography>
-                    <Typography variant="body1">- Global Institute for Law and Innovation</Typography>
+                    <Typography variant="body1">
+                        - Client : Philippe Holvoet (La Dame de Canton)
+                        <br />
+                        - Technical Supervisor: Prof. Laure Leroy <br />
+                        - Academic Supervisor: Prof. Jean-Marc Lecarpentier <br />
+                        - Effect development : Ruben Edery <br />- Scrip development : Ferhan Alic &
+                        Shelly Jean
+                    </Typography>
                 </div>
             </div>
         </div>
@@ -72,7 +73,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPage1" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "DamePage1" }).create(({ theme }) => {
     return {
         root: {
             color: theme.palette.text.primary,
@@ -96,7 +97,7 @@ const useStyles = tss.withName({ name: "GmetaPage1" }).create(({ theme }) => {
             animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`
         },
         column1: {
-            flex: 3,
+            flex: 2,
             display: "flex",
             flexDirection: "column",
             gap: theme.spacing(2),

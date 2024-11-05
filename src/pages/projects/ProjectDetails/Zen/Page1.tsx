@@ -1,7 +1,8 @@
 import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
+import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
-import { projects } from "pages/projects_/projectData";
+import { projects } from "pages/projects/projectData";
 
 type Props = {
     className?: string;
@@ -12,7 +13,7 @@ export function Page1(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
-    const project = projects.find(project => project.nameId === "dame");
+    const project = projects.find(project => project.nameId === "zen");
 
     if (!project) {
         return <Typography variant="body1">Project not found</Typography>;
@@ -28,18 +29,24 @@ export function Page1(props: Props) {
             </Typography>
             <div className={classes.content}>
                 <div className={classes.column1}>
-                    <Typography variant="body1">{project.description }</Typography>
+                    <Typography variant="body1">
+                        Zen Gourmet is the website for an upcoming Vietnamese restaurant in Mannheim. The
+                        site was designed entirely from scratch, encompassing the selection of the color
+                        palette, logo and icon creation, promotional imagery developed with AI
+                        assistance, and a custom UI design with FIgma. The development was subsequently
+                        executed using React and TypeScript.
+                    </Typography>
+                    <SeeMoreButton>View it online</SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         My role
                     </Typography>
                     <Typography variant="body1">
-                        - Artistic Directrice <br />
-                        - Graphic design <br />
-                        - Sound design <br />
-                        - Animation <br />
-                        - Video editing <br />
+                        - UI & UX design <br />
+                        - Logo design <br />
+                        - Graphics design <br />
+                        - Front-end development <br />- Technical development
                     </Typography>
                 </div>
                 <div className={classes.column2}>
@@ -47,12 +54,7 @@ export function Page1(props: Props) {
                         Credits
                     </Typography>
                     <Typography variant="body1">
-                        - Client : Philippe Holvoet (La Dame de Canton)
-                        <br />
-                        - Technical Supervisor: Prof. Laure Leroy <br />
-                        - Academic Supervisor: Prof. Jean-Marc Lecarpentier <br />
-                        - Effect development : Ruben Edery <br />- Scrip development : Ferhan Alic &
-                        Shelly Jean
+                        - ZenAsia Restaurant <br />- Conception & Development of website : Amélia Pham
                     </Typography>
                 </div>
             </div>
@@ -73,7 +75,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "DamePage1" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
     return {
         root: {
             color: theme.palette.text.primary,
@@ -92,7 +94,7 @@ const useStyles = tss.withName({ name: "DamePage1" }).create(({ theme }) => {
         },
         content: {
             display: "flex",
-            gap: theme.spacing(6),
+            gap: theme.spacing(10),
             opacity: 0,
             animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`
         },

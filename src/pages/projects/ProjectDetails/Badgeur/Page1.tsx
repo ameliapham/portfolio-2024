@@ -2,7 +2,7 @@ import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
-import { projects } from "pages/projects_/projectData";
+import { projects } from "pages/projects/projectData";
 
 type Props = {
     className?: string;
@@ -13,7 +13,7 @@ export function Page1(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
-    const project = projects.find(project => project.nameId === "zen");
+    const project = projects.find(project => project.nameId === "badgeur");
 
     if (!project) {
         return <Typography variant="body1">Project not found</Typography>;
@@ -30,11 +30,18 @@ export function Page1(props: Props) {
             <div className={classes.content}>
                 <div className={classes.column1}>
                     <Typography variant="body1">
-                        Zen Gourmet is the website for an upcoming Vietnamese restaurant in Mannheim. The
-                        site was designed entirely from scratch, encompassing the selection of the color
-                        palette, logo and icon creation, promotional imagery developed with AI
-                        assistance, and a custom UI design with FIgma. The development was subsequently
-                        executed using React and TypeScript.
+                        The Badgeur project was developed in two distinct phases. <br />
+                        <br />
+                        The first phase took place during a Bachelor's in Management at IAE Lyon 3,
+                        focusing on concept development, technical feasibility, market research, and
+                        identifying target customer needs. A physical prototype of the chip was created,
+                        and a business growth plan was established, including B2B and B2C partnerships.{" "}
+                        <br />
+                        <br />
+                        The second phase occurred during a Master's in Digital Creation and Publishing,
+                        where the mobile application was developed, market research was updated to
+                        reflect evolving customer needs after two years, and the logo, brand visual
+                        identity, and app prototype with a user-friendly UI design were created.
                     </Typography>
                     <SeeMoreButton>View it online</SeeMoreButton>
                 </div>
@@ -43,10 +50,10 @@ export function Page1(props: Props) {
                         My role
                     </Typography>
                     <Typography variant="body1">
-                        - UI & UX design <br />
-                        - Logo design <br />
-                        - Graphics design <br />
-                        - Front-end development <br />- Technical development
+                        - UX research <br />
+                        - Logo & visual identity <br />
+                        - UI design <br />
+                        - Prototyping <br />
                     </Typography>
                 </div>
                 <div className={classes.column2}>
@@ -54,7 +61,12 @@ export function Page1(props: Props) {
                         Credits
                     </Typography>
                     <Typography variant="body1">
-                        - ZenAsia Restaurant <br />- Conception & Development of website : Amélia Pham
+                        Phrase 1: <br />
+                        - Technical Development : IAE Lyon 3's team <br />
+                        - Academic Supervisor: Prof. MICAELLI Jean-Pierre <br />
+                        <br />
+                        Phrase 2: <br />
+                        - Market research & User testing: Paris 8's team <br />
                     </Typography>
                 </div>
             </div>
@@ -75,7 +87,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "BadgeurPage1" }).create(({ theme }) => {
     return {
         root: {
             color: theme.palette.text.primary,
@@ -94,7 +106,7 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
         },
         content: {
             display: "flex",
-            gap: theme.spacing(10),
+            gap: theme.spacing(6),
             opacity: 0,
             animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`
         },
