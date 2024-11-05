@@ -1,28 +1,38 @@
 import { GlobalStyles } from "tss-react";
 import { Header } from "App/Header";
 import { Suspense } from "react";
-import { tss } from "tss-react/mui";
-//import { Home } from "pages/Home";
-//import { Contact } from "pages/Contact";
-//import { About } from "pages/About";
-//import { Project } from "pages/Projects";
-//import { usePageId } from "hooks/usePageId";
-import { headerHeight } from "App";
+import { tss } from "tss";
 import { useRoute, RouteProvider } from "routes";
 import { pages, pageIds } from "pages";
+import { ThemeProvider } from "theme";
 
 export function App() {
     return (
         <RouteProvider>
-            <AppContextualized />
+            <ThemeProvider>
+                <AppContextualized />
+            </ThemeProvider>
         </RouteProvider>
     );
 }
 
 export function AppContextualized() {
-    //const { pageId } = usePageId();
-    const { classes, theme } = useStyles();
     const route = useRoute();
+
+    const { classes, theme } = useStyles({
+        isScrollablePage: (() => {
+            switch (route.name) {
+                case "home":
+                    return false;
+                case "projects":
+                    return false;
+                case "about":
+                    return false;
+                default:
+                    return true;
+            }
+        })()
+    });
 
     return (
         <>
@@ -35,12 +45,17 @@ export function AppContextualized() {
                     },
                     "html, body": {
                         backgroundColor: theme.palette.background.default
+                    },
+                    "html": {
+                        ":root": {
+                            colorScheme: theme.palette.mode
+                        }
                     }
                 }}
             />
             <div className={classes.root}>
-                <Header 
-                    className={classes.header} 
+                <Header
+                    className={classes.header}
                     pageId={route.name}
                 />
                 <main className={classes.main}>
@@ -67,37 +82,46 @@ export function AppContextualized() {
 
 
 
-                
+
             </div>
         </>
     );
 }
 
-const useStyles = tss.withName({ App }).create(({ theme }) => ({
-    root: {
-        height: "100vh",
-        width: "100vw",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center"
-    },
-    header: {
-        position: "absolute",
-        top: 0,
-        zIndex: 1000,
-        height: headerHeight,
-        padding: `0 ${theme.spacing(10)}`
-    },
-    main: {
-        display: "flex",
-        flex: 1,
-        overflow: "auto",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    page: {
-        display: "flex",
-        flex: 1
-    }
-}));
+const useStyles = tss
+    .withName({ App })
+    .withParams<{ isScrollablePage: boolean }>()
+    .create(({ headerHeight, isScrollablePage }) => ({
+        root: isScrollablePage
+            ? {}
+            : {
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column",
+            },
+        header: isScrollablePage
+            ? {
+                height: headerHeight,
+                position: "fixed",
+                top: 0,
+                width: "100%",
+            }
+            : {
+                height: headerHeight,
+            },
+        main: isScrollablePage
+            ? {
+                marginTop: headerHeight
+            }
+            : {
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+                overflow: "hidden",
+            },
+        page: isScrollablePage
+            ? {}
+            : {
+                height: "100%"
+            }
+    }));
