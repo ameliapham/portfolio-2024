@@ -1,15 +1,15 @@
-import { tss } from "tss-react/mui";
-import { useState } from "react";
+import { tss, keyframes } from "tss";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { useScrollNavigation } from "utils/useScrollNavigation";
 import { PhotoFrame } from "./PhotoFrame";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { BackgroundBeams } from "shared/BackgroundBeams";
+import { useDomRect } from "powerhooks/useDomRect";
+import LinearProgress from "@mui/material/LinearProgress";
 
 import { PageRoute } from "./route";
 
@@ -19,53 +19,43 @@ type Props = {
 };
 
 export default function Page(props: Props) {
-    const { className } = props;
-    const { cx, classes } = useStyles();
-    const [detailsIndex, setDetailsIndex] = useState(0);
+    const { className, route } = props;
 
-    const incrementDetailsIndex = () => {
-        setDetailsIndex(prevIndex => prevIndex + 1);
-    };
+    const { ref: rootRef, domRect: { width: rootWidth } } = useDomRect();
 
-    const decrementDetailsIndex = () => {
-        setDetailsIndex(prevIndex => prevIndex - 1);
-    };
-
-    useScrollNavigation(direction => {
-        switch (direction) {
-            case "up":
-                decrementDetailsIndex();
-                console.log("up");
-                break;
-            case "down":
-                incrementDetailsIndex();
-                console.log("down");
-                break;
-        }
-    });
+    const { cx, classes } = useStyles({ rootWidth });
 
     return (
-        <>
+        <div ref={rootRef} className={cx(classes.root, className)}>
             <div className={cx(classes.root, className)}>
                 <PhotoFrame className={classes.frameZone} />
 
                 <div className={classes.content}>
                     {(() => {
-                        switch (detailsIndex % 2) {
-                            case 0:
-                                return <Content1 />;
-                            case 1:
-                                return <Content2 />;
+                        switch (route.params.aboutDetailsId) {
+                            case "cv":
+                                return <Cv />;
+                            case "skills":
+                                return <Skills />;
                         }
                     })()}
                 </div>
             </div>
+            <LinearProgress
+                className={classes.progressBar} variant="determinate" value={(() => {
+                    switch (route.params.aboutDetailsId) {
+                        case "cv":
+                            return 0;
+                        case "skills":
+                            return 100;
+                    }
+                })()} />
             <BackgroundBeams className={classes.backgroundBeams} />
-        </>
+        </div>
     );
 }
 
-function Content1() {
+function Cv() {
     return (
         <>
             <Typography variant="h3">Amélia Pham</Typography>
@@ -84,8 +74,8 @@ function Content1() {
     );
 }
 
-function Content2() {
-    const { classes } = useStyles();
+function Skills() {
+    const { classes } = useStyles({ rootWidth: 0 });
 
     return (
         <>
@@ -125,52 +115,83 @@ function Content2() {
     );
 }
 
-const useStyles = tss.withName({ Page }).create(({ theme }) => {
-    return {
-        root: {
-            alignContent: "center",
-            gap: "5vw",
-            zIndex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            padding: `0 10vw 0 15vw`
-        },
-        backgroundBeams: {
-            position: "absolute",
-            height: "100%",
-            width: "100%",
-            overflow: "hidden"
-        },
-        frameZone: {
-            height: "35vw",
-            width: "25vw"
-        },
-        content: {
-            flex: 1,
-            color: theme.palette.text.primary,
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            //overflowY: "scroll",
-            //scrollSnapType: "y mandatory",
+const useStyles = tss
+    .withName({ Page })
+    .withParams<{ rootWidth: number }>()
+    .create(({ theme, rootWidth, windowInnerWidth }) => {
+        return {
+            root: {
+                alignContent: "center",
+                gap: "5vw",
+                zIndex: 1,
+                justifyContent: "center",
+                display: "flex",
+                flexDirection: (() => {
 
-            // Hide scrollbar for webkit browsers
-            "&::-webkit-scrollbar": {
-                display: "none"
+                    if (theme.breakpoints.values.md <= windowInnerWidth) {
+                        return "row";
+                    }
+                    return "column";
+
+                })(),
+                alignItems: "center",
+                padding: `0 ${0.05 * rootWidth}px 0 ${0.1 * rootWidth}px`,
+                position: "relative",
+                animation: `${keyframes`
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                    `} 400ms`
             },
-            // Hide scrollbar for IE, Edge, and Firefox
-            "&": {
-                msOverflowStyle: "none",
-                scrollbarWidth: "none"
+
+            backgroundBeams: {
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                overflow: "hidden",
+                zIndex: -1
+            },
+
+            frameZone: {
+                height: 0.35 * rootWidth,
+                width: 0.25 * rootWidth
+            },
+            content: {
+                flex: 1,
+                color: theme.palette.text.primary,
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+
+                // Hide scrollbar for webkit browsers
+                "&::-webkit-scrollbar": {
+                    display: "none"
+                },
+                // Hide scrollbar for IE, Edge, and Firefox
+                "&": {
+                    msOverflowStyle: "none",
+                    scrollbarWidth: "none"
+                }
+            },
+            accordion: {
+                backgroundColor: "transparent",
+                borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
+                borderRadius: "none"
+            },
+            icons: {
+                color: theme.palette.text.primary
+            },
+            progressBar: {
+                position: "absolute",
+                bottom: "30px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "30%",
+                zIndex: 2,
+                backgroundColor: alpha(theme.palette.text.primary, 0.2),
             }
-        },
-        accordion: {
-            backgroundColor: "transparent",
-            borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
-            borderRadius: "none"
-        },
-        icons: {
-            color: theme.palette.text.primary
-        }
-    };
-});
+        };
+    });
