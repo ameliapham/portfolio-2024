@@ -28,6 +28,7 @@ const typography = {
 
 export const theme = createTheme({
     palette: {
+        mode: "dark",
         background: {
             default: "#000"
         },

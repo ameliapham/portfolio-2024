@@ -24,6 +24,8 @@ export function AppContextualized() {
             switch (route.name) {
                 case "home":
                     return false;
+                case "contact":
+                    return false;
                 case "projects":
                     return false;
                 case "about":

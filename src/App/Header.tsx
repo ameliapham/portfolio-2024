@@ -42,9 +42,7 @@ const useStyles = tss.withName({ Header }).create(({ theme }) => ({
         alignItems: "center",
         borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
         padding: `0 ${theme.spacing(10)}`,
-        height: "100%",
-        width: "100%",
-        zIndex: 1000
+        backgroundColor: "transparent"
     },
     logo: {
         width: theme.spacing(15),
