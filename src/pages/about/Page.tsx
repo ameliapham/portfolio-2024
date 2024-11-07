@@ -119,6 +119,7 @@ const useStyles = tss
     .create(({ theme, rootWidth, windowInnerWidth }) => {
         return {
             root: {
+                overflow: "hidden",
                 alignContent: "center",
                 gap: "5vw",
                 zIndex: 1,
