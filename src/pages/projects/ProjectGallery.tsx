@@ -1,34 +1,33 @@
-import { useState, useEffect, useRef } from "react";
+import { useMemo } from "react";
 import { GalleryItem } from "./GalleryItem";
-import { projects, Project } from "./projectData";
-import { type ProjectId, projectIds } from "./projectIds";
+import { projects, Project, type ProjectId, projectIds  } from "./projectsData";
 import { routes } from "routes";
 import type { PageRoute } from "./route";
 import { useScrollNavigation } from "utils/useScrollNavigation";
-import { useEnableFixedScrollBySections } from "utils/fixed-scroll";
+import { rotateArrayRight } from "utils/rotateArray";
 
 type Props = {
     className?: string;
     //projectId: ProjectId;
     //onChangeProjectId: (pageId: ProjectId) => void;
-    //onSeeProjectDetails: () => void;
+    onSeeProjectDetails: () => void;
     route: PageRoute;
 };
 
 export default function ProjectGallery(props: Props) {
-    const { className, route } = props;
+    const { className, route, onSeeProjectDetails } = props;
 
-    useEnableFixedScrollBySections({
-        initialSectionIndex: projectIds.indexOf(route.params.projectId),
-        sectionCount: projectIds.length,
-        onSectionChange: (sectionIndex) => {
-          routes.projects({
-            ...route.params,
-            projectId: projectIds[sectionIndex],
-          }).replace();
-        },
-      });
+    const rotatedProjects = useMemo(() => {
+      let rotatedProjects = [...projects];
 
+      while (rotatedProjects[1].id !== route.params.projectId) {
+          rotatedProjects = rotateArrayRight(rotatedProjects);
+      }
+
+      return rotatedProjects;
+  }, [route.params.projectId]);
+
+    /*
     const previousProjectRoute = (() => {
         const i = projectIds.indexOf(route.params.projectId);
     
@@ -120,16 +119,17 @@ export default function ProjectGallery(props: Props) {
         };
     }, []);
 
+    */ 
+
     return (
-        <div className={className} ref={containerRef}>
+        <div className={className}>
             <div>
-                {items.map((itemData, i) => (
+                {rotatedProjects.map((project, i) => (
                     <GalleryItem
-                        key={itemData.nameId}
+                        key={project.id}
                         position={i + 1}
-                        itemData={itemData}
+                        project={project}
                         onClick={() => {
-                            onChangeProjectId(itemData.nameId);
                             onSeeProjectDetails();
                         }}
                     />

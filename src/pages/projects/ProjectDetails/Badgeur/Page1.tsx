@@ -2,18 +2,20 @@ import { tss } from "tss-react/mui";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
-import { projects } from "pages/projects/projectData";
+import { getProjectByNameId } from "../../projectsData";
 
 type Props = {
     className?: string;
     onClick?: () => void;
 };
 
+const project = getProjectByNameId({
+    projectId: "badgeur"
+});
+
 export function Page1(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
-
-    const project = projects.find(project => project.nameId === "badgeur");
 
     if (!project) {
         return <Typography variant="body1">Project not found</Typography>;

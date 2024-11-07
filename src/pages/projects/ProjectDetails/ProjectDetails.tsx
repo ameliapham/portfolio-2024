@@ -1,10 +1,9 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import { useState } from "react";
-import { type ProjectId } from "../projectIds";
+import { type ProjectId } from "../projectsData";
 import { useScrollNavigation } from "utils/useScrollNavigation";
 import { SeeMoreButton } from "shared/SeeMoreButton";
-import { headerHeight } from "App";
-import { projects } from "../projectData";
+import { projects } from "../projectsData";
 
 import { Zen } from "./Zen";
 import { Gmeta } from "./Gmeta";
@@ -74,9 +73,9 @@ export default function ProjectDetails(props: Props) {
 const useStyles = tss
     .withName({ ProjectDetails })
     .withParams<{ projectId: ProjectId }>()
-    .create(({ theme, projectId }) => {
-        const project = projects.find(item => item.nameId === projectId);
-        const backgroundImage = project ? `url(${project.background})` : "none";
+    .create(({ theme, projectId, headerHeight }) => {
+        const project = projects.find(item => item.id === projectId);
+        const backgroundImage = project ? `url(${project.backgroundUrl})` : "none";
 
         return {
             root: {

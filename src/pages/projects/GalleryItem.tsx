@@ -1,18 +1,18 @@
 import { keyframes } from "tss-react";
 import { tss } from "tss-react/mui";
-import { Project } from "pages/projects/projectData";
+import { Project } from "pages/projects/projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
 
 type Props = {
     className?: string;
-    itemData: Project;
+    project: Project;
     position: number;
     onClick?: () => void;
 };
 
 export function GalleryItem(props: Props) {
-    const { className, itemData, position, onClick } = props;
+    const { className, project: itemData, position, onClick } = props;
     const { cx, classes } = useStyles({ position });
 
     return (

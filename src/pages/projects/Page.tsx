@@ -1,13 +1,9 @@
-import { tss } from "tss-react/mui";
-//import { ProjectId, projectIds } from "./projectIds";
-//import { ProjectGallery } from "./ProjectGallery";
-//import { ProjectDetails } from "./ProjectDetails";
-//import { useState } from "react";
-import { lazy, Suspense } from "react";
-import type { PageRoute } from "./route";//
+import { tss } from "tss";
+import ProjectGallery from "./ProjectGallery";
+import ProjectDetails from "./ProjectDetails";
+import type { PageRoute } from "./route";
+import { routes } from "routes";
 
-const ProjectGallery = lazy(() => import("./ProjectGallery"));
-const ProjectDetails = lazy(() => import("./ProjectDetails"));
 
 type Props = {
     className?: string;
@@ -23,15 +19,29 @@ export default function Page(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            {
-                <Suspense fallback={<p>Loading...</p>}>
-                    {route.params.gallery ? (
-                        <ProjectGallery className={classes.gallery} route={route} />
-                    ) : (
-                        <ProjectDetails className={classes.details} route={route} />
-                    )}
-                </Suspense>
-            }
+            {route.params.isGalleryVisible ? (
+                <ProjectGallery
+                    className={classes.gallery}
+                    route={route}
+                    onSeeProjectDetails={() => {
+                        routes[route.name]({
+                            ...route.params,
+                            isGalleryVisible: false
+                        }).push();
+                    }}
+                />
+            ) : (
+                <ProjectDetails
+                    className={classes.details}
+                    projectId={route.params.projectId}
+                    onBackToGallery={() => {
+                        routes[route.name]({
+                            ...route.params,
+                            isGalleryVisible: true
+                        }).push();
+                    }}
+                />
+            )}
 
             {/*isGalleryVisible ? (
                 <ProjectGallery
