@@ -17,7 +17,7 @@ export type Props = {
     onBackToGallery: () => void;
 };
 
-export default function ProjectDetails(props: Props) {
+export function ProjectDetails(props: Props) {
     const { className, projectId, onBackToGallery } = props;
     const { cx, classes } = useStyles({ projectId });
 

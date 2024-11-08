@@ -1,6 +1,6 @@
 import { tss } from "tss";
-import ProjectGallery from "./ProjectGallery";
-import ProjectDetails from "./ProjectDetails";
+import { ProjectGallery } from "./ProjectGallery";
+import { ProjectDetails } from "./ProjectDetails";
 import type { PageRoute } from "./route";
 import { routes } from "routes";
 
@@ -64,7 +64,6 @@ const useStyles = tss.withName("Project").create({
     root: {
         height: "100%",
         width: "100%",
-        border: "1px solid red",
         overflow: "hidden",
         position: "relative"
     },
@@ -74,6 +73,5 @@ const useStyles = tss.withName("Project").create({
     details: {
         height: "100%",
         width: "100%",
-        border: "5px solid green"
     }
 });
