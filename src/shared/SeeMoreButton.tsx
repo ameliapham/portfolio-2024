@@ -6,15 +6,20 @@ type Props = {
     className?: string;
     onClick?: () => void;
     children: React.ReactNode;
+    disabled?: boolean;
 };
 
 export function SeeMoreButton(props: Props) {
-    const { className, onClick, children } = props;
+    const { className, onClick, children, disabled } = props;
     const { cx, classes } = useStyles();
 
     return (
-        <div className={cx(classes.root, className)} onClick={onClick}>
-            <Button className={classes.button}>
+        <div className={cx(classes.root, className)} >
+            <Button
+                className={classes.button}
+                onClick={onClick}
+                disabled={disabled}
+            >
                 <span className={classes.buttonText}>{children}</span>
             </Button>
         </div>
