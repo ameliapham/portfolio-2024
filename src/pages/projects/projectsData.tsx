@@ -12,7 +12,7 @@ import p23badgeur from "assets/p-badgeur.webp";
 import bgGmeta from "assets/bg-gmeta.webp";
 import bgBadgeur from "assets/bg-badgeur.svg";
 
-export const projectIds = ["zen", "dame", "gmeta", "iso", "arti", "gili", "famed", "badgeur"] as const;
+export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 export type Project = {
