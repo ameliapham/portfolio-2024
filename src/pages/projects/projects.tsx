@@ -3,7 +3,7 @@ import { assert } from "tsafe/assert";
 import backgroundUrl from "assets/p-arti.svg";
 
 import pArtiWebpUrl from "assets/p-arti.webp";
-import pZenWebpUrl from "assets/p-zen.webp";
+import zenMainWebpUrl from "./ProjectDetails/Zen/assets/main.webp";
 import pGiliWebpUrl from "assets/p-gili.webp";
 import pGmetaWebpUrl from "assets/p-gmeta.webp";
 import pBadgeurWebpUrl from "assets/p-badgeur.webp";
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     {
         id: projectIds[1],
         year: "2024",
-        imageUrl: pZenWebpUrl,
+        imageUrl: zenMainWebpUrl,
         background: backgroundUrl,
         name: "Zen Gourmet",
         description:
