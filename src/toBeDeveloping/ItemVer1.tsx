@@ -1,30 +1,30 @@
 import { keyframes } from "tss-react";
 import { tss } from "tss-react/mui";
-import { type ItemData } from "pages/Project/projectData";
+import { type Project } from "pages/projects/projectsData";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 
 type ItemProps = {
     className?: string;
-    itemData: ItemData;
+    project: Project;
     onClick?: (src: string) => void;
 };
 
 export function Item(props: ItemProps) {
-    const { className, itemData } = props;
+    const { className, project } = props;
     const { cx, classes } = useStyles();
 
     return (
-        <div className={cx(classes.root, className)} style={{ backgroundImage: `url(${itemData.img})` }}>
+        <div className={cx(classes.root, className)} style={{ backgroundImage: `url(${project.imageUrl})` }}>
             <div className={classes.content}>
                 <Typography variant="body1" className={classes.year}>
-                    {itemData.year}
+                    {project.year}
                 </Typography>
                 <Typography variant="h2" className={classes.name}>
-                    {itemData.name}
+                    {project.name}
                 </Typography>
                 <Typography variant="body1" className={classes.des}>
-                    {itemData.des}
+                    {project.description}
                 </Typography>
                 <SeeMoreButton onClick={() => {}}>See More</SeeMoreButton>
             </div>

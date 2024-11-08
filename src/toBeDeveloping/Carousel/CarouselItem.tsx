@@ -1,10 +1,10 @@
 import { tss } from "tss-react/mui";
-import { ItemData } from "pages/Project/projectData";
+import { type Project } from "pages/projects/projectsData";
 import Typography from "@mui/material/Typography";
 
 type Props = {
     className?: string;
-    itemData: ItemData;
+    project: Project;
     onMouseEnter?: () => void;
     onMouseLeave?: () => void;
     onClick: () => void;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function CarouselItem(props: Props) {
-    const { className, itemData, onClick, onMouseEnter, onMouseLeave, selected } = props;
+    const { className, project: itemData, onClick, onMouseEnter, onMouseLeave, selected } = props;
     const { cx, classes } = useStyles({ itemData });
 
     return (
@@ -33,7 +33,7 @@ export function CarouselItem(props: Props) {
 
 const useStyles = tss
     .withName({ BoxItem: CarouselItem })
-    .withParams<{ itemData: ItemData }>()
+    .withParams<{ itemData: Project }>()
     .withNestedSelectors<"box">()
     .create(({ theme, itemData, classes }) => {
         const sideLength = "200px";
@@ -77,7 +77,7 @@ const useStyles = tss
 
                 [`&:hover .${classes.box}`]: {
                     transition: "1s ease",
-                    backgroundImage: `url(${itemData.img})`,
+                    backgroundImage: `url(${itemData.imageUrl})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat"
@@ -126,7 +126,7 @@ const useStyles = tss
                 }
             },
             selectedBox: {
-                backgroundImage: `url(${itemData.img})`,
+                backgroundImage: `url(${itemData.imageUrl})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat"

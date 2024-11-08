@@ -1,6 +1,6 @@
 import { tss } from "tss-react/mui";
 import { CarouselItem } from "./CarouselItem";
-import { projectData } from "pages/Project/projectData";
+import { projects } from "pages/projects/projectsData";
 import { BackgroundBeams } from "shared/BackgroundBeams";
 import { useState, useEffect } from "react";
 import { useConstCallback } from "powerhooks/useConstCallback";
@@ -64,10 +64,10 @@ export function Carousel() {
     return (
         <div className={classes.root}>
             <div ref={setSliderElement}>
-                {projectData.map((itemData, i) => (
+                {projects.map((project, i) => (
                     <CarouselItem
-                        key={itemData.name}
-                        itemData={itemData}
+                        key={project.name}
+                        project={project}
                         onClick={() => alert(`Hello ${i}`)}
                     />
                 ))}

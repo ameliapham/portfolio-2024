@@ -1,11 +1,11 @@
 import { tss } from "tss-react/mui";
 import { useEffect, useState } from "react";
 import { Item } from "./Item";
-import { projectData } from "pages/Project/projectData";
 import { useConstCallback } from "powerhooks/useConstCallback";
 import { assert } from "tsafe/assert";
 import project1 from "assets/food-pho.webp";
 import project2 from "assets/5webp.webp";
+import { projects } from "pages/projects/projectsData";
 
 export function ItemSlider() {
     const [selectedItemName, setSelectedItemName] = useState<string | undefined>(undefined);
@@ -69,11 +69,11 @@ export function ItemSlider() {
     return (
         <div className={classes.container}>
             <div ref={setSliderElement}>
-                {projectData.map(itemData => (
+                {projects.map(project => (
                     <Item
-                        key={itemData.name}
-                        itemData={itemData}
-                        onMouseEnter={() => setSelectedItemName(itemData.name)}
+                        key={project.name}
+                        project={project}
+                        onMouseEnter={() => setSelectedItemName(project.name)}
                     />
                 ))}
             </div>

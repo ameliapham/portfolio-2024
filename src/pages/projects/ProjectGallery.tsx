@@ -1,15 +1,11 @@
 import { useMemo } from "react";
 import { GalleryItem } from "./GalleryItem";
-import { projects, Project, type ProjectId, projectIds  } from "./projectsData";
-import { routes } from "routes";
+import { projects } from "./projectsData";
 import type { PageRoute } from "./route";
-import { useScrollNavigation } from "utils/useScrollNavigation";
 import { rotateArrayRight } from "utils/rotateArray";
 
 type Props = {
     className?: string;
-    //projectId: ProjectId;
-    //onChangeProjectId: (pageId: ProjectId) => void;
     onSeeProjectDetails: () => void;
     route: PageRoute;
 };
@@ -53,8 +49,6 @@ export default function ProjectGallery(props: Props) {
           projectId: projectIds[i + 1],
         });
       })();
-
-
 
       useScrollNavigation((direction) => {
         switch (direction) {
@@ -139,6 +133,8 @@ export default function ProjectGallery(props: Props) {
     );
 }
 
+
+/*
 function rotateToTheRight(items: Project[]): Project[] {
     const [lastItem, ...otherItemsReversed] = structuredClone(items).reverse();
     return [lastItem, ...otherItemsReversed.reverse()];
@@ -148,4 +144,4 @@ function rotateToTheLeft(items: Project[]): Project[] {
     const [firstItem, ...otherItems] = structuredClone(items);
     return [...otherItems, firstItem];
 }
-
+*/

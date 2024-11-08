@@ -1,7 +1,7 @@
 import { tss } from "tss-react/mui";
 import { useEffect, useState } from "react";
 import { Item } from "./ItemVer1";
-import { projectData } from "pages/Project/projectData";
+import { type Project, projects } from "pages/projects/projectsData";
 import { useConstCallback } from "powerhooks/useConstCallback";
 import { assert } from "tsafe/assert";
 import { useScrollWidth } from "hooks/useScrollHeight";
@@ -98,11 +98,11 @@ export function Project() {
     return (
         <div className={classes.container}>
             <div ref={ref}>
-                {projectData.map(itemData => (
+                {projects.map(project => (
                     <Item
                         className={css({ border: "3px solid red !important" })}
-                        key={itemData.name}
-                        itemData={itemData}
+                        key={project.name}
+                        project={project}
                         onClick={() => {
                             //console.log('Clicked:', itemData.page);
                         }}

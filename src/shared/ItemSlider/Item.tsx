@@ -1,31 +1,31 @@
 import { keyframes } from "tss-react";
 import { tss } from "tss-react/mui";
-import { type ItemData } from "pages/Project/projectData";
+import { type Project } from "pages/projects/projectsData";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 
 type ItemProps = {
     className?: string;
-    itemData: ItemData;
+    project: Project;
     onMouseEnter: () => void;
 };
 
 export function Item(props: ItemProps) {
-    const { className, itemData, onMouseEnter } = props;
+    const { className, project, onMouseEnter } = props;
     const { cx, classes } = useStyles();
 
     return (
         <div
             className={cx(classes.root, className)}
-            style={{ backgroundImage: `url(${itemData.img})` }}
+            style={{ backgroundImage: `url(${project.imageUrl})` }}
             onMouseEnter={onMouseEnter}
         >
             <div className={classes.content}>
                 <Typography variant="h2" className={classes.name}>
-                    {itemData.name}
+                    {project.name}
                 </Typography>
                 <Typography variant="body1" className={classes.des}>
-                    {itemData.des}
+                    {project.description}
                 </Typography>
                 <SeeMoreButton>See More</SeeMoreButton>
             </div>
