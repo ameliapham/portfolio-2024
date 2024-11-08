@@ -226,7 +226,7 @@ const useStyles = tss
                 backgroundColor: alpha(theme.palette.text.primary, 0.2),
 
                 "& .MuiLinearProgress-bar": {
-                    background: "linear-gradient(to right, transparent, transparent, #6366f1, #0ea5e9)"
+                    background: "linear-gradient(to right, transparent, #6366f1, #0ea5e9)"
                 }
             },
             buttons: {
