@@ -7,15 +7,15 @@ import { rotateArrayRight } from "utils/rotateArray";
 import Button from "@mui/material/Button";
 import { useDelay } from "utils/useDelay";
 import { SplashScreen } from "shared/SplashScreen";
+import { SeeMoreButton } from "shared/SeeMoreButton";
 
 type Props = {
     className?: string;
     route: PageRoute;
-    onSeeProjectDetails: () => void;
 };
 
 export function ProjectGallery(props: Props) {
-    const { className, route, onSeeProjectDetails } = props;
+    const { className, route } = props;
 
     const { cx, classes, css } = useStyles();
 
@@ -61,7 +61,14 @@ export function ProjectGallery(props: Props) {
                         <div className={classes.content}>
                             <div className={classes.name}>{name}</div>
                             <div className={classes.des}>{description}</div>
-                            <button onClick={onSeeProjectDetails}>See More</button>
+                            <SeeMoreButton
+                                {...routes[route.name]({
+                                    ...route.params,
+                                    isGalleryVisible: false
+                                }).link}
+                            >
+                                See More
+                            </SeeMoreButton>
                         </div>
                     </div>
                 ))}

@@ -1,5 +1,4 @@
 import { tss } from "tss";
-import { useState } from "react";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { projects, type Project } from "../projects";
 
@@ -9,54 +8,48 @@ import { Badgeur } from "./Badgeur";
 import { Iso } from "./Iso";
 //import { DameCanton } from "./DameCanton";
 import { assert } from "tsafe/assert";
+import type { PageRoute } from "../route";
+import { routes } from "routes";
 
 export type Props = {
     className?: string;
-    projectId: Project["id"];
-    onBackToGallery: () => void;
+    route: PageRoute;
 };
 
 export function ProjectDetails(props: Props) {
-    const { className, projectId, onBackToGallery } = props;
-    const { cx, classes } = useStyles({ projectId });
-
-    const [detailsIndex, /*setDetailsIndex*/] = useState(0);
-
-    /*
-    const incrementDetailsIndex = () => {
-        setDetailsIndex(prevIndex => prevIndex + 1);
-    };
-
-    const decrementDetailsIndex = () => {
-        setDetailsIndex(prevIndex => prevIndex - 1);
-    };
-    */
+    const { className, route } = props;
+    const { cx, classes } = useStyles({ projectId: route.params.projectId });
 
     return (
         <div className={cx(classes.root, className)}>
             <div className={classes.background} />
             <div>
-                <SeeMoreButton className={classes.buttonBack} onClick={onBackToGallery}>
+                <SeeMoreButton 
+                    className={classes.buttonBack}
+                    {...routes[route.name]({
+                        ...route.params,
+                        projectId: undefined,
+                        isGalleryVisible: true
+                    }).link}
+                >
                     Back
                 </SeeMoreButton>
             </div>
             <div className={classes.content}>
                 {(() => {
-                    switch (projectId) {
+                    switch (route.params.projectId) {
                         case "zen":
-                            return <Zen detailsIndex={detailsIndex} />;
+                            return <Zen route={route}/>;
+                        /*
                         case "gmeta":
-                            return <Gmeta detailsIndex={detailsIndex} />;
+                            return <Gmeta />;
                         case "badgeur":
-                            return <Badgeur detailsIndex={detailsIndex} />;
+                            return <Badgeur />;
                         case "iso":
-                            return <Iso detailsIndex={detailsIndex} />;
-                            /*
+                            return <Iso />;
                         case "dame":
                             return <DameCanton detailsIndex={detailsIndex} />;
                             */
-
-
                     }
                 })()}
             </div>
