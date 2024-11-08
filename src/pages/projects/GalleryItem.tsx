@@ -162,7 +162,6 @@ const useStyles = tss
                 }
             },
             seeMoreButton: {
-                //width: "fit-content",
             },
 
             name: {

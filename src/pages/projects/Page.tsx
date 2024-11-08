@@ -13,9 +13,6 @@ export default function Page(props: Props) {
     const { className, route } = props;
     const { cx, classes } = useStyles();
 
-    //const [isGalleryVisible, setGalleryVisible] = useState(true);
-    //const [projectId, setProjectId] = useState<ProjectId>(projectIds[0]);
-
     return (
         <div className={cx(classes.root, className)}>
             {route.params.isGalleryVisible ? (
@@ -41,21 +38,6 @@ export default function Page(props: Props) {
                     }}
                 />
             )}
-
-            {/*isGalleryVisible ? (
-                <ProjectGallery
-                    className={classes.gallery}
-                    projectId={projectId}
-                    onChangeProjectId={setProjectId}
-                    onSeeProjectDetails={() => setGalleryVisible(false)}
-                />
-            ) : (
-                <ProjectDetails
-                    className={classes.details}
-                    projectId={projectId}
-                    onBackToGallery={() => setGalleryVisible(true)}
-                />
-            )*/}
         </div>
     );
 }

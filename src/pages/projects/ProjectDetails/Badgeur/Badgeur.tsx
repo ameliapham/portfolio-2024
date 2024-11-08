@@ -4,29 +4,30 @@ import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
 import { Page4 } from "./Page4";
 import { Page5 } from "./Page5";
+import { PageRoute } from "./route";
 
 type Props = {
     className?: string;
-    detailsIndex: number;
+    route: PageRoute;
 };
 
 export function Badgeur(props: Props) {
-    const { className, detailsIndex } = props;
+    const { className, route } = props;
     const { cx, classes } = useStyles();
     return (
         <>
             <div className={cx(classes.root, className)}>
                 {(() => {
-                    switch (detailsIndex % 5) {
-                        case 0:
+                    switch (route.params.badgeurId) {
+                        case "page1":
                             return <Page1 />;
-                        case 1:
+                        case "page2":
                             return <Page2 />;
-                        case 2:
+                        case "page3":
                             return <Page3 />;
-                        case 3:
+                        case "page4":
                             return <Page4 />;
-                        case 4:
+                        case "page5":
                             return <Page5 />;
                     }
                 })()}

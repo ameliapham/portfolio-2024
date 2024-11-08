@@ -1,9 +1,12 @@
 import { tss } from "tss";
 import { useState } from "react";
-import { type ProjectId } from "../projectsData";
+import { type ProjectId, projectIds } from "../projectsData";
 import { useScrollNavigation } from "utils/useScrollNavigation";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { projects } from "../projectsData";
+import { NextButton, PreviousButton } from "shared/NavButton";
+import { routes } from "routes";
+import { alpha, LinearProgress } from "@mui/material";
 
 import { Zen } from "./Zen";
 import { Gmeta } from "./Gmeta";
@@ -58,13 +61,45 @@ export function ProjectDetails(props: Props) {
                         case "gmeta":
                             return <Gmeta detailsIndex={detailsIndex} />;
                         case "badgeur":
-                            return <Badgeur detailsIndex={detailsIndex} />;
+                            return <Badgeur route={} />;
                         case "iso":
                             return <Iso detailsIndex={detailsIndex} />;
                         case "dame":
                             return <DameCanton detailsIndex={detailsIndex} />;
                     }
                 })()}
+            </div>
+            <div className={classes.progressNavBar}>
+                <div className={classes.buttons}>
+                    <PreviousButton
+                        //disabled={projectIds.indexOf(route.params.projectId) === 0}
+                        {...routes[route.name]({
+                            ...route.params,
+                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+                        }).link}
+                    >
+                        Previous
+                    </PreviousButton>
+                    <NextButton
+                        //disabled={projectIds.indexOf(route.params.projectId) === projectIds.length - 1}
+                        {...routes[route.name]({
+                            ...route.params,
+                            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+                        }).link}
+                    >
+                        Next
+                    </NextButton>
+                </div>
+                <LinearProgress
+                    className={classes.progressBar}
+                    variant="determinate"
+                    value={(() => {
+                        const totalProjects = projectIds.length;
+                        const currentProjectIndex = projectIds.indexOf(route.params.projectId);
+                        if (currentProjectIndex === -1) return 0;
+                        return ((currentProjectIndex + 1) / totalProjects) * 100;
+                    })()}
+                />
             </div>
         </div>
     );
@@ -113,6 +148,34 @@ const useStyles = tss
                 flex: 1,
                 //order: "5px solid pink",
                 padding: "0 10%"
-            }
+            },
+            progressNavBar: {
+                width: "100%",
+                border: "1px solid #f5f5f5",
+                position: "absolute",
+                left: "50%",
+                bottom: 0,
+                transform: "translate(-50%, 0)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingBottom: "30px",
+            },
+            progressBar: {
+                width: "30%",
+                zIndex: 2,
+                borderRadius: "5px",
+                backgroundColor: alpha(theme.palette.text.primary, 0.2),
+
+                "& .MuiLinearProgress-bar": {
+                    background: "linear-gradient(to right, transparent, #6366f1, #0ea5e9)"
+                }
+            },
+            buttons: {
+                display: "flex",
+                gap: "20px"
+            },
         };
     });
