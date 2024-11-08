@@ -1,11 +1,10 @@
-import { tss } from "tss-react/mui";
+import { tss, keyframes } from "tss";
 import Typography from "@mui/material/Typography";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { BackgroundBeams } from "shared/BackgroundBeams";
 import { alpha } from "@mui/material/styles";
-
 import { PageRoute } from "./route";
 
 type Props = {
@@ -76,13 +75,15 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         gap: "50px",
         color: theme.palette.text.primary,
         zIndex: 1,
-        padding: `0 ${theme.spacing(30)}`
-    },
-    backgroundBeams: {
-        position: "absolute",
-        height: "100%",
-        width: "100%",
-        overflow: "hidden"
+        padding: `0 ${theme.spacing(30)}`,
+        animation: `${keyframes`
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+            `} 400ms`
     },
     textZone: {
         display: "flex",
@@ -121,5 +122,11 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         "&:hover": {
             transform: "translateY(-5px)"
         }
-    }
+    },
+    backgroundBeams: {
+        position: "absolute",
+        height: "100%",
+        width: "100%",
+        overflow: "hidden"
+    },
 }));
