@@ -16,7 +16,10 @@ export function GalleryItem(props: Props) {
     const { cx, classes } = useStyles({ position });
 
     return (
-        <div className={cx(classes.root, className)} style={{ backgroundImage: `url(${itemData.imageUrl})` }}>
+        <div
+            className={cx(classes.root, className)}
+            style={{ backgroundImage: `url(${itemData.imageUrl})` }}
+        >
             <div className={classes.content} onClick={onClick}>
                 <Typography variant="body1" className={classes.year}>
                     {itemData.year}
@@ -25,7 +28,7 @@ export function GalleryItem(props: Props) {
                     {itemData.name}
                 </Typography>
                 <Typography variant="body1" className={classes.des}>
-                    {itemData.description }
+                    {itemData.description}
                 </Typography>
                 <SeeMoreButton onClick={onClick} className={classes.seeMoreButton}>
                     See More

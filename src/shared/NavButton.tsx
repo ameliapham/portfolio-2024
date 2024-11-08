@@ -19,7 +19,7 @@ export function PreviousButton(props: Props) {
             onClick={onClick}
             disabled={disabled}
         >
-            <span >{children}</span>
+            <span>{children}</span>
         </Button>
     );
 }
@@ -78,7 +78,7 @@ const useStyles = tss.create(({ theme }) => ({
             transition: "all 0.4s ease"
         }
     },
-    
+
     nextButton: {
         position: "relative",
         color: theme.palette.text.primary,
@@ -114,8 +114,7 @@ const useStyles = tss.create(({ theme }) => ({
 
         "&:hover span": {
             transform: "translateX(5px)",
-            transition: "all 0.4s ease",
+            transition: "all 0.4s ease"
         }
-    },
-    
+    }
 }));

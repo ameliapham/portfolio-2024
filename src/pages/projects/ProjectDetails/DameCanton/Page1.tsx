@@ -30,7 +30,7 @@ export function Page1(props: Props) {
             </Typography>
             <div className={classes.content}>
                 <div className={classes.column1}>
-                    <Typography variant="body1">{project.description }</Typography>
+                    <Typography variant="body1">{project.description}</Typography>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>

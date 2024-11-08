@@ -34,8 +34,8 @@ export default function Page(props: Props) {
                 <div className={classes.sparklesBottom}></div>
             </div>
 
-            <HomeSeeMoreButton 
-                className={classes.button} 
+            <HomeSeeMoreButton
+                className={classes.button}
                 onClick={() => {
                     routes.projects().push();
                 }}
@@ -53,7 +53,7 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         height: "100%",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "center"
     },
     video: {
         objectFit: "cover",

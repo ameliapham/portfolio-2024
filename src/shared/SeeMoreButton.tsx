@@ -14,23 +14,17 @@ export function SeeMoreButton(props: Props) {
     const { cx, classes } = useStyles();
 
     return (
-        <div className={cx(classes.root, className)} >
-            <Button
-                className={classes.button}
-                onClick={onClick}
-                disabled={disabled}
-            >
-                <span className={classes.buttonText}>{children}</span>
-            </Button>
-        </div>
+        <Button
+            className={cx(classes.button, className)}
+            onClick={onClick}
+            disabled={disabled}
+        >
+            <span>{children}</span>
+        </Button>
     );
 }
 
 const useStyles = tss.create(({ theme }) => ({
-    root: {
-        justifyContent: "center",
-        alignItems: "center"
-    },
     button: {
         position: "relative",
         color: theme.palette.text.primary,
@@ -60,15 +54,16 @@ const useStyles = tss.create(({ theme }) => ({
             width: theme.spacing(3)
         },
 
+        span: {
+            position: "absolute",
+            left: theme.spacing(8),
+            transition: "all 0.4s ease",
+            transform: "translateX(10px)"
+        },
+
         "&:hover span": {
             transform: "translateX(20px)",
             transition: "all 0.4s ease"
         }
-    },
-    buttonText: {
-        position: "absolute",
-        left: theme.spacing(8),
-        transition: "all 0.4s ease",
-        transform: "translateX(10px)"
     }
 }));

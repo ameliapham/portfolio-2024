@@ -48,7 +48,7 @@ export function AppContextualized() {
                     "html, body": {
                         backgroundColor: theme.palette.background.default
                     },
-                    "html": {
+                    html: {
                         ":root": {
                             colorScheme: theme.palette.mode
                         }
@@ -80,11 +80,6 @@ export function AppContextualized() {
                         })()}
                     </Suspense>
                 </main>
-
-
-
-
-
             </div>
         </>
     );
@@ -99,17 +94,17 @@ const useStyles = tss
             : {
                 height: "100vh",
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "column"
             },
         header: isScrollablePage
             ? {
                 height: headerHeight,
                 position: "fixed",
                 top: 0,
-                width: "100%",
+                width: "100%"
             }
             : {
-                height: headerHeight,
+                height: headerHeight
             },
         main: isScrollablePage
             ? {
@@ -119,7 +114,7 @@ const useStyles = tss
                 flex: 1,
                 display: "flex",
                 justifyContent: "center",
-                overflow: "hidden",
+                overflow: "hidden"
             },
         page: isScrollablePage
             ? {}

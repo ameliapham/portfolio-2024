@@ -14,14 +14,14 @@ export default function ProjectGallery(props: Props) {
     const { className, route, onSeeProjectDetails } = props;
 
     const rotatedProjects = useMemo(() => {
-      let rotatedProjects = [...projects];
+        let rotatedProjects = [...projects];
 
-      while (rotatedProjects[1].id !== route.params.projectId) {
-          rotatedProjects = rotateArrayRight(rotatedProjects);
-      }
+        while (rotatedProjects[1].id !== route.params.projectId) {
+            rotatedProjects = rotateArrayRight(rotatedProjects);
+        }
 
-      return rotatedProjects;
-  }, [route.params.projectId]);
+        return rotatedProjects;
+    }, [route.params.projectId]);
 
     /*
     const previousProjectRoute = (() => {
@@ -113,7 +113,7 @@ export default function ProjectGallery(props: Props) {
         };
     }, []);
 
-    */ 
+    */
 
     return (
         <div className={className}>
@@ -132,7 +132,6 @@ export default function ProjectGallery(props: Props) {
         </div>
     );
 }
-
 
 /*
 function rotateToTheRight(items: Project[]): Project[] {

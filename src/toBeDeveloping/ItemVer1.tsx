@@ -15,7 +15,10 @@ export function Item(props: ItemProps) {
     const { cx, classes } = useStyles();
 
     return (
-        <div className={cx(classes.root, className)} style={{ backgroundImage: `url(${project.imageUrl})` }}>
+        <div
+            className={cx(classes.root, className)}
+            style={{ backgroundImage: `url(${project.imageUrl})` }}
+        >
             <div className={classes.content}>
                 <Typography variant="body1" className={classes.year}>
                     {project.year}

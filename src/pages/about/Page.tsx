@@ -6,12 +6,14 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { PhotoFrame } from "./PhotoFrame";
+import { NextButton, PreviousButton } from "shared/NavButton";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { BackgroundBeams } from "shared/BackgroundBeams";
 import { useDomRect } from "powerhooks/useDomRect";
 import LinearProgress from "@mui/material/LinearProgress";
-
+import { routes } from "routes";
 import { PageRoute } from "./route";
+import { aboutDetailsIds } from "./aboutDetailsIds";
 
 type Props = {
     className?: string;
@@ -21,16 +23,18 @@ type Props = {
 export default function Page(props: Props) {
     const { className, route } = props;
 
-    const { ref: rootRef, domRect: { width: rootWidth } } = useDomRect();
+    const {
+        ref: rootRef,
+        domRect: { width: rootWidth }
+    } = useDomRect();
 
     const { cx, classes } = useStyles({ rootWidth });
 
     return (
         <div ref={rootRef} className={cx(classes.root, className)}>
-            <div className={cx(classes.root, className)}>
+            <div className={classes.container}>
                 <PhotoFrame className={classes.frameZone} />
-
-                <div className={classes.content}>
+                <div className={classes.texts}>
                     {(() => {
                         switch (route.params.aboutDetailsId) {
                             case "cv":
@@ -41,15 +45,47 @@ export default function Page(props: Props) {
                     })()}
                 </div>
             </div>
-            <LinearProgress
-                className={classes.progressBar} variant="determinate" value={(() => {
-                    switch (route.params.aboutDetailsId) {
-                        case "cv":
-                            return 0;
-                        case "skills":
-                            return 100;
-                    }
-                })()} />
+
+            <div className={classes.progressNavBar}>
+                <div className={classes.buttons}>
+                    <PreviousButton
+                        disabled={aboutDetailsIds.indexOf(route.params.aboutDetailsId) === 0}
+                        {...routes[route.name]({
+                            ...route.params,
+                            aboutDetailsId:
+                                aboutDetailsIds[aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1]
+                        }).link}
+                    >
+                        Previous
+                    </PreviousButton>
+                    <NextButton
+                        disabled={
+                            aboutDetailsIds.indexOf(route.params.aboutDetailsId) ===
+                            aboutDetailsIds.length - 1
+                        }
+                        {...routes[route.name]({
+                            ...route.params,
+                            aboutDetailsId:
+                                aboutDetailsIds[aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1]
+                        }).link}
+                    >
+                        Next
+                    </NextButton>
+                </div>
+                <LinearProgress
+                    className={classes.progressBar}
+                    variant="determinate"
+                    value={(() => {
+                        switch (route.params.aboutDetailsId) {
+                            case "cv":
+                                return 50;
+                            case "skills":
+                                return 100;
+                        }
+                    })()}
+                />
+            </div>
+
             <BackgroundBeams className={classes.backgroundBeams} />
         </div>
     );
@@ -121,22 +157,8 @@ const useStyles = tss
     .create(({ theme, rootWidth, windowInnerWidth }) => {
         return {
             root: {
-                alignContent: "center",
-                gap: "5vw",
-                zIndex: 1,
-                justifyContent: "center",
                 display: "flex",
-                flexDirection: (() => {
-
-                    if (theme.breakpoints.values.md <= windowInnerWidth) {
-                        return "row";
-                    }
-                    return "column";
-
-                })(),
-                alignItems: "center",
-                padding: `0 ${0.05 * rootWidth}px 0 ${0.1 * rootWidth}px`,
-                position: "relative",
+                flexDirection: "column",
                 animation: `${keyframes`
                     0% {
                         opacity: 0;
@@ -146,20 +168,24 @@ const useStyles = tss
                     }
                     `} 400ms`
             },
-
-            backgroundBeams: {
-                position: "absolute",
-                height: "100%",
-                width: "100%",
-                overflow: "hidden",
-                zIndex: -1
+            container: {
+                flex: 1,
+                display: "flex",
+                padding: `0 ${0.1 * rootWidth}px 0 ${0.15 * rootWidth}px`,
+                alignItems: "center",
+                flexDirection: (() => {
+                    if (theme.breakpoints.values.md <= windowInnerWidth) {
+                        return "row";
+                    }
+                    return "column";
+                })(),
+                gap: "5vw"
             },
-
             frameZone: {
-                height: 0.35 * rootWidth,
+                height: 0.3 * rootWidth,
                 width: 0.25 * rootWidth
             },
-            content: {
+            texts: {
                 flex: 1,
                 color: theme.palette.text.primary,
                 display: "flex",
@@ -184,14 +210,35 @@ const useStyles = tss
             icons: {
                 color: theme.palette.text.primary
             },
+            progressNavBar: {
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+                paddingBottom: "30px"
+            },
             progressBar: {
-                position: "absolute",
-                bottom: "30px",
-                left: "50%",
-                transform: "translateX(-50%)",
                 width: "30%",
                 zIndex: 2,
+                borderRadius: "5px",
                 backgroundColor: alpha(theme.palette.text.primary, 0.2),
+
+                "& .MuiLinearProgress-bar": {
+                    background: "linear-gradient(to right, transparent, transparent, #6366f1, #0ea5e9)"
+                }
+            },
+            buttons: {
+                display: "flex",
+                gap: "20px"
+            },
+            backgroundBeams: {
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                overflow: "hidden",
+                zIndex: -1
             }
         };
     });

@@ -4,7 +4,6 @@ import ProjectDetails from "./ProjectDetails";
 import type { PageRoute } from "./route";
 import { routes } from "routes";
 
-
 type Props = {
     className?: string;
     route: PageRoute;
