@@ -9,7 +9,8 @@ import { NextButton, PreviousButton } from "shared/NavButton";
 import { projectIds } from "./projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
-
+import { useDelay } from "utils/useDelay";
+import { SplashScreen } from "shared/SplashScreen";
 
 type Props = {
     className?: string;
@@ -20,7 +21,7 @@ type Props = {
 export function ProjectGallery(props: Props) {
     const { className, route, onSeeProjectDetails } = props;
 
-    const { cx, classes } = useStyles();
+    const { cx, classes, css } = useStyles();
 
     const rotatedProjects = useMemo(() => {
         let rotatedProjects = [...projects];
@@ -31,6 +32,23 @@ export function ProjectGallery(props: Props) {
 
         return rotatedProjects;
     }, [route.params.projectId]);
+
+    const { isDelayed } = useDelay(5_000);
+
+    if (isDelayed) {
+        return (
+            <div
+                className={css({
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                })}
+            >
+                <SplashScreen className={css({ width: "50%" })} />
+            </div>
+        );
+    }
 
     return (
         <div className={cx(classes.root, className)}>
