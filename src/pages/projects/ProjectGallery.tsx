@@ -33,7 +33,7 @@ export function ProjectGallery(props: Props) {
         return rotatedProjects;
     }, [route.params.projectId]);
 
-    const { isDelayed } = useDelay(5_000);
+    const { isDelayed } = useDelay(2500);
 
     if (isDelayed) {
         return (
