@@ -6,6 +6,7 @@ import { HomeSeeMoreButton } from "./HomeSeeMoreButton";
 import { CustomGradients } from "./Gradients";
 import { routes } from "routes";
 import { PageRoute } from "./route";
+import { keyframes } from "tss-react";
 
 type Props = {
     className?: string;
@@ -53,7 +54,15 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         height: "100%",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        animation: `${keyframes`
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+            `} 400ms`
     },
     video: {
         objectFit: "cover",
