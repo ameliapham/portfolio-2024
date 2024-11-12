@@ -1,105 +1,56 @@
 import { tss } from "tss";
-import { useState } from "react";
-import { type ProjectId, projectIds } from "../projectsData";
-import { useScrollNavigation } from "utils/useScrollNavigation";
 import { SeeMoreButton } from "shared/SeeMoreButton";
-import { projects } from "../projectsData";
-import { NextButton, PreviousButton } from "shared/NavButton";
+import { projects, type Project } from "../projectsData";
+import { PageRoute } from "../route";
 import { routes } from "routes";
-import { alpha, LinearProgress } from "@mui/material";
 
 import { Zen } from "./Zen";
-import { Gmeta } from "./Gmeta";
-import { Badgeur } from "./Badgeur";
-import { Iso } from "./Iso";
-import { DameCanton } from "./DameCanton";
+//import { Gmeta } from "./Gmeta";
+//import { Badgeur } from "./Badgeur";
+//import { Iso } from "./Iso";
+//import { DameCanton } from "./DameCanton";
 
 export type Props = {
     className?: string;
-    projectId: ProjectId;
-    onBackToGallery: () => void;
+    route: PageRoute;
 };
 
 export function ProjectDetails(props: Props) {
-    const { className, projectId, onBackToGallery } = props;
-    const { cx, classes } = useStyles({ projectId });
-
-    const [detailsIndex, setDetailsIndex] = useState(0);
-
-    const incrementDetailsIndex = () => {
-        setDetailsIndex(prevIndex => prevIndex + 1);
-    };
-
-    const decrementDetailsIndex = () => {
-        setDetailsIndex(prevIndex => prevIndex - 1);
-    };
-
-    useScrollNavigation(direction => {
-        switch (direction) {
-            case "up":
-                decrementDetailsIndex();
-                break;
-            case "down":
-                incrementDetailsIndex();
-                break;
-        }
-    });
+    const { className, route } = props;
+    const { cx, classes } = useStyles({ projectId: route.params.projectId });
 
     return (
         <div className={cx(classes.root, className)}>
             <div className={classes.background} />
             <div>
-                <SeeMoreButton className={classes.buttonBack} onClick={onBackToGallery}>
+                <SeeMoreButton 
+                    className={classes.buttonBack} 
+                    {...routes[route.name]({
+                        ...route.params,
+                        projectId: undefined,
+                        isGalleryVisible: true
+                    }).link}
+                >
                     Back
                 </SeeMoreButton>
             </div>
             <div className={classes.content}>
                 {(() => {
-                    switch (projectId) {
+                    switch (route.params.projectId) {
                         case "zen":
-                            return <Zen detailsIndex={detailsIndex} />;
+                            return <Zen route={route} />;
+                        /*
                         case "gmeta":
                             return <Gmeta detailsIndex={detailsIndex} />;
                         case "badgeur":
-                            return <Badgeur route={} />;
+                            return <Badgeur detailsIndex={detailsIndex} />;
                         case "iso":
                             return <Iso detailsIndex={detailsIndex} />;
                         case "dame":
                             return <DameCanton detailsIndex={detailsIndex} />;
+                        */
                     }
                 })()}
-            </div>
-            <div className={classes.progressNavBar}>
-                <div className={classes.buttons}>
-                    <PreviousButton
-                        //disabled={projectIds.indexOf(route.params.projectId) === 0}
-                        {...routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        }).link}
-                    >
-                        Previous
-                    </PreviousButton>
-                    <NextButton
-                        //disabled={projectIds.indexOf(route.params.projectId) === projectIds.length - 1}
-                        {...routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                        }).link}
-                    >
-                        Next
-                    </NextButton>
-                </div>
-                <LinearProgress
-                    className={classes.progressBar}
-                    variant="determinate"
-                    value={(() => {
-                        const totalProjects = projectIds.length;
-                        const currentProjectIndex = projectIds.indexOf(route.params.projectId);
-                        if (currentProjectIndex === -1) return 0;
-                        return ((currentProjectIndex + 1) / totalProjects) * 100;
-                    })()}
-                />
             </div>
         </div>
     );
@@ -107,10 +58,11 @@ export function ProjectDetails(props: Props) {
 
 const useStyles = tss
     .withName({ ProjectDetails })
-    .withParams<{ projectId: ProjectId }>()
+    .withParams<{ projectId: Project["id"] }>()
     .create(({ theme, projectId, headerHeight }) => {
-        const project = projects.find(item => item.id === projectId);
+        const project = projects.find(project => project.id === projectId);
         const backgroundImage = project ? `url(${project.backgroundUrl})` : "none";
+        //assert(project !== undefined);
 
         return {
             root: {
@@ -148,34 +100,6 @@ const useStyles = tss
                 flex: 1,
                 //order: "5px solid pink",
                 padding: "0 10%"
-            },
-            progressNavBar: {
-                width: "100%",
-                border: "1px solid #f5f5f5",
-                position: "absolute",
-                left: "50%",
-                bottom: 0,
-                transform: "translate(-50%, 0)",
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                alignItems: "center",
-                justifyContent: "center",
-                paddingBottom: "30px",
-            },
-            progressBar: {
-                width: "30%",
-                zIndex: 2,
-                borderRadius: "5px",
-                backgroundColor: alpha(theme.palette.text.primary, 0.2),
-
-                "& .MuiLinearProgress-bar": {
-                    background: "linear-gradient(to right, transparent, #6366f1, #0ea5e9)"
-                }
-            },
-            buttons: {
-                display: "flex",
-                gap: "20px"
             },
         };
     });
