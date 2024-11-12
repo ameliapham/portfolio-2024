@@ -14,12 +14,11 @@ import { SplashScreen } from "shared/SplashScreen";
 
 type Props = {
     className?: string;
-    onSeeProjectDetails: () => void;
     route: PageRoute;
 };
 
 export function ProjectGallery(props: Props) {
-    const { className, route, onSeeProjectDetails } = props;
+    const { className, route } = props;
 
     const { cx, classes, css } = useStyles();
 
@@ -62,7 +61,13 @@ export function ProjectGallery(props: Props) {
                             backgroundImage: `url(${imageUrl})`
                         }}
                     >
-                        <div className={classes.content} onClick={onSeeProjectDetails}>
+                        <div
+                            className={classes.content}
+                            {...routes[route.name]({
+                                ...route.params,
+                                isGalleryVisible: false
+                            }).link}
+                        >
                             <Typography variant="body1" className={classes.year}>
                                 {year}
                             </Typography>
@@ -72,7 +77,13 @@ export function ProjectGallery(props: Props) {
                             <Typography variant="body1" className={classes.description}>
                                 {description}
                             </Typography>
-                            <SeeMoreButton onClick={onSeeProjectDetails} className={classes.seeMoreButton}>
+                            <SeeMoreButton
+                                className={classes.seeMoreButton}
+                                {...routes[route.name]({
+                                    ...route.params,
+                                    isGalleryVisible: false
+                                }).link}
+                            >
                                 See More
                             </SeeMoreButton>
                         </div>
@@ -107,7 +118,7 @@ export function ProjectGallery(props: Props) {
                         const totalProjects = projectIds.length;
                         const currentProjectIndex = projectIds.indexOf(route.params.projectId);
                         if (currentProjectIndex === -1) return 0;
-                        return ((currentProjectIndex + 1) / totalProjects) * 100; 
+                        return ((currentProjectIndex + 1) / totalProjects) * 100;
                     })()}
                 />
             </div>

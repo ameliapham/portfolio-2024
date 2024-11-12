@@ -2,7 +2,6 @@ import { tss } from "tss";
 import { ProjectGallery } from "./ProjectGallery";
 import { ProjectDetails } from "./ProjectDetails";
 import type { PageRoute } from "./route";
-import { routes } from "routes";
 
 type Props = {
     className?: string;
@@ -19,23 +18,11 @@ export default function Page(props: Props) {
                 <ProjectGallery
                     className={classes.gallery}
                     route={route}
-                    onSeeProjectDetails={() => {
-                        routes[route.name]({
-                            ...route.params,
-                            isGalleryVisible: false
-                        }).push();
-                    }}
                 />
             ) : (
                 <ProjectDetails
                     className={classes.details}
-                    projectId={route.params.projectId}
-                    onBackToGallery={() => {
-                        routes[route.name]({
-                            ...route.params,
-                            isGalleryVisible: true
-                        }).push();
-                    }}
+                    route={route}
                 />
             )}
         </div>
