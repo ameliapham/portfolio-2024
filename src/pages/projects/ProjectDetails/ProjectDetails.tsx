@@ -6,7 +6,7 @@ import { routes } from "routes";
 
 import { Zen } from "./Zen";
 //import { Gmeta } from "./Gmeta";
-//import { Badgeur } from "./Badgeur";
+import { Badgeur } from "./Badgeur";
 //import { Iso } from "./Iso";
 //import { DameCanton } from "./DameCanton";
 
@@ -23,8 +23,8 @@ export function ProjectDetails(props: Props) {
         <div className={cx(classes.root, className)}>
             <div className={classes.background} />
             <div>
-                <SeeMoreButton 
-                    className={classes.buttonBack} 
+                <SeeMoreButton
+                    className={classes.buttonBack}
                     {...routes[route.name]({
                         ...route.params,
                         projectId: undefined,
@@ -39,11 +39,12 @@ export function ProjectDetails(props: Props) {
                     switch (route.params.projectId) {
                         case "zen":
                             return <Zen route={route} />;
+                        case "badgeur":
+                            return <Badgeur route={route} />;
                         /*
                         case "gmeta":
                             return <Gmeta detailsIndex={detailsIndex} />;
-                        case "badgeur":
-                            return <Badgeur detailsIndex={detailsIndex} />;
+                        
                         case "iso":
                             return <Iso detailsIndex={detailsIndex} />;
                         case "dame":
