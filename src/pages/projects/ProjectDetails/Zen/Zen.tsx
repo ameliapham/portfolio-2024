@@ -67,7 +67,6 @@ export function Zen(props: Props) {
 const useStyles = tss.withName({ Zen }).create(() => {
     return {
         root: {
-            border: "1px solid red",
             height: "100%",
             width: "100%",
             display: "flex",
@@ -75,7 +74,10 @@ const useStyles = tss.withName({ Zen }).create(() => {
         },
         content: {
             flex: 2,
-            padding: "0 10%"
+            padding: "0 10%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
         },
         navComponent: {
         }

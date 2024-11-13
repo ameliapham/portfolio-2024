@@ -51,12 +51,10 @@ const useStyles = tss
     .create(({ theme }) => {
         return {
             root: {
-                border: "1px solid #f5f5f5",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                paddingBottom: `${theme.spacing(2)}`,
             },
             progressBar: {
                 width: "30%",

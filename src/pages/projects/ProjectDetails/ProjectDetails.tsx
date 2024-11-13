@@ -59,19 +59,18 @@ export function ProjectDetails(props: Props) {
 const useStyles = tss
     .withName({ ProjectDetails })
     .withParams<{ projectId: Project["id"] }>()
-    .create(({ theme, projectId, headerHeight }) => {
+    .create(({ theme, projectId }) => {
         const project = projects.find(project => project.id === projectId);
         const backgroundImage = project ? `url(${project.backgroundUrl})` : "none";
         //assert(project !== undefined);
 
         return {
             root: {
-                padding: `${theme.spacing(2)} ${theme.spacing(10)} 0 ${theme.spacing(10)}`,
+                padding: `${theme.spacing(2)} ${theme.spacing(10)} ${theme.spacing(4)} ${theme.spacing(10)}`,
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
                 overflow: "hidden",
-                border: "5px solid green",
             },
             background: {
                 position: "absolute",
