@@ -20,6 +20,8 @@ export function NavComponent(props: Props) {
             <div className={classes.buttons}>
                 <SeeMoreButton
                     hyphenPosition="left"
+                    widthLinePx={40}
+                    translateLinePx={30}
                     disabled={previousLink === undefined}
                     {...previousLink}
                 >
@@ -27,6 +29,8 @@ export function NavComponent(props: Props) {
                 </SeeMoreButton>
                 <SeeMoreButton
                     hyphenPosition="right"
+                    widthLinePx={40}
+                    translateLinePx={30}
                     disabled={nextLink === undefined}
                     {...nextLink}
                 >
@@ -37,8 +41,6 @@ export function NavComponent(props: Props) {
                 className={classes.progressBar}
                 variant="determinate"
                 value={processPercentage}
-
-               
             />
         </div>
     )

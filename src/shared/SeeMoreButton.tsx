@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import Button from "@mui/material/Button";
 import { alpha } from "@mui/material/styles";
 
@@ -9,6 +9,9 @@ type Props = {
     disabled?: boolean;
     hyphenPosition?: "left" | "right";
     children: React.ReactNode;
+    translateLinePx?: number;
+    translateTextPx?: number;
+    widthLinePx?: number;
 };
 
 export function SeeMoreButton(props: Props) {
@@ -19,9 +22,13 @@ export function SeeMoreButton(props: Props) {
         disabled, 
         href, 
         hyphenPosition = "right", 
+        translateLinePx = 50,
+        widthLinePx = 60
     } = props;
     const { cx, classes } = useStyles({
-        isBefore: hyphenPosition === "right"
+        isBefore: hyphenPosition === "right",
+        translateLinePx,
+        widthLinePx
     });
 
     return (
@@ -41,8 +48,10 @@ const useStyles = tss
     .withNestedSelectors<"buttonText">()
     .withParams<{
         isBefore: boolean;
+        translateLinePx?: number;
+        widthLinePx?: number;
     }>()
-    .create(({ theme, isBefore, classes }) => ({
+    .create(({ theme, isBefore, classes, translateLinePx, widthLinePx }) => ({
         root: {
             position: "relative",
             color: theme.palette.text.primary,
@@ -50,7 +59,6 @@ const useStyles = tss
             padding: 0,
             cursor: "pointer",
             width: "200px",
-            left: "0",
 
             "&:hover": {
                 backgroundColor: "transparent"
@@ -60,7 +68,7 @@ const useStyles = tss
                 content: "''",
                 position: "absolute",
                 left: "0",
-                width: theme.spacing(8),
+                width: `${widthLinePx}px`,
                 height: theme.spacing(0.15),
                 backgroundColor: alpha(theme.palette.text.primary, 0.5),
                 transition: "all 0.4s ease",
@@ -69,26 +77,26 @@ const useStyles = tss
                 content: "''",
                 position: "absolute",
                 right: "0",
-                width: theme.spacing(8),
+                width: `${widthLinePx}px`,
                 height: theme.spacing(0.15),
                 backgroundColor: alpha(theme.palette.text.primary, 0.5),
                 transition: "all 0.4s ease",
             },
 
             [`&:hover::${isBefore ? "before" : "after"}`]: {
-                transform: `translateX(${isBefore ? "" : "-"}50px)`,
+                transform: `translateX(${isBefore ? "" : "-"}${translateLinePx}px)`,
                 width: theme.spacing(3)
             },
 
             [`&:hover .${classes.buttonText}`]: {
-                transform: `translateX(${isBefore ? "" : "-"}20px)`,
+                transform: `translateX(${isBefore ? "" : "-"}15px)`,
                 transition: "all 0.4s ease"
             }
         },
         buttonText: {
             position: "absolute",
-            left: theme.spacing(8),
+            left: isBefore? `${(widthLinePx ?? 0) + 10}px` : "auto",
+            right: isBefore? "auto" : `${(widthLinePx ?? 0) + 10}px`,
             transition: "all 0.4s ease",
-            transform: "translateX(10px)"
         }
     }));
