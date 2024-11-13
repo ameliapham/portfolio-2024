@@ -43,7 +43,8 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
             display: "flex",
             justifyContent: "center",
             position: "relative",
-            paddingTop: "56.25%",
+            //paddingTop: "56.25%", // 16:9
+            height: "100%",
             width: "100%",
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`

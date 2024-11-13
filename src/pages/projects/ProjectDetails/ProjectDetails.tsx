@@ -8,7 +8,7 @@ import { Zen } from "./Zen";
 //import { Gmeta } from "./Gmeta";
 import { Badgeur } from "./Badgeur";
 //import { Iso } from "./Iso";
-//import { DameCanton } from "./DameCanton";
+import { DameCanton } from "./DameCanton";
 
 export type Props = {
     className?: string;
@@ -41,14 +41,15 @@ export function ProjectDetails(props: Props) {
                             return <Zen route={route} />;
                         case "badgeur":
                             return <Badgeur route={route} />;
+                        case "dame":
+                            return <DameCanton route={route} />;
                         /*
                         case "gmeta":
                             return <Gmeta detailsIndex={detailsIndex} />;
                         
                         case "iso":
                             return <Iso detailsIndex={detailsIndex} />;
-                        case "dame":
-                            return <DameCanton detailsIndex={detailsIndex} />;
+                        
                         */
                     }
                 })()}
