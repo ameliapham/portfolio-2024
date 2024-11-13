@@ -45,7 +45,7 @@ export function Page1(props: Props) {
                         reflect evolving customer needs after two years, and the logo, brand visual
                         identity, and app prototype with a user-friendly UI design were created.
                     </Typography>
-                    <SeeMoreButton>View it online</SeeMoreButton>
+                    <SeeMoreButton hyphenPosition="right">View it online</SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>

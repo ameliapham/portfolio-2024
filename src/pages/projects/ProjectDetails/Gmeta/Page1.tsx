@@ -39,7 +39,7 @@ export function Page1(props: Props) {
                         cohesion that develops in a classroom, particularly designed for users with
                         limited digital experience.
                     </Typography>
-                    <SeeMoreButton>View it online</SeeMoreButton>
+                    <SeeMoreButton hyphenPosition="right">View it online</SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>

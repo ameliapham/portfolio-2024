@@ -105,7 +105,9 @@ function Cv() {
                 interactive prototypes, web design and development, as well as user testing.
             </Typography>
 
-            <SeeMoreButton>Download CV</SeeMoreButton>
+            <SeeMoreButton hyphenPosition="right">
+                Download CV
+            </SeeMoreButton>
         </>
     );
 }

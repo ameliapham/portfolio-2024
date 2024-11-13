@@ -24,6 +24,7 @@ export function ProjectDetails(props: Props) {
             <div className={classes.background} />
             <div>
                 <SeeMoreButton 
+                    hyphenPosition="right"
                     className={classes.buttonBack} 
                     {...routes[route.name]({
                         ...route.params,
@@ -66,12 +67,12 @@ const useStyles = tss
 
         return {
             root: {
-                padding: `${headerHeight} ${theme.spacing(10)}`,
+                padding: `${theme.spacing(2)} ${theme.spacing(10)} 0 ${theme.spacing(10)}`,
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                overflow: "hidden"
-                //border: "5px solid red",
+                overflow: "hidden",
+                border: "5px solid green",
             },
             background: {
                 position: "absolute",
@@ -88,18 +89,10 @@ const useStyles = tss
                 transition: "background 0.5s"
             },
             buttonBack: {
-                padding: `${theme.spacing(2)} 0`,
-                opacity: 0.4,
                 transition: "opacity 0.5s",
-                ":hover": {
-                    opacity: 1,
-                    transition: "opacity 0.5s"
-                }
             },
             content: {
                 flex: 1,
-                //order: "5px solid pink",
-                padding: "0 10%"
             },
         };
     });

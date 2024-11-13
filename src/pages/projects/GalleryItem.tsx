@@ -30,7 +30,10 @@ export function GalleryItem(props: Props) {
                 <Typography variant="body1" className={classes.des}>
                     {itemData.description}
                 </Typography>
-                <SeeMoreButton onClick={onClick} className={classes.seeMoreButton}>
+                <SeeMoreButton
+                    onClick={onClick}
+                    className={classes.seeMoreButton}
+                    hyphenPosition="right">
                     See More
                 </SeeMoreButton>
             </div>
@@ -157,7 +160,7 @@ const useStyles = tss
 
                 [`&:hover .${classes.seeMoreButton}`]: {
                     "&::before": {
-                        width: theme.spacing(3)
+                        //width: theme.spacing(3)
                     }
                 }
             },
