@@ -6,14 +6,13 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { PhotoFrame } from "./PhotoFrame";
-import { NextButton, PreviousButton } from "shared/NavButton";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { BackgroundBeams } from "shared/BackgroundBeams";
 import { useDomRect } from "powerhooks/useDomRect";
-import LinearProgress from "@mui/material/LinearProgress";
 import { routes } from "routes";
 import { PageRoute } from "./route";
 import { aboutDetailsIds } from "./aboutDetailsIds";
+import { NavComponent } from "shared/NavComponent";
 
 type Props = {
     className?: string;
@@ -46,45 +45,28 @@ export default function Page(props: Props) {
                 </div>
             </div>
 
-            <div className={classes.progressNavBar}>
-                <div className={classes.buttons}>
-                    <PreviousButton
-                        disabled={aboutDetailsIds.indexOf(route.params.aboutDetailsId) === 0}
-                        {...routes[route.name]({
+            <NavComponent
+                className={classes.navComponent}
+                previousLink={
+                    aboutDetailsIds.indexOf(route.params.aboutDetailsId) > 0
+                        ? routes[route.name]({
                             ...route.params,
-                            aboutDetailsId:
-                                aboutDetailsIds[aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1]
-                        }).link}
-                    >
-                        Previous
-                    </PreviousButton>
-                    <NextButton
-                        disabled={
-                            aboutDetailsIds.indexOf(route.params.aboutDetailsId) ===
-                            aboutDetailsIds.length - 1
-                        }
-                        {...routes[route.name]({
+                            aboutDetailsId: aboutDetailsIds[aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1]
+                        }).link
+                        : undefined
+                }
+                nextLink={
+                    aboutDetailsIds.indexOf(route.params.aboutDetailsId) < aboutDetailsIds.length - 1
+                        ? routes[route.name]({
                             ...route.params,
-                            aboutDetailsId:
-                                aboutDetailsIds[aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1]
-                        }).link}
-                    >
-                        Next
-                    </NextButton>
-                </div>
-                <LinearProgress
-                    className={classes.progressBar}
-                    variant="determinate"
-                    value={(() => {
-                        switch (route.params.aboutDetailsId) {
-                            case "cv":
-                                return 50;
-                            case "skills":
-                                return 100;
-                        }
-                    })()}
-                />
-            </div>
+                            aboutDetailsId: aboutDetailsIds[aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1]
+                        }).link
+                        : undefined
+                }
+                processPercentage={
+                    (aboutDetailsIds.indexOf(route.params.aboutDetailsId) / (aboutDetailsIds.length - 1)) * 100
+                }
+            />
 
             <BackgroundBeams className={classes.backgroundBeams} />
         </div>
@@ -159,6 +141,7 @@ const useStyles = tss
     .create(({ theme, rootWidth, windowInnerWidth }) => {
         return {
             root: {
+                paddingBottom: `${theme.spacing(4)}`,
                 display: "flex",
                 flexDirection: "column",
                 animation: `${keyframes`
@@ -212,28 +195,7 @@ const useStyles = tss
             icons: {
                 color: theme.palette.text.primary
             },
-            progressNavBar: {
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                paddingBottom: "30px"
-            },
-            progressBar: {
-                width: "30%",
-                zIndex: 2,
-                borderRadius: "5px",
-                backgroundColor: alpha(theme.palette.text.primary, 0.2),
-
-                "& .MuiLinearProgress-bar": {
-                    background: "linear-gradient(to right, transparent, #6366f1, #0ea5e9)"
-                }
-            },
-            buttons: {
-                display: "flex",
-                gap: "20px"
+            navComponent: {
             },
             backgroundBeams: {
                 position: "absolute",
