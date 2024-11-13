@@ -47,7 +47,7 @@ export function Badgeur(props: Props) {
                             }).link
                     }
                     nextLink={
-                        route.params.detailsIndex === 3
+                        route.params.detailsIndex === 4
                             ? undefined
                             : routes[route.name]({
                                 ...route.params,
@@ -55,8 +55,7 @@ export function Badgeur(props: Props) {
                             }).link
                     }
                     processPercentage={
-                        (route.params.detailsIndex / 3) * 100
-                        //(route.params.detailsIndex + 1) / 4 * 100
+                        (route.params.detailsIndex / 4) * 100
                     }
                 />
         </div>
@@ -69,14 +68,14 @@ const useStyles = tss.withName({ Badgeur }).create(() => {
             width: "100%",
             height: "100%",
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "column"
         },
         content: {
             flex: 2,
             padding: "0 10%",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "center"
         },
     };
 });
