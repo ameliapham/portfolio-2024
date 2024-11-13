@@ -5,7 +5,7 @@ import { PageRoute } from "../route";
 import { routes } from "routes";
 
 import { Zen } from "./Zen";
-//import { Gmeta } from "./Gmeta";
+import { Gmeta } from "./Gmeta";
 import { Badgeur } from "./Badgeur";
 //import { Iso } from "./Iso";
 import { DameCanton } from "./DameCanton";
@@ -43,9 +43,10 @@ export function ProjectDetails(props: Props) {
                             return <Badgeur route={route} />;
                         case "dame":
                             return <DameCanton route={route} />;
+                            case "gmeta":
+                            return <Gmeta route={route} />;
                         /*
-                        case "gmeta":
-                            return <Gmeta detailsIndex={detailsIndex} />;
+                        
                         
                         case "iso":
                             return <Iso detailsIndex={detailsIndex} />;
