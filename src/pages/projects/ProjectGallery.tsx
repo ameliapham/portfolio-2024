@@ -4,13 +4,12 @@ import type { PageRoute } from "./route";
 import { rotateArrayRight } from "utils/rotateArray";
 import { routes } from "routes";
 import { tss, keyframes } from "tss";
-import { alpha, LinearProgress } from "@mui/material";
-import { NextButton, PreviousButton } from "shared/NavButton";
 import { projectIds } from "./projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
 import { useDelay } from "utils/useDelay";
 import { SplashScreen } from "shared/SplashScreen";
+import { NavComponent } from "shared/NavComponent";
 
 type Props = {
     className?: string;
@@ -90,38 +89,29 @@ export function ProjectGallery(props: Props) {
                     </div>
                 ))}
             </div>
-            <div className={classes.progressNavBar}>
-                <div className={classes.buttons}>
-                    <PreviousButton
-                        //disabled={projectIds.indexOf(route.params.projectId) === 0}
-                        {...routes[route.name]({
+
+            <NavComponent
+                className={classes.navComponent}
+                previousLink={
+                    projectIds.indexOf(route.params.projectId) > 0
+                        ? routes[route.name]({
                             ...route.params,
                             projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        }).link}
-                    >
-                        Previous
-                    </PreviousButton>
-                    <NextButton
-                        //disabled={projectIds.indexOf(route.params.projectId) === projectIds.length - 1}
-                        {...routes[route.name]({
+                        }).link
+                        : undefined
+                }
+                nextLink={
+                    projectIds.indexOf(route.params.projectId) < projectIds.length - 1
+                        ? routes[route.name]({
                             ...route.params,
                             projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                        }).link}
-                    >
-                        Next
-                    </NextButton>
-                </div>
-                <LinearProgress
-                    className={classes.progressBar}
-                    variant="determinate"
-                    value={(() => {
-                        const totalProjects = projectIds.length;
-                        const currentProjectIndex = projectIds.indexOf(route.params.projectId);
-                        if (currentProjectIndex === -1) return 0;
-                        return ((currentProjectIndex + 1) / totalProjects) * 100;
-                    })()}
-                />
-            </div>
+                        }).link
+                        : undefined
+                }
+                processPercentage={
+                    (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
+                }
+            />
         </div>
     );
 }
@@ -269,7 +259,6 @@ const useStyles = tss
             },
             seeMoreButton: {
             },
-
             name: {
                 fontSize: "40px",
                 textTransform: "uppercase",
@@ -287,33 +276,11 @@ const useStyles = tss
                 opacity: 0,
                 animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`
             },
-            progressNavBar: {
+            navComponent: {
                 width: "100%",
-                border: "1px solid #f5f5f5",
                 position: "absolute",
-                left: "50%",
                 bottom: 0,
-                transform: "translate(-50%, 0)",
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                alignItems: "center",
-                justifyContent: "center",
-                paddingBottom: "30px",
-            },
-            progressBar: {
-                width: "30%",
-                zIndex: 2,
-                borderRadius: "5px",
-                backgroundColor: alpha(theme.palette.text.primary, 0.2),
-
-                "& .MuiLinearProgress-bar": {
-                    background: "linear-gradient(to right, transparent, #6366f1, #0ea5e9)"
-                }
-            },
-            buttons: {
-                display: "flex",
-                gap: "20px"
+                padding: `0 ${theme.spacing(10)} ${theme.spacing(4)} ${theme.spacing(10)}`,
             },
         }
     });
