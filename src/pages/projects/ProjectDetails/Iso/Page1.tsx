@@ -40,7 +40,7 @@ export function Page1(props: Props) {
                         unique story narrated by a local resident, offering a deep dive into the island's
                         collective memory.
                     </Typography>
-                    <SeeMoreButton hyphenPosition="right">View it online</SeeMoreButton>
+                    <SeeMoreButton>View it online</SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>

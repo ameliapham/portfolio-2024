@@ -12,7 +12,14 @@ type Props = {
 };
 
 export function SeeMoreButton(props: Props) {
-    const { className, onClick, children, disabled, href, hyphenPosition } = props;
+    const { 
+        className, 
+        onClick, 
+        children, 
+        disabled, 
+        href, 
+        hyphenPosition = "right", 
+    } = props;
     const { cx, classes } = useStyles({
         isBefore: hyphenPosition === "right"
     });

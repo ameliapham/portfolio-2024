@@ -38,7 +38,7 @@ export function Page1(props: Props) {
                         assistance, and a custom UI design with FIgma. The development was subsequently
                         executed using React and TypeScript.
                     </Typography>
-                    <SeeMoreButton hyphenPosition="right">View it online</SeeMoreButton>
+                    <SeeMoreButton>View it online</SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>

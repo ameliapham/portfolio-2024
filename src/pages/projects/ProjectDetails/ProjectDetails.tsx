@@ -24,7 +24,6 @@ export function ProjectDetails(props: Props) {
             <div className={classes.background} />
             <div>
                 <SeeMoreButton 
-                    hyphenPosition="right"
                     className={classes.buttonBack} 
                     {...routes[route.name]({
                         ...route.params,

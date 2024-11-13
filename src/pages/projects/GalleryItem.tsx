@@ -33,7 +33,7 @@ export function GalleryItem(props: Props) {
                 <SeeMoreButton
                     onClick={onClick}
                     className={classes.seeMoreButton}
-                    hyphenPosition="right">
+                >
                     See More
                 </SeeMoreButton>
             </div>

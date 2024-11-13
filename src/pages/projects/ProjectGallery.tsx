@@ -83,7 +83,6 @@ export function ProjectGallery(props: Props) {
                                     ...route.params,
                                     isGalleryVisible: false
                                 }).link}
-                                hyphenPosition="right"
                             >
                                 See More
                             </SeeMoreButton>
