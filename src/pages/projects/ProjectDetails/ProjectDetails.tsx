@@ -27,8 +27,8 @@ export function ProjectDetails(props: Props) {
                     className={classes.buttonBack}
                     {...routes[route.name]({
                         ...route.params,
-                        projectId: undefined,
-                        isGalleryVisible: true
+                        isGalleryVisible: true,
+                        detailsIndex: undefined,
                     }).link}
                 >
                     Back
