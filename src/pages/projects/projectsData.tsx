@@ -11,6 +11,7 @@ import p23badgeur from "assets/p-badgeur.webp";
 
 import bgGmeta from "assets/bg-gmeta.webp";
 import bgBadgeur from "assets/bg-badgeur.svg";
+import bgFamed from "assets/bg-famed.svg";
 
 export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
@@ -83,10 +84,10 @@ export const projects: Project[] = [
         id: projectIds[6],
         year: "2021",
         imageUrl: p21famed,
-        backgroundUrl: p21famed,
+        backgroundUrl: bgFamed,
         name: "Famed",
         description:
-            "The “FAMED” project is an innovative initiative poised to transform the retail landscape. Developed in an academic setting, FAMED aims to redefine the shopping experience by combining advanced technologies (VR & AI) and personalization."
+            "In the world of retail, “FAMED” is a groundbreaking innovation that transforms digital advertising and interactive shopping. By merging the engaging experience of a storefront-sized mirror with the power of digital marketing, FAMED creates an immersive, personalized shopping journey for consumers, while offering brands a unique and captivating advertising platform to connect with their audience."
     },
     {
         id: projectIds[7],
