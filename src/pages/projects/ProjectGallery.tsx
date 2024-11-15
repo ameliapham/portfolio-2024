@@ -211,7 +211,7 @@ const useStyles = tss
             slide: {},
             item: {
                 width: sideLength,
-                height: `calc(${sideLength} * 1)`,
+                height: sideLength,
                 position: "absolute",
                 top: "70%",
                 transform: "translate(0, -50%)",
@@ -271,7 +271,7 @@ const useStyles = tss
                 borderRadius: "10px",
                 backdropFilter: "brightness(60%) blur(0px)",
                 opacity: 0,
-                animation: `${animateContent} 0.5s ease-in-out 0s 1 forwards`,
+                animation: `${animateContent} 0.3s ease-in-out 0.2s 1 forwards`,
                 cursor: "pointer",
                 transition: "all 0.4s ease",
 
