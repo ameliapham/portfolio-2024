@@ -3,7 +3,6 @@ import { SeeMoreButton } from "shared/SeeMoreButton";
 import { projects, type Project } from "../projectsData";
 import { PageRoute } from "../route";
 import { routes } from "routes";
-
 import { Zen } from "./Zen";
 import { Gmeta } from "./Gmeta";
 import { Badgeur } from "./Badgeur";

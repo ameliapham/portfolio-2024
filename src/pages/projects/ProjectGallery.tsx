@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { projects } from "./projectsData";
 import type { PageRoute } from "./route";
 import { rotateArrayRight } from "utils/rotateArray";
@@ -7,14 +7,16 @@ import { tss, keyframes } from "tss";
 import { projectIds } from "./projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
-import { useDelay } from "utils/useDelay";
 import { SplashScreen } from "shared/SplashScreen";
 import { NavComponent } from "shared/NavComponent";
+import { useDownloadAssets } from "utils/useDownloadAssets";
 
 type Props = {
     className?: string;
     route: PageRoute;
 };
+
+const projectAssetUrls= projects.map(project => project.imageUrl);
 
 export function ProjectGallery(props: Props) {
     const { className, route } = props;
@@ -31,9 +33,13 @@ export function ProjectGallery(props: Props) {
         return rotatedProjects;
     }, [route.params.projectId]);
 
-    const { isDelayed } = useDelay(2500);
+    const { isDownloadingAssets } = useDownloadAssets({ 
+        urls: projectAssetUrls
+    });
 
-    if (isDelayed) {
+    const { isDelayed } = useDelayOnlyOnce();
+
+    if (isDownloadingAssets || isDelayed) {
         return (
             <div
                 className={css({
@@ -95,17 +101,17 @@ export function ProjectGallery(props: Props) {
                 previousLink={
                     projectIds.indexOf(route.params.projectId) > 0
                         ? routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        }).link
+                              ...route.params,
+                              projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+                          }).link
                         : undefined
                 }
                 nextLink={
                     projectIds.indexOf(route.params.projectId) < projectIds.length - 1
                         ? routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                        }).link
+                              ...route.params,
+                              projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+                          }).link
                         : undefined
                 }
                 processPercentage={
@@ -163,8 +169,7 @@ const useStyles = tss
                     }
                     `} 1s`
             },
-            slide: {
-            },
+            slide: {},
             item: {
                 width: sideLength,
                 height: `calc(${sideLength} * 1)`,
@@ -216,7 +221,7 @@ const useStyles = tss
 
                 [`&:nth-child(2) .${classes.content}`]: {
                     display: "block"
-                },
+                }
             },
             content: {
                 position: "absolute",
@@ -257,8 +262,7 @@ const useStyles = tss
                     }
                 }
             },
-            seeMoreButton: {
-            },
+            seeMoreButton: {},
             name: {
                 fontSize: "40px",
                 textTransform: "uppercase",
@@ -280,7 +284,34 @@ const useStyles = tss
                 width: "100%",
                 position: "absolute",
                 bottom: 0,
-                padding: `0 ${theme.spacing(10)} ${theme.spacing(4)} ${theme.spacing(10)}`,
-            },
-        }
+                padding: `0 ${theme.spacing(10)} ${theme.spacing(4)} ${theme.spacing(10)}`
+            }
+        };
     });
+
+
+let hasBeenDelayedAlready = false;
+
+const ARTIFICIAL_DELAY = 2_500;
+
+export function useDelayOnlyOnce() {
+    const [isDelayed, setIsDelayed] = useState(hasBeenDelayedAlready ? false : true);
+
+    useEffect(() => {
+        if (hasBeenDelayedAlready) {
+            return;
+        }
+
+        hasBeenDelayedAlready = true;
+
+        const timer = setTimeout(() => {
+            setIsDelayed(false);
+        }, ARTIFICIAL_DELAY);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+    return { isDelayed };
+}
