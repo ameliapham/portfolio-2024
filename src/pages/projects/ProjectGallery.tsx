@@ -10,13 +10,14 @@ import Typography from "@mui/material/Typography";
 import { SplashScreen } from "shared/SplashScreen";
 import { NavComponent } from "shared/NavComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
+import type { Link } from "type-route";
 
 type Props = {
     className?: string;
     route: PageRoute;
 };
 
-const projectAssetUrls= projects.map(project => project.imageUrl);
+const projectAssetUrls = projects.map(project => project.imageUrl);
 
 export function ProjectGallery(props: Props) {
     const { className, route } = props;
@@ -33,7 +34,7 @@ export function ProjectGallery(props: Props) {
         return rotatedProjects;
     }, [route.params.projectId]);
 
-    const { isDownloadingAssets } = useDownloadAssets({ 
+    const { isDownloadingAssets } = useDownloadAssets({
         urls: projectAssetUrls
     });
 
@@ -57,42 +58,55 @@ export function ProjectGallery(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             <div className={classes.slide}>
-                {rotatedProjects.map(({ id, imageUrl, description, name, year }) => (
-                    <div
+                {rotatedProjects.map(({ id, imageUrl, description, name, year }, i) => (
+                    <Item
                         key={name}
                         className={classes.item}
-                        data-project-id={id}
-                        style={{
-                            backgroundImage: `url(${imageUrl})`
-                        }}
+                        backgroundImage={imageUrl}
+                        link={
+                            i === 0 || i === 1
+                                ? undefined
+                                : routes[route.name]({
+                                      ...route.params,
+                                      projectId: id
+                                  }).link
+                        }
                     >
-                        <div
-                            className={classes.content}
-                            {...routes[route.name]({
-                                ...route.params,
-                                isGalleryVisible: false
-                            }).link}
-                        >
-                            <Typography variant="body1" className={classes.year}>
-                                {year}
-                            </Typography>
-                            <Typography variant="h2" className={classes.name}>
-                                {name}
-                            </Typography>
-                            <Typography variant="body1" className={classes.description}>
-                                {description}
-                            </Typography>
-                            <SeeMoreButton
-                                className={classes.seeMoreButton}
-                                {...routes[route.name]({
-                                    ...route.params,
-                                    isGalleryVisible: false
-                                }).link}
-                            >
-                                See More
-                            </SeeMoreButton>
-                        </div>
-                    </div>
+                        {(() => {
+                            if (i !== 1) {
+                                return null;
+                            }
+
+                            return (
+                                <a
+                                    className={classes.content}
+                                    {...routes[route.name]({
+                                        ...route.params,
+                                        isGalleryVisible: false
+                                    }).link}
+                                >
+                                    <Typography variant="body1" className={classes.year}>
+                                        {year}
+                                    </Typography>
+                                    <Typography variant="h2" className={classes.name}>
+                                        {name}
+                                    </Typography>
+                                    <Typography variant="body1" className={classes.description}>
+                                        {description}
+                                    </Typography>
+                                    <SeeMoreButton
+                                        className={classes.seeMoreButton}
+                                        {...routes[route.name]({
+                                            ...route.params,
+                                            isGalleryVisible: false
+                                        }).link}
+                                    >
+                                        See More
+                                    </SeeMoreButton>
+                                </a>
+                            );
+                        })()}
+                    </Item>
                 ))}
             </div>
 
@@ -120,6 +134,31 @@ export function ProjectGallery(props: Props) {
             />
         </div>
     );
+}
+
+function Item(props: {
+    className?: string;
+    backgroundImage: string;
+    link: Link | undefined;
+    children: React.ReactNode;
+}) {
+    const { className, backgroundImage, link, children } = props;
+
+    const styles = { backgroundImage: `url(${backgroundImage})` };
+
+    if (link === undefined) {
+        return (
+            <a className={className} style={styles}>
+                {children}
+            </a>
+        );
+    } else {
+        return (
+            <a className={className} style={styles} {...link}>
+                {children}
+            </a>
+        );
+    }
 }
 
 const animate = keyframes({
@@ -150,7 +189,7 @@ const animateContent = keyframes({
 
 const useStyles = tss
     .withName({ ProjectGallery })
-    .withNestedSelectors<"content" | "seeMoreButton">()
+    .withNestedSelectors<"seeMoreButton">()
     .create(({ classes, theme }) => {
         const sideLength = "200px";
         const left = "58%";
@@ -217,20 +256,17 @@ const useStyles = tss
                 "&:nth-child(n + 7)": {
                     left: `calc(${left} + 960px)`,
                     opacity: 0
-                },
-
-                [`&:nth-child(2) .${classes.content}`]: {
-                    display: "block"
                 }
             },
             content: {
+                display: "block",
+                textDecoration: "none",
                 position: "absolute",
                 top: "50%",
                 left: theme.spacing(10),
                 width: "40%",
                 textAlign: "left",
                 color: theme.palette.text.primary,
-                display: "none",
                 padding: theme.spacing(5),
                 borderRadius: "10px",
                 backdropFilter: "brightness(60%) blur(0px)",
@@ -288,7 +324,6 @@ const useStyles = tss
             }
         };
     });
-
 
 let hasBeenDelayedAlready = false;
 

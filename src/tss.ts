@@ -20,3 +20,5 @@ function useContext() {
 export const { tss } = createTss({
     useContext
 });
+
+export const useStyles = tss.create({});
