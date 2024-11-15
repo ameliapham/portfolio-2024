@@ -17,10 +17,6 @@ export function Page1(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
-    if (!project) {
-        return <Typography variant="body1">Project not found</Typography>;
-    }
-
     return (
         <div className={cx(classes.root, className)}>
             <Typography variant="body1" className={classes.year}>

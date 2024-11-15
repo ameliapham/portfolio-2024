@@ -13,6 +13,11 @@ import bgGmeta from "assets/bg-gmeta.webp";
 import bgBadgeur from "assets/bg-badgeur.svg";
 import bgFamed from "assets/bg-famed.svg";
 
+import zenPhoneUrl from "assets/zen-phone.png";
+import zenMacUrl from "assets/zen-mac.png";
+import zenLogoUrl from "assets/zen-logo.png";
+import zenIpadUrl from "assets/zen-ipad.png";
+
 export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
@@ -112,3 +117,15 @@ export function getProjectByNameId(params: { projectId: Project["id"] }): Projec
 
     return project;
 }
+
+export const detailImagesByProjectId = {
+    zen: {
+        zenPhoneUrl,
+        zenMacUrl,
+        zenLogoUrl,
+        zenIpadUrl
+    },
+    gili: {}
+};
+
+

@@ -11,6 +11,7 @@ import { SplashScreen } from "shared/SplashScreen";
 import { NavComponent } from "shared/NavComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import type { Link } from "type-route";
+import { detailImagesByProjectId } from "./projectsData";
 
 type Props = {
     className?: string;
@@ -18,6 +19,25 @@ type Props = {
 };
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
+
+const { allDetailImageUrls } = (() => {
+    const allDetailImageUrls: string[] = [];
+
+    for (const projectId in detailImagesByProjectId) {
+        // @ts-expect-error: You are playing with my nerves
+        const detailImages = detailImagesByProjectId[projectId];
+
+        for (const imageName in detailImages) {
+            const imageUrl = detailImages[imageName];
+            allDetailImageUrls.push(imageUrl);
+        }
+    }
+
+    return { allDetailImageUrls };
+})();
+
+
+// const allDetailImageUrls2 = Object.values(detailImagesByProjectId).map(detailImages => Object.values(detailImages)).flat();
 
 export function ProjectGallery(props: Props) {
     const { className, route } = props;
@@ -34,8 +54,13 @@ export function ProjectGallery(props: Props) {
         return rotatedProjects;
     }, [route.params.projectId]);
 
+
     const { isDownloadingAssets } = useDownloadAssets({
         urls: projectAssetUrls
+    });
+
+    useDownloadAssets({
+        urls: allDetailImageUrls
     });
 
     const { isDelayed } = useDelayOnlyOnce();
