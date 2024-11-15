@@ -19,7 +19,7 @@ export function Badgeur(props: Props) {
     const { cx, classes } = useStyles();
     return (
         <div className={cx(classes.root, className)}>
-            <div className={cx(classes.content, className)}>
+            <div className={classes.content}>
                 {(() => {
                     switch (route.params.detailsIndex) {
                         case 0:

@@ -2,7 +2,6 @@ import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
-import { Page4 } from "./Page4";
 import type { PageRoute } from "../../route";
 import { assert } from "tsafe/assert";
 import { routes } from "routes";
@@ -29,8 +28,6 @@ export function Famed(props: Props) {
                                 return <Page2 />;
                             case 2:
                                 return <Page3 />;
-                            case 3:
-                                return <Page4 />;
                             default:
                                 assert(false);
                         }
@@ -47,7 +44,7 @@ export function Famed(props: Props) {
                             }).link
                     }
                     nextLink={
-                        route.params.detailsIndex === 3
+                        route.params.detailsIndex === 2
                             ? undefined
                             : routes[route.name]({
                                 ...route.params,
@@ -55,7 +52,7 @@ export function Famed(props: Props) {
                             }).link
                     }
                     processPercentage={
-                        (route.params.detailsIndex / 3) * 100
+                        (route.params.detailsIndex / 2) * 100
                     }
                 />
             </div>

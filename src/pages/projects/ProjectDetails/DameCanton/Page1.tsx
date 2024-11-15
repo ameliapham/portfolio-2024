@@ -39,7 +39,6 @@ export function Page1(props: Props) {
                     <Typography variant="body1">
                         - Artistic Directrice <br />
                         - Graphic design <br />
-                        - Sound design <br />
                         - Animation <br />
                         - Video editing <br />
                     </Typography>
@@ -53,8 +52,8 @@ export function Page1(props: Props) {
                         <br />
                         - Technical Supervisor: Prof. Laure Leroy <br />
                         - Academic Supervisor: Prof. Jean-Marc Lecarpentier <br />
-                        - Effect development : Ruben Edery <br />- Scrip development : Ferhan Alic &
-                        Shelly Jean
+                        - Effect development : Ruben Edery <br />
+                        - Scrip development : Ferhan Alic & Shelly Jean
                     </Typography>
                 </div>
             </div>
