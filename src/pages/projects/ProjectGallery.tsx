@@ -20,7 +20,7 @@ type Props = {
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
-const allDtailImagesUrls = Object
+const allDetailImagesUrls = Object
     .values(detailImagesByProjectId)
     .map(detailImages => Object.values(detailImages))
     .flat()
@@ -45,7 +45,7 @@ export function ProjectGallery(props: Props) {
     });
 
     useDownloadAssets({
-        urls: allDtailImagesUrls
+        urls: allDetailImagesUrls
     })
 
     const { isDelayed } = useDelayOnlyOnce();
