@@ -1,7 +1,6 @@
 import { tss } from "tss-react/mui";
 import { keyframes } from "tss-react";
-import zenMac from "assets/zen-mac.png";
-import zenLogo from "assets/zen-logo.png";
+import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
     className?: string;
@@ -13,8 +12,8 @@ export function Page3(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <img src={zenMac} alt="Zen Gourmet website on a phone" className={classes.image} />
-            <img src={zenLogo} alt="Zen Gourmet website on a phone" className={classes.details} />
+            <img src={detailImagesByProjectId.zen.zenMacUrl} alt="Zen Gourmet website on a phone" className={classes.image} />
+            <img src={detailImagesByProjectId.zen.zenLogoUrl} alt="Zen Gourmet website on a phone" className={classes.details} />
         </div>
     );
 }

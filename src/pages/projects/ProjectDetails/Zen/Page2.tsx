@@ -1,8 +1,8 @@
 import { tss } from "tss-react/mui";
 import { keyframes } from "tss-react";
-import zenPhone from "assets/zen-phone.png";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
+import { detailImagesByProjectId } from "../../projectsData";
 
 type Props = {
     className?: string;
@@ -19,7 +19,7 @@ export function Page2(props: Props) {
                     Light mode
                 </Typography>
             </div>
-            <img src={zenPhone} alt="Zen Gourmet website on a phone" className={classes.image} />
+            <img src={detailImagesByProjectId.zen.zenPhoneUrl} alt="Zen Gourmet website on a phone" className={classes.image} />
             <div className={classes.infoDroitGridContainer}>
                 <Typography variant="body1" className={classes.infoDroit}>
                     Dark mode

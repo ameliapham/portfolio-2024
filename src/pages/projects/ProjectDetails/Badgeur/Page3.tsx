@@ -1,10 +1,6 @@
 import { tss } from "tss-react/mui";
 import { keyframes } from "tss-react";
-import badgeurPhone from "assets/badgeur-phone.svg";
-import badgeurLogo from "assets/badgeur-logo.svg";
-import badgeurColor1 from "assets/badgeur-color1.svg";
-import badgeurColor2 from "assets/badgeur-color2.svg";
-import badgeurColor3 from "assets/badgeur-color3.svg";
+import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
     className?: string;
@@ -16,20 +12,20 @@ export function Page3(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <img src={badgeurPhone} alt="Badgeur phone" className={cx(classes.image, classes.phone)} />
-            <img src={badgeurLogo} alt="Badgeur logo" className={cx(classes.image, classes.logo)} />
+            <img src={detailImagesByProjectId.badgeur.badgeurPhoneUrl} alt="Badgeur phone" className={cx(classes.image, classes.phone)} />
+            <img src={detailImagesByProjectId.badgeur.badgeurLogoUrl} alt="Badgeur logo" className={cx(classes.image, classes.logo)} />
             <img
-                src={badgeurColor1}
+                src={detailImagesByProjectId.badgeur.badgeurColor1Url}
                 alt="Badgeur color 1"
                 className={cx(classes.image, classes.color1)}
             />
             <img
-                src={badgeurColor2}
+                src={detailImagesByProjectId.badgeur.badgeurColor2Url}
                 alt="Badgeur color 2"
                 className={cx(classes.image, classes.color2)}
             />
             <img
-                src={badgeurColor3}
+                src={detailImagesByProjectId.badgeur.badgeurColor3Url}
                 alt="Badgeur color 3"
                 className={cx(classes.image, classes.color3)}
             />

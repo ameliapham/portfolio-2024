@@ -13,6 +13,23 @@ import bgGmeta from "assets/bg-gmeta.webp";
 import bgBadgeur from "assets/bg-badgeur.svg";
 import bgFamed from "assets/bg-famed.svg";
 
+import zenPhoneUrl from "assets/zen-phone.png";
+import zenMacUrl from "assets/zen-mac.png";
+import zenLogoUrl from "assets/zen-logo.png";
+import zenIpadUrl from "assets/zen-ipad.png";
+
+import badgeurPhoneUrl from "assets/badgeur-phone.svg";
+import badgeurLogoUrl from "assets/badgeur-logo.svg";
+import badgeurColor1Url from "assets/badgeur-color1.svg";
+import badgeurColor2Url from "assets/badgeur-color2.svg";
+import badgeurColor3Url from "assets/badgeur-color3.svg";
+import wfBadgeurUrl from "assets/badgeur-wf.png";
+import badgeurTestUrl from "assets/badgeur-test.png";
+
+import famedPhoneMUrl from "assets/famed-phoneM.svg";
+import famedPhoneLUrl from "assets/famed-phoneL.svg";
+import famedPhoneRUrl from "assets/famed-phoneR.svg";
+
 export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
@@ -111,4 +128,42 @@ export function getProjectByNameId(params: { projectId: Project["id"] }): Projec
     assert(project !== undefined);
 
     return project;
+}
+
+export const detailImagesByProjectId = {
+    zen: {
+        zenPhoneUrl,
+        zenMacUrl,
+        zenLogoUrl,
+        zenIpadUrl
+    },
+    gili: {
+
+    },
+    gmeta: {
+
+    },
+    badgeur: {
+        badgeurPhoneUrl,
+        badgeurLogoUrl,
+        badgeurColor1Url,
+        badgeurColor2Url,
+        badgeurColor3Url,
+        wfBadgeurUrl,
+        badgeurTestUrl
+    },
+    iso: {
+
+    },
+    dame: {
+
+    },
+    famed: {
+        famedPhoneMUrl,
+        famedPhoneLUrl,
+        famedPhoneRUrl
+    },
+    arti: {
+
+    }
 }

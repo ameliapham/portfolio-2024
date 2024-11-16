@@ -11,6 +11,7 @@ import { SplashScreen } from "shared/SplashScreen";
 import { NavComponent } from "shared/NavComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
+import { detailImagesByProjectId } from "./projectsData";
 
 type Props = {
     className?: string;
@@ -18,6 +19,11 @@ type Props = {
 };
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
+
+const allDtailImagesUrls = Object
+    .values(detailImagesByProjectId)
+    .map(detailImages => Object.values(detailImages))
+    .flat()
 
 export function ProjectGallery(props: Props) {
     const { className, route } = props;
@@ -38,6 +44,9 @@ export function ProjectGallery(props: Props) {
         urls: projectAssetUrls
     });
 
+    useDownloadAssets({
+        urls: allDtailImagesUrls
+    })
 
     const { isDelayed } = useDelayOnlyOnce();
 

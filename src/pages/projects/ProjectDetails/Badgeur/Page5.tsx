@@ -1,8 +1,8 @@
 import { tss } from "tss-react/mui";
 import { keyframes } from "tss-react";
-import badgeurTest from "assets/badgeur-test.png";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
+import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
     className?: string;
@@ -14,7 +14,7 @@ export function Page5(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <img src={badgeurTest} alt="Zen Gourmet website on a phone" className={classes.image} />
+            <img src={detailImagesByProjectId.badgeur.badgeurTestUrl} alt="Zen Gourmet website on a phone" className={classes.image} />
             <Typography variant="body1" className={classes.details}>
                 ......to the prototype
             </Typography>

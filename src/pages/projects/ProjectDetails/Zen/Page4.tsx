@@ -1,8 +1,8 @@
 import { tss } from "tss-react/mui";
 import { keyframes } from "tss-react";
-import zenIpad from "assets/zen-ipad.png";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
+import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
     className?: string;
@@ -22,7 +22,7 @@ export function Page4(props: Props) {
                     <li>Computer screens</li>
                 </ul>
             </Typography>
-            <img src={zenIpad} alt="Zen Gourmet website on a phone" className={classes.image} />
+            <img src={detailImagesByProjectId.zen.zenIpadUrl} alt="Zen Gourmet website on a phone" className={classes.image} />
             <div className={classes.infoDroit}>
                 <Typography variant="body1">
                     Multiple languages available

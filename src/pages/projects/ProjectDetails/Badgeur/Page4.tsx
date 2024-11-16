@@ -1,8 +1,8 @@
 import { tss } from "tss-react/mui";
 import { keyframes } from "tss-react";
-import wfBadgeur from "assets/badgeur-wf.png";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
+import { detailImagesByProjectId } from "pages/projects/projectsData"; 
 
 type Props = {
     className?: string;
@@ -17,7 +17,7 @@ export function Page4(props: Props) {
             <Typography variant="body1" className={classes.details}>
                 From the wireframe......
             </Typography>
-            <img src={wfBadgeur} alt="Badgeur wireframe" className={classes.image} />
+            <img src={detailImagesByProjectId.badgeur.wfBadgeurUrl} alt="Badgeur wireframe" className={classes.image} />
         </div>
     );
 }

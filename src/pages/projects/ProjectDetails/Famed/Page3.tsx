@@ -1,8 +1,6 @@
 import { tss } from "tss-react/mui";
 import { keyframes } from "tss-react";
-import famedPhoneM from "assets/famed-phoneM.svg";
-import famedPhoneL from "assets/famed-phoneL.svg";
-import famedPhoneR from "assets/famed-phoneR.svg";
+import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
     className?: string;
@@ -14,9 +12,9 @@ export function Page3(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <img src={famedPhoneL} alt="Famed application" className={classes.phoneLeft} />
-            <img src={famedPhoneM} alt="Famed application" className={classes.phoneMiddle} />
-            <img src={famedPhoneR} alt="Famed application" className={classes.phoneRight} />
+            <img src={detailImagesByProjectId.famed.famedPhoneLUrl} alt="Famed application" className={classes.phoneLeft} />
+            <img src={detailImagesByProjectId.famed.famedPhoneMUrl} alt="Famed application" className={classes.phoneMiddle} />
+            <img src={detailImagesByProjectId.famed.famedPhoneRUrl} alt="Famed application" className={classes.phoneRight} />
         </div>
     );
 }
