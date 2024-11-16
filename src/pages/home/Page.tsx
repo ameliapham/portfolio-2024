@@ -7,8 +7,8 @@ import { CustomGradients } from "./Gradients";
 import { routes } from "routes";
 import { PageRoute } from "./route";
 import { keyframes } from "tss-react";
-import { useDownloadAssets } from "utils/useDownloadAssets";
-import { SplashScreen } from "shared/SplashScreen";
+//import { useDownloadAssets } from "utils/useDownloadAssets";
+//import { SplashScreen } from "shared/SplashScreen";
 
 type Props = {
     className?: string;
@@ -17,10 +17,11 @@ type Props = {
 
 export default function Page(props: Props) {
     const { className } = props;
-    const { cx, classes, css } = useStyles();
+    const { cx, classes } = useStyles();
 
+    /*
     const { isDownloadingAssets } = useDownloadAssets({
-        urls: [headVideo, headText]
+        urls: [headVideo]
     });
 
     if (isDownloadingAssets) {
@@ -37,6 +38,7 @@ export default function Page(props: Props) {
             </div>
         );
     }
+    */
 
     return (
         <div className={cx(classes.root, className)}>
