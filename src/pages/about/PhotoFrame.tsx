@@ -1,14 +1,15 @@
 import { tss } from "tss-react/mui";
 import { alpha } from "@mui/material/styles";
-import avatar from "assets/avatarAnime.jpg";
+//import avatar from "assets/avatarAnime.jpg";
 
 type Props = {
     className?: string;
+    avatarUrl: string;
 };
 
 export function PhotoFrame(props: Props) {
-    const { className } = props;
-    const { cx, classes } = useStyles();
+    const { className, avatarUrl } = props;
+    const { cx, classes } = useStyles({avatarUrl});
 
     return (
         <div className={cx(className, classes.root)}>
@@ -37,8 +38,9 @@ export function PhotoFrame(props: Props) {
 
 const useStyles = tss
     .withName({ PhotoFrame })
+    .withParams<{ avatarUrl: string }>()
     .withNestedSelectors<"div1" | "div2" | "div3" | "div4">()
-    .create(({ theme, classes }) => {
+    .create(({ theme, classes, avatarUrl }) => {
         const background = theme.palette.text.primary;
         const top = "0%";
         const right = "1%";
@@ -75,7 +77,7 @@ const useStyles = tss
             img: {
                 height: "100%",
                 width: "100%",
-                background: `url(${avatar})`,
+                background: `url(${avatarUrl})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 clipPath: "polygon(0% 0%, 100% 10%, 100% 90%, 0% 100%)"

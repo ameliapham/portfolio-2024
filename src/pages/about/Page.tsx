@@ -13,6 +13,9 @@ import { routes } from "routes";
 import { PageRoute } from "./route";
 import { aboutDetailsIds } from "./aboutDetailsIds";
 import { NavComponent } from "shared/NavComponent";
+import { SplashScreen } from "shared/SplashScreen";
+import { useDownloadAssets } from "utils/useDownloadAssets";
+import avatarUrl from "assets/avatarAnime.jpg";
 
 type Props = {
     className?: string;
@@ -27,12 +30,31 @@ export default function Page(props: Props) {
         domRect: { width: rootWidth }
     } = useDomRect();
 
-    const { cx, classes } = useStyles({ rootWidth });
+    const { cx, classes, css } = useStyles({ rootWidth });
+
+    const { isDownloadingAssets } = useDownloadAssets({
+        urls: [avatarUrl]
+    });
+
+    if (isDownloadingAssets) {
+        return (
+            <div
+                className={css({
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                })}
+            >
+                <SplashScreen className={css({ width: "50%" })} />
+            </div>
+        );
+    }
 
     return (
         <div ref={rootRef} className={cx(classes.root, className)}>
             <div className={classes.container}>
-                <PhotoFrame className={classes.frameZone} />
+                <PhotoFrame className={classes.frameZone} avatarUrl={avatarUrl} />
                 <div className={classes.texts}>
                     {(() => {
                         switch (route.params.aboutDetailsId) {
