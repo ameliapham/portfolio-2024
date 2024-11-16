@@ -5,6 +5,7 @@ import { tss } from "tss";
 import { useRoute, RouteProvider } from "routes";
 import { pages, pageIds } from "pages";
 import { ThemeProvider } from "theme";
+import { SplashScreen } from "shared/SplashScreen";
 
 export function App() {
     return (
@@ -61,7 +62,7 @@ export function AppContextualized() {
                     pageId={route.name}
                 />
                 <main className={classes.main}>
-                    <Suspense fallback={<p>Loading...</p>}>
+                    <Suspense fallback={<SplashScreen/>}>
                         {(() => {
                             for (const pageId of pageIds) {
                                 const page = pages[pageId as "home"];
