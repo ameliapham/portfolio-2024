@@ -7,14 +7,17 @@ import { tss, keyframes } from "tss";
 import { projectIds } from "./projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
-import { useDelay } from "utils/useDelay";
 import { SplashScreen } from "shared/SplashScreen";
 import { NavComponent } from "shared/NavComponent";
+import { useDownloadAssets } from "utils/useDownloadAssets";
+import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
 
 type Props = {
     className?: string;
     route: PageRoute;
 };
+
+const projectAssetUrls = projects.map(project => project.imageUrl);
 
 export function ProjectGallery(props: Props) {
     const { className, route } = props;
@@ -31,9 +34,14 @@ export function ProjectGallery(props: Props) {
         return rotatedProjects;
     }, [route.params.projectId]);
 
-    const { isDelayed } = useDelay(2500);
+    const { isDownloadingAssets } = useDownloadAssets({
+        urls: projectAssetUrls
+    });
 
-    if (isDelayed) {
+
+    const { isDelayed } = useDelayOnlyOnce();
+
+    if (isDownloadingAssets || isDelayed) {
         return (
             <div
                 className={css({
