@@ -12,6 +12,7 @@ import { NavComponent } from "shared/NavComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
 import { detailImagesByProjectId } from "./projectsData";
+import type { Link } from "type-route";
 
 type Props = {
     className?: string;
@@ -68,42 +69,54 @@ export function ProjectGallery(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             <div className={classes.slide}>
-                {rotatedProjects.map(({ id, imageUrl, description, name, year }) => (
-                    <div
+                {rotatedProjects.map(({ id, imageUrl, description, name, year }, i) => (
+                    <Item
                         key={name}
                         className={classes.item}
-                        data-project-id={id}
-                        style={{
-                            backgroundImage: `url(${imageUrl})`
-                        }}
-                    >
-                        <div
-                            className={classes.content}
-                            {...routes[route.name]({
-                                ...route.params,
-                                isGalleryVisible: false
-                            }).link}
-                        >
-                            <Typography variant="body1" className={classes.year}>
-                                {year}
-                            </Typography>
-                            <Typography variant="h2" className={classes.name}>
-                                {name}
-                            </Typography>
-                            <Typography variant="body1" className={classes.description}>
-                                {description}
-                            </Typography>
-                            <SeeMoreButton
-                                className={classes.seeMoreButton}
-                                {...routes[route.name]({
+                        backgroundImage={imageUrl}
+                        link={
+                            i === 0 || i === 1
+                                ? undefined
+                                : routes[route.name]({
                                     ...route.params,
-                                    isGalleryVisible: false
-                                }).link}
-                            >
-                                See More
-                            </SeeMoreButton>
-                        </div>
-                    </div>
+                                    projectId: id
+                                }).link
+                        }
+                    >
+                        {(() => {
+                            if (i !== 1) {
+                                return null;
+                            }
+                            return (
+                                <a
+                                    className={classes.content}
+                                    {...routes[route.name]({
+                                        ...route.params,
+                                        isGalleryVisible: false
+                                    }).link}
+                                >
+                                    <Typography variant="body1" className={classes.year}>
+                                        {year}
+                                    </Typography>
+                                    <Typography variant="h2" className={classes.name}>
+                                        {name}
+                                    </Typography>
+                                    <Typography variant="body1" className={classes.description}>
+                                        {description}
+                                    </Typography>
+                                    <SeeMoreButton
+                                        className={classes.seeMoreButton}
+                                        {...routes[route.name]({
+                                            ...route.params,
+                                            isGalleryVisible: false
+                                        }).link}
+                                    >
+                                        See More
+                                    </SeeMoreButton>
+                                </a>)
+                        })()}
+
+                    </Item>
                 ))}
             </div>
 
@@ -129,8 +142,33 @@ export function ProjectGallery(props: Props) {
                     (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
                 }
             />
-        </div>
+        </div >
     );
+}
+
+function Item(props: {
+    className?: string;
+    backgroundImage: string;
+    link: Link | undefined;
+    children: React.ReactNode;
+}) {
+    const { className, backgroundImage, link, children } = props;
+
+    const styles = { backgroundImage: `url(${backgroundImage})` };
+
+    if (link === undefined) {
+        return (
+            <a className={className} style={styles}>
+                {children}
+            </a>
+        );
+    } else {
+        return (
+            <a className={className} style={styles} {...link}>
+                {children}
+            </a>
+        );
+    }
 }
 
 const animate = keyframes({
@@ -161,14 +199,13 @@ const animateContent = keyframes({
 
 const useStyles = tss
     .withName({ ProjectGallery })
-    .withNestedSelectors<"content" | "seeMoreButton">()
+    .withNestedSelectors<"seeMoreButton">()
     .create(({ classes, theme }) => {
         const sideLength = "200px";
         const left = "58%";
 
         return {
             root: {
-                background: "#f5f5f5",
                 position: "relative",
                 overflow: "hidden",
                 animation: `${keyframes`
@@ -180,8 +217,7 @@ const useStyles = tss
                     }
                     `} 1s`
             },
-            slide: {
-            },
+            slide: {},
             item: {
                 width: sideLength,
                 height: `calc(${sideLength} * 1)`,
@@ -230,31 +266,23 @@ const useStyles = tss
                     left: `calc(${left} + 960px)`,
                     opacity: 0
                 },
-
-                [`&:nth-child(2) .${classes.content}`]: {
-                    display: "block"
-                },
             },
             content: {
+                display: "block",
                 position: "absolute",
                 top: "50%",
                 left: theme.spacing(10),
                 width: "40%",
                 textAlign: "left",
                 color: theme.palette.text.primary,
-                display: "none",
                 padding: theme.spacing(5),
                 borderRadius: "10px",
                 backdropFilter: "brightness(60%) blur(0px)",
                 opacity: 0,
-                animation: `${animateContent} 0.5s ease-in-out 0s 1 forwards`,
+                animation: `${animateContent} 0.3s ease-in-out 0.2s 1 forwards`,
                 cursor: "pointer",
                 transition: "all 0.4s ease",
-
-                "& button": {
-                    opacity: 0,
-                    animation: `${animate} 0.6s ease-in-out 0.6s 1 forwards`
-                },
+                textDecoration: "none",
 
                 "&:hover": {
                     backdropFilter: "brightness(30%)",
@@ -275,6 +303,8 @@ const useStyles = tss
                 }
             },
             seeMoreButton: {
+                opacity: 0,
+                animation: `${animate} 0.6s ease-in-out 0.6s 1 forwards`
             },
             name: {
                 fontSize: "40px",
