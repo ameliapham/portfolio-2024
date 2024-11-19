@@ -51,7 +51,7 @@ export function Page1(props: Props) {
                         - Front-end development <br />- Technical development
                     </Typography>
                 </div>
-                <div className={classes.column2}>
+                <div className={classes.column3}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         Credits
                     </Typography>
@@ -83,7 +83,8 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             color: theme.palette.text.primary,
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(2)
+            gap: theme.spacing(2),
+            border: "1px solid red",
         },
         year: {
             opacity: 0,
@@ -98,7 +99,15 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             display: "flex",
             gap: theme.spacing(10),
             opacity: 0,
-            animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`
+            animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`,
+
+            [theme.breakpoints.down("laptop")]: {
+                flexDirection: "column",
+                gap: theme.spacing(4)
+            },
+            [theme.breakpoints.only("laptop")]: {
+                gap: theme.spacing(4)
+            },
         },
         column1: {
             flex: 2,
@@ -112,6 +121,16 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             }
         },
         column2: {
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: theme.spacing(2),
+            
+            [theme.breakpoints.down("laptop")]: {
+                display: "none"
+            },
+        },
+        column3: {
             flex: 1,
             display: "flex",
             flexDirection: "column",

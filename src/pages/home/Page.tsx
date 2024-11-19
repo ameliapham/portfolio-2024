@@ -104,10 +104,6 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         transform: "translate(-50%, -50%)",
         color: theme.palette.text.primary,
         textAlign: "center",
-
-        [theme.breakpoints.down("tablet")]: {
-            fontSize: "1rem"
-        }
     },
     sparklesZone: {
         position: "absolute",

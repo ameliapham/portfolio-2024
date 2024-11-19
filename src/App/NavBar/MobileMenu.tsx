@@ -34,7 +34,7 @@ export function MobileMenu(props: PropsDrawerList) {
                                 onClick={onClick}
                             >
                                 <Typography
-                                    variant="h1"
+                                    variant="h2"
                                     fontSize={theme.typography.h3.fontSize}
                                 >
                                     {capitalize(pageId_i)}

@@ -55,7 +55,7 @@ const useStyles = tss.withName({ ProgressComponent }).create(({ theme }) => {
             justifyContent: "center"
         },
         progressBar: {
-            width: "30%",
+            width: "40%",
             zIndex: 2,
             borderRadius: "5px",
             backgroundColor: alpha(theme.palette.text.primary, 0.2),
@@ -63,6 +63,16 @@ const useStyles = tss.withName({ ProgressComponent }).create(({ theme }) => {
 
             "& .MuiLinearProgress-bar": {
                 background: "linear-gradient(to right, transparent, #6366f1, #0ea5e9)"
+            },
+
+            [theme.breakpoints.only("laptop")]: {
+                width: "50%",
+            },
+            [theme.breakpoints.only("tablet")]: {
+                width: "70%",
+            },
+            [theme.breakpoints.only("mobile")]: {
+                width: "100%",
             }
         },
         buttons: {

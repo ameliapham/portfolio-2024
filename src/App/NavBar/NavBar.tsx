@@ -84,7 +84,7 @@ const useStyles = tss.withName({ NavBar }).create(({ theme, headerHeight }) => (
         display: "flex",
         gap: theme.spacing(6),
 
-        [theme.breakpoints.only("mobile")]: {
+        [theme.breakpoints.down("laptop")]: {
             display: "none"
         }
     },
@@ -95,7 +95,7 @@ const useStyles = tss.withName({ NavBar }).create(({ theme, headerHeight }) => (
         display: "none",
         cursor: "pointer",
 
-        [theme.breakpoints.only("mobile")]: {
+        [theme.breakpoints.down("laptop")]: {
             display: "flex"
         }
     },
@@ -106,7 +106,7 @@ const useStyles = tss.withName({ NavBar }).create(({ theme, headerHeight }) => (
             backgroundColor: "unset"
         },
 
-        [theme.breakpoints.only("mobile")]: {
+        [theme.breakpoints.down("laptop")]: {
             display: "flex"
         }
     },

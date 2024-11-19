@@ -12,7 +12,7 @@ import { useDomRect } from "powerhooks/useDomRect";
 import { routes } from "routes";
 import { PageRoute } from "./route";
 import { aboutDetailsIds } from "./aboutDetailsIds";
-import { NavComponent } from "shared/NavComponent";
+import { ProgressComponent } from "shared/ProgressComponent";
 import { SplashScreen } from "shared/SplashScreen";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import avatarUrl from "assets/avatarAnime.jpg";
@@ -67,7 +67,7 @@ export default function Page(props: Props) {
                 </div>
             </div>
 
-            <NavComponent
+            <ProgressComponent
                 className={classes.navComponent}
                 previousLink={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) > 0
@@ -106,7 +106,7 @@ export default function Page(props: Props) {
 function Cv() {
     return (
         <>
-            <Typography variant="h3">Amélia Pham</Typography>
+            <Typography variant="h2">Amélia Pham</Typography>
 
             <Typography variant="body1">
                 I am Huong PHAM, also known as Amélia PHAM.
@@ -127,7 +127,7 @@ function Skills() {
 
     return (
         <>
-            <Typography variant="h3">What I can do</Typography>
+            <Typography variant="h2">What I can do</Typography>
 
             <Accordion className={classes.accordion}>
                 <AccordionSummary
