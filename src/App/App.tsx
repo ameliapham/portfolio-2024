@@ -61,7 +61,7 @@ export function AppContextualized() {
                     <Suspense fallback={
                         <div
                             className={css({
-                                height: "100%",
+                                flex: 1,
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center"
