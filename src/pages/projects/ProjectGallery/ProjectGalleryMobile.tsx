@@ -1,23 +1,17 @@
 import { useMemo } from "react";
-import { projects } from "./projectsData";
-import type { PageRoute } from "./route";
+import { projects } from "../projectsData";
 import { rotateArrayRight } from "utils/rotateArray";
 import { routes } from "routes";
 import { tss, keyframes } from "tss";
-import { projectIds } from "./projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
 import { SplashScreen } from "shared/SplashScreen";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
-import { detailImagesByProjectId } from "./projectsData";
+import { detailImagesByProjectId, projectIds } from "../projectsData";
 import type { Link } from "type-route";
-
-type Props = {
-    className?: string;
-    route: PageRoute;
-};
+import type { Props } from "./Props";
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
@@ -25,7 +19,7 @@ const allDetailImagesUrls = Object.values(detailImagesByProjectId)
     .map(detailImages => Object.values(detailImages))
     .flat();
 
-export function ProjectGallery(props: Props) {
+export default function ProjectGalleryMobile(props: Props) {
     const { className, route } = props;
 
     const { cx, classes, css } = useStyles();
@@ -64,6 +58,7 @@ export function ProjectGallery(props: Props) {
             </div>
         );
     }
+
 
     return (
         <div className={cx(classes.root, className)}>
@@ -195,7 +190,7 @@ const animateContent = keyframes({
 });
 
 const useStyles = tss
-    .withName({ ProjectGallery })
+    .withName({ ProjectGalleryMobile })
     .withNestedSelectors<"seeMoreButton">()
     .create(({ classes, theme }) => {
         const sideLength = "200px";
@@ -203,6 +198,7 @@ const useStyles = tss
 
         return {
             root: {
+                border: "10px solid red",
                 position: "relative",
                 overflow: "hidden",
                 animation: `${keyframes`
@@ -285,8 +281,7 @@ const useStyles = tss
                 "&:hover": {
                     backdropFilter: "brightness(30%)",
                     top: `calc(50% - 2px)`,
-                    transition: "all 0.5s ease",
-
+                    transition: "all 0.5s ease"
                 },
 
                 [`&:hover .${classes.seeMoreButton}`]: {
