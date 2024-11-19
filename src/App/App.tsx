@@ -47,27 +47,25 @@ export function AppContextualized() {
             />
             <div className={classes.root}>
                 <NavBar className={classes.navbar} pageId={route.name} />
-                <main className={classes.main}>
-                    <Suspense
-                        fallback={
-                            <div className={classes.splashScreen}>
-                                <SplashScreen className={css({ width: "50%" })} />
-                            </div>
-                        }
-                    >
-                        {(() => {
-                            for (const pageId of pageIds) {
-                                const page = pages[pageId as "home"];
+                <Suspense
+                    fallback={
+                        <div className={classes.page}>
+                            <SplashScreen className={css({ width: "50%" })} />
+                        </div>
+                    }
+                >
+                    {(() => {
+                        for (const pageId of pageIds) {
+                            const page = pages[pageId as "home"];
 
-                                if (page.routeGroup.has(route)) {
-                                    return <page.LazyComponent className={classes.page} route={route} />;
-                                }
+                            if (page.routeGroup.has(route)) {
+                                return <page.LazyComponent className={classes.page} route={route} />;
                             }
+                        }
 
-                            return <pages.page404.LazyComponent />;
-                        })()}
-                    </Suspense>
-                </main>
+                        return <pages.page404.LazyComponent className={classes.page} />;
+                    })()}
+                </Suspense>
             </div>
         </>
     );
@@ -77,42 +75,24 @@ const useStyles = tss
     .withName({ App })
     .withParams<{ isScrollablePage: boolean }>()
     .create(({ headerHeight, isScrollablePage }) => ({
-        root: isScrollablePage
-            ? {}
-            : {
-                  height: "100vh",
-                  display: "flex",
-                  flexDirection: "column"
-              },
-        splashScreen: {
-            height: isScrollablePage ? `calc(100vh - ${headerHeight}px)` : "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
+        root: {
+            height: isScrollablePage ? undefined : "100vh"
         },
-        navbar: isScrollablePage
-            ? {
-                  height: headerHeight,
-                  position: "fixed",
-                  top: 0,
-                  width: "100%"
-              }
-            : {
-                  height: headerHeight
-              },
-        main: isScrollablePage
-            ? {
-                  marginTop: headerHeight
-              }
-            : {
-                  flex: 1,
-                  display: "flex",
-                  justifyContent: "center",
-                  overflow: "hidden"
-              },
-        page: isScrollablePage
-            ? {}
-            : {
-                  height: "100%"
-              }
+        navbar: {
+            height: headerHeight,
+            position: "fixed",
+            top: 0,
+            width: "100%",
+            zIndex: 1000
+        },
+        page: {
+            ...(isScrollablePage
+                ? {
+                      paddingTop: headerHeight
+                  }
+                : {
+                      height: "100%",
+                      overflow: "hidden"
+                  })
+        }
     }));
