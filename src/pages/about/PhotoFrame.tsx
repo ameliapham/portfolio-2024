@@ -9,7 +9,7 @@ type Props = {
 
 export function PhotoFrame(props: Props) {
     const { className, avatarUrl } = props;
-    const { cx, classes } = useStyles({avatarUrl});
+    const { cx, classes } = useStyles({ avatarUrl });
 
     return (
         <div className={cx(className, classes.root)}>

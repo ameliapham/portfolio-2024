@@ -16,7 +16,6 @@ export function DameCanton(props: Props) {
     const { cx, classes } = useStyles();
     return (
         <div className={cx(classes.root, className)}>
-
             <div className={classes.content}>
                 {(() => {
                     switch (route.params.detailsIndex) {
@@ -35,21 +34,19 @@ export function DameCanton(props: Props) {
                     route.params.detailsIndex === 0
                         ? undefined
                         : routes[route.name]({
-                            ...route.params,
-                            detailsIndex: route.params.detailsIndex - 1
-                        }).link
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex - 1
+                          }).link
                 }
                 nextLink={
                     route.params.detailsIndex === 1
                         ? undefined
                         : routes[route.name]({
-                            ...route.params,
-                            detailsIndex: route.params.detailsIndex + 1
-                        }).link
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex + 1
+                          }).link
                 }
-                processPercentage={
-                    (route.params.detailsIndex / 1) * 100
-                }
+                processPercentage={(route.params.detailsIndex / 1) * 100}
             />
         </div>
     );
@@ -69,6 +66,6 @@ const useStyles = tss.withName({ DameCanton }).create(() => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
-        },
+        }
     };
 });

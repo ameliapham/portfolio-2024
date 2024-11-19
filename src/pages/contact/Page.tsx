@@ -4,13 +4,10 @@ import { BackgroundBeams } from "shared/BackgroundBeams";
 import { PageRoute } from "./route";
 import { SocialContact } from "../../shared/SocialContact";
 
-
 type Props = {
     className?: string;
     route: PageRoute;
 };
-
-
 
 export default function Page(props: Props) {
     const { className } = props;
@@ -29,7 +26,7 @@ export default function Page(props: Props) {
                     </Typography>
                 </div>
 
-                <SocialContact className={classes.social}/>
+                <SocialContact className={classes.social} />
             </div>
 
             <BackgroundBeams className={classes.backgroundBeams} />
@@ -68,5 +65,5 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         height: "100%",
         width: "100%",
         overflow: "hidden"
-    },
+    }
 }));

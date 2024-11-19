@@ -21,10 +21,9 @@ type Props = {
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
-const allDetailImagesUrls = Object
-    .values(detailImagesByProjectId)
+const allDetailImagesUrls = Object.values(detailImagesByProjectId)
     .map(detailImages => Object.values(detailImages))
-    .flat()
+    .flat();
 
 export function ProjectGallery(props: Props) {
     const { className, route } = props;
@@ -47,7 +46,7 @@ export function ProjectGallery(props: Props) {
 
     useDownloadAssets({
         urls: allDetailImagesUrls
-    })
+    });
 
     const { isDelayed } = useDelayOnlyOnce();
 
@@ -78,9 +77,9 @@ export function ProjectGallery(props: Props) {
                             i === 0 || i === 1
                                 ? undefined
                                 : routes[route.name]({
-                                    ...route.params,
-                                    projectId: id
-                                }).link
+                                      ...route.params,
+                                      projectId: id
+                                  }).link
                         }
                     >
                         {(() => {
@@ -113,9 +112,9 @@ export function ProjectGallery(props: Props) {
                                     >
                                         See More
                                     </SeeMoreButton>
-                                </a>)
+                                </a>
+                            );
                         })()}
-
                     </Item>
                 ))}
             </div>
@@ -125,24 +124,24 @@ export function ProjectGallery(props: Props) {
                 previousLink={
                     projectIds.indexOf(route.params.projectId) > 0
                         ? routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        }).link
+                              ...route.params,
+                              projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+                          }).link
                         : undefined
                 }
                 nextLink={
                     projectIds.indexOf(route.params.projectId) < projectIds.length - 1
                         ? routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                        }).link
+                              ...route.params,
+                              projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+                          }).link
                         : undefined
                 }
                 processPercentage={
                     (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
                 }
             />
-        </div >
+        </div>
     );
 }
 
@@ -265,7 +264,7 @@ const useStyles = tss
                 "&:nth-child(n + 7)": {
                     left: `calc(${left} + 960px)`,
                     opacity: 0
-                },
+                }
             },
             content: {
                 display: "block",
@@ -327,7 +326,7 @@ const useStyles = tss
                 width: "100%",
                 position: "absolute",
                 bottom: 0,
-                padding: `0 ${theme.spacing(10)} ${theme.spacing(4)} ${theme.spacing(10)}`,
-            },
-        }
+                padding: `0 ${theme.spacing(10)} ${theme.spacing(4)} ${theme.spacing(10)}`
+            }
+        };
     });

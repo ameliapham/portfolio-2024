@@ -38,26 +38,24 @@ export function Badgeur(props: Props) {
                 })()}
             </div>
             <NavComponent
-                    previousLink={
-                        route.params.detailsIndex === 0
-                            ? undefined
-                            : routes[route.name]({
-                                ...route.params,
-                                detailsIndex: route.params.detailsIndex - 1
-                            }).link
-                    }
-                    nextLink={
-                        route.params.detailsIndex === 4
-                            ? undefined
-                            : routes[route.name]({
-                                ...route.params,
-                                detailsIndex: route.params.detailsIndex + 1
-                            }).link
-                    }
-                    processPercentage={
-                        (route.params.detailsIndex / 4) * 100
-                    }
-                />
+                previousLink={
+                    route.params.detailsIndex === 0
+                        ? undefined
+                        : routes[route.name]({
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex - 1
+                          }).link
+                }
+                nextLink={
+                    route.params.detailsIndex === 4
+                        ? undefined
+                        : routes[route.name]({
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex + 1
+                          }).link
+                }
+                processPercentage={(route.params.detailsIndex / 4) * 100}
+            />
         </div>
     );
 }
@@ -76,6 +74,6 @@ const useStyles = tss.withName({ Badgeur }).create(() => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
-        },
+        }
     };
 });

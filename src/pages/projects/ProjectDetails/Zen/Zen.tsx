@@ -42,17 +42,17 @@ export function Zen(props: Props) {
                         route.params.detailsIndex === 0
                             ? undefined
                             : routes[route.name]({
-                                ...route.params,
-                                detailsIndex: route.params.detailsIndex - 1
-                            }).link
+                                  ...route.params,
+                                  detailsIndex: route.params.detailsIndex - 1
+                              }).link
                     }
                     nextLink={
                         route.params.detailsIndex === 3
                             ? undefined
                             : routes[route.name]({
-                                ...route.params,
-                                detailsIndex: route.params.detailsIndex + 1
-                            }).link
+                                  ...route.params,
+                                  detailsIndex: route.params.detailsIndex + 1
+                              }).link
                     }
                     processPercentage={
                         (route.params.detailsIndex / 3) * 100
@@ -70,16 +70,15 @@ const useStyles = tss.withName({ Zen }).create(() => {
             height: "100%",
             width: "100%",
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "column"
         },
         content: {
             flex: 2,
             padding: "0 10%",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "center"
         },
-        navComponent: {
-        }
+        navComponent: {}
     };
 });

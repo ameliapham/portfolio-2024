@@ -26,7 +26,6 @@ export const routeDefs = {
                 .default(projectIds[0]),
             isGalleryVisible: param.query.optional.boolean.default(true),
             detailsIndex: param.query.optional.number.default(0)
-
         },
         () => "/projects"
     )

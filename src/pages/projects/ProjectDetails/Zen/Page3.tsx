@@ -12,8 +12,16 @@ export function Page3(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <img src={detailImagesByProjectId.zen.zenMacUrl} alt="Zen Gourmet website on a phone" className={classes.image} />
-            <img src={detailImagesByProjectId.zen.zenLogoUrl} alt="Zen Gourmet website on a phone" className={classes.details} />
+            <img
+                src={detailImagesByProjectId.zen.zenMacUrl}
+                alt="Zen Gourmet website on a phone"
+                className={classes.image}
+            />
+            <img
+                src={detailImagesByProjectId.zen.zenLogoUrl}
+                alt="Zen Gourmet website on a phone"
+                className={classes.details}
+            />
         </div>
     );
 }

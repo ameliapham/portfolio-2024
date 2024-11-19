@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
-
-export function useDelay(delay: number){
-
+export function useDelay(delay: number) {
     const [isDelayed, setIsDelayed] = useState(true);
 
     useEffect(() => {
@@ -12,9 +10,8 @@ export function useDelay(delay: number){
 
         return () => {
             clearTimeout(timer);
-        }
+        };
     }, [delay]);
 
     return { isDelayed };
-
 }

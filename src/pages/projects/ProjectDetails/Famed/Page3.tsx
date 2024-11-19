@@ -12,9 +12,21 @@ export function Page3(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <img src={detailImagesByProjectId.famed.famedPhoneLUrl} alt="Famed application" className={classes.phoneLeft} />
-            <img src={detailImagesByProjectId.famed.famedPhoneMUrl} alt="Famed application" className={classes.phoneMiddle} />
-            <img src={detailImagesByProjectId.famed.famedPhoneRUrl} alt="Famed application" className={classes.phoneRight} />
+            <img
+                src={detailImagesByProjectId.famed.famedPhoneLUrl}
+                alt="Famed application"
+                className={classes.phoneLeft}
+            />
+            <img
+                src={detailImagesByProjectId.famed.famedPhoneMUrl}
+                alt="Famed application"
+                className={classes.phoneMiddle}
+            />
+            <img
+                src={detailImagesByProjectId.famed.famedPhoneRUrl}
+                alt="Famed application"
+                className={classes.phoneRight}
+            />
         </div>
     );
 }
@@ -70,6 +82,6 @@ const useStyles = tss.withName({ name: "FamedPage3" }).create(({ theme }) => {
             objectFit: "contain",
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`
-        },
+        }
     };
 });

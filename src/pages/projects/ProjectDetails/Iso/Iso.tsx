@@ -36,21 +36,19 @@ export function Iso(props: Props) {
                     route.params.detailsIndex === 0
                         ? undefined
                         : routes[route.name]({
-                            ...route.params,
-                            detailsIndex: route.params.detailsIndex - 1
-                        }).link
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex - 1
+                          }).link
                 }
                 nextLink={
                     route.params.detailsIndex === 2
                         ? undefined
                         : routes[route.name]({
-                            ...route.params,
-                            detailsIndex: route.params.detailsIndex + 1
-                        }).link
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex + 1
+                          }).link
                 }
-                processPercentage={
-                    (route.params.detailsIndex / 2) * 100
-                }
+                processPercentage={(route.params.detailsIndex / 2) * 100}
             />
         </div>
     );
@@ -70,6 +68,6 @@ const useStyles = tss.withName({ Iso }).create(() => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
-        },
+        }
     };
 });

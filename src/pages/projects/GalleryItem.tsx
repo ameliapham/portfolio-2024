@@ -30,10 +30,7 @@ export function GalleryItem(props: Props) {
                 <Typography variant="body1" className={classes.des}>
                     {itemData.description}
                 </Typography>
-                <SeeMoreButton
-                    onClick={onClick}
-                    className={classes.seeMoreButton}
-                >
+                <SeeMoreButton onClick={onClick} className={classes.seeMoreButton}>
                     See More
                 </SeeMoreButton>
             </div>
@@ -164,8 +161,7 @@ const useStyles = tss
                     }
                 }
             },
-            seeMoreButton: {
-            },
+            seeMoreButton: {},
 
             name: {
                 fontSize: "40px",

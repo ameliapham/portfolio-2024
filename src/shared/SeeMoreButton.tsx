@@ -15,13 +15,13 @@ type Props = {
 };
 
 export function SeeMoreButton(props: Props) {
-    const { 
-        className, 
-        onClick, 
-        children, 
-        disabled, 
-        href, 
-        hyphenPosition = "right", 
+    const {
+        className,
+        onClick,
+        children,
+        disabled,
+        href,
+        hyphenPosition = "right",
         translateLinePx = 50,
         widthLinePx = 60
     } = props;
@@ -71,7 +71,7 @@ const useStyles = tss
                 width: `${widthLinePx}px`,
                 height: theme.spacing(0.15),
                 backgroundColor: alpha(theme.palette.text.primary, 0.5),
-                transition: "all 0.4s ease",
+                transition: "all 0.4s ease"
             },
             "&::after": !isBefore && {
                 content: "''",
@@ -80,7 +80,7 @@ const useStyles = tss
                 width: `${widthLinePx}px`,
                 height: theme.spacing(0.15),
                 backgroundColor: alpha(theme.palette.text.primary, 0.5),
-                transition: "all 0.4s ease",
+                transition: "all 0.4s ease"
             },
 
             [`&:hover::${isBefore ? "before" : "after"}`]: {
@@ -95,8 +95,8 @@ const useStyles = tss
         },
         buttonText: {
             position: "absolute",
-            left: isBefore? `${(widthLinePx ?? 0) + 10}px` : "auto",
-            right: isBefore? "auto" : `${(widthLinePx ?? 0) + 10}px`,
-            transition: "all 0.4s ease",
+            left: isBefore ? `${(widthLinePx ?? 0) + 10}px` : "auto",
+            right: isBefore ? "auto" : `${(widthLinePx ?? 0) + 10}px`,
+            transition: "all 0.4s ease"
         }
     }));

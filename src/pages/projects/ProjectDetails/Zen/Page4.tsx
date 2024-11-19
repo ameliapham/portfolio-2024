@@ -22,7 +22,11 @@ export function Page4(props: Props) {
                     <li>Computer screens</li>
                 </ul>
             </Typography>
-            <img src={detailImagesByProjectId.zen.zenIpadUrl} alt="Zen Gourmet website on a phone" className={classes.image} />
+            <img
+                src={detailImagesByProjectId.zen.zenIpadUrl}
+                alt="Zen Gourmet website on a phone"
+                className={classes.image}
+            />
             <div className={classes.infoDroit}>
                 <Typography variant="body1">
                     Multiple languages available

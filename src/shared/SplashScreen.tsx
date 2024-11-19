@@ -123,7 +123,6 @@ const useStyles = tss.withName({ SplashScreen }).create(() => ({
             opacity: 0,
             animation: getAnimationVertical("2.5s"),
             animationDelay: "1.4s"
-        },
-
+        }
     }
 }));

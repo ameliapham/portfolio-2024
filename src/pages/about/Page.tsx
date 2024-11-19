@@ -72,21 +72,29 @@ export default function Page(props: Props) {
                 previousLink={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) > 0
                         ? routes[route.name]({
-                            ...route.params,
-                            aboutDetailsId: aboutDetailsIds[aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1]
-                        }).link
+                              ...route.params,
+                              aboutDetailsId:
+                                  aboutDetailsIds[
+                                      aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1
+                                  ]
+                          }).link
                         : undefined
                 }
                 nextLink={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) < aboutDetailsIds.length - 1
                         ? routes[route.name]({
-                            ...route.params,
-                            aboutDetailsId: aboutDetailsIds[aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1]
-                        }).link
+                              ...route.params,
+                              aboutDetailsId:
+                                  aboutDetailsIds[
+                                      aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1
+                                  ]
+                          }).link
                         : undefined
                 }
                 processPercentage={
-                    (aboutDetailsIds.indexOf(route.params.aboutDetailsId) / (aboutDetailsIds.length - 1)) * 100
+                    (aboutDetailsIds.indexOf(route.params.aboutDetailsId) /
+                        (aboutDetailsIds.length - 1)) *
+                    100
                 }
             />
 
@@ -109,9 +117,7 @@ function Cv() {
                 interactive prototypes, web design and development, as well as user testing.
             </Typography>
 
-            <SeeMoreButton>
-                Download CV
-            </SeeMoreButton>
+            <SeeMoreButton>Download CV</SeeMoreButton>
         </>
     );
 }
@@ -217,8 +223,7 @@ const useStyles = tss
             icons: {
                 color: theme.palette.text.primary
             },
-            navComponent: {
-            },
+            navComponent: {},
             backgroundBeams: {
                 position: "absolute",
                 height: "100%",

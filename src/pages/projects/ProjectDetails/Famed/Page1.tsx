@@ -32,7 +32,12 @@ export function Page1(props: Props) {
             <div className={classes.content}>
                 <div className={classes.column1}>
                     <Typography variant="body1">
-                        The project consists of two key components. The first is an interactive mirror, the size of a storefront window, placed strategically in shopping malls. It allows customers to virtually try on outfits tailored to their body shapes and provides detailed product information. The second component is a commercial app that enables users to complete their purchases, confirm their cart, make payments, and locate nearby stores.
+                        The project consists of two key components. The first is an interactive mirror,
+                        the size of a storefront window, placed strategically in shopping malls. It
+                        allows customers to virtually try on outfits tailored to their body shapes and
+                        provides detailed product information. The second component is a commercial app
+                        that enables users to complete their purchases, confirm their cart, make
+                        payments, and locate nearby stores.
                     </Typography>
                     <SeeMoreButton>View it online</SeeMoreButton>
                 </div>
@@ -53,8 +58,8 @@ export function Page1(props: Props) {
                         Credits
                     </Typography>
                     <Typography variant="body1">
-                        - Academic Supervisor: Prof. John Motta <br />
-                        - Concept research & development: Shelly Jean, Nada Melizi & Amélia Pham
+                        - Academic Supervisor: Prof. John Motta <br />- Concept research & development:
+                        Shelly Jean, Nada Melizi & Amélia Pham
                     </Typography>
                 </div>
             </div>

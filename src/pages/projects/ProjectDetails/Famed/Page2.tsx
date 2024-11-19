@@ -56,7 +56,7 @@ const useStyles = tss.withName({ name: "FamedPage2" }).create(({ theme }) => {
             maxWidth: "1066px",
             height: "100%",
             maxHeight: "600px",
-            borderRadius: theme.spacing(2),
+            borderRadius: theme.spacing(2)
         }
     };
 });

@@ -14,11 +14,7 @@ export function PreviousButton(props: Props) {
     const { cx, classes } = useStyles();
 
     return (
-        <Button
-            className={cx(classes.previousButton, className)}
-            onClick={onClick}
-            disabled={disabled}
-        >
+        <Button className={cx(classes.previousButton, className)} onClick={onClick} disabled={disabled}>
             <span>{children}</span>
         </Button>
     );
@@ -29,11 +25,7 @@ export function NextButton(props: Props) {
     const { cx, classes } = useStyles();
 
     return (
-        <Button
-            className={cx(classes.nextButton, className)}
-            onClick={onClick}
-            disabled={disabled}
-        >
+        <Button className={cx(classes.nextButton, className)} onClick={onClick} disabled={disabled}>
             <span>{children}</span>
         </Button>
     );

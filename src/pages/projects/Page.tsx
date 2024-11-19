@@ -15,15 +15,9 @@ export default function Page(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             {route.params.isGalleryVisible ? (
-                <ProjectGallery
-                    className={classes.gallery}
-                    route={route}
-                />
+                <ProjectGallery className={classes.gallery} route={route} />
             ) : (
-                <ProjectDetails
-                    className={classes.details}
-                    route={route}
-                />
+                <ProjectDetails className={classes.details} route={route} />
             )}
         </div>
     );
@@ -41,6 +35,6 @@ const useStyles = tss.withName("Project").create({
     },
     details: {
         height: "100%",
-        width: "100%",
+        width: "100%"
     }
 });

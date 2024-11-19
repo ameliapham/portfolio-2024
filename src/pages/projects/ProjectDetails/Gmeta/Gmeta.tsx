@@ -34,21 +34,19 @@ export function Gmeta(props: Props) {
                     route.params.detailsIndex === 0
                         ? undefined
                         : routes[route.name]({
-                            ...route.params,
-                            detailsIndex: route.params.detailsIndex - 1
-                        }).link
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex - 1
+                          }).link
                 }
                 nextLink={
                     route.params.detailsIndex === 1
                         ? undefined
                         : routes[route.name]({
-                            ...route.params,
-                            detailsIndex: route.params.detailsIndex + 1
-                        }).link
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex + 1
+                          }).link
                 }
-                processPercentage={
-                    (route.params.detailsIndex / 1) * 100
-                }
+                processPercentage={(route.params.detailsIndex / 1) * 100}
             />
         </div>
     );
@@ -68,6 +66,6 @@ const useStyles = tss.withName({ Gmeta }).create(() => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
-        },
+        }
     };
 });

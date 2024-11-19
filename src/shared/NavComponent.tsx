@@ -43,33 +43,31 @@ export function NavComponent(props: Props) {
                 value={processPercentage}
             />
         </div>
-    )
+    );
 }
 
-const useStyles = tss
-    .withName({ NavComponent })
-    .create(({ theme }) => {
-        return {
-            root: {
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-            },
-            progressBar: {
-                width: "30%",
-                zIndex: 2,
-                borderRadius: "5px",
-                backgroundColor: alpha(theme.palette.text.primary, 0.2),
-                height: `${theme.spacing(0.2)}`,
+const useStyles = tss.withName({ NavComponent }).create(({ theme }) => {
+    return {
+        root: {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"
+        },
+        progressBar: {
+            width: "30%",
+            zIndex: 2,
+            borderRadius: "5px",
+            backgroundColor: alpha(theme.palette.text.primary, 0.2),
+            height: `${theme.spacing(0.2)}`,
 
-                "& .MuiLinearProgress-bar": {
-                    background: "linear-gradient(to right, transparent, #6366f1, #0ea5e9)"
-                }
-            },
-            buttons: {
-                display: "flex",
-                gap: "20px"
-            },
-        };
-    });
+            "& .MuiLinearProgress-bar": {
+                background: "linear-gradient(to right, transparent, #6366f1, #0ea5e9)"
+            }
+        },
+        buttons: {
+            display: "flex",
+            gap: "20px"
+        }
+    };
+});

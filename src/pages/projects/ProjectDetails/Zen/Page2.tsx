@@ -19,7 +19,11 @@ export function Page2(props: Props) {
                     Light mode
                 </Typography>
             </div>
-            <img src={detailImagesByProjectId.zen.zenPhoneUrl} alt="Zen Gourmet website on a phone" className={classes.image} />
+            <img
+                src={detailImagesByProjectId.zen.zenPhoneUrl}
+                alt="Zen Gourmet website on a phone"
+                className={classes.image}
+            />
             <div className={classes.infoDroitGridContainer}>
                 <Typography variant="body1" className={classes.infoDroit}>
                     Dark mode

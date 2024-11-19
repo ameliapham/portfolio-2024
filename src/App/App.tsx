@@ -1,5 +1,5 @@
 import { GlobalStyles } from "tss-react";
-import { Header } from "App/Header";
+import { NavBar } from "App/NavBar/NavBar";
 import { Suspense } from "react";
 import { tss } from "tss";
 import { useRoute, RouteProvider } from "routes";
@@ -57,23 +57,15 @@ export function AppContextualized() {
                 }}
             />
             <div className={classes.root}>
-                <Header
-                    className={classes.header}
-                    pageId={route.name}
-                />
+                <NavBar className={classes.navbar} pageId={route.name} />
                 <main className={classes.main}>
-                    <Suspense fallback={<SplashScreen/>}>
+                    <Suspense fallback={<SplashScreen />}>
                         {(() => {
                             for (const pageId of pageIds) {
                                 const page = pages[pageId as "home"];
 
                                 if (page.routeGroup.has(route)) {
-                                    return (
-                                        <page.LazyComponent
-                                            className={classes.page}
-                                            route={route}
-                                        />
-                                    );
+                                    return <page.LazyComponent className={classes.page} route={route} />;
                                 }
                             }
 
@@ -93,33 +85,33 @@ const useStyles = tss
         root: isScrollablePage
             ? {}
             : {
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column"
-            },
-        header: isScrollablePage
+                  height: "100vh",
+                  display: "flex",
+                  flexDirection: "column"
+              },
+        navbar: isScrollablePage
             ? {
-                height: headerHeight,
-                position: "fixed",
-                top: 0,
-                width: "100%"
-            }
+                  height: headerHeight,
+                  position: "fixed",
+                  top: 0,
+                  width: "100%"
+              }
             : {
-                height: headerHeight
-            },
+                  height: headerHeight
+              },
         main: isScrollablePage
             ? {
-                marginTop: headerHeight
-            }
+                  marginTop: headerHeight
+              }
             : {
-                flex: 1,
-                display: "flex",
-                justifyContent: "center",
-                overflow: "hidden"
-            },
+                  flex: 1,
+                  display: "flex",
+                  justifyContent: "center",
+                  overflow: "hidden"
+              },
         page: isScrollablePage
             ? {}
             : {
-                height: "100%"
-            }
+                  height: "100%"
+              }
     }));

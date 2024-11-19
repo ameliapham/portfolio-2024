@@ -33,13 +33,7 @@ export function SocialContact(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             {social.map((social, index) => (
-                <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={classes.a}
-                >
+                <a key={index} href={social.url} target="_blank" rel="noreferrer" className={classes.a}>
                     <social.Icon className={classes.icon} />
                 </a>
             ))}
@@ -50,7 +44,7 @@ export function SocialContact(props: Props) {
 const useStyles = tss.withName({ SocialContact }).create(({ theme }) => ({
     root: {
         display: "flex",
-        gap: theme.spacing(3),
+        gap: theme.spacing(3)
     },
     a: {
         height: theme.spacing(4),
@@ -80,5 +74,5 @@ const useStyles = tss.withName({ SocialContact }).create(({ theme }) => ({
         "&:hover": {
             transform: "translateY(-5px)"
         }
-    },
+    }
 }));

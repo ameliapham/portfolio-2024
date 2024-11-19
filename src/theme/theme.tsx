@@ -26,7 +26,7 @@ const typography = {
     }
 };
 
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
     interface BreakpointOverrides {
         // removes the `xs` breakpoint
         xs: false;
@@ -46,8 +46,8 @@ const breakpoints = {
     values: {
         mobile: 0,
         tablet: 640,
-        desktop: 1200,
-    },
+        desktop: 1200
+    }
 };
 
 export const theme = createTheme({

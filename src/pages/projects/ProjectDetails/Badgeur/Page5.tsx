@@ -14,7 +14,11 @@ export function Page5(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <img src={detailImagesByProjectId.badgeur.badgeurTestUrl} alt="Zen Gourmet website on a phone" className={classes.image} />
+            <img
+                src={detailImagesByProjectId.badgeur.badgeurTestUrl}
+                alt="Zen Gourmet website on a phone"
+                className={classes.image}
+            />
             <Typography variant="body1" className={classes.details}>
                 ......to the prototype
             </Typography>

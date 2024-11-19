@@ -137,12 +137,8 @@ export const detailImagesByProjectId = {
         zenLogoUrl,
         zenIpadUrl
     },
-    gili: {
-
-    },
-    gmeta: {
-
-    },
+    gili: {},
+    gmeta: {},
     badgeur: {
         badgeurPhoneUrl,
         badgeurLogoUrl,
@@ -152,18 +148,12 @@ export const detailImagesByProjectId = {
         wfBadgeurUrl,
         badgeurTestUrl
     },
-    iso: {
-
-    },
-    dame: {
-
-    },
+    iso: {},
+    dame: {},
     famed: {
         famedPhoneMUrl,
         famedPhoneLUrl,
         famedPhoneRUrl
     },
-    arti: {
-
-    }
-}
+    arti: {}
+};

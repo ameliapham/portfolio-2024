@@ -29,7 +29,7 @@ export function ProjectDetails(props: Props) {
                     {...routes[route.name]({
                         ...route.params,
                         isGalleryVisible: true,
-                        detailsIndex: undefined,
+                        detailsIndex: undefined
                     }).link}
                 >
                     Back
@@ -44,7 +44,7 @@ export function ProjectDetails(props: Props) {
                             return <Badgeur route={route} />;
                         case "dame":
                             return <DameCanton route={route} />;
-                            case "gmeta":
+                        case "gmeta":
                             return <Gmeta route={route} />;
                         case "iso":
                             return <Iso route={route} />;
@@ -71,7 +71,7 @@ const useStyles = tss
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                overflow: "hidden",
+                overflow: "hidden"
             },
             background: {
                 position: "absolute",
@@ -88,10 +88,10 @@ const useStyles = tss
                 transition: "background 0.5s"
             },
             buttonBack: {
-                transition: "opacity 0.5s",
+                transition: "opacity 0.5s"
             },
             content: {
-                flex: 1,
-            },
+                flex: 1
+            }
         };
     });

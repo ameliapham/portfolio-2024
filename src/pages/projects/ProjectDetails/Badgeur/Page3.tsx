@@ -12,8 +12,16 @@ export function Page3(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <img src={detailImagesByProjectId.badgeur.badgeurPhoneUrl} alt="Badgeur phone" className={cx(classes.image, classes.phone)} />
-            <img src={detailImagesByProjectId.badgeur.badgeurLogoUrl} alt="Badgeur logo" className={cx(classes.image, classes.logo)} />
+            <img
+                src={detailImagesByProjectId.badgeur.badgeurPhoneUrl}
+                alt="Badgeur phone"
+                className={cx(classes.image, classes.phone)}
+            />
+            <img
+                src={detailImagesByProjectId.badgeur.badgeurLogoUrl}
+                alt="Badgeur logo"
+                className={cx(classes.image, classes.logo)}
+            />
             <img
                 src={detailImagesByProjectId.badgeur.badgeurColor1Url}
                 alt="Badgeur color 1"
