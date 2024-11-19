@@ -72,23 +72,23 @@ export default function Page(props: Props) {
                 previousLink={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) > 0
                         ? routes[route.name]({
-                              ...route.params,
-                              aboutDetailsId:
-                                  aboutDetailsIds[
-                                      aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1
-                                  ]
-                          }).link
+                            ...route.params,
+                            aboutDetailsId:
+                                aboutDetailsIds[
+                                aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1
+                                ]
+                        }).link
                         : undefined
                 }
                 nextLink={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) < aboutDetailsIds.length - 1
                         ? routes[route.name]({
-                              ...route.params,
-                              aboutDetailsId:
-                                  aboutDetailsIds[
-                                      aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1
-                                  ]
-                          }).link
+                            ...route.params,
+                            aboutDetailsId:
+                                aboutDetailsIds[
+                                aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1
+                                ]
+                        }).link
                         : undefined
                 }
                 processPercentage={
@@ -166,7 +166,7 @@ function Skills() {
 const useStyles = tss
     .withName({ Page })
     .withParams<{ rootWidth: number }>()
-    .create(({ theme, rootWidth, windowInnerWidth }) => {
+    .create(({ theme, rootWidth, headerHeight }) => {
         return {
             root: {
                 paddingBottom: `${theme.spacing(4)}`,
@@ -186,17 +186,18 @@ const useStyles = tss
                 display: "flex",
                 padding: `0 ${0.1 * rootWidth}px 0 ${0.15 * rootWidth}px`,
                 alignItems: "center",
-                flexDirection: (() => {
-                    if (theme.breakpoints.values.md <= windowInnerWidth) {
-                        return "row";
-                    }
-                    return "column";
-                })(),
-                gap: "5vw"
+                flexDirection: "row",
+                gap: "5vw",
+
+                [theme.breakpoints.down("tablet")]: {
+                    flexDirection: "column",
+                    gap: "80px",
+                    padding: `${headerHeight} ${0.1 * rootWidth}px`
+                }
             },
             frameZone: {
                 height: 0.3 * rootWidth,
-                width: 0.25 * rootWidth
+                width: 0.25 * rootWidth,
             },
             texts: {
                 flex: 1,

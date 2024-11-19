@@ -45,23 +45,40 @@ const useStyles = tss
         const top = "0%";
         const right = "1%";
 
+        const gapValues = {
+            desktop: "30px",
+            default: "15px"
+        }
+        
         return {
             root: {
                 position: "relative",
 
                 [`&:hover .${classes.div1}`]: {
-                    top: `calc(${top} + 30px)`,
-                    right: `calc(${right} + 30px)`
+                    top: `calc(${top} + ${gapValues.desktop})`,
+                    right: `calc(${right} + ${gapValues.desktop})`,
+                    [theme.breakpoints.down("desktop")]: {
+                        top: `calc(${top} + ${gapValues.default})`,
+                        right: `calc(${right} + ${gapValues.default})`
+                    }
                 },
 
                 [`&:hover .${classes.div3}`]: {
-                    top: `calc(${top} + 30px)`,
-                    right: `calc(${right} + 30px)`
+                    top: `calc(${top} + ${gapValues.desktop})`,
+                    right: `calc(${right} + ${gapValues.desktop})`,
+                    [theme.breakpoints.down("desktop")]: {
+                        top: `calc(${top} + ${gapValues.default})`,
+                        right: `calc(${right} + ${gapValues.default})`
+                    }
                 },
 
                 [`&:hover .${classes.div4}`]: {
-                    top: `calc(${top} + 30px)`,
-                    right: `calc(${right} + 30px)`
+                    top: `calc(${top} + ${gapValues.desktop})`,
+                    right: `calc(${right} + ${gapValues.desktop})`,
+                    [theme.breakpoints.down("desktop")]: {
+                        top: `calc(${top} + ${gapValues.default})`,
+                        right: `calc(${right} + ${gapValues.default})`
+                    }
                 }
             },
             fakeBorder: {
@@ -96,7 +113,9 @@ const useStyles = tss
                 right: right,
                 height: "100%",
                 width: "100%",
-                transition: "0.4s ease"
+                transition: "0.4s ease",
+
+
             },
             fakeBorderDiv1: {
                 background: `linear-gradient(to right bottom, ${alpha(background, 0.4)}, ${alpha(background, 0.8)}, ${alpha(background, 0.4)})`
@@ -104,10 +123,14 @@ const useStyles = tss
 
             div2: {
                 position: "absolute",
-                top: `calc(${top} + 30px)`,
-                right: `calc(${right} + 30px)`,
+                top: `calc(${top} + ${gapValues.desktop})`,
+                right: `calc(${right} + ${gapValues.desktop})`,
                 height: "100%",
-                width: "100%"
+                width: "100%",
+                [theme.breakpoints.down("desktop")]: {
+                    top: `calc(${top} + ${gapValues.default})`,
+                    right: `calc(${right} + ${gapValues.default})`
+                }
             },
             fakeBorderDiv2: {
                 background: `linear-gradient(to right bottom, ${alpha(background, 0.25)}, ${alpha(background, 0.5)}, ${alpha(background, 0.25)})`
@@ -115,11 +138,15 @@ const useStyles = tss
 
             div3: {
                 position: "absolute",
-                top: `calc(${top} + 60px)`,
-                right: `calc(${right} + 60px)`,
+                top: `calc(${top} + ${gapValues.desktop}*2)`,
+                right: `calc(${right} + ${gapValues.desktop}*2)`,
                 height: "100%",
                 width: "100%",
-                transition: "0.4s ease"
+                transition: "0.4s ease",
+                [theme.breakpoints.down("desktop")]: {
+                    top: `calc(${top} + ${gapValues.default}*2)`,
+                    right: `calc(${right} + ${gapValues.default}*2)`
+                }
             },
             fakeBorderDiv3: {
                 background: `linear-gradient(to right bottom, ${alpha(background, 0.1)}, ${alpha(background, 0.3)}, ${alpha(background, 0.1)})`
@@ -127,11 +154,15 @@ const useStyles = tss
 
             div4: {
                 position: "absolute",
-                top: `calc(${top} + 90px)`,
-                right: `calc(${right} + 90px)`,
+                top: `calc(${top} + ${gapValues.desktop}*3)`,
+                right: `calc(${right} + ${gapValues.desktop}*3)`,
                 height: "100%",
                 width: "100%",
-                transition: "0.4s ease"
+                transition: "0.4s ease",
+                [theme.breakpoints.down("desktop")]: {
+                    top: `calc(${top} + ${gapValues.default}*3)`,
+                    right: `calc(${right} + ${gapValues.default}*3)`
+                }
             },
 
             fakeBorderDiv4: {
