@@ -37,7 +37,7 @@ declare module "@mui/material/styles" {
         // adds the `mobile` breakpoint
         mobile: true;
         tablet: true;
-        laptop: false;
+        laptop: true;
         desktop: true;
     }
 }
@@ -45,7 +45,8 @@ declare module "@mui/material/styles" {
 const breakpoints = {
     values: {
         mobile: 0,
-        tablet: 640,
+        tablet: 600,
+        laptop: 900,
         desktop: 1200
     }
 };
