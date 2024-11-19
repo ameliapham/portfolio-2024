@@ -16,7 +16,7 @@ type PropsDrawerList = {
 };
 
 export function MobileMenu(props: PropsDrawerList) {
-    const { className } = props;
+    const { className, onClick } = props;
     const { cx, classes, theme } = useStyles();
 
     const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -28,8 +28,15 @@ export function MobileMenu(props: PropsDrawerList) {
                     .filter(pageId => pageId !== "page404" && pageId !== "home")
                     .map(pageId_i => (
                         <ListItem key={pageId_i} disablePadding>
-                            <ListItemButton className={classes.text} {...routes[pageId_i]().link}>
-                                <Typography variant="h1" fontSize={theme.typography.h3.fontSize}>
+                            <ListItemButton
+                                className={classes.text}
+                                {...routes[pageId_i]().link}
+                                onClick={onClick}
+                            >
+                                <Typography
+                                    variant="h1"
+                                    fontSize={theme.typography.h3.fontSize}
+                                >
                                     {capitalize(pageId_i)}
                                 </Typography>
                             </ListItemButton>
@@ -56,6 +63,7 @@ const useStyles = tss.withName({ MobileMenu }).create(({ theme }) => ({
         flex: 1,
         display: "flex",
         flexDirection: "column",
+        gap: theme.spacing(2),
         justifyContent: "center",
         alignItems: "center"
     },
