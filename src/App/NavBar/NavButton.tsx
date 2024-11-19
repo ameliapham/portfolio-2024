@@ -9,7 +9,7 @@ type MenuButtonProps = {
     selected: boolean;
 };
 
-export function MenuButton(props: MenuButtonProps) {
+export function NavButton(props: MenuButtonProps) {
     const { className, onClick, children, selected } = props;
     const { cx, classes } = useStyles();
 
@@ -23,7 +23,7 @@ export function MenuButton(props: MenuButtonProps) {
     );
 }
 
-const useStyles = tss.withName({ MenuButton }).create(({ theme }) => ({
+const useStyles = tss.withName({ NavButton }).create(({ theme }) => ({
     button: {
         position: "relative",
         color: theme.palette.text.primary,

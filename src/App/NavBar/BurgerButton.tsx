@@ -1,5 +1,5 @@
 import { tss } from "tss";
-import BurgerIcon from 'assets/BurgerIcon.svg?react';
+import BurgerIcon from "assets/BurgerIcon.svg?react";
 import { alpha } from "@mui/material/styles";
 
 type Props = {
@@ -22,13 +22,13 @@ const useStyles = tss
         burgerButton: {
             "& .border": {
                 stroke: `${alpha(theme.palette.secondary.light, isOpen ? 0.5 : 0.2)}`,
-                transition: "stroke 0.5s",
+                transition: "stroke 0.5s"
             },
 
             "& .path1": {
                 transform: isOpen ? "translate(0, -5px)" : "translate(0, 0)",
                 fill: `${alpha(theme.palette.secondary.light, isOpen ? 0.8 : 0.7)}`,
-                transition: "transform 0.5s",
+                transition: "transform 0.5s"
             },
 
             "& .path2": {
@@ -37,25 +37,24 @@ const useStyles = tss
             "& .path3": {
                 transform: isOpen ? "translate(0, 5px)" : "translate(0, 0)",
                 fill: `${alpha(theme.palette.secondary.light, isOpen ? 0.8 : 0.7)}`,
-                transition: "transform 0.5s",
+                transition: "transform 0.5s"
             },
 
             "&:hover": {
                 "& .border": {
                     stroke: `${alpha(theme.palette.secondary.light, 0.5)}`,
-                    transition: "stroke 0.5s",
+                    transition: "stroke 0.5s"
                 },
 
                 "& .path1": {
                     transform: "translate(0, -5px)",
-                    transition: "transform 0.5s",
+                    transition: "transform 0.5s"
                 },
 
                 "& .path3": {
                     transform: "translate(0, 5px)",
-                    transition: "transform 0.5s",
-                },
-            },
+                    transition: "transform 0.5s"
+                }
+            }
         }
     }));
-
