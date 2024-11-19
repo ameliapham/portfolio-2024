@@ -6,7 +6,7 @@ import { Page4 } from "./Page4";
 import { Page5 } from "./Page5";
 import type { PageRoute } from "../../route";
 import { routes } from "routes";
-import { NavComponent } from "shared/NavComponent";
+import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
 
 type Props = {
@@ -37,7 +37,7 @@ export function Badgeur(props: Props) {
                     }
                 })()}
             </div>
-            <NavComponent
+            <ProgressComponent
                 previousLink={
                     route.params.detailsIndex === 0
                         ? undefined

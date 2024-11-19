@@ -5,7 +5,7 @@ import { Page3 } from "./Page3";
 import type { PageRoute } from "../../route";
 import { assert } from "tsafe/assert";
 import { routes } from "routes";
-import { NavComponent } from "shared/NavComponent";
+import { ProgressComponent } from "shared/ProgressComponent";
 
 type Props = {
     className?: string;
@@ -33,7 +33,7 @@ export function Famed(props: Props) {
                         }
                     })()}
                 </div>
-                <NavComponent
+                <ProgressComponent
                     className={classes.navComponent}
                     previousLink={
                         route.params.detailsIndex === 0

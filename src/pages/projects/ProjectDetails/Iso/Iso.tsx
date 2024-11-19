@@ -4,7 +4,7 @@ import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
 import type { PageRoute } from "../../route";
 import { routes } from "routes";
-import { NavComponent } from "shared/NavComponent";
+import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
 
 type Props = {
@@ -31,7 +31,7 @@ export function Iso(props: Props) {
                     }
                 })()}
             </div>
-            <NavComponent
+            <ProgressComponent
                 previousLink={
                     route.params.detailsIndex === 0
                         ? undefined

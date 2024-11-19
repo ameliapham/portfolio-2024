@@ -11,7 +11,7 @@ type Props = {
     processPercentage: number;
 };
 
-export function NavComponent(props: Props) {
+export function ProgressComponent(props: Props) {
     const { className, previousLink, nextLink, processPercentage } = props;
     const { cx, classes } = useStyles();
 
@@ -46,7 +46,7 @@ export function NavComponent(props: Props) {
     );
 }
 
-const useStyles = tss.withName({ NavComponent }).create(({ theme }) => {
+const useStyles = tss.withName({ ProgressComponent }).create(({ theme }) => {
     return {
         root: {
             display: "flex",
