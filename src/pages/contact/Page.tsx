@@ -50,7 +50,15 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
             100% {
                 opacity: 1;
             }
-            `} 400ms`
+            `} 400ms`,
+
+        [theme.breakpoints.only("tablet")]: {
+            padding: `0 ${theme.spacing(10)}`
+        },
+        [theme.breakpoints.only("mobile")]: {
+            padding: `0 ${theme.spacing(6)}`
+        },
+
     },
     textZone: {
         display: "flex",

@@ -189,7 +189,7 @@ const useStyles = tss
                 flexDirection: "row",
                 gap: "5vw",
 
-                [theme.breakpoints.down("tablet")]: {
+                [theme.breakpoints.down("laptop")]: {
                     flexDirection: "column",
                     gap: "80px",
                     padding: `${headerHeight} ${0.1 * rootWidth}px`

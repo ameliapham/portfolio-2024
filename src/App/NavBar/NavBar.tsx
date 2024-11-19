@@ -70,7 +70,11 @@ const useStyles = tss.withName({ NavBar }).create(({ theme, headerHeight }) => (
         alignItems: "center",
         borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
         padding: `0 ${theme.spacing(10)}`,
-        backgroundColor: "transparent"
+        backgroundColor: "transparent",
+
+        [theme.breakpoints.down("tablet")]: {
+            padding: `0 ${theme.spacing(6)}`
+        }
     },
     logo: {
         width: theme.spacing(15),
