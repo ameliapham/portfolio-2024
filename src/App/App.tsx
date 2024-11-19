@@ -19,8 +19,7 @@ export function App() {
 
 export function AppContextualized() {
     const route = useRoute();
-
-    const { classes, theme } = useStyles({
+    const { classes, theme, css } = useStyles({
         isScrollablePage: (() => {
             switch (route.name) {
                 case "home":
@@ -59,7 +58,17 @@ export function AppContextualized() {
             <div className={classes.root}>
                 <NavBar className={classes.navbar} pageId={route.name} />
                 <main className={classes.main}>
-                    <Suspense fallback={<SplashScreen />}>
+                    <Suspense fallback={
+                        <div
+                            className={css({
+                                height: "100%",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center"
+                            })}
+                        >
+                            <SplashScreen className={css({ width: "50%" })} />
+                        </div>}>
                         {(() => {
                             for (const pageId of pageIds) {
                                 const page = pages[pageId as "home"];
@@ -85,33 +94,33 @@ const useStyles = tss
         root: isScrollablePage
             ? {}
             : {
-                  height: "100vh",
-                  display: "flex",
-                  flexDirection: "column"
-              },
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column"
+            },
         navbar: isScrollablePage
             ? {
-                  height: headerHeight,
-                  position: "fixed",
-                  top: 0,
-                  width: "100%"
-              }
+                height: headerHeight,
+                position: "fixed",
+                top: 0,
+                width: "100%"
+            }
             : {
-                  height: headerHeight
-              },
+                height: headerHeight
+            },
         main: isScrollablePage
             ? {
-                  marginTop: headerHeight
-              }
+                marginTop: headerHeight
+            }
             : {
-                  flex: 1,
-                  display: "flex",
-                  justifyContent: "center",
-                  overflow: "hidden"
-              },
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+                overflow: "hidden"
+            },
         page: isScrollablePage
             ? {}
             : {
-                  height: "100%"
-              }
+                height: "100%"
+            }
     }));
