@@ -8,7 +8,7 @@ import { projectIds } from "./projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
 import { SplashScreen } from "shared/SplashScreen";
-import { NavComponent } from "shared/NavComponent";
+import { ProgressComponent } from "shared/ProgressComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
 import { detailImagesByProjectId } from "./projectsData";
@@ -119,7 +119,7 @@ export function ProjectGallery(props: Props) {
                 ))}
             </div>
 
-            <NavComponent
+            <ProgressComponent
                 className={classes.navComponent}
                 previousLink={
                     projectIds.indexOf(route.params.projectId) > 0
@@ -186,12 +186,10 @@ const animate = keyframes({
 const animateContent = keyframes({
     from: {
         opacity: 0,
-        transform: "translate(-100px, 0px)",
         filter: "blur(10px)"
     },
     to: {
         opacity: 1,
-        transform: "translate(0, -50%)",
         filter: "blur(0)"
     }
 });
@@ -271,6 +269,7 @@ const useStyles = tss
                 position: "absolute",
                 top: "50%",
                 left: theme.spacing(10),
+                transform: "translate(0, -50%)",
                 width: "40%",
                 textAlign: "left",
                 color: theme.palette.text.primary,
@@ -278,15 +277,16 @@ const useStyles = tss
                 borderRadius: "10px",
                 backdropFilter: "brightness(60%) blur(0px)",
                 opacity: 0,
-                animation: `${animateContent} 0.3s ease-in-out 0.2s 1 forwards`,
+                animation: `${animateContent} 0.3s ease-in-out 0.3s 1 forwards`,
                 cursor: "pointer",
                 transition: "all 0.4s ease",
                 textDecoration: "none",
 
                 "&:hover": {
                     backdropFilter: "brightness(30%)",
-                    top: `calc(50% - 10px)`,
-                    transition: "all 0.5s ease"
+                    top: `calc(50% - 2px)`,
+                    transition: "all 0.5s ease",
+
                 },
 
                 [`&:hover .${classes.seeMoreButton}`]: {
@@ -299,6 +299,20 @@ const useStyles = tss
                         transform: "translateX(20px)",
                         transition: "all 0.4s ease"
                     }
+                },
+
+                [theme.breakpoints.down("laptop")]: {
+                    width: "80%",
+                    left: theme.spacing(10),
+                    top: "35%",
+
+                    "&:hover": {
+                        top: `calc(35% - 2px)`
+                    }
+                },
+
+                [theme.breakpoints.only("mobile")]: {
+                    display: "none"
                 }
             },
             seeMoreButton: {
@@ -306,7 +320,6 @@ const useStyles = tss
                 animation: `${animate} 0.6s ease-in-out 0.6s 1 forwards`
             },
             name: {
-                fontSize: "40px",
                 textTransform: "uppercase",
                 fontWeight: "bold",
                 opacity: 0,
