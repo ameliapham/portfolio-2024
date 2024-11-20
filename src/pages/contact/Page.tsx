@@ -1,6 +1,5 @@
 import { tss, keyframes } from "tss";
 import Typography from "@mui/material/Typography";
-import { BackgroundBeams } from "shared/BackgroundBeams";
 import { PageRoute } from "./route";
 import { SocialContact } from "../../shared/SocialContact";
 
@@ -28,8 +27,6 @@ export default function Page(props: Props) {
 
                 <SocialContact className={classes.social} />
             </div>
-
-            <BackgroundBeams className={classes.backgroundBeams} />
         </>
     );
 }
@@ -68,10 +65,4 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
     social: {
         height: theme.spacing(6)
     },
-    backgroundBeams: {
-        position: "absolute",
-        height: "100%",
-        width: "100%",
-        overflow: "hidden"
-    }
 }));

@@ -7,7 +7,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { PhotoFrame } from "./PhotoFrame";
 import { SeeMoreButton } from "shared/SeeMoreButton";
-import { BackgroundBeams } from "shared/BackgroundBeams";
 import { useDomRect } from "powerhooks/useDomRect";
 import { routes } from "routes";
 import { PageRoute } from "./route";
@@ -97,8 +96,6 @@ export default function Page(props: Props) {
                     100
                 }
             />
-
-            <BackgroundBeams className={classes.backgroundBeams} />
         </div>
     );
 }
@@ -225,12 +222,5 @@ const useStyles = tss
                 color: theme.palette.text.primary
             },
             navComponent: {},
-            backgroundBeams: {
-                position: "absolute",
-                height: "100%",
-                width: "100%",
-                overflow: "hidden",
-                zIndex: -1
-            }
         };
     });
