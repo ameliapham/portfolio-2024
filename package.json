@@ -13,16 +13,16 @@
     "dependencies": {
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
-        "@mui/icons-material": "^5.15.18",
-        "@mui/material": "^5.15.18",
-        "evt": "^2.5.7",
+        "@mui/icons-material": "^6.1.7",
+        "@mui/material": "^6.1.7",
+        "evt": "^2.5.8",
         "framer-motion": "^11.2.6",
-        "powerhooks": "^1.0.10",
+        "powerhooks": "^1.0.19",
         "prettier": "^3.3.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "tsafe": "^1.8.4",
-        "tss-react": "^4.9.10",
+        "tsafe": "^1.8.5",
+        "tss-react": "^4.9.13",
         "type-route": "^1.1.0"
     },
     "devDependencies": {
