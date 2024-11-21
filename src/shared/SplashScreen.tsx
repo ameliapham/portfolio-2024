@@ -1,5 +1,5 @@
 import { tss, keyframes } from "tss";
-import LogoSvg from "assets/logoSvg.svg?react";
+import LogoSplashScreen from "assets/logoSplashScreen.svg?react";
 
 type Props = {
     className?: string;
@@ -10,7 +10,7 @@ export function SplashScreen(props: Props) {
 
     const { cx, classes } = useStyles();
 
-    return <LogoSvg className={cx(classes.root, className)} />;
+    return <LogoSplashScreen className={cx(classes.root, className)} />;
 }
 
 const getAnimationHorizontal = (delay: string) =>
