@@ -10,13 +10,18 @@ function useContext() {
 
     const { windowInnerWidth } = useWindowInnerSize();
 
+    const isMobile = windowInnerWidth < theme.breakpoints.values.tablet;
+
     return {
         theme,
         headerHeight,
-        windowInnerWidth
+        windowInnerWidth,
+        isMobile
     };
 }
 
 export const { tss } = createTss({
     useContext
 });
+
+export const useStyles = tss.create({});

@@ -7,6 +7,7 @@ import * as page404 from "./page404";
 import { objectKeys } from "tsafe/objectKeys";
 import type { UnionToIntersection } from "tsafe";
 import type { RouterOpts } from "type-route";
+export { useIsScrollablePage } from "./useIsScrollablePage";
 
 export const pages = {
     home,

@@ -3,7 +3,7 @@ import { NavBar } from "App/NavBar/NavBar";
 import { Suspense } from "react";
 import { tss } from "tss";
 import { useRoute, RouteProvider } from "routes";
-import { pages, pageIds } from "pages";
+import { pages, pageIds, useIsScrollablePage } from "pages";
 import { ThemeProvider } from "theme";
 import { SplashScreen } from "shared/SplashScreen";
 
@@ -19,21 +19,11 @@ export function App() {
 
 export function AppContextualized() {
     const route = useRoute();
+
+    const isScrollablePage = useIsScrollablePage({ pageId: route.name || "page404" });
+
     const { classes, theme, css } = useStyles({
-        isScrollablePage: (() => {
-            switch (route.name) {
-                case "home":
-                    return false;
-                case "contact":
-                    return false;
-                case "projects":
-                    return false;
-                case "about":
-                    return false;
-                default:
-                    return true;
-            }
-        })()
+        isScrollablePage
     });
 
     return (
@@ -57,31 +47,23 @@ export function AppContextualized() {
             />
             <div className={classes.root}>
                 <NavBar className={classes.navbar} pageId={route.name} />
-                <main className={classes.main}>
-                    <Suspense fallback={
-                        <div
-                            className={css({
-                                height: "100%",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center"
-                            })}
-                        >
-                            <SplashScreen className={css({ width: "50%" })} />
-                        </div>}>
-                        {(() => {
-                            for (const pageId of pageIds) {
-                                const page = pages[pageId as "home"];
+                <Suspense fallback={
+                    <div className={classes.page}>
+                        <SplashScreen className={css({ width: "50%" })} />
+                    </div>}
+                >
+                    {(() => {
+                        for (const pageId of pageIds) {
+                            const page = pages[pageId as "home"];
 
-                                if (page.routeGroup.has(route)) {
-                                    return <page.LazyComponent className={classes.page} route={route} />;
-                                }
+                            if (page.routeGroup.has(route)) {
+                                return <page.LazyComponent className={classes.page} route={route} />;
                             }
+                        }
 
-                            return <pages.page404.LazyComponent />;
-                        })()}
-                    </Suspense>
-                </main>
+                        return <pages.page404.LazyComponent />;
+                    })()}
+                </Suspense>
             </div>
         </>
     );
@@ -91,36 +73,22 @@ const useStyles = tss
     .withName({ App })
     .withParams<{ isScrollablePage: boolean }>()
     .create(({ headerHeight, isScrollablePage }) => ({
-        root: isScrollablePage
-            ? {}
-            : {
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column"
-            },
-        navbar: isScrollablePage
-            ? {
-                height: headerHeight,
-                position: "fixed",
-                top: 0,
-                width: "100%"
-            }
-            : {
-                height: headerHeight
-            },
-        main: isScrollablePage
-            ? {
-                marginTop: headerHeight
-            }
-            : {
-                flex: 1,
-                display: "flex",
-                justifyContent: "center",
-                overflow: "hidden"
-            },
+        root: {
+            height: isScrollablePage ? undefined : "100vh"
+        },
+        navbar: {
+            height: headerHeight,
+            position: "fixed",
+            top: 0,
+            width: "100%",
+            zIndex: 1000
+        },
         page: isScrollablePage
-            ? {}
+            ? {
+                paddingTop: headerHeight
+            }
             : {
-                height: "100%"
+                height: "100%",
+                overflow: "hidden"
             }
     }));
