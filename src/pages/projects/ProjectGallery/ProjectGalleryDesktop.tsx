@@ -1,23 +1,17 @@
 import { useMemo } from "react";
-import { projects } from "./projectsData";
-import type { PageRoute } from "./route";
 import { rotateArrayRight } from "utils/rotateArray";
 import { routes } from "routes";
 import { tss, keyframes } from "tss";
-import { projectIds } from "./projectsData";
+import { projects, projectIds, detailImagesByProjectId } from "../projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
 import { SplashScreen } from "shared/SplashScreen";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
-import { detailImagesByProjectId } from "./projectsData";
 import type { Link } from "type-route";
+import type { Props } from "./Props";
 
-type Props = {
-    className?: string;
-    route: PageRoute;
-};
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
@@ -25,7 +19,7 @@ const allDetailImagesUrls = Object.values(detailImagesByProjectId)
     .map(detailImages => Object.values(detailImages))
     .flat();
 
-export function ProjectGallery(props: Props) {
+export default function ProjectGalleryDesktop(props: Props) {
     const { className, route } = props;
 
     const { cx, classes, css } = useStyles();
@@ -77,9 +71,9 @@ export function ProjectGallery(props: Props) {
                             i === 0 || i === 1
                                 ? undefined
                                 : routes[route.name]({
-                                      ...route.params,
-                                      projectId: id
-                                  }).link
+                                    ...route.params,
+                                    projectId: id
+                                }).link
                         }
                     >
                         {(() => {
@@ -124,17 +118,17 @@ export function ProjectGallery(props: Props) {
                 previousLink={
                     projectIds.indexOf(route.params.projectId) > 0
                         ? routes[route.name]({
-                              ...route.params,
-                              projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                          }).link
+                            ...route.params,
+                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+                        }).link
                         : undefined
                 }
                 nextLink={
                     projectIds.indexOf(route.params.projectId) < projectIds.length - 1
                         ? routes[route.name]({
-                              ...route.params,
-                              projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                          }).link
+                            ...route.params,
+                            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+                        }).link
                         : undefined
                 }
                 processPercentage={
@@ -195,7 +189,7 @@ const animateContent = keyframes({
 });
 
 const useStyles = tss
-    .withName({ ProjectGallery })
+    .withName({ ProjectGallery: ProjectGalleryDesktop })
     .withNestedSelectors<"seeMoreButton">()
     .create(({ classes, theme }) => {
         const sideLength = "200px";
