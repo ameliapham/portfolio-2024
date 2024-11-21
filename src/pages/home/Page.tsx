@@ -7,8 +7,6 @@ import { CustomGradients } from "./Gradients";
 import { routes } from "routes";
 import { PageRoute } from "./route";
 import { keyframes } from "tss-react";
-//import { useDownloadAssets } from "utils/useDownloadAssets";
-//import { SplashScreen } from "shared/SplashScreen";
 
 type Props = {
     className?: string;
@@ -18,27 +16,6 @@ type Props = {
 export default function Page(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
-
-    /*
-    const { isDownloadingAssets } = useDownloadAssets({
-        urls: [headVideo]
-    });
-
-    if (isDownloadingAssets) {
-        return (
-            <div
-                className={css({
-                    height: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"
-                })}
-            >
-                <SplashScreen className={css({ width: "50%" })} />
-            </div>
-        );
-    }
-    */
 
     return (
         <div className={cx(classes.root, className)}>
@@ -73,7 +50,7 @@ export default function Page(props: Props) {
 const useStyles = tss.withName({ Page }).create(({ theme }) => ({
     root: {
         position: "relative",
-        width: "90%",
+        width: "100%",
         height: "100%",
         display: "flex",
         justifyContent: "center",
@@ -85,7 +62,7 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
             100% {
                 opacity: 1;
             }
-            `} 400ms`
+            `} 400ms`,
     },
     video: {
         objectFit: "cover",
@@ -127,7 +104,7 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         height: "100%",
         backgroundColor: "black",
         maskImage: "radial-gradient(400px 200px at top, transparent 20%, white)"
-   
+
     },
     button: {
         position: "absolute",
