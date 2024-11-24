@@ -73,8 +73,7 @@ export const theme = createTheme({
             default: "#000"
         },
         text: {
-            //primary: "#acb3b4"
-            primary: "rgba(255, 255, 255, 0.7)"
+            primary: "#efefef"
         }
     },
     typography,
