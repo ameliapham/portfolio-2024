@@ -2,13 +2,47 @@ import type { Props } from "./Props";
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { routes } from "routes";
-import { projects } from "../projectsData";
+import { projects, detailImagesByProjectId } from "../projectsData";
 import { ProjectFrame } from "./ProjectFrame";
+import { useDownloadAssets } from "utils/useDownloadAssets";
+import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
+import { SplashScreen } from "shared/SplashScreen";
+
+const projectAssetUrls = projects.map(project => project.imageUrl);
+
+const allDetailImagesUrls = Object.values(detailImagesByProjectId)
+    .map(detailImages => Object.values(detailImages))
+    .flat();
 
 export default function ProjectGalleryMobile(props: Props) {
     const { className, route } = props;
 
-    const { cx, classes } = useStyles();
+    const { cx, classes, css } = useStyles();
+
+    const { isDownloadingAssets } = useDownloadAssets({
+        urls: projectAssetUrls
+    });
+
+    useDownloadAssets({
+        urls: allDetailImagesUrls
+    });
+
+    const { isDelayed } = useDelayOnlyOnce();
+
+    if (isDownloadingAssets || isDelayed) {
+        return (
+            <div
+                className={css({
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                })}
+            >
+                <SplashScreen className={css({ width: "50%" })} />
+            </div>
+        );
+    }
 
     return (
         <div className={cx(classes.root, className)}>
