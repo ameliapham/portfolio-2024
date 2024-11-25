@@ -3,20 +3,22 @@ import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { routes } from "routes";
 import { projects } from "../projectsData";
-
+import { ProjectFrame } from "./ProjectFrame";
 
 export default function ProjectGalleryMobile(props: Props) {
-    const { className } = props;
+    const { className, route } = props;
 
-    const { cx, classes, css } = useStyles();
+    const { cx, classes } = useStyles();
 
     return (
         <div className={cx(classes.root, className)}>
             {projects.map((project) => (
-                <a
+                <ProjectFrame
                     key={project.id}
-                    className={css(classes.item, { backgroundImage: `url(${project.imageUrl})` })}
-                    {...routes.projects({
+                    className={classes.item}
+                    imageUrl={project.imageUrl}
+                    link={routes[route.name]({
+                        ...route.params,
                         projectId: project.id,
                         isGalleryVisible: false
                     }).link}
@@ -27,7 +29,7 @@ export default function ProjectGalleryMobile(props: Props) {
                     <Typography variant="body2">
                         {project.year}
                     </Typography>
-                </a>
+                </ProjectFrame>
             ))}
         </div>
     );
@@ -38,7 +40,6 @@ const useStyles = tss
     .create(({ theme, headerHeight }) => ({
         root: {
             color: theme.palette.text.primary,
-            border: "1px solid red",
             height: "100%",
             display: "flex",
             flexDirection: "column",
@@ -48,22 +49,8 @@ const useStyles = tss
         },
         item: {
             height: "300px",
-            backgroundSize: "cover",
-            borderRadius: theme.spacing(1),
-            border: `1px solid ${theme.palette.divider}`,
-            textDecoration: "none",
             cursor: "pointer",
             color: "inherit",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "end",
-            padding: theme.spacing(4),
-            transition: "transform 0.2s",
-
-            "&:hover": {
-                transform: "translate(5px, -5px)",
-                transition: "transform 0.2s",
-            },
         },
         name: {
             textTransform: "uppercase",
