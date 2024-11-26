@@ -25,7 +25,7 @@ const useStyles = tss.withName({ IsoMobile }).create(({ theme }) => {
             height: "100%",
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(4),
+            gap: theme.spacing(6)
         }
     };
 });

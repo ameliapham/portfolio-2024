@@ -50,7 +50,7 @@ const useStyles = tss.withName({ name: "ZenPage3" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 display: "flex"
-            },
+            }
         },
         image: {
             gridColumn: "1 / 4",
@@ -69,8 +69,8 @@ const useStyles = tss.withName({ name: "ZenPage3" }).create(({ theme }) => {
             animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
 
             [theme.breakpoints.only("mobile")]: {
-                display: "none",
-            },
+                display: "none"
+            }
         }
     };
 });

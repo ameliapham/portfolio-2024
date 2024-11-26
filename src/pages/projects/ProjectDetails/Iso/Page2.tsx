@@ -51,7 +51,7 @@ const useStyles = tss.withName({ name: "IsoPage2" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 height: "auto",
-                paddingBottom: "56.25%",
+                paddingBottom: "56.25%"
             }
         },
         videoIframe: {
@@ -64,7 +64,7 @@ const useStyles = tss.withName({ name: "IsoPage2" }).create(({ theme }) => {
             borderRadius: theme.spacing(2),
 
             [theme.breakpoints.only("mobile")]: {
-                borderRadius: 0,
+                borderRadius: 0
             }
         }
     };
