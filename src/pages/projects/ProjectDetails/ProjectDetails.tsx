@@ -71,7 +71,12 @@ const useStyles = tss
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                overflow: "hidden"
+                overflow: "hidden",
+
+                [theme.breakpoints.only("mobile")]: {
+                    padding: `${headerHeight} ${theme.spacing(6)} ${theme.spacing(4)} ${theme.spacing(6)}`,
+                }
+
             },
             background: {
                 position: "absolute",
@@ -85,13 +90,19 @@ const useStyles = tss
                 filter: "blur(15px)",
                 margin: "-20px",
                 opacity: 0.5,
-                transition: "background 0.5s"
+                transition: "background 0.5s",
+
+                [theme.breakpoints.only("mobile")]: {
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundAttachment: "fixed"
+                }
             },
             buttonBack: {
-                transition: "opacity 0.5s"
+                transition: "opacity 0.5s",
             },
             content: {
-                flex: 1
+                flex: 1,
             }
         };
     });
