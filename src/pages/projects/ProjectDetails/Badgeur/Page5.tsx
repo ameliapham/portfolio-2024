@@ -46,7 +46,11 @@ const useStyles = tss.withName({ name: "BadgeurPage5" }).create(({ theme }) => {
             display: "grid",
             gridTemplateColumns: "5fr 5fr 5fr 1fr",
             gridTemplateRows: "1fr 1fr 1fr",
-            alignItems: "center"
+            alignItems: "center",
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "flex",
+            }
         },
         image: {
             gridColumn: "1 / 5",
@@ -75,6 +79,10 @@ const useStyles = tss.withName({ name: "BadgeurPage5" }).create(({ theme }) => {
                 height: theme.spacing(0.1),
                 backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                 transition: "all 0.5s ease"
+            },
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "none"
             }
         }
     };
