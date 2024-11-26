@@ -101,7 +101,15 @@ const useStyles = tss.withName({ name: "FamedPage1" }).create(({ theme }) => {
             display: "flex",
             gap: theme.spacing(10),
             opacity: 0,
-            animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`
+            animation: `${animate} 0.6s ease-in-out 0.2s 1 forwards`,
+
+            [theme.breakpoints.down("laptop")]: {
+                flexDirection: "column",
+                gap: theme.spacing(4)
+            },
+            [theme.breakpoints.only("laptop")]: {
+                gap: theme.spacing(4)
+            }
         },
         column1: {
             flex: 2,
@@ -119,6 +127,10 @@ const useStyles = tss.withName({ name: "FamedPage1" }).create(({ theme }) => {
             display: "flex",
             flexDirection: "column",
             gap: theme.spacing(2)
+        },
+
+        [theme.breakpoints.only("tablet")]: {
+            display: "none"
         }
     };
 });

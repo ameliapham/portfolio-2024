@@ -47,7 +47,12 @@ const useStyles = tss.withName({ name: "FamedPage2" }).create(({ theme }) => {
             height: "100%",
             width: "100%",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                height: "auto",
+                paddingBottom: "56.25%"
+            }
         },
         videoIframe: {
             position: "absolute",
@@ -56,7 +61,11 @@ const useStyles = tss.withName({ name: "FamedPage2" }).create(({ theme }) => {
             maxWidth: "1066px",
             height: "100%",
             maxHeight: "600px",
-            borderRadius: theme.spacing(2)
+            borderRadius: theme.spacing(2),
+
+            [theme.breakpoints.only("mobile")]: {
+                borderRadius: 0
+            }
         }
     };
 });
