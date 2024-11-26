@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import { keyframes } from "tss-react";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
@@ -52,7 +52,7 @@ const useStyles = tss.withName({ name: "ZenPage2" }).create(({ theme }) => {
             color: theme.palette.text.primary,
             display: "grid",
             gridTemplateColumns: "1fr 6fr 1fr",
-            alignItems: "center"
+            alignItems: "center",
         },
         image: {
             gridColumn: "2",

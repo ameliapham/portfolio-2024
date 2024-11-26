@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import { keyframes } from "tss-react";
@@ -84,7 +84,6 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             display: "flex",
             flexDirection: "column",
             gap: theme.spacing(2),
-            border: "1px solid red",
         },
         year: {
             opacity: 0,
@@ -126,7 +125,7 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             flexDirection: "column",
             gap: theme.spacing(2),
             
-            [theme.breakpoints.down("laptop")]: {
+            [theme.breakpoints.only("tablet")]: {
                 display: "none"
             },
         },

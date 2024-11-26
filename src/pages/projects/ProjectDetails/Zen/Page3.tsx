@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import { keyframes } from "tss-react";
 import { detailImagesByProjectId } from "pages/projects/projectsData";
 
@@ -46,7 +46,11 @@ const useStyles = tss.withName({ name: "ZenPage3" }).create(({ theme }) => {
             display: "grid",
             gridTemplateColumns: "1fr 3fr 1fr 1fr",
             gridTemplateRows: "1fr 1fr 1fr",
-            alignItems: "center"
+            alignItems: "center",
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "flex"
+            },
         },
         image: {
             gridColumn: "1 / 4",
@@ -62,7 +66,11 @@ const useStyles = tss.withName({ name: "ZenPage3" }).create(({ theme }) => {
             gridColumn: "3/5",
             gridRow: "1/3",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "none",
+            },
         }
     };
 });
