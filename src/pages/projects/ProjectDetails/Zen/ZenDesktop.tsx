@@ -3,15 +3,10 @@ import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
 import { Page4 } from "./Page4";
-import type { PageRoute } from "../../route";
 import { assert } from "tsafe/assert";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
-
-type Props = {
-    className?: string;
-    route: PageRoute;
-};
+import { Props } from "../../Props"
 
 export default function ZenDesktop(props: Props) {
     const { className, route } = props;
