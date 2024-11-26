@@ -85,7 +85,7 @@ const useStyles = tss
         },
         page: isScrollablePage
             ? {
-                paddingTop: headerHeight
+                //paddingTop: headerHeight
             }
             : {
                 height: "100%",
