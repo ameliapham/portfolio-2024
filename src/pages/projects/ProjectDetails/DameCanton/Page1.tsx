@@ -1,4 +1,4 @@
-import { tss } from "tss-react/mui";
+import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { keyframes } from "tss-react";
 import { getProjectByNameId } from "../../projectsData";

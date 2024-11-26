@@ -2,15 +2,15 @@ import { lazy, Suspense } from "react";
 import { useStyles } from "tss";
 import { Props } from "../../Props";
 
-const ProjectGalleryDesktop = lazy(() => import("./GmetaDesktop"));
-const ProjectGalleryMobile = lazy(() => import("./GmetaMobile"));
+const GmetaDesktop = lazy(() => import("./GmetaDesktop"));
+const GmetaMobile = lazy(() => import("./GmetaMobile"));
 
 export function Gmeta(props: Props) {
     const { isMobile } = useStyles();
 
     return (
         <Suspense>
-            {isMobile ? <ProjectGalleryMobile {...props} /> : <ProjectGalleryDesktop {...props} />}
+            {isMobile ? <GmetaMobile {...props} /> : <GmetaDesktop {...props} />}
         </Suspense>
     )
 }

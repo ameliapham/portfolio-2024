@@ -95,7 +95,8 @@ const useStyles = tss
                 [theme.breakpoints.only("mobile")]: {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    backgroundAttachment: "fixed"
+                    backgroundAttachment: "fixed",
+                    filter: "blur(5px)"
                 }
             },
             buttonBack: {
