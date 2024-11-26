@@ -1,4 +1,4 @@
-import type { Props } from "./Props";
+import type { Props } from "../Props";
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { routes } from "routes";
@@ -78,8 +78,7 @@ const useStyles = tss
             display: "flex",
             flexDirection: "column",
             gap: theme.spacing(6),
-            padding: `calc(${headerHeight} + 50px) ${theme.spacing(6)}`,
-
+            padding: `calc(${headerHeight} + ${theme.spacing(6)}) ${theme.spacing(6)}`,
         },
         item: {
             height: "300px",

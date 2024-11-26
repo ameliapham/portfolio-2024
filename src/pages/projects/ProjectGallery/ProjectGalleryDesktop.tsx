@@ -10,7 +10,7 @@ import { ProgressComponent } from "shared/ProgressComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
 import type { Link } from "type-route";
-import type { Props } from "./Props";
+import type { Props } from "../Props";
 
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
@@ -189,7 +189,7 @@ const animateContent = keyframes({
 });
 
 const useStyles = tss
-    .withName({ ProjectGallery: ProjectGalleryDesktop })
+    .withName({ ProjectGalleryDesktop })
     .withNestedSelectors<"seeMoreButton">()
     .create(({ classes, theme }) => {
         const sideLength = "200px";

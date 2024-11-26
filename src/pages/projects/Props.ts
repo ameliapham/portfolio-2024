@@ -1,4 +1,4 @@
-import type { PageRoute } from "../route";
+import type { PageRoute } from "./route";
 
 export type Props = {
     className?: string;

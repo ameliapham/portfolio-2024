@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { useStyles } from "tss";
-import { Props } from "./Props";
+import { Props } from "../Props";
 
 const ProjectGalleryDesktop = lazy(() => import("./ProjectGalleryDesktop"));
 const ProjectGalleryMobile = lazy(() => import("./ProjectGalleryMobile"));
