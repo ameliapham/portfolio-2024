@@ -97,13 +97,7 @@ export default function ProjectGalleryDesktop(props: Props) {
                                     <Typography variant="body1" className={classes.description}>
                                         {description}
                                     </Typography>
-                                    <SeeMoreButton
-                                        className={classes.seeMoreButton}
-                                        {...routes[route.name]({
-                                            ...route.params,
-                                            isGalleryVisible: false
-                                        }).link}
-                                    >
+                                    <SeeMoreButton className={classes.seeMoreButton}>
                                         See More
                                     </SeeMoreButton>
                                 </a>
