@@ -4,7 +4,7 @@ import { useDomRect } from "powerhooks/useDomRect";
 import { PageRoute } from "./route";
 import { SplashScreen } from "shared/SplashScreen";
 import { useDownloadAssets } from "utils/useDownloadAssets";
-import avatarUrl from "assets/avatarAnime.jpg";
+import avatarUrl from "assets/avatars/avatar.webp";
 import { Skills } from "./Skills";
 import { Cv } from "./Cv";
 

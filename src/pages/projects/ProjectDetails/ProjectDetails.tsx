@@ -73,8 +73,11 @@ const useStyles = tss
                 flexDirection: "column",
                 overflow: "hidden",
 
+
                 [theme.breakpoints.only("mobile")]: {
                     padding: `${headerHeight} ${theme.spacing(6)} ${theme.spacing(4)} ${theme.spacing(6)}`,
+                    height: "100%",
+                    minHeight: "100vh"
                 }
 
             },

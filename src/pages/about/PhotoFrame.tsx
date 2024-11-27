@@ -1,6 +1,5 @@
 import { tss } from "tss-react/mui";
 import { alpha } from "@mui/material/styles";
-//import avatar from "assets/avatarAnime.jpg";
 
 type Props = {
     className?: string;

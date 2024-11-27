@@ -9,9 +9,9 @@ import p23gili from "assets/p-gili.webp";
 import p21famed from "assets/p-famed.webp";
 import p23badgeur from "assets/p-badgeur.webp";
 
-import bgGmeta from "assets/bg-gmeta.webp";
-import bgBadgeur from "assets/bg-badgeur.svg";
-import bgFamed from "assets/bg-famed.svg";
+import bgGmeta from "assets/projects-background/bg-gmeta.webp";
+import bgBadgeur from "assets/projects-background/bg-badgeur.svg";
+import bgFamed from "assets/projects-background/bg-famed.svg";
 
 import zenPhoneUrl from "assets/zen-phone.png";
 import zenMacUrl from "assets/zen-mac.png";
