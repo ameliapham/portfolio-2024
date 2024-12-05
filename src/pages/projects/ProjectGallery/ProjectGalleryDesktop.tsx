@@ -11,7 +11,7 @@ import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
 import type { Link } from "type-route";
 import type { Props } from "../Props";
-
+import { assert, is } from "tsafe/assert";
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
@@ -115,14 +115,46 @@ export default function ProjectGalleryDesktop(props: Props) {
 
             <ProgressComponent
                 className={classes.navComponent}
-                previousLink={
-                    projectIds.indexOf(route.params.projectId) > 0
-                        ? routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        }).link
-                        : undefined
-                }
+                previousLink={(() => {
+                    if (projectIds.indexOf(route.params.projectId) === 0) {
+                        return undefined;
+                    }
+
+                    const previousRoute = routes[route.name]({
+                        ...route.params,
+                        projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+                    });
+
+                    return {
+                        href: previousRoute.link.href,
+                        onClick: (event: React.MouseEvent) => {
+                            event.preventDefault();
+
+                            assert(is<HTMLElement>(event.target));
+
+                            const buttonElement = event.target;
+
+                            buttonElement.classList.add("Mui-disabled");
+
+                            const contentElement = document.querySelector(`.${classes.content}`);
+
+                            assert(contentElement !== null);
+                            assert(is<HTMLElement>(contentElement));
+
+                            contentElement.style.display = "none";
+
+                            const items = document.querySelectorAll(`.${classes.item}`);
+                            document
+                                .querySelector(`.${classes.slide}`)!
+                                .prepend(items[items.length - 1]);
+
+                            setTimeout(() => {
+                                buttonElement.classList.remove("Mui-disabled");
+                                previousRoute.push();
+                            }, ANIMATION_DURATION_MS);
+                        }
+                    };
+                })()}
                 nextLink={
                     projectIds.indexOf(route.params.projectId) < projectIds.length - 1
                         ? routes[route.name]({
@@ -187,6 +219,8 @@ const animateContent = keyframes({
         filter: "blur(0)"
     }
 });
+
+const ANIMATION_DURATION_MS = 500;
 
 const useStyles = tss
     .withName({ ProjectGalleryDesktop })
