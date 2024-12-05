@@ -13,10 +13,10 @@ export default function BadgeurMobile(props: Props) {
         <>
             <div className={cx(classes.root, className)}>
                 <Page1 />
-                <Page2 />
                 <Page3 />
                 <Page4 />
                 <Page5 />
+                <Page2 />
             </div>
         </>
     );

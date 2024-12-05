@@ -12,8 +12,8 @@ export default function FamedMobile(props: Props) {
         <>
             <div className={cx(classes.root, className)}>
                 <Page1 />
-                <Page2 />
                 <Page3 />
+                <Page2 />
             </div>
         </>
     );

@@ -20,13 +20,13 @@ export default function BadgeurDesktop(props: Props) {
                         case 0:
                             return <Page1 />;
                         case 1:
-                            return <Page2 />;
-                        case 2:
                             return <Page3 />;
-                        case 3:
+                        case 2:
                             return <Page4 />;
-                        case 4:
+                        case 3:
                             return <Page5 />;
+                        case 4:
+                            return <Page2 />;
                         default:
                             assert(false);
                     }

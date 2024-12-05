@@ -20,9 +20,9 @@ export default function FamedDesktop(props: Props) {
                             case 0:
                                 return <Page1 />;
                             case 1:
-                                return <Page2 />;
-                            case 2:
                                 return <Page3 />;
+                            case 2:
+                                return <Page2 />;
                             default:
                                 assert(false);
                         }
