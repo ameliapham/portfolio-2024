@@ -19,22 +19,24 @@ export function ProgressComponent(props: Props) {
         <div className={cx(classes.root, className)}>
             <div className={classes.buttons}>
                 <SeeMoreButton
+                    className={classes.text}
                     hyphenPosition="left"
-                    widthLinePx={40}
-                    translateLinePx={30}
+                    widthLinePx={10}
+                    translateLinePx={5}
                     disabled={previousLink === undefined}
                     {...previousLink}
                 >
-                    Previous
+                    <h2> {"<"} </h2>
                 </SeeMoreButton>
                 <SeeMoreButton
+                    className={classes.text}
                     hyphenPosition="right"
-                    widthLinePx={40}
-                    translateLinePx={30}
+                    widthLinePx={10}
+                    translateLinePx={5}
                     disabled={nextLink === undefined}
                     {...nextLink}
                 >
-                    Next
+                    <h2> {">"} </h2>
                 </SeeMoreButton>
             </div>
             <LinearProgress
@@ -52,7 +54,9 @@ const useStyles = tss.withName({ ProgressComponent }).create(({ theme }) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
+            backgroundColor: alpha(theme.palette.background.default, 0.8),
+            borderTop: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
         },
         progressBar: {
             width: "40%",
@@ -78,6 +82,10 @@ const useStyles = tss.withName({ ProgressComponent }).create(({ theme }) => {
         buttons: {
             display: "flex",
             gap: "20px"
+        },
+        text: {
+            fontSize: "20px",
+            color: alpha(theme.palette.text.primary, 0.6),
         }
     };
 });

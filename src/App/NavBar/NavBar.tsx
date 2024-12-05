@@ -76,9 +76,12 @@ const useStyles = tss
             alignItems: "center",
             borderBottom: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
             padding: `0 ${theme.spacing(10)}`,
-            backgroundColor: openDrawer ? theme.palette.background.default : "transparent",
+            backgroundColor: alpha(theme.palette.background.default, 0.8),
+            //backgroundColor: openDrawer ? theme.palette.background.default : "transparent",
+            //backdropFilter: "blur(10px) saturate(150%)",
             transition: "background-color 0.5s",
 
+            
             "::before": {
                 content: '""',
                 position: "absolute",
@@ -90,6 +93,7 @@ const useStyles = tss
                 transition: "width 0.2s",
                 zIndex: -1
             },
+            
 
             [theme.breakpoints.only("mobile")]: {
                 padding: `0 ${theme.spacing(6)}`,
