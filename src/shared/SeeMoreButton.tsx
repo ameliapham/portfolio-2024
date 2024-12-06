@@ -12,6 +12,8 @@ type Props = {
     translateLinePx?: number;
     translateTextPx?: number;
     widthLinePx?: number;
+    target?: string;
+    rel?: string;
 };
 
 export function SeeMoreButton(props: Props) {
@@ -21,6 +23,8 @@ export function SeeMoreButton(props: Props) {
         children,
         disabled,
         href,
+        rel,
+        target,
         hyphenPosition = "right",
         translateLinePx = 50,
         widthLinePx = 60
@@ -35,6 +39,7 @@ export function SeeMoreButton(props: Props) {
         <Button
             className={cx(classes.root, className)}
             href={href}
+            {...(href && { target, rel })}
             onClick={onClick}
             disabled={disabled}
         >

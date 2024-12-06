@@ -40,7 +40,11 @@ export function Page1(props: Props) {
                         unique story narrated by a local resident, offering a deep dive into the island's
                         collective memory.
                     </Typography>
-                    <SeeMoreButton>View it online</SeeMoreButton>
+                    <SeeMoreButton
+                        href={project.linkDownload}
+                    >
+                        Download App
+                    </SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
@@ -48,7 +52,8 @@ export function Page1(props: Props) {
                     </Typography>
                     <Typography variant="body1">
                         - 3D design <br />
-                        - 3D scene modeling <br />- UI/UX design
+                        - 3D scene modeling <br />
+                        - UI/UX design
                     </Typography>
                 </div>
                 <div className={classes.column2}>

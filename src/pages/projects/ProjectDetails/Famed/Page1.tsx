@@ -39,7 +39,13 @@ export function Page1(props: Props) {
                         that enables users to complete their purchases, confirm their cart, make
                         payments, and locate nearby stores.
                     </Typography>
-                    <SeeMoreButton>View it online</SeeMoreButton>
+                    <SeeMoreButton
+                        href={project.linkFigma}
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Prototype Figma
+                    </SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>

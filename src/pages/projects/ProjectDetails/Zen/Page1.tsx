@@ -38,7 +38,23 @@ export function Page1(props: Props) {
                         assistance, and a custom UI design with FIgma. The development was subsequently
                         executed using React and TypeScript.
                     </Typography>
-                    <SeeMoreButton>View it online</SeeMoreButton>
+                    <div className={classes.buttons}>
+                        <SeeMoreButton
+                            href={project.linkOnline}
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            View it online
+                        </SeeMoreButton>
+                        <SeeMoreButton
+                            href={project.linkFigma}
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Prototype Figma
+                        </SeeMoreButton>
+                    </div>
+
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
@@ -108,6 +124,10 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
                 gap: theme.spacing(4)
             },
         },
+        buttons: {
+            display: "flex",
+            flexDirection: "column"
+        },
         column1: {
             flex: 2,
             display: "flex",
@@ -124,7 +144,7 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             display: "flex",
             flexDirection: "column",
             gap: theme.spacing(2),
-            
+
             [theme.breakpoints.only("tablet")]: {
                 display: "none"
             },
