@@ -75,7 +75,7 @@ const useStyles = tss
 
 
                 [theme.breakpoints.only("mobile")]: {
-                    padding: `${headerHeight} ${theme.spacing(6)} ${theme.spacing(4)} ${theme.spacing(6)}`,
+                    padding: `calc(${headerHeight} * 2) ${theme.spacing(6)} ${headerHeight} ${theme.spacing(6)}`,
                     height: "100%",
                     minHeight: "100vh"
                 }
@@ -104,6 +104,10 @@ const useStyles = tss
             },
             buttonBack: {
                 transition: "opacity 0.5s",
+
+                [theme.breakpoints.only("mobile")]: {
+                    display: "none"
+                }
             },
             content: {
                 flex: 1,
