@@ -49,6 +49,15 @@ export function Page1(props: Props) {
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
+                        Credits
+                    </Typography>
+                    <Typography variant="body1">
+                        - Academic Supervisor: Prof. John Motta <br />- Concept research & development:
+                        Shelly Jean, Nada Melizi & Amélia Pham
+                    </Typography>
+                </div>
+                <div className={classes.column3}>
+                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         My role
                     </Typography>
                     <Typography variant="body1">
@@ -59,15 +68,7 @@ export function Page1(props: Props) {
                         - Prototyping <br />
                     </Typography>
                 </div>
-                <div className={classes.column2}>
-                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
-                        Credits
-                    </Typography>
-                    <Typography variant="body1">
-                        - Academic Supervisor: Prof. John Motta <br />- Concept research & development:
-                        Shelly Jean, Nada Melizi & Amélia Pham
-                    </Typography>
-                </div>
+
             </div>
         </div>
     );
@@ -134,9 +135,15 @@ const useStyles = tss.withName({ name: "FamedPage1" }).create(({ theme }) => {
             flexDirection: "column",
             gap: theme.spacing(2)
         },
+        column3: {
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: theme.spacing(2),
 
-        [theme.breakpoints.only("tablet")]: {
-            display: "none"
+            [theme.breakpoints.only("tablet")]: {
+                display: "none"
+            }
         }
     };
 });

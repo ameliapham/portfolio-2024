@@ -32,7 +32,6 @@ export default function ZenDesktop(props: Props) {
                     })()}
                 </div>
                 <ProgressComponent
-                    className={classes.navComponent}
                     previousLink={
                         route.params.detailsIndex === 0
                             ? undefined
@@ -69,15 +68,9 @@ const useStyles = tss.withName({ ZenDesktop }).create(({ theme }) => {
         },
         content: {
             flex: 2,
-            padding: "0 5%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-
-            [theme.breakpoints.down("laptop")]: {
-                padding: 0
-            },
-        },
-        navComponent: {}
+        }
     };
 });

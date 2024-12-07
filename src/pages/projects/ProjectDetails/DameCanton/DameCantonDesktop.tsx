@@ -57,7 +57,6 @@ const useStyles = tss.withName({ DameCantonDesktop }).create(() => {
         },
         content: {
             flex: 2,
-            padding: "0 10%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center"

@@ -58,6 +58,14 @@ export function Page1(props: Props) {
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
+                        Credits
+                    </Typography>
+                    <Typography variant="body1">
+                        - ZenAsia Restaurant <br />- Conception & Development of website : Amélia Pham
+                    </Typography>
+                </div>
+                <div className={classes.column3}>
+                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         My role
                     </Typography>
                     <Typography variant="body1">
@@ -65,14 +73,6 @@ export function Page1(props: Props) {
                         - Logo design <br />
                         - Graphics design <br />
                         - Front-end development <br />- Technical development
-                    </Typography>
-                </div>
-                <div className={classes.column3}>
-                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
-                        Credits
-                    </Typography>
-                    <Typography variant="body1">
-                        - ZenAsia Restaurant <br />- Conception & Development of website : Amélia Pham
                     </Typography>
                 </div>
             </div>
@@ -143,17 +143,17 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             flex: 1,
             display: "flex",
             flexDirection: "column",
+            gap: theme.spacing(2)
+        },
+        column3: {
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
             gap: theme.spacing(2),
 
             [theme.breakpoints.only("tablet")]: {
                 display: "none"
             },
         },
-        column3: {
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            gap: theme.spacing(2)
-        }
     };
 });

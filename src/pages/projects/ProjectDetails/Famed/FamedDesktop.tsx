@@ -29,22 +29,21 @@ export default function FamedDesktop(props: Props) {
                     })()}
                 </div>
                 <ProgressComponent
-                    className={classes.navComponent}
                     previousLink={
                         route.params.detailsIndex === 0
                             ? undefined
                             : routes[route.name]({
-                                  ...route.params,
-                                  detailsIndex: route.params.detailsIndex - 1
-                              }).link
+                                ...route.params,
+                                detailsIndex: route.params.detailsIndex - 1
+                            }).link
                     }
                     nextLink={
                         route.params.detailsIndex === 2
                             ? undefined
                             : routes[route.name]({
-                                  ...route.params,
-                                  detailsIndex: route.params.detailsIndex + 1
-                              }).link
+                                ...route.params,
+                                detailsIndex: route.params.detailsIndex + 1
+                            }).link
                     }
                     processPercentage={(route.params.detailsIndex / 2) * 100}
                 />
@@ -63,11 +62,9 @@ const useStyles = tss.withName({ FamedDesktop }).create(() => {
         },
         content: {
             flex: 2,
-            padding: "0 10%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
-        },
-        navComponent: {}
+        }
     };
 });

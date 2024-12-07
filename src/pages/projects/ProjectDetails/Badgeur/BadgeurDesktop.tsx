@@ -55,7 +55,7 @@ export default function BadgeurDesktop(props: Props) {
     );
 }
 
-const useStyles = tss.withName({ BadgeurDesktop }).create(() => {
+const useStyles = tss.withName({ BadgeurDesktop }).create(({theme}) => {
     return {
         root: {
             width: "100%",
@@ -65,7 +65,6 @@ const useStyles = tss.withName({ BadgeurDesktop }).create(() => {
         },
         content: {
             flex: 2,
-            padding: "0 10%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center"

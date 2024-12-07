@@ -55,17 +55,6 @@ export function Page1(props: Props) {
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
-                        My role
-                    </Typography>
-                    <Typography variant="body1">
-                        - UX research <br />
-                        - Logo & visual identity <br />
-                        - UI design <br />
-                        - Prototyping <br />
-                    </Typography>
-                </div>
-                <div className={classes.column2}>
-                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         Credits
                     </Typography>
                     <Typography variant="body1">
@@ -75,6 +64,17 @@ export function Page1(props: Props) {
                         <br />
                         Phrase 2: <br />
                         - Market research & User testing: Paris 8's team <br />
+                    </Typography>
+                </div>
+                <div className={classes.column2}>
+                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
+                        My role
+                    </Typography>
+                    <Typography variant="body1">
+                        - UX research <br />
+                        - Logo & visual identity <br />
+                        - UI design <br />
+                        - Prototyping <br />
                     </Typography>
                 </div>
             </div>
@@ -143,7 +143,7 @@ const useStyles = tss.withName({ name: "BadgeurPage1" }).create(({ theme }) => {
             flexDirection: "column",
             gap: theme.spacing(2),
 
-            [theme.breakpoints.only("tablet")]: {
+            [theme.breakpoints.down("laptop")]: {
                 display: "none"
             }
         }

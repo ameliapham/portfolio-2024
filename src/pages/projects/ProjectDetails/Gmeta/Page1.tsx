@@ -49,18 +49,18 @@ export function Page1(props: Props) {
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
+                        Credits
+                    </Typography>
+                    <Typography variant="body1">- Global Institute for Law and Innovation</Typography>
+                </div>
+                <div className={classes.column3}>
+                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         My role
                     </Typography>
                     <Typography variant="body1">
                         - UI design <br />
                         - UX research <br />
                     </Typography>
-                </div>
-                <div className={classes.column2}>
-                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
-                        Credits
-                    </Typography>
-                    <Typography variant="body1">- Global Institute for Law and Innovation</Typography>
                 </div>
             </div>
         </div>
@@ -123,6 +123,12 @@ const useStyles = tss.withName({ name: "GmetaPage1" }).create(({ theme }) => {
             }
         },
         column2: {
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: theme.spacing(2),
+        },
+        column3: {
             flex: 1,
             display: "flex",
             flexDirection: "column",

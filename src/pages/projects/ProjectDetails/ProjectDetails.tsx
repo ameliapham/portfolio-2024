@@ -73,7 +73,6 @@ const useStyles = tss
                 flexDirection: "column",
                 overflow: "hidden",
 
-
                 [theme.breakpoints.only("mobile")]: {
                     padding: `calc(${headerHeight} * 2) ${theme.spacing(6)} ${headerHeight} ${theme.spacing(6)}`,
                     height: "100%",
@@ -111,6 +110,11 @@ const useStyles = tss
             },
             content: {
                 flex: 1,
+                padding: "0 10%",
+
+                [theme.breakpoints.down("desktop")]: {
+                    padding: 0
+                }
             }
         };
     });

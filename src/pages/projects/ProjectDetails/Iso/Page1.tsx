@@ -48,6 +48,15 @@ export function Page1(props: Props) {
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
+                        Credits
+                    </Typography>
+                    <Typography variant="body1">
+                        - Technical development: Prof. Jonathan Juste <br />
+                        - Academic Supervisor: Prof. Marc Veyrat <br />- Sound collectors: Clément Ramon
+                    </Typography>
+                </div>
+                <div className={classes.column3}>
+                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         My role
                     </Typography>
                     <Typography variant="body1">
@@ -56,15 +65,7 @@ export function Page1(props: Props) {
                         - UI/UX design
                     </Typography>
                 </div>
-                <div className={classes.column2}>
-                    <Typography variant="body1" style={{ textTransform: "uppercase" }}>
-                        Credits
-                    </Typography>
-                    <Typography variant="body1">
-                        - Technical development: Prof. Jonathan Juste <br />
-                        - Academic Supervisor: Prof. Marc Veyrat <br />- Sound collectors: Clément Ramon
-                    </Typography>
-                </div>
+               
             </div>
         </div>
     );
@@ -126,6 +127,12 @@ const useStyles = tss.withName({ name: "IsoPage1" }).create(({ theme }) => {
             }
         },
         column2: {
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: theme.spacing(2),
+        },
+        column3: {
             flex: 1,
             display: "flex",
             flexDirection: "column",
