@@ -1,13 +1,13 @@
 import { assert } from "tsafe/assert";
 
-import p24zen from "assets/p-zen.webp";
-import p23dame from "assets/p-dame.webp";
-import p23gmeta from "assets/p-gmeta.webp";
-import p23iso from "assets/p-iso.webp";
-import p21arti from "assets/p-arti.webp";
+import p24zen from "assets/project-gallery/p-zen.webp";
+import p23dame from "assets/project-gallery/p-dame.webp";
+import p23gmeta from "assets/project-gallery/p-gmeta.webp";
+import p23iso from "assets/project-gallery/p-iso.webp";
+import p21arti from "assets/project-gallery/p-arti.webp";
 import p23gili from "assets/p-gili.webp";
-import p21famed from "assets/p-famed.webp";
-import p23badgeur from "assets/p-badgeur.webp";
+import p21famed from "assets/project-gallery/p-famed.webp";
+import p23badgeur from "assets/project-gallery/p-badgeur.webp";
 
 import bgGmeta from "assets/projects-background/bg-gmeta.webp";
 import bgBadgeur from "assets/projects-background/bg-badgeur.svg";
@@ -18,13 +18,13 @@ import zenMacUrl from "assets/zen-mac.png";
 import zenLogoUrl from "assets/zen-logo.png";
 import zenIpadUrl from "assets/zen-ipad.png";
 
-import badgeurPhoneUrl from "assets/badgeur-phone.svg";
-import badgeurLogoUrl from "assets/badgeur-logo.svg";
-import badgeurColor1Url from "assets/badgeur-color1.svg";
-import badgeurColor2Url from "assets/badgeur-color2.svg";
-import badgeurColor3Url from "assets/badgeur-color3.svg";
-import wfBadgeurUrl from "assets/badgeur-wf.png";
-import badgeurTestUrl from "assets/badgeur-test.png";
+import badgeurPhoneUrl from "assets/projects-images/badgeur/badgeur-phone.webp";
+import badgeurLogoUrl from "assets/projects-images/badgeur/badgeur-logo.svg";
+import badgeurColor1Url from "assets/projects-images/badgeur/badgeur-color1.svg";
+import badgeurColor2Url from "assets/projects-images/badgeur/badgeur-color2.svg";
+import badgeurColor3Url from "assets/projects-images/badgeur/badgeur-color3.svg";
+import wfBadgeurUrl from "assets/projects-images/badgeur/badgeur-wf.webp";
+import badgeurTestUrl from "assets/projects-images/badgeur/badgeur-test.webp";
 
 import famedPhoneMUrl from "assets/famed-phoneM.svg";
 import famedPhoneLUrl from "assets/famed-phoneL.svg";
