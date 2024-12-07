@@ -46,7 +46,7 @@ const typography = {
         fontSize: "0.6rem",
         [`@media (min-width: ${breakpointsValues.tablet}px)`]: { fontSize: "0.8rem" },
         [`@media (min-width: ${breakpointsValues.laptop}px)`]: { fontSize: "0.8rem" },
-        [`@media (min-width: ${breakpointsValues.desktop}px)`]: { fontSize: "1rem" },
+        [`@media (min-width: ${breakpointsValues.desktop}px)`]: { fontSize: "0.8rem" },
     }
 };
 
