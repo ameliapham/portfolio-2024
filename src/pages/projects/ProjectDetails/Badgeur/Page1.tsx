@@ -45,11 +45,7 @@ export function Page1(props: Props) {
                         reflect evolving customer needs after two years, and the logo, brand visual
                         identity, and app prototype with a user-friendly UI design were created.
                     </Typography>
-                    <SeeMoreButton
-                        href={project.linkFigma}
-                        target="_blank"
-                        rel="noopener"
-                    >
+                    <SeeMoreButton href={project.linkFigma} target="_blank" rel="noopener">
                         Prototype Figma
                     </SeeMoreButton>
                 </div>

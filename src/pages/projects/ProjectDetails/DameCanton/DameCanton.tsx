@@ -12,5 +12,5 @@ export function DameCanton(props: Props) {
         <Suspense>
             {isMobile ? <DameCantonMobile {...props} /> : <DameCantonDesktop {...props} />}
         </Suspense>
-    )
+    );
 }

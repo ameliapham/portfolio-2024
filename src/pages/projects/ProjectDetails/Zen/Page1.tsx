@@ -39,22 +39,13 @@ export function Page1(props: Props) {
                         executed using React and TypeScript.
                     </Typography>
                     <div className={classes.buttons}>
-                        <SeeMoreButton
-                            href={project.linkOnline}
-                            target="_blank"
-                            rel="noopener"
-                        >
+                        <SeeMoreButton href={project.linkOnline} target="_blank" rel="noopener">
                             View it online
                         </SeeMoreButton>
-                        <SeeMoreButton
-                            href={project.linkFigma}
-                            target="_blank"
-                            rel="noopener"
-                        >
+                        <SeeMoreButton href={project.linkFigma} target="_blank" rel="noopener">
                             Prototype Figma
                         </SeeMoreButton>
                     </div>
-
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
@@ -99,7 +90,7 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             color: theme.palette.text.primary,
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(2),
+            gap: theme.spacing(2)
         },
         year: {
             opacity: 0,
@@ -122,7 +113,7 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
             },
             [theme.breakpoints.only("laptop")]: {
                 gap: theme.spacing(4)
-            },
+            }
         },
         buttons: {
             display: "flex",
@@ -153,7 +144,7 @@ const useStyles = tss.withName({ name: "ZenPage1" }).create(({ theme }) => {
 
             [theme.breakpoints.only("tablet")]: {
                 display: "none"
-            },
-        },
+            }
+        }
     };
 });

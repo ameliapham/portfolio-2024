@@ -40,11 +40,7 @@ export function Page1(props: Props) {
                         unique story narrated by a local resident, offering a deep dive into the island's
                         collective memory.
                     </Typography>
-                    <SeeMoreButton
-                        href={project.linkDownload}
-                    >
-                        Download App
-                    </SeeMoreButton>
+                    <SeeMoreButton href={project.linkDownload}>Download App</SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
@@ -65,7 +61,6 @@ export function Page1(props: Props) {
                         - UI/UX design
                     </Typography>
                 </div>
-               
             </div>
         </div>
     );
@@ -113,7 +108,7 @@ const useStyles = tss.withName({ name: "IsoPage1" }).create(({ theme }) => {
             },
             [theme.breakpoints.only("laptop")]: {
                 gap: theme.spacing(4)
-            },
+            }
         },
         column1: {
             flex: 2,
@@ -130,7 +125,7 @@ const useStyles = tss.withName({ name: "IsoPage1" }).create(({ theme }) => {
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(2),
+            gap: theme.spacing(2)
         },
         column3: {
             flex: 1,
@@ -140,7 +135,7 @@ const useStyles = tss.withName({ name: "IsoPage1" }).create(({ theme }) => {
 
             [theme.breakpoints.only("tablet")]: {
                 display: "none"
-            },
+            }
         }
     };
 });

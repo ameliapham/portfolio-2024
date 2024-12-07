@@ -17,22 +17,17 @@ export function ProjectFrame(props: Props) {
         return (
             <a className={cx(className, classes.root)}>
                 <div className={classes.div2} />
-                <div className={classes.div1}>
-                    {children}
-                </div>
+                <div className={classes.div1}>{children}</div>
             </a>
         );
     } else {
         return (
             <a className={cx(className, classes.root)} {...link}>
                 <div className={classes.div2} />
-                <div className={classes.div1}>
-                    {children}
-                </div>
+                <div className={classes.div1}>{children}</div>
             </a>
         );
     }
-
 }
 
 const useStyles = tss
@@ -45,11 +40,11 @@ const useStyles = tss
         const gapValues = {
             desktop: "30px",
             default: "15px"
-        }
+        };
 
         return {
             root: {
-                position: "relative",
+                position: "relative"
             },
             div1: {
                 position: "absolute",
@@ -81,7 +76,7 @@ const useStyles = tss
 
                 "&:hover": {
                     top: `calc(${top} - ${gapValues.default})`,
-                    right: `calc(${right} - ${gapValues.default})`,
+                    right: `calc(${right} - ${gapValues.default})`
                 }
             },
             div2: {
@@ -91,6 +86,6 @@ const useStyles = tss
                 top: top,
                 right: right,
                 border: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`
-            },
+            }
         };
     });

@@ -95,7 +95,6 @@ export default function PageDesktop(props: Props) {
     );
 }
 
-
 const useStyles = tss
     .withName({ PageDesktop })
     .withParams<{ rootWidth: number }>()
@@ -120,11 +119,11 @@ const useStyles = tss
                 padding: `0 ${0.1 * rootWidth}px 0 ${0.15 * rootWidth}px`,
                 alignItems: "center",
                 flexDirection: "row",
-                gap: "5vw",
+                gap: "5vw"
             },
             frameZone: {
                 height: 0.3 * rootWidth,
-                width: 0.25 * rootWidth,
+                width: 0.25 * rootWidth
             },
             texts: {
                 flex: 1,
@@ -143,6 +142,6 @@ const useStyles = tss
                     scrollbarWidth: "none"
                 }
             },
-            navComponent: {},
+            navComponent: {}
         };
     });

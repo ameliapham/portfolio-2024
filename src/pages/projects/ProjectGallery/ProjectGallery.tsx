@@ -12,5 +12,5 @@ export function ProjectGallery(props: Props) {
         <Suspense>
             {isMobile ? <ProjectGalleryMobile {...props} /> : <ProjectGalleryDesktop {...props} />}
         </Suspense>
-    )
+    );
 }

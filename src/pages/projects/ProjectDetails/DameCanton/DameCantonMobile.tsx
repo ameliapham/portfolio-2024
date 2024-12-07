@@ -1,7 +1,7 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
 
 export default function DameCantonMobile(props: Props) {
     const { className } = props;

@@ -1,7 +1,7 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
 
 export default function Gmeta(props: Props) {
     const { className } = props;
@@ -16,7 +16,7 @@ export default function Gmeta(props: Props) {
     );
 }
 
-const useStyles = tss.withName({ Gmeta }).create(({theme}) => {
+const useStyles = tss.withName({ Gmeta }).create(({ theme }) => {
     return {
         root: {
             width: "100%",

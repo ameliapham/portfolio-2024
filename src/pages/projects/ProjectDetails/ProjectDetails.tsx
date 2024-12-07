@@ -78,7 +78,6 @@ const useStyles = tss
                     height: "100%",
                     minHeight: "100vh"
                 }
-
             },
             background: {
                 position: "absolute",

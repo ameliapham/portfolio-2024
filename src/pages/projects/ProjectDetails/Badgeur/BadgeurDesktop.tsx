@@ -55,7 +55,7 @@ export default function BadgeurDesktop(props: Props) {
     );
 }
 
-const useStyles = tss.withName({ BadgeurDesktop }).create(({theme}) => {
+const useStyles = tss.withName({ BadgeurDesktop }).create(() => {
     return {
         root: {
             width: "100%",

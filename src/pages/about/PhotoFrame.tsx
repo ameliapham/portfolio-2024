@@ -47,8 +47,8 @@ const useStyles = tss
         const gapValues = {
             desktop: "30px",
             default: "15px"
-        }
-        
+        };
+
         return {
             root: {
                 position: "relative",
@@ -112,9 +112,7 @@ const useStyles = tss
                 right: right,
                 height: "100%",
                 width: "100%",
-                transition: "0.4s ease",
-
-
+                transition: "0.4s ease"
             },
             fakeBorderDiv1: {
                 background: `linear-gradient(to right bottom, ${alpha(background, 0.4)}, ${alpha(background, 0.8)}, ${alpha(background, 0.4)})`

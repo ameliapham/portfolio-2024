@@ -307,8 +307,7 @@ const useStyles = tss
                 "&:hover": {
                     backdropFilter: "brightness(30%)",
                     top: `calc(50% - 2px)`,
-                    transition: "all 0.5s ease",
-
+                    transition: "all 0.5s ease"
                 },
 
                 [`&:hover .${classes.seeMoreButton}`]: {

@@ -49,7 +49,7 @@ const useStyles = tss.withName({ name: "BadgeurPage5" }).create(({ theme }) => {
             alignItems: "center",
 
             [theme.breakpoints.only("mobile")]: {
-                display: "flex",
+                display: "flex"
             }
         },
         image: {

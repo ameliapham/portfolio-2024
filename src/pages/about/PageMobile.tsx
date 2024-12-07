@@ -76,14 +76,14 @@ const useStyles = tss
             },
             frameZone: {
                 height: 0.3 * rootWidth,
-                width: 0.25 * rootWidth,
+                width: 0.25 * rootWidth
             },
             texts: {
                 flex: 1,
                 color: theme.palette.text.primary,
                 display: "flex",
                 flexDirection: "column",
-                gap: "20px",
-            },
+                gap: "20px"
+            }
         };
     });

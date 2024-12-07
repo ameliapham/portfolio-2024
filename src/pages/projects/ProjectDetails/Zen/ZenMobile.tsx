@@ -3,7 +3,7 @@ import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
 import { Page4 } from "./Page4";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
 
 export default function ZenMobile(props: Props) {
     const { className } = props;
@@ -28,7 +28,7 @@ const useStyles = tss.withName({ ZenMobile }).create(({ theme }) => {
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(4),
-        },
+            gap: theme.spacing(4)
+        }
     };
 });

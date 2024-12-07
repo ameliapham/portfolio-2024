@@ -1,7 +1,7 @@
-import { PageId } from './index';
-import { useStyles } from 'tss';
+import { PageId } from "./index";
+import { useStyles } from "tss";
 
-export function useIsScrollablePage(params: { pageId: PageId; }): boolean {
+export function useIsScrollablePage(params: { pageId: PageId }): boolean {
     const { pageId } = params;
     const { isMobile } = useStyles();
 

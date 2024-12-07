@@ -62,7 +62,7 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
             100% {
                 opacity: 1;
             }
-            `} 400ms`,
+            `} 400ms`
     },
     video: {
         objectFit: "cover",
@@ -80,7 +80,7 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         left: "50%",
         transform: "translate(-50%, -50%)",
         color: theme.palette.text.primary,
-        textAlign: "center",
+        textAlign: "center"
     },
     sparklesZone: {
         position: "absolute",
@@ -104,7 +104,6 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         height: "100%",
         backgroundColor: "black",
         maskImage: "radial-gradient(400px 200px at top, transparent 20%, white)"
-
     },
     button: {
         position: "absolute",

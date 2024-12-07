@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography } from "@mui/material";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 
 export function Cv() {
@@ -15,9 +15,7 @@ export function Cv() {
                 interactive prototypes, web design and development, as well as user testing.
             </Typography>
 
-            <SeeMoreButton
-                href="https://github.com/ameliapham/portfolio-2024/releases/download/assets/CV.Amelia.PHAM.2024.pdf"
-            >
+            <SeeMoreButton href="https://github.com/ameliapham/portfolio-2024/releases/download/assets/CV.Amelia.PHAM.2024.pdf">
                 Download CV
             </SeeMoreButton>
         </>

@@ -4,7 +4,7 @@ import { Page2 } from "./Page2";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
 
 export default function GmetaDesktop(props: Props) {
     const { className, route } = props;

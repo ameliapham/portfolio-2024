@@ -39,11 +39,7 @@ export function Page1(props: Props) {
                         cohesion that develops in a classroom, particularly designed for users with
                         limited digital experience.
                     </Typography>
-                    <SeeMoreButton
-                        href={project.linkFigma}
-                        target="_blank"
-                        rel="noopener"
-                    >
+                    <SeeMoreButton href={project.linkFigma} target="_blank" rel="noopener">
                         Prototype Figma
                     </SeeMoreButton>
                 </div>
@@ -126,7 +122,7 @@ const useStyles = tss.withName({ name: "GmetaPage1" }).create(({ theme }) => {
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(2),
+            gap: theme.spacing(2)
         },
         column3: {
             flex: 1,

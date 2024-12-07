@@ -56,7 +56,7 @@ const useStyles = tss.withName({ ProgressComponent }).create(({ theme }) => {
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: alpha(theme.palette.background.default, 0.8),
-            borderTop: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`,
+            borderTop: `1px solid ${alpha(theme.palette.text.primary, 0.2)}`
         },
         progressBar: {
             width: "40%",
@@ -70,13 +70,13 @@ const useStyles = tss.withName({ ProgressComponent }).create(({ theme }) => {
             },
 
             [theme.breakpoints.only("laptop")]: {
-                width: "50%",
+                width: "50%"
             },
             [theme.breakpoints.only("tablet")]: {
-                width: "70%",
+                width: "70%"
             },
             [theme.breakpoints.only("mobile")]: {
-                width: "100%",
+                width: "100%"
             }
         },
         buttons: {
@@ -85,7 +85,7 @@ const useStyles = tss.withName({ ProgressComponent }).create(({ theme }) => {
         },
         text: {
             fontSize: "20px",
-            color: alpha(theme.palette.text.primary, 0.6),
+            color: alpha(theme.palette.text.primary, 0.6)
         }
     };
 });

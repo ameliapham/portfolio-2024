@@ -2,7 +2,7 @@ import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
 
 export default function IsoMobile(props: Props) {
     const { className } = props;

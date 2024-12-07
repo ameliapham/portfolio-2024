@@ -5,7 +5,7 @@ import { Page3 } from "./Page3";
 import { assert } from "tsafe/assert";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
 
 export default function FamedDesktop(props: Props) {
     const { className, route } = props;

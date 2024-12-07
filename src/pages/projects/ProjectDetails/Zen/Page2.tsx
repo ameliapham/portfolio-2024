@@ -52,7 +52,7 @@ const useStyles = tss.withName({ name: "ZenPage2" }).create(({ theme }) => {
             color: theme.palette.text.primary,
             display: "grid",
             gridTemplateColumns: "1fr 6fr 1fr",
-            alignItems: "center",
+            alignItems: "center"
         },
         image: {
             gridColumn: "2",

@@ -6,7 +6,7 @@ import { Page4 } from "./Page4";
 import { assert } from "tsafe/assert";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
 
 export default function ZenDesktop(props: Props) {
     const { className, route } = props;
@@ -58,7 +58,7 @@ export default function ZenDesktop(props: Props) {
     );
 }
 
-const useStyles = tss.withName({ ZenDesktop }).create(({ theme }) => {
+const useStyles = tss.withName({ ZenDesktop }).create(() => {
     return {
         root: {
             height: "100%",
@@ -70,7 +70,7 @@ const useStyles = tss.withName({ ZenDesktop }).create(({ theme }) => {
             flex: 2,
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "center"
         }
     };
 });

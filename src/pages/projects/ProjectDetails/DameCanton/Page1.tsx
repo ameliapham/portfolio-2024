@@ -56,7 +56,6 @@ export function Page1(props: Props) {
                         - Video editing <br />
                     </Typography>
                 </div>
-
             </div>
         </div>
     );
@@ -121,7 +120,7 @@ const useStyles = tss.withName({ name: "DamePage1" }).create(({ theme }) => {
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            gap: theme.spacing(2),
+            gap: theme.spacing(2)
         },
         column3: {
             flex: 1,

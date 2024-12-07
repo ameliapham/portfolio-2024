@@ -54,8 +54,7 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
         },
         [theme.breakpoints.only("mobile")]: {
             padding: `0 ${theme.spacing(6)}`
-        },
-
+        }
     },
     textZone: {
         display: "flex",
@@ -64,5 +63,5 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
     },
     social: {
         height: theme.spacing(6)
-    },
+    }
 }));

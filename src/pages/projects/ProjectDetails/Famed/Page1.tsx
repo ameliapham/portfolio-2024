@@ -39,11 +39,7 @@ export function Page1(props: Props) {
                         that enables users to complete their purchases, confirm their cart, make
                         payments, and locate nearby stores.
                     </Typography>
-                    <SeeMoreButton
-                        href={project.linkFigma}
-                        target="_blank"
-                        rel="noopener"
-                    >
+                    <SeeMoreButton href={project.linkFigma} target="_blank" rel="noopener">
                         Prototype Figma
                     </SeeMoreButton>
                 </div>
@@ -68,7 +64,6 @@ export function Page1(props: Props) {
                         - Prototyping <br />
                     </Typography>
                 </div>
-
             </div>
         </div>
     );

@@ -47,10 +47,12 @@ export function AppContextualized() {
             />
             <div className={classes.root}>
                 <NavBar className={classes.navbar} pageId={route.name} />
-                <Suspense fallback={
-                    <div className={classes.page}>
-                        <SplashScreen className={css({ width: "50%" })} />
-                    </div>}
+                <Suspense
+                    fallback={
+                        <div className={classes.page}>
+                            <SplashScreen className={css({ width: "50%" })} />
+                        </div>
+                    }
                 >
                     {(() => {
                         for (const pageId of pageIds) {

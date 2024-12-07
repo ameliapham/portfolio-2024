@@ -81,7 +81,6 @@ const useStyles = tss
             //backdropFilter: "blur(10px) saturate(150%)",
             transition: "background-color 0.5s",
 
-            
             "::before": {
                 content: '""',
                 position: "absolute",
@@ -93,15 +92,14 @@ const useStyles = tss
                 transition: "width 0.2s",
                 zIndex: -1
             },
-            
 
             [theme.breakpoints.only("mobile")]: {
-                padding: `0 ${theme.spacing(6)}`,
-            },
+                padding: `0 ${theme.spacing(6)}`
+            }
         },
         logo: {
             width: theme.spacing(15),
-            cursor: "pointer",
+            cursor: "pointer"
         },
         navButtons: {
             display: "flex",
