@@ -54,23 +54,34 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "BadgeurPage3" }).create(() => {
+const useStyles = tss.withName({ name: "BadgeurPage3" }).create(({theme}) => {
     return {
         root: {
             display: "grid",
-            gridTemplateColumns: "1fr 1fr"
+            gridTemplateColumns: "1fr 1fr 1fr"
         },
         image: {
-            gridColumn: "1/3",
+            gridColumn: "1/4",
             gridRow: "1/3",
             width: "100%",
             height: "100%",
             maxHeight: "600px",
-            objectFit: "contain"
+            objectFit: "contain",
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "none"
+            }
         },
         phone: {
+            gridColumn: "1/3",
+            gridRow: "1/3",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "grid",
+                gridColumn: "1/4"
+            }
         },
         logo: {
             opacity: 0,
