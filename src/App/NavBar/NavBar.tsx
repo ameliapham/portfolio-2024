@@ -1,5 +1,5 @@
 import { tss } from "tss";
-import logo from "assets/logo.svg";
+import logo from "assets/logo.webp";
 import { NavButton } from "./NavButton";
 import { alpha } from "@mui/material/styles";
 import { routes, useRoute } from "routes";
@@ -98,7 +98,7 @@ const useStyles = tss
             }
         },
         logo: {
-            width: theme.spacing(15),
+            height: `calc(100% - ${theme.spacing(2)})`,
             cursor: "pointer"
         },
         navButtons: {
