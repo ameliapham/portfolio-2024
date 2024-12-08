@@ -13,7 +13,6 @@ import type { Link } from "type-route";
 import type { Props } from "../Props";
 import { assert, is } from "tsafe/assert";
 
-
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
 const allDetailImagesUrls = Object.values(detailImagesByProjectId)
@@ -61,120 +60,142 @@ export default function ProjectGalleryDesktop(props: Props) {
     }
 
     return (
-        <div className={cx(classes.root, className)}>
-            <div className={classes.slide}>
-                {rotatedProjects.map(({ id, imageUrl, description, name, year }, i) => (
-                    <Item
-                        key={name}
-                        className={classes.item}
-                        backgroundImage={imageUrl}
-                        link={
-                            i === 0 || i === 1
-                                ? undefined
-                                : routes[route.name]({
-                                      ...route.params,
-                                      projectId: id
-                                  }).link
-                        }
-                    >
-                        {(() => {
-                            if (i !== 1) {
-                                return null;
-                            }
-                            return (
-                                <a
-                                    className={classes.content}
-                                    {...routes[route.name]({
-                                        ...route.params,
-                                        isGalleryVisible: false
-                                    }).link}
-                                >
-                                    <Typography variant="body1" className={classes.year}>
-                                        {year}
-                                    </Typography>
-                                    <Typography variant="h2" className={classes.name}>
-                                        {name}
-                                    </Typography>
-                                    <Typography variant="body1" className={classes.description}>
-                                        {description}
-                                    </Typography>
-                                    <SeeMoreButton className={classes.seeMoreButton}>
-                                        See More
-                                    </SeeMoreButton>
-                                </a>
-                            );
-                        })()}
-                    </Item>
-                ))}
+        <>
+            {/* 
+            NOTE: This block is just an optimization, we load the image in full screen in the background
+            so that the animation is smoother. 
+            */}
+            <div style={{ position: "absolute", width: "100%", height: "100%", zIndex: -1000 }}>
+                {rotatedProjects.map(({ imageUrl }) => {
+                    return (
+                        <img
+                            style={{
+                                position: "absolute",
+                                height: "100%",
+                                width: "100%",
+                                objectFit: "cover"
+                            }}
+                            key={imageUrl}
+                            src={imageUrl}
+                        />
+                    );
+                })}
             </div>
+            <div className={cx(classes.root, className)}>
+                <div className={classes.slide}>
+                    {rotatedProjects.map(({ id, imageUrl, description, name, year }, i) => (
+                        <Item
+                            key={name}
+                            className={classes.item}
+                            backgroundImage={imageUrl}
+                            link={
+                                i === 0 || i === 1
+                                    ? undefined
+                                    : routes[route.name]({
+                                          ...route.params,
+                                          projectId: id
+                                      }).link
+                            }
+                        >
+                            {(() => {
+                                if (i !== 1) {
+                                    return null;
+                                }
+                                return (
+                                    <a
+                                        className={classes.content}
+                                        {...routes[route.name]({
+                                            ...route.params,
+                                            isGalleryVisible: false
+                                        }).link}
+                                    >
+                                        <Typography variant="body1" className={classes.year}>
+                                            {year}
+                                        </Typography>
+                                        <Typography variant="h2" className={classes.name}>
+                                            {name}
+                                        </Typography>
+                                        <Typography variant="body1" className={classes.description}>
+                                            {description}
+                                        </Typography>
+                                        <SeeMoreButton className={classes.seeMoreButton}>
+                                            See More
+                                        </SeeMoreButton>
+                                    </a>
+                                );
+                            })()}
+                        </Item>
+                    ))}
+                </div>
 
-            <ProgressComponent
-                className={classes.navComponent}
-                // TODO: Here we implement a terrible hack to make the backward animation work.
-                // We should be able to write this:  
-                // previousLink={
-                //     projectIds.indexOf(route.params.projectId) > 0
-                //         ? routes[route.name]({
-                //             ...route.params,
-                //             projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                //         }).link
-                //         : undefined
-                // }
-                // But for some reason the backward animation doesn't work if we do that so we manipulate the DOM directly.
-                // We should investigate why.
-                previousLink={(() => {
-                    if (projectIds.indexOf(route.params.projectId) === 0) {
-                        return undefined;
-                    }
-
-                    const previousRoute = routes[route.name]({
-                        ...route.params,
-                        projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                    });
-
-                    return {
-                        href: previousRoute.link.href,
-                        onClick: (event: React.MouseEvent) => {
-                            event.preventDefault();
-
-                            assert(is<HTMLElement>(event.target));
-
-                            const buttonElement = event.target;
-
-                            buttonElement.classList.add("Mui-disabled");
-
-                            const contentElement = document.querySelector(`.${classes.content}`);
-
-                            assert(contentElement !== null);
-                            assert(is<HTMLElement>(contentElement));
-
-                            contentElement.style.display = "none";
-
-                            const items = document.querySelectorAll(`.${classes.item}`);
-                            document
-                                .querySelector(`.${classes.slide}`)!
-                                .prepend(items[items.length - 1]);
-
-                            setTimeout(() => {
-                                buttonElement.classList.remove("Mui-disabled");
-                                previousRoute.push();
-                            }, ANIMATION_DURATION_MS);
+                <ProgressComponent
+                    className={classes.navComponent}
+                    // TODO: Here we implement a terrible hack to make the backward animation work.
+                    // We should be able to write this:
+                    // previousLink={
+                    //     projectIds.indexOf(route.params.projectId) > 0
+                    //         ? routes[route.name]({
+                    //             ...route.params,
+                    //             projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+                    //         }).link
+                    //         : undefined
+                    // }
+                    // But for some reason the backward animation doesn't work if we do that so we manipulate the DOM directly.
+                    // We should investigate why.
+                    previousLink={(() => {
+                        if (projectIds.indexOf(route.params.projectId) === 0) {
+                            return undefined;
                         }
-                    };
-                })()}
-                nextLink={
-                    projectIds.indexOf(route.params.projectId) < projectIds.length - 1
-                        ? routes[route.name]({
-                              ...route.params,
-                              projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                          }).link
-                        : undefined
-                }
-                processPercentage={
-                    (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
-                }
-            />
-        </div>
+
+                        const previousRoute = routes[route.name]({
+                            ...route.params,
+                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+                        });
+
+                        return {
+                            href: previousRoute.link.href,
+                            onClick: (event: React.MouseEvent) => {
+                                event.preventDefault();
+
+                                assert(is<HTMLElement>(event.target));
+
+                                const buttonElement = event.target;
+
+                                buttonElement.classList.add("Mui-disabled");
+
+                                const contentElement = document.querySelector(`.${classes.content}`);
+
+                                assert(contentElement !== null);
+                                assert(is<HTMLElement>(contentElement));
+
+                                contentElement.style.display = "none";
+
+                                const items = document.querySelectorAll(`.${classes.item}`);
+                                document
+                                    .querySelector(`.${classes.slide}`)!
+                                    .prepend(items[items.length - 1]);
+
+                                setTimeout(() => {
+                                    buttonElement.classList.remove("Mui-disabled");
+                                    previousRoute.push();
+                                }, ANIMATION_DURATION_MS);
+                            }
+                        };
+                    })()}
+                    nextLink={
+                        projectIds.indexOf(route.params.projectId) < projectIds.length - 1
+                            ? routes[route.name]({
+                                  ...route.params,
+                                  projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+                              }).link
+                            : undefined
+                    }
+                    processPercentage={
+                        (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
+                    }
+                />
+            </div>
+        </>
     );
 }
 
