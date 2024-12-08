@@ -4,11 +4,40 @@ import { Page2 } from "./Page2";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
+import { useScrollNavigation } from "utils/useScrollNavigation";
 
 export default function DameCantonDesktop(props: Props) {
     const { className, route } = props;
     const { cx, classes } = useStyles();
+
+    const previousRoute =
+        route.params.detailsIndex === 0
+            ? undefined
+            : routes[route.name]({
+                  ...route.params,
+                  detailsIndex: route.params.detailsIndex - 1
+              });
+
+    const nextRoute =
+        route.params.detailsIndex === 1
+            ? undefined
+            : routes[route.name]({
+                  ...route.params,
+                  detailsIndex: route.params.detailsIndex + 1
+              });
+
+    useScrollNavigation(direction => {
+        switch (direction) {
+            case "up":
+                previousRoute?.push();
+                break;
+            case "down":
+                nextRoute?.push();
+                break;
+        }
+    });
+
     return (
         <div className={cx(classes.root, className)}>
             <div className={classes.content}>
@@ -25,22 +54,8 @@ export default function DameCantonDesktop(props: Props) {
             </div>
 
             <ProgressComponent
-                previousLink={
-                    route.params.detailsIndex === 0
-                        ? undefined
-                        : routes[route.name]({
-                              ...route.params,
-                              detailsIndex: route.params.detailsIndex - 1
-                          }).link
-                }
-                nextLink={
-                    route.params.detailsIndex === 1
-                        ? undefined
-                        : routes[route.name]({
-                              ...route.params,
-                              detailsIndex: route.params.detailsIndex + 1
-                          }).link
-                }
+                previousLink={previousRoute?.link}
+                nextLink={nextRoute?.link}
                 processPercentage={(route.params.detailsIndex / 1) * 100}
             />
         </div>

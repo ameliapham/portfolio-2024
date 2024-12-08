@@ -7,6 +7,7 @@ import { CustomGradients } from "./Gradients";
 import { routes } from "routes";
 import { PageRoute } from "./route";
 import { keyframes } from "tss-react";
+import { useScrollNavigation } from "utils/useScrollNavigation";
 
 type Props = {
     className?: string;
@@ -16,6 +17,12 @@ type Props = {
 export default function Page(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
+
+    useScrollNavigation(direction => {
+        if( direction === "down" ){
+            routes.projects().push();
+        }
+    });
 
     return (
         <div className={cx(classes.root, className)}>

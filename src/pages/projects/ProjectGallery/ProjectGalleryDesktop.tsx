@@ -11,7 +11,7 @@ import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
 import type { Link } from "type-route";
 import type { Props } from "../Props";
-
+import { useScrollNavigation } from "utils/useScrollNavigation";
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
@@ -44,6 +44,32 @@ export default function ProjectGalleryDesktop(props: Props) {
 
     const { isDelayed } = useDelayOnlyOnce();
 
+    const previousRoute =
+        projectIds.indexOf(route.params.projectId) > 0
+            ? routes[route.name]({
+                  ...route.params,
+                  projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+              })
+            : undefined;
+
+    const nextRoute = projectIds.indexOf(route.params.projectId) < projectIds.length - 1
+                        ? routes[route.name]({
+                              ...route.params,
+                              projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+                          })
+                        : undefined;
+
+    useScrollNavigation(direction => {
+        switch(direction){
+            case "up": 
+                previousRoute?.push();
+                break;
+            case "down":
+                nextRoute?.push();
+                break;
+        }
+    });
+
     if (isDownloadingAssets || isDelayed) {
         return (
             <div
@@ -71,9 +97,9 @@ export default function ProjectGalleryDesktop(props: Props) {
                             i === 0 || i === 1
                                 ? undefined
                                 : routes[route.name]({
-                                    ...route.params,
-                                    projectId: id
-                                }).link
+                                      ...route.params,
+                                      projectId: id
+                                  }).link
                         }
                     >
                         {(() => {
@@ -115,22 +141,8 @@ export default function ProjectGalleryDesktop(props: Props) {
 
             <ProgressComponent
                 className={classes.navComponent}
-                previousLink={
-                    projectIds.indexOf(route.params.projectId) > 0
-                        ? routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        }).link
-                        : undefined
-                }
-                nextLink={
-                    projectIds.indexOf(route.params.projectId) < projectIds.length - 1
-                        ? routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                        }).link
-                        : undefined
-                }
+                previousLink={previousRoute?.link}
+                nextLink={nextRoute?.link}
                 processPercentage={
                     (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
                 }
@@ -279,8 +291,7 @@ const useStyles = tss
                 "&:hover": {
                     backdropFilter: "brightness(30%)",
                     top: `calc(50% - 2px)`,
-                    transition: "all 0.5s ease",
-
+                    transition: "all 0.5s ease"
                 },
 
                 [`&:hover .${classes.seeMoreButton}`]: {

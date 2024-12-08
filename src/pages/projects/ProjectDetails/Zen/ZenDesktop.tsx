@@ -6,11 +6,39 @@ import { Page4 } from "./Page4";
 import { assert } from "tsafe/assert";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
-import { Props } from "../../Props"
+import { Props } from "../../Props";
+import { useScrollNavigation } from "utils/useScrollNavigation";
 
 export default function ZenDesktop(props: Props) {
     const { className, route } = props;
     const { cx, classes } = useStyles();
+
+    const previousRoute =
+        route.params.detailsIndex === 0
+            ? undefined
+            : routes[route.name]({
+                  ...route.params,
+                  detailsIndex: route.params.detailsIndex - 1
+              });
+
+    const nextRoute =
+        route.params.detailsIndex === 3
+            ? undefined
+            : routes[route.name]({
+                  ...route.params,
+                  detailsIndex: route.params.detailsIndex + 1
+              });
+
+    useScrollNavigation(direction => {
+        switch (direction) {
+            case "up":
+                previousRoute?.push();
+                break;
+            case "down":
+                nextRoute?.push();
+                break;
+        }
+    });
 
     return (
         <>
@@ -33,22 +61,8 @@ export default function ZenDesktop(props: Props) {
                 </div>
                 <ProgressComponent
                     className={classes.navComponent}
-                    previousLink={
-                        route.params.detailsIndex === 0
-                            ? undefined
-                            : routes[route.name]({
-                                ...route.params,
-                                detailsIndex: route.params.detailsIndex - 1
-                            }).link
-                    }
-                    nextLink={
-                        route.params.detailsIndex === 3
-                            ? undefined
-                            : routes[route.name]({
-                                ...route.params,
-                                detailsIndex: route.params.detailsIndex + 1
-                            }).link
-                    }
+                    previousLink={previousRoute?.link}
+                    nextLink={nextRoute?.link}
                     processPercentage={
                         (route.params.detailsIndex / 3) * 100
                         //(route.params.detailsIndex + 1) / 4 * 100
@@ -76,7 +90,7 @@ const useStyles = tss.withName({ ZenDesktop }).create(({ theme }) => {
 
             [theme.breakpoints.down("laptop")]: {
                 padding: 0
-            },
+            }
         },
         navComponent: {}
     };
