@@ -21,7 +21,7 @@ export default function IsoDesktop(props: Props) {
               });
 
     const nextRoute =
-        route.params.detailsIndex === 3
+        route.params.detailsIndex === 2
             ? undefined
             : routes[route.name]({
                   ...route.params,
@@ -56,22 +56,8 @@ export default function IsoDesktop(props: Props) {
                 })()}
             </div>
             <ProgressComponent
-                previousLink={
-                    route.params.detailsIndex === 0
-                        ? undefined
-                        : routes[route.name]({
-                              ...route.params,
-                              detailsIndex: route.params.detailsIndex - 1
-                          }).link
-                }
-                nextLink={
-                    route.params.detailsIndex === 2
-                        ? undefined
-                        : routes[route.name]({
-                              ...route.params,
-                              detailsIndex: route.params.detailsIndex + 1
-                          }).link
-                }
+                previousLink={previousRoute?.link}
+                nextLink={nextRoute?.link}
                 processPercentage={(route.params.detailsIndex / 2) * 100}
             />
         </div>

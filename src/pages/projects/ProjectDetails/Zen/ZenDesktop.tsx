@@ -60,22 +60,8 @@ export default function ZenDesktop(props: Props) {
                     })()}
                 </div>
                 <ProgressComponent
-                    previousLink={
-                        route.params.detailsIndex === 0
-                            ? undefined
-                            : routes[route.name]({
-                                ...route.params,
-                                detailsIndex: route.params.detailsIndex - 1
-                            }).link
-                    }
-                    nextLink={
-                        route.params.detailsIndex === 3
-                            ? undefined
-                            : routes[route.name]({
-                                ...route.params,
-                                detailsIndex: route.params.detailsIndex + 1
-                            }).link
-                    }
+                    previousLink={previousRoute?.link}
+                    nextLink={nextRoute?.link}
                     processPercentage={
                         (route.params.detailsIndex / 3) * 100
                         //(route.params.detailsIndex + 1) / 4 * 100
