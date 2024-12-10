@@ -13,6 +13,7 @@ import type { Link } from "type-route";
 import type { Props } from "../Props";
 import { assert, is } from "tsafe/assert";
 import { useScrollNavigation } from "utils/useScrollNavigation";
+import { waitForThrottleFactory } from "utils/waitForThrottle";
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
@@ -45,24 +46,56 @@ export default function ProjectGalleryDesktop(props: Props) {
 
     const { isDelayed } = useDelayOnlyOnce();
 
-    const previousRoute = projectIds.indexOf(route.params.projectId) > 0
-        ? routes[route.name]({
+    const previousLink = (() => {
+        if (projectIds.indexOf(route.params.projectId) === 0) {
+            return undefined;
+        }
+
+        const previousRoute = routes[route.name]({
             ...route.params,
             projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-        })
-        : undefined;
+        });
 
-    const nextRoute = projectIds.indexOf(route.params.projectId) < projectIds.length - 1
-        ? routes[route.name]({
-            ...route.params,
-            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-        })
-        : undefined;
+        return {
+            href: previousRoute.link.href,
+            onClick: async (event?: React.MouseEvent | undefined) => {
 
-    useScrollNavigation(direction => {
+                event?.preventDefault();
+
+                await waitForThrottle_animation();
+
+                assert(is<HTMLElement | undefined>(event?.target));
+
+                const contentElement = document.querySelector(`.${classes.content}`);
+
+                assert(contentElement !== null);
+                assert(is<HTMLElement>(contentElement));
+
+                contentElement.style.display = "none";
+
+                const items = document.querySelectorAll(`.${classes.item}`);
+                document.querySelector(`.${classes.slide}`)!.prepend(items[items.length - 1]);
+
+                setTimeout(() => {
+                    previousRoute.push();
+                }, ANIMATION_DURATION_MS);
+            }
+        };
+    })();
+
+    const nextRoute =
+        projectIds.indexOf(route.params.projectId) < projectIds.length - 1
+            ? routes[route.name]({
+                  ...route.params,
+                  projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+              })
+            : undefined;
+    
+
+    useScrollNavigation(async direction => {
         switch (direction) {
             case "up":
-                previousRoute?.push();
+                previousLink?.onClick();
                 break;
             case "down":
                 nextRoute?.push();
@@ -84,7 +117,6 @@ export default function ProjectGalleryDesktop(props: Props) {
             </div>
         );
     }
-
 
     return (
         <>
@@ -115,9 +147,9 @@ export default function ProjectGalleryDesktop(props: Props) {
                                 i === 0 || i === 1
                                     ? undefined
                                     : routes[route.name]({
-                                        ...route.params,
-                                        projectId: id
-                                    }).link
+                                          ...route.params,
+                                          projectId: id
+                                      }).link
                             }
                         >
                             {(() => {
@@ -153,46 +185,7 @@ export default function ProjectGalleryDesktop(props: Props) {
 
                 <ProgressComponent
                     className={classes.navComponent}
-                    previousLink={(() => {
-                        if (projectIds.indexOf(route.params.projectId) === 0) {
-                            return undefined;
-                        }
-
-                        const previousRoute = routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        });
-
-                        return {
-                            href: previousRoute.link.href,
-                            onClick: (event: React.MouseEvent) => {
-                                event.preventDefault();
-
-                                assert(is<HTMLElement>(event.target));
-
-                                const buttonElement = event.target;
-
-                                buttonElement.classList.add("Mui-disabled");
-
-                                const contentElement = document.querySelector(`.${classes.content}`);
-
-                                assert(contentElement !== null);
-                                assert(is<HTMLElement>(contentElement));
-
-                                contentElement.style.display = "none";
-
-                                const items = document.querySelectorAll(`.${classes.item}`);
-                                document
-                                    .querySelector(`.${classes.slide}`)!
-                                    .prepend(items[items.length - 1]);
-
-                                setTimeout(() => {
-                                    buttonElement.classList.remove("Mui-disabled");
-                                    previousRoute.push();
-                                }, ANIMATION_DURATION_MS);
-                            }
-                        };
-                    })()}
+                    previousLink={previousLink}
                     nextLink={nextRoute?.link}
                     processPercentage={
                         (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
@@ -253,6 +246,10 @@ const animateContent = keyframes({
 });
 
 const ANIMATION_DURATION_MS = 500;
+
+const { waitForThrottle: waitForThrottle_animation } = waitForThrottleFactory({
+    delay: ANIMATION_DURATION_MS
+});
 
 const useStyles = tss
     .withName({ ProjectGalleryDesktop })
