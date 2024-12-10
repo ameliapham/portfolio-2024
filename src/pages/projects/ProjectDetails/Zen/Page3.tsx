@@ -66,6 +66,10 @@ const useStyles = tss.withName({ name: "ZenPage3" }).create(({ theme }) => {
             gridColumn: "3/5",
             gridRow: "1/3",
             opacity: 0,
+            width: "100%",
+            height: "100%",
+            maxHeight: "700px",
+            objectFit: "contain",
             animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
 
             [theme.breakpoints.only("mobile")]: {

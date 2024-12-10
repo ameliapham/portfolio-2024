@@ -61,7 +61,12 @@ const useStyles = tss.withName({ name: "ZenPage4" }).create(({ theme }) => {
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr 1fr",
             gridTemplateRows: "1fr 1fr 1fr",
-            alignItems: "center"
+            alignItems: "center",
+
+            [theme.breakpoints.only("mobile")]: {
+                gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                gridTemplateRows: "1fr 1fr 1fr 1fr",
+            }
         },
         image: {
             gridColumn: "1/5",
@@ -72,7 +77,11 @@ const useStyles = tss.withName({ name: "ZenPage4" }).create(({ theme }) => {
             objectFit: "contain",
             zIndex: 1,
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridRow: "2/4"
+            }
         },
         infoGauche: {
             gridColumn: "1/3",
@@ -90,6 +99,10 @@ const useStyles = tss.withName({ name: "ZenPage4" }).create(({ theme }) => {
                 height: theme.spacing(0.1),
                 backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                 transition: "all 0.5s ease"
+            },
+
+            [theme.breakpoints.down("mobile")]: {
+                gridColumn: "1/5"
             }
         },
         infoDroit: {
@@ -110,6 +123,11 @@ const useStyles = tss.withName({ name: "ZenPage4" }).create(({ theme }) => {
                 height: theme.spacing(0.1),
                 backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                 transition: "all 0.5s ease"
+            },
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "1/5",
+                gridRow: "4/5"
             }
         }
     };
