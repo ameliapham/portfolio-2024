@@ -1,5 +1,5 @@
 import { tss } from "tss";
-import logo from "assets/logo.svg";
+import logo from "assets/logoFix.svg";
 import { NavButton } from "./NavButton";
 import { alpha } from "@mui/material/styles";
 import { routes, useRoute } from "routes";
