@@ -59,7 +59,6 @@ export default function ProjectGalleryDesktop(props: Props) {
         return {
             href: previousRoute.link.href,
             onClick: async (event?: React.MouseEvent | undefined) => {
-
                 event?.preventDefault();
 
                 await waitForThrottle_animation();
@@ -90,7 +89,6 @@ export default function ProjectGalleryDesktop(props: Props) {
                   projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
               })
             : undefined;
-    
 
     useScrollNavigation(async direction => {
         switch (direction) {
@@ -120,21 +118,23 @@ export default function ProjectGalleryDesktop(props: Props) {
 
     return (
         <>
+            {/* 
+            NOTE: This block is an optimization so that the browser have the image in cache
+            in full size so that the transition from small to big can be smooth 
+            */}
             <div style={{ position: "absolute", width: "100%", height: "100%", zIndex: -1000 }}>
-                {rotatedProjects.map(({ imageUrl }) => {
-                    return (
-                        <img
-                            style={{
-                                position: "absolute",
-                                height: "100%",
-                                width: "100%",
-                                objectFit: "cover"
-                            }}
-                            key={imageUrl}
-                            src={imageUrl}
-                        />
-                    );
-                })}
+                {rotatedProjects.map(({ imageUrl }) => (
+                    <img
+                        style={{
+                            position: "absolute",
+                            height: "100%",
+                            width: "100%",
+                            objectFit: "cover"
+                        }}
+                        key={imageUrl}
+                        src={imageUrl}
+                    />
+                ))}
             </div>
             <div className={cx(classes.root, className)}>
                 <div className={classes.slide}>
