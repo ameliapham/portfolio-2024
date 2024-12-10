@@ -12,6 +12,7 @@ import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
 import type { Link } from "type-route";
 import type { Props } from "../Props";
 import { assert, is } from "tsafe/assert";
+import { useScrollNavigation } from "utils/useScrollNavigation";
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
@@ -44,6 +45,31 @@ export default function ProjectGalleryDesktop(props: Props) {
 
     const { isDelayed } = useDelayOnlyOnce();
 
+    const previousRoute = projectIds.indexOf(route.params.projectId) > 0
+        ? routes[route.name]({
+            ...route.params,
+            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
+        })
+        : undefined;
+
+    const nextRoute = projectIds.indexOf(route.params.projectId) < projectIds.length - 1
+        ? routes[route.name]({
+            ...route.params,
+            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+        })
+        : undefined;
+
+    useScrollNavigation(direction => {
+        switch (direction) {
+            case "up":
+                previousRoute?.push();
+                break;
+            case "down":
+                nextRoute?.push();
+                break;
+        }
+    });
+
     if (isDownloadingAssets || isDelayed) {
         return (
             <div
@@ -58,6 +84,7 @@ export default function ProjectGalleryDesktop(props: Props) {
             </div>
         );
     }
+
 
     return (
         <>
@@ -166,14 +193,7 @@ export default function ProjectGalleryDesktop(props: Props) {
                             }
                         };
                     })()}
-                    nextLink={
-                        projectIds.indexOf(route.params.projectId) < projectIds.length - 1
-                            ? routes[route.name]({
-                                ...route.params,
-                                projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-                            }).link
-                            : undefined
-                    }
+                    nextLink={nextRoute?.link}
                     processPercentage={
                         (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
                     }
