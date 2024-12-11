@@ -13,6 +13,7 @@ import type { Link } from "type-route";
 import type { Props } from "../Props";
 import { assert, is } from "tsafe/assert";
 import { useScrollNavigation } from "utils/useScrollNavigation";
+import { waitForThrottleFactory } from "utils/waitForThrottle";
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
@@ -45,12 +46,41 @@ export default function ProjectGalleryDesktop(props: Props) {
 
     const { isDelayed } = useDelayOnlyOnce();
 
-    const previousRoute = projectIds.indexOf(route.params.projectId) > 0
-        ? routes[route.name]({
+    const previousLink = (() => {
+        if (projectIds.indexOf(route.params.projectId) === 0) {
+            return undefined;
+        }
+
+        const previousRoute = routes[route.name]({
             ...route.params,
             projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-        })
-        : undefined;
+        });
+
+        return {
+            href: previousRoute.link.href,
+            onClick: async (event?: React.MouseEvent | undefined) => {
+                event?.preventDefault();
+
+                await waitForThrottle_animation();
+
+                assert(is<HTMLElement | undefined>(event?.target));
+
+                const contentElement = document.querySelector(`.${classes.content}`);
+
+                assert(contentElement !== null);
+                assert(is<HTMLElement>(contentElement));
+
+                contentElement.style.display = "none";
+
+                const items = document.querySelectorAll(`.${classes.item}`);
+                document.querySelector(`.${classes.slide}`)!.prepend(items[items.length - 1]);
+
+                setTimeout(() => {
+                    previousRoute.push();
+                }, ANIMATION_DURATION_MS);
+            }
+        };
+    })();
 
     const nextRoute = projectIds.indexOf(route.params.projectId) < projectIds.length - 1
         ? routes[route.name]({
@@ -59,10 +89,10 @@ export default function ProjectGalleryDesktop(props: Props) {
         })
         : undefined;
 
-    useScrollNavigation(direction => {
+    useScrollNavigation(async direction => {
         switch (direction) {
             case "up":
-                previousRoute?.push();
+                previousLink?.onClick();
                 break;
             case "down":
                 nextRoute?.push();
@@ -85,9 +115,12 @@ export default function ProjectGalleryDesktop(props: Props) {
         );
     }
 
-
     return (
         <>
+            {/* 
+            NOTE: This block is an optimization so that the browser have the image in cache
+            in full size so that the transition from small to big can be smooth 
+            */}
             <div style={{ position: "absolute", width: "100%", height: "100%", zIndex: -1000 }}>
                 {rotatedProjects.map(({ imageUrl }) => {
                     return (
@@ -153,46 +186,7 @@ export default function ProjectGalleryDesktop(props: Props) {
 
                 <ProgressComponent
                     className={classes.navComponent}
-                    previousLink={(() => {
-                        if (projectIds.indexOf(route.params.projectId) === 0) {
-                            return undefined;
-                        }
-
-                        const previousRoute = routes[route.name]({
-                            ...route.params,
-                            projectId: projectIds[projectIds.indexOf(route.params.projectId) - 1]
-                        });
-
-                        return {
-                            href: previousRoute.link.href,
-                            onClick: (event: React.MouseEvent) => {
-                                event.preventDefault();
-
-                                assert(is<HTMLElement>(event.target));
-
-                                const buttonElement = event.target;
-
-                                buttonElement.classList.add("Mui-disabled");
-
-                                const contentElement = document.querySelector(`.${classes.content}`);
-
-                                assert(contentElement !== null);
-                                assert(is<HTMLElement>(contentElement));
-
-                                contentElement.style.display = "none";
-
-                                const items = document.querySelectorAll(`.${classes.item}`);
-                                document
-                                    .querySelector(`.${classes.slide}`)!
-                                    .prepend(items[items.length - 1]);
-
-                                setTimeout(() => {
-                                    buttonElement.classList.remove("Mui-disabled");
-                                    previousRoute.push();
-                                }, ANIMATION_DURATION_MS);
-                            }
-                        };
-                    })()}
+                    previousLink={previousLink}
                     nextLink={nextRoute?.link}
                     processPercentage={
                         (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
@@ -253,6 +247,10 @@ const animateContent = keyframes({
 });
 
 const ANIMATION_DURATION_MS = 500;
+
+const { waitForThrottle: waitForThrottle_animation } = waitForThrottleFactory({
+    delay: ANIMATION_DURATION_MS
+});
 
 const useStyles = tss
     .withName({ ProjectGalleryDesktop })
