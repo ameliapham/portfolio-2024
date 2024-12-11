@@ -98,8 +98,12 @@ const useStyles = tss
             }
         },
         logo: {
-            width: theme.spacing(15),
-            cursor: "pointer"
+            height: `calc(100% - 2 * ${theme.spacing(2)})`,
+            cursor: "pointer",
+
+            [theme.breakpoints.down("laptop")]: {
+                height: `calc(100% - 2.5 * ${theme.spacing(2)})`
+            }
         },
         navButtons: {
             display: "flex",
