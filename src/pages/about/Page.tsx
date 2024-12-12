@@ -13,9 +13,5 @@ const PageMobile = lazy(() => import("./PageMobile"));
 export default function Page(props: Props) {
     const { isMobile } = useStyles();
 
-    return (
-        <Suspense>
-            {isMobile ? <PageMobile {...props} /> : <PageDesktop {...props} />}
-        </Suspense>
-    )
+    return <Suspense>{isMobile ? <PageMobile {...props} /> : <PageDesktop {...props} />}</Suspense>;
 }

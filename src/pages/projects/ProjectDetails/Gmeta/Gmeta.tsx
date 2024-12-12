@@ -8,9 +8,5 @@ const GmetaMobile = lazy(() => import("./GmetaMobile"));
 export function Gmeta(props: Props) {
     const { isMobile } = useStyles();
 
-    return (
-        <Suspense>
-            {isMobile ? <GmetaMobile {...props} /> : <GmetaDesktop {...props} />}
-        </Suspense>
-    )
+    return <Suspense>{isMobile ? <GmetaMobile {...props} /> : <GmetaDesktop {...props} />}</Suspense>;
 }

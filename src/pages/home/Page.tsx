@@ -19,7 +19,7 @@ export default function Page(props: Props) {
     const { cx, classes } = useStyles();
 
     useScrollNavigation(direction => {
-        if( direction === "down" ){
+        if (direction === "down") {
             routes.projects().push();
         }
     });

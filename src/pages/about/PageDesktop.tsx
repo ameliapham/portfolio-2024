@@ -66,23 +66,23 @@ export default function PageDesktop(props: Props) {
                 previousLink={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) > 0
                         ? routes[route.name]({
-                            ...route.params,
-                            aboutDetailsId:
-                                aboutDetailsIds[
-                                aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1
-                                ]
-                        }).link
+                              ...route.params,
+                              aboutDetailsId:
+                                  aboutDetailsIds[
+                                      aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1
+                                  ]
+                          }).link
                         : undefined
                 }
                 nextLink={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) < aboutDetailsIds.length - 1
                         ? routes[route.name]({
-                            ...route.params,
-                            aboutDetailsId:
-                                aboutDetailsIds[
-                                aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1
-                                ]
-                        }).link
+                              ...route.params,
+                              aboutDetailsId:
+                                  aboutDetailsIds[
+                                      aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1
+                                  ]
+                          }).link
                         : undefined
                 }
                 processPercentage={

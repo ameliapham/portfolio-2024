@@ -8,9 +8,5 @@ const ZenMobile = lazy(() => import("./ZenMobile"));
 export function Zen(props: Props) {
     const { isMobile } = useStyles();
 
-    return (
-        <Suspense>
-            {isMobile ? <ZenMobile {...props} /> : <ZenDesktop {...props} />}
-        </Suspense>
-    )
+    return <Suspense>{isMobile ? <ZenMobile {...props} /> : <ZenDesktop {...props} />}</Suspense>;
 }

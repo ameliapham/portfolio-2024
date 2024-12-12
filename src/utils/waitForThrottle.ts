@@ -1,11 +1,9 @@
-
 export function waitForThrottleFactory(params: { delay: number }) {
     const { delay } = params;
 
     let lastExecution = 0;
 
     function waitForThrottle(): Promise<void | never> {
-
         const now = Date.now();
 
         const timeElapsedSinceLastExecution = now - lastExecution;
@@ -14,10 +12,8 @@ export function waitForThrottleFactory(params: { delay: number }) {
             return new Promise<never>(() => {});
         }
 
-        lastExecution = now
+        lastExecution = now;
         return Promise.resolve();
-
-
     }
 
     return { waitForThrottle };

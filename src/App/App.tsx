@@ -38,10 +38,12 @@ export function AppContextualized() {
                     "html, body": {
                         backgroundColor: theme.palette.background.default
                     },
-                    "body": isScrollablePage ? { } : {
-                        overflow: "hidden",
-                        touchAction: "none"
-                    },
+                    body: isScrollablePage
+                        ? {}
+                        : {
+                              overflow: "hidden",
+                              touchAction: "none"
+                          },
                     html: {
                         ":root": {
                             colorScheme: theme.palette.mode
@@ -91,10 +93,10 @@ const useStyles = tss
         },
         page: isScrollablePage
             ? {
-                //paddingTop: headerHeight
-            }
+                  //paddingTop: headerHeight
+              }
             : {
-                height: "100%",
-                overflow: "hidden"
-            }
+                  height: "100%",
+                  overflow: "hidden"
+              }
     }));

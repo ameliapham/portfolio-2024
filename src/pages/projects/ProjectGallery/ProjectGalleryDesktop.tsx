@@ -82,12 +82,13 @@ export default function ProjectGalleryDesktop(props: Props) {
         };
     })();
 
-    const nextRoute = projectIds.indexOf(route.params.projectId) < projectIds.length - 1
-        ? routes[route.name]({
-            ...route.params,
-            projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
-        })
-        : undefined;
+    const nextRoute =
+        projectIds.indexOf(route.params.projectId) < projectIds.length - 1
+            ? routes[route.name]({
+                  ...route.params,
+                  projectId: projectIds[projectIds.indexOf(route.params.projectId) + 1]
+              })
+            : undefined;
 
     useScrollNavigation(async direction => {
         switch (direction) {
@@ -148,9 +149,9 @@ export default function ProjectGalleryDesktop(props: Props) {
                                 i === 0 || i === 1
                                     ? undefined
                                     : routes[route.name]({
-                                        ...route.params,
-                                        projectId: id
-                                    }).link
+                                          ...route.params,
+                                          projectId: id
+                                      }).link
                             }
                         >
                             {(() => {

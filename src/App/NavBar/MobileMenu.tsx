@@ -33,10 +33,7 @@ export function MobileMenu(props: PropsDrawerList) {
                                 {...routes[pageId_i]().link}
                                 onClick={onClick}
                             >
-                                <Typography
-                                    variant="h2"
-                                    fontSize={theme.typography.h3.fontSize}
-                                >
+                                <Typography variant="h2" fontSize={theme.typography.h3.fontSize}>
                                     {capitalize(pageId_i)}
                                 </Typography>
                             </ListItemButton>

@@ -65,7 +65,7 @@ const useStyles = tss.withName({ name: "ZenPage4" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 gridTemplateColumns: "1fr 1fr 1fr 1fr",
-                gridTemplateRows: "1fr 1fr 1fr 1fr",
+                gridTemplateRows: "1fr 1fr 1fr 1fr"
             }
         },
         image: {

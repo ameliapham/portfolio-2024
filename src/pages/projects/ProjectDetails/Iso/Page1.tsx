@@ -57,8 +57,7 @@ export function Page1(props: Props) {
                     </Typography>
                     <Typography variant="body1">
                         - 3D design <br />
-                        - 3D scene modeling <br />
-                        - UI/UX design
+                        - 3D scene modeling <br />- UI/UX design
                     </Typography>
                 </div>
             </div>

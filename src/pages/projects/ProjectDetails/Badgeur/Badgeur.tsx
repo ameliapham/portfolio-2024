@@ -9,8 +9,6 @@ export function Badgeur(props: Props) {
     const { isMobile } = useStyles();
 
     return (
-        <Suspense>
-            {isMobile ? <BadgeurMobile {...props} /> : <BadgeurDesktop {...props} />}
-        </Suspense>
-    )
+        <Suspense>{isMobile ? <BadgeurMobile {...props} /> : <BadgeurDesktop {...props} />}</Suspense>
+    );
 }

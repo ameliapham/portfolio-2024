@@ -8,9 +8,5 @@ const FamedMobile = lazy(() => import("./FamedMobile"));
 export function Famed(props: Props) {
     const { isMobile } = useStyles();
 
-    return (
-        <Suspense>
-            {isMobile ? <FamedMobile {...props} /> : <FamedDesktop {...props} />}
-        </Suspense>
-    )
+    return <Suspense>{isMobile ? <FamedMobile {...props} /> : <FamedDesktop {...props} />}</Suspense>;
 }

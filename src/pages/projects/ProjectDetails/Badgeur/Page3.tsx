@@ -54,7 +54,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "BadgeurPage3" }).create(({theme}) => {
+const useStyles = tss.withName({ name: "BadgeurPage3" }).create(({ theme }) => {
     return {
         root: {
             display: "grid",

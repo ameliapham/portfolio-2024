@@ -8,9 +8,5 @@ const IsoMobile = lazy(() => import("./IsoMobile"));
 export function Iso(props: Props) {
     const { isMobile } = useStyles();
 
-    return (
-        <Suspense>
-            {isMobile ? <IsoMobile {...props} /> : <IsoDesktop {...props} />}
-        </Suspense>
-    )
+    return <Suspense>{isMobile ? <IsoMobile {...props} /> : <IsoDesktop {...props} />}</Suspense>;
 }
