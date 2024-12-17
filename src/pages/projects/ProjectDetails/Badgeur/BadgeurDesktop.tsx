@@ -1,9 +1,9 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
+import { PageVideo } from "./PageVideo";
 import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
 import { Page4 } from "./Page4";
-import { Page5 } from "./Page5";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
@@ -49,13 +49,13 @@ export default function BadgeurDesktop(props: Props) {
                         case 0:
                             return <Page1 />;
                         case 1:
-                            return <Page3 />;
-                        case 2:
-                            return <Page4 />;
-                        case 3:
-                            return <Page5 />;
-                        case 4:
                             return <Page2 />;
+                        case 2:
+                            return <Page3 />;
+                        case 3:
+                            return <Page4 />;
+                        case 4:
+                            return <PageVideo />;
                         default:
                             assert(false);
                     }
