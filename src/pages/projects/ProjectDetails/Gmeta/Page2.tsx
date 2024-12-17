@@ -45,11 +45,16 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPage2" }).create(() => {
+const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
     return {
         root: {
             display: "grid",
-            gridTemplateColumns: "1fr 2fr 1fr"
+            gridTemplateColumns: "1fr 2fr 1fr",
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "flex",
+                flexDirection: "column"
+            }
         },
         mac: {
             gridColumn: "1/4",
