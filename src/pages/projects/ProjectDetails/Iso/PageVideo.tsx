@@ -6,14 +6,14 @@ type Props = {
     onClick?: () => void;
 };
 
-export function Page3(props: Props) {
+export function PageVideo(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
     return (
         <div className={cx(classes.root, className)}>
             <iframe
-                src="https://app.videas.fr/embed/media/11878fb1-cf77-4e98-86fe-d0810fb1fef7/?title=false&thumbnail_duration=false&autoplay=true&loop=true"
+                src="https://app.videas.fr/embed/media/fdf5f991-222a-48ef-833f-8f1bee774a5f/?title=false&thumbnail_duration=false"
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen={true}
@@ -37,7 +37,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "IsoPage3" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "IsoPageVideo" }).create(({ theme }) => {
     return {
         root: {
             display: "flex",

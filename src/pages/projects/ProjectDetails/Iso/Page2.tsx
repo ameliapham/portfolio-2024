@@ -13,7 +13,7 @@ export function Page2(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             <iframe
-                src="https://app.videas.fr/embed/media/fdf5f991-222a-48ef-833f-8f1bee774a5f/?title=false&thumbnail_duration=false"
+                src="https://app.videas.fr/embed/media/11878fb1-cf77-4e98-86fe-d0810fb1fef7/?title=false&thumbnail_duration=false&autoplay=true&loop=true"
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen={true}

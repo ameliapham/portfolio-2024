@@ -1,7 +1,7 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
+import { PageVideo } from "./PageVideo";
 import { Page2 } from "./Page2";
-import { Page3 } from "./Page3";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
@@ -47,9 +47,9 @@ export default function IsoDesktop(props: Props) {
                         case 0:
                             return <Page1 />;
                         case 1:
-                            return <Page2 />;
+                            return <PageVideo />;
                         case 2:
-                            return <Page3 />;
+                            return <Page2 />;
                         default:
                             assert(false);
                     }
