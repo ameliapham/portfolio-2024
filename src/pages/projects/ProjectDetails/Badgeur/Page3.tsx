@@ -1,5 +1,7 @@
 import { tss } from "tss";
 import { keyframes } from "tss-react";
+import Typography from "@mui/material/Typography";
+import { alpha } from "@mui/material/styles";
 import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
@@ -12,30 +14,13 @@ export function Page3(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
+            <Typography variant="body1" className={classes.details}>
+                From the wireframe......
+            </Typography>
             <img
-                src={detailImagesByProjectId.badgeur.badgeurPhoneUrl}
-                alt="Badgeur phone"
-                className={cx(classes.image, classes.phone)}
-            />
-            <img
-                src={detailImagesByProjectId.badgeur.badgeurLogoUrl}
-                alt="Badgeur logo"
-                className={cx(classes.image, classes.logo)}
-            />
-            <img
-                src={detailImagesByProjectId.badgeur.badgeurColor1Url}
-                alt="Badgeur color 1"
-                className={cx(classes.image, classes.color1)}
-            />
-            <img
-                src={detailImagesByProjectId.badgeur.badgeurColor2Url}
-                alt="Badgeur color 2"
-                className={cx(classes.image, classes.color2)}
-            />
-            <img
-                src={detailImagesByProjectId.badgeur.badgeurColor3Url}
-                alt="Badgeur color 3"
-                className={cx(classes.image, classes.color3)}
+                src={detailImagesByProjectId.badgeur.wfBadgeurUrl}
+                alt="Badgeur wireframe"
+                className={classes.image}
             />
         </div>
     );
@@ -57,47 +42,47 @@ const animate = keyframes({
 const useStyles = tss.withName({ name: "BadgeurPage3" }).create(({ theme }) => {
     return {
         root: {
+            color: theme.palette.text.primary,
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr"
+            gridTemplateColumns: "1fr 2fr 1fr",
+            gridTemplateRows: "1fr 1fr 1fr",
+            alignItems: "center",
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "flex"
+            }
         },
         image: {
-            gridColumn: "1/4",
-            gridRow: "1/3",
+            gridColumn: "2 / 4",
+            gridRow: "1 / 4",
             width: "100%",
             height: "100%",
             maxHeight: "600px",
-            objectFit: "contain",
+            objectFit: "cover",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+        },
+        details: {
+            gridColumn: "1/2",
+            gridRow: "3",
+            position: "relative",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+
+            "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: "0%",
+                left: "0%",
+                width: "100%",
+                height: theme.spacing(0.1),
+                backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
+                transition: "all 0.5s ease"
+            },
 
             [theme.breakpoints.only("mobile")]: {
                 display: "none"
             }
-        },
-        phone: {
-            gridColumn: "1/3",
-            gridRow: "1/3",
-            opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
-
-            [theme.breakpoints.only("mobile")]: {
-                display: "grid",
-                gridColumn: "1/4"
-            }
-        },
-        logo: {
-            opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`
-        },
-        color1: {
-            opacity: 0,
-            animation: `${animate} 0.4s ease-in-out 0.5s 1 forwards`
-        },
-        color2: {
-            opacity: 0,
-            animation: `${animate} 0.4s ease-in-out 0.6s 1 forwards`
-        },
-        color3: {
-            opacity: 0,
-            animation: `${animate} 0.4s ease-in-out 0.7s 1 forwards`
         }
     };
 });

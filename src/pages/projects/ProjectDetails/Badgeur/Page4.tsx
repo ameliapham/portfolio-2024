@@ -14,14 +14,14 @@ export function Page4(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <Typography variant="body1" className={classes.details}>
-                From the wireframe......
-            </Typography>
             <img
-                src={detailImagesByProjectId.badgeur.wfBadgeurUrl}
-                alt="Badgeur wireframe"
+                src={detailImagesByProjectId.badgeur.badgeurTestUrl}
+                alt="Zen Gourmet website on a phone"
                 className={classes.image}
             />
+            <Typography variant="body1" className={classes.details}>
+                ......to the prototype
+            </Typography>
         </div>
     );
 }
@@ -44,7 +44,7 @@ const useStyles = tss.withName({ name: "BadgeurPage4" }).create(({ theme }) => {
         root: {
             color: theme.palette.text.primary,
             display: "grid",
-            gridTemplateColumns: "1fr 2fr 1fr",
+            gridTemplateColumns: "5fr 5fr 5fr 1fr",
             gridTemplateRows: "1fr 1fr 1fr",
             alignItems: "center",
 
@@ -53,19 +53,20 @@ const useStyles = tss.withName({ name: "BadgeurPage4" }).create(({ theme }) => {
             }
         },
         image: {
-            gridColumn: "2 / 4",
+            gridColumn: "1 / 5",
             gridRow: "1 / 4",
             width: "100%",
             height: "100%",
             maxHeight: "600px",
-            objectFit: "cover",
+            objectFit: "contain",
+            zIndex: 1,
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
         },
         details: {
-            gridColumn: "1/2",
-            gridRow: "3",
-            position: "relative",
+            gridColumn: "3",
+            gridRow: "1",
+            textAlign: "right",
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
 

@@ -1,9 +1,9 @@
 import { tss } from "tss";
 import { keyframes } from "tss-react";
+import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
     className?: string;
-    onClick?: () => void;
 };
 
 export function Page2(props: Props) {
@@ -12,14 +12,31 @@ export function Page2(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <iframe
-                src="https://app.videas.fr/embed/media/58b5a99b-2d6b-4fb0-9788-93e7b551ce8d/?title=false&thumbnail_duration=false"
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen={true}
-                className={classes.videoIframe}
-                referrerPolicy="unsafe-url"
-            ></iframe>
+            <img
+                src={detailImagesByProjectId.badgeur.badgeurPhoneUrl}
+                alt="Badgeur phone"
+                className={cx(classes.image, classes.phone)}
+            />
+            <img
+                src={detailImagesByProjectId.badgeur.badgeurLogoUrl}
+                alt="Badgeur logo"
+                className={cx(classes.image, classes.logo)}
+            />
+            <img
+                src={detailImagesByProjectId.badgeur.badgeurColor1Url}
+                alt="Badgeur color 1"
+                className={cx(classes.image, classes.color1)}
+            />
+            <img
+                src={detailImagesByProjectId.badgeur.badgeurColor2Url}
+                alt="Badgeur color 2"
+                className={cx(classes.image, classes.color2)}
+            />
+            <img
+                src={detailImagesByProjectId.badgeur.badgeurColor3Url}
+                alt="Badgeur color 3"
+                className={cx(classes.image, classes.color3)}
+            />
         </div>
     );
 }
@@ -40,32 +57,47 @@ const animate = keyframes({
 const useStyles = tss.withName({ name: "BadgeurPage2" }).create(({ theme }) => {
     return {
         root: {
-            display: "flex",
-            justifyContent: "center",
-            position: "relative",
-            //paddingTop: "56.25%", //ratio 16/9
-            height: "100%",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr"
+        },
+        image: {
+            gridColumn: "1/4",
+            gridRow: "1/3",
             width: "100%",
+            height: "100%",
+            maxHeight: "600px",
+            objectFit: "contain",
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "none"
+            }
+        },
+        phone: {
+            gridColumn: "1/3",
+            gridRow: "1/3",
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
 
             [theme.breakpoints.only("mobile")]: {
-                height: "auto",
-                paddingBottom: "56.25%"
+                display: "grid",
+                gridColumn: "1/4"
             }
         },
-        videoIframe: {
-            position: "absolute",
-            top: 0,
-            width: "100%",
-            maxWidth: "1066px",
-            height: "100%",
-            maxHeight: "600px",
-            borderRadius: theme.spacing(2),
-
-            [theme.breakpoints.only("mobile")]: {
-                borderRadius: 0
-            }
+        logo: {
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`
+        },
+        color1: {
+            opacity: 0,
+            animation: `${animate} 0.4s ease-in-out 0.5s 1 forwards`
+        },
+        color2: {
+            opacity: 0,
+            animation: `${animate} 0.4s ease-in-out 0.6s 1 forwards`
+        },
+        color3: {
+            opacity: 0,
+            animation: `${animate} 0.4s ease-in-out 0.7s 1 forwards`
         }
     };
 });
