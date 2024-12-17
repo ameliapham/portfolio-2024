@@ -1,6 +1,6 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
-import { Page2 } from "./Page2";
+import { PageVideo } from "./PageVideo";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
@@ -46,7 +46,7 @@ export default function DameCantonDesktop(props: Props) {
                         case 0:
                             return <Page1 />;
                         case 1:
-                            return <Page2 />;
+                            return <PageVideo />;
                         default:
                             assert(false);
                     }

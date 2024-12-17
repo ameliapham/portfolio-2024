@@ -6,7 +6,7 @@ type Props = {
     onClick?: () => void;
 };
 
-export function Page2(props: Props) {
+export function PageVideo(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
 
@@ -37,7 +37,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "GmetaPageVideo" }).create(({ theme }) => {
     return {
         root: {
             display: "flex",
