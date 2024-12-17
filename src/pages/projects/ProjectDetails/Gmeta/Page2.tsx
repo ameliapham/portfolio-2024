@@ -1,9 +1,9 @@
 import { tss } from "tss";
 import { keyframes } from "tss-react";
+import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
     className?: string;
-    onClick?: () => void;
 };
 
 export function Page2(props: Props) {
@@ -12,15 +12,23 @@ export function Page2(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <iframe
-                src="https://app.videas.fr/embed/media/23926476-9bb9-4499-837e-c5fbdae422f4/?title=false"
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen={true}
-                className={classes.videoIframe}
-                referrerPolicy="unsafe-url"
-            ></iframe>
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaMacUrl}
+                alt="gmeta Macbook"
+                className={cx(classes.mac)}
+            />
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
+                alt="gmeta logo"
+                className={cx(classes.detail1)}
+            />
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaIpad3Url}
+                alt="gmeta logo"
+                className={cx(classes.detail2)}
+            />
         </div>
+
     );
 }
 
@@ -37,35 +45,37 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "GmetaPage2" }).create(() => {
     return {
         root: {
-            display: "flex",
-            justifyContent: "center",
-            position: "relative",
-            //paddingTop: "56.25%", // 16:9
-            height: "100%",
-            width: "100%",
-            opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
-
-            [theme.breakpoints.only("mobile")]: {
-                height: "auto",
-                paddingBottom: "56.25%"
-            }
+            display: "grid",
+            gridTemplateColumns: "1fr 2fr 1fr"
         },
-        videoIframe: {
-            position: "absolute",
-            top: 0,
+        mac: {
+            gridColumn: "1/4",
+            gridRow: "1/4",
             width: "100%",
-            maxWidth: "1066px",
             height: "100%",
             maxHeight: "600px",
-            borderRadius: theme.spacing(2),
-
-            [theme.breakpoints.only("mobile")]: {
-                borderRadius: 0
-            }
+            objectFit: "contain",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+        },
+        detail1: {
+            gridColumn: "3/5",
+            gridRow: "1",
+            width: "100%",
+            opacity: 0,
+            objectFit: "contain",
+            animation: `${animate} 0.4s ease-in-out 0.6s 1 forwards`
+        },
+        detail2: {
+            gridColumn: "3/5",
+            gridRow: "2",
+            width: "100%",
+            opacity: 0,
+            objectFit: "contain",
+            animation: `${animate} 0.4s ease-in-out 0.7s 1 forwards`
         }
     };
 });

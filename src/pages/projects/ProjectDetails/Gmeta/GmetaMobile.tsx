@@ -1,6 +1,7 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
+import { PageVideo } from "./PageVideo";
 import { Props } from "../../Props";
 
 export default function Gmeta(props: Props) {
@@ -11,6 +12,7 @@ export default function Gmeta(props: Props) {
             <div className={cx(classes.root, className)}>
                 <Page1 />
                 <Page2 />
+                <PageVideo />
             </div>
         </>
     );
