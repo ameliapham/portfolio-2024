@@ -1,7 +1,7 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
+import { PageVideo } from "./PageVideo";
 import { Page2 } from "./Page2";
-import { Page3 } from "./Page3";
 import { assert } from "tsafe/assert";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
@@ -48,9 +48,9 @@ export default function FamedDesktop(props: Props) {
                             case 0:
                                 return <Page1 />;
                             case 1:
-                                return <Page3 />;
-                            case 2:
                                 return <Page2 />;
+                            case 2:
+                                return <PageVideo />;
                             default:
                                 assert(false);
                         }

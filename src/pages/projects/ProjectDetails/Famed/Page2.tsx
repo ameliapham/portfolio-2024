@@ -1,9 +1,9 @@
 import { tss } from "tss";
 import { keyframes } from "tss-react";
+import { detailImagesByProjectId } from "pages/projects/projectsData";
 
 type Props = {
     className?: string;
-    onClick?: () => void;
 };
 
 export function Page2(props: Props) {
@@ -12,14 +12,21 @@ export function Page2(props: Props) {
 
     return (
         <div className={cx(classes.root, className)}>
-            <iframe
-                src="https://app.videas.fr/embed/media/31e9172c-575b-4846-9db3-76c1c9f146df/?title=false&thumbnail_duration=false"
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen={true}
-                className={classes.videoIframe}
-                referrerPolicy="unsafe-url"
-            ></iframe>
+            <img
+                src={detailImagesByProjectId.famed.famedPhoneLUrl}
+                alt="Famed application"
+                className={classes.phoneLeft}
+            />
+            <img
+                src={detailImagesByProjectId.famed.famedPhoneMUrl}
+                alt="Famed application"
+                className={classes.phoneMiddle}
+            />
+            <img
+                src={detailImagesByProjectId.famed.famedPhoneRUrl}
+                alt="Famed application"
+                className={classes.phoneRight}
+            />
         </div>
     );
 }
@@ -40,32 +47,41 @@ const animate = keyframes({
 const useStyles = tss.withName({ name: "FamedPage2" }).create(({ theme }) => {
     return {
         root: {
-            display: "flex",
-            justifyContent: "center",
-            position: "relative",
-            //paddingTop: "56.25%", //ratio 16/9
-            height: "100%",
-            width: "100%",
-            opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
-
-            [theme.breakpoints.only("mobile")]: {
-                height: "auto",
-                paddingBottom: "56.25%"
-            }
+            color: theme.palette.text.primary,
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr 2fr 1fr 2fr",
+            gridTemplateRows: "1fr 1fr 1fr",
+            alignItems: "center"
         },
-        videoIframe: {
-            position: "absolute",
-            top: 0,
+        phoneLeft: {
+            gridColumn: "1/3",
+            gridRow: "1 / 4",
             width: "100%",
-            maxWidth: "1066px",
             height: "100%",
-            maxHeight: "600px",
-            borderRadius: theme.spacing(2),
-
-            [theme.breakpoints.only("mobile")]: {
-                borderRadius: 0
-            }
+            maxHeight: "700px",
+            objectFit: "contain",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.3s 1 forwards`
+        },
+        phoneMiddle: {
+            gridColumn: "2/5",
+            gridRow: "1 / 4",
+            width: "100%",
+            height: "100%",
+            maxHeight: "700px",
+            objectFit: "contain",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+        },
+        phoneRight: {
+            gridColumn: "4/6",
+            gridRow: "1 / 4",
+            width: "100%",
+            height: "100%",
+            maxHeight: "700px",
+            objectFit: "contain",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`
         }
     };
 });
