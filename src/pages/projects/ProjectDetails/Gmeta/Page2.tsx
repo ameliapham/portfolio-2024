@@ -72,7 +72,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
             width: "100%",
             opacity: 0,
             objectFit: "contain",
-            animation: `${animate} 0.4s ease-in-out 0.6s 1 forwards`
+            animation: `${animate} 0.4s ease-in-out 0.4s 1 forwards`
         },
         detail2: {
             gridColumn: "3/5",
@@ -80,7 +80,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
             width: "100%",
             opacity: 0,
             objectFit: "contain",
-            animation: `${animate} 0.4s ease-in-out 0.7s 1 forwards`
+            animation: `${animate} 0.4s ease-in-out 0.6s 1 forwards`
         }
     };
 });

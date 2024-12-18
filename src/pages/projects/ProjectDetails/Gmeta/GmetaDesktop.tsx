@@ -1,6 +1,7 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
+import { Page3 } from "./Page3";
 import { PageVideo } from "./PageVideo";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
@@ -21,7 +22,7 @@ export default function GmetaDesktop(props: Props) {
               });
 
     const nextRoute =
-        route.params.detailsIndex === 2
+        route.params.detailsIndex === 3
             ? undefined
             : routes[route.name]({
                   ...route.params,
@@ -49,6 +50,8 @@ export default function GmetaDesktop(props: Props) {
                         case 1:
                             return <Page2 />;
                         case 2:
+                            return <Page3 />;
+                        case 3:
                             return <PageVideo />;
                         default:
                             assert(false);
@@ -59,7 +62,7 @@ export default function GmetaDesktop(props: Props) {
             <ProgressComponent
                 previousLink={previousRoute?.link}
                 nextLink={nextRoute?.link}
-                processPercentage={(route.params.detailsIndex / 2) * 100}
+                processPercentage={(route.params.detailsIndex / 3) * 100}
             />
         </div>
     );
