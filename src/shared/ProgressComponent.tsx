@@ -1,19 +1,34 @@
 import { tss } from "tss";
 import { LinearProgress } from "@mui/material";
 import { alpha } from "@mui/material";
-import { Link } from "type-route";
 import { SeeMoreButton } from "./SeeMoreButton";
+import { useScrollNavigation } from "utils/useScrollNavigation";
+import type { Route } from "routes";
 
 type Props = {
     className?: string;
-    previousLink: Link | undefined;
-    nextLink: Link | undefined;
+    previousRoute: Route | undefined;
+    nextRoute: Route | undefined;
+    backRoute: Route | undefined;
     processPercentage: number;
 };
 
 export function ProgressComponent(props: Props) {
-    const { className, previousLink, nextLink, processPercentage } = props;
+    const { className, previousRoute, nextRoute, backRoute, processPercentage } = props;
     const { cx, classes } = useStyles();
+
+    const nextOrBackRoute = nextRoute ?? backRoute;
+
+    useScrollNavigation(direction => {
+        switch (direction) {
+            case "up":
+                previousRoute?.push();
+                break;
+            case "down":
+                nextOrBackRoute?.push();
+                break;
+        }
+    });
 
     return (
         <div className={cx(classes.root, className)}>
@@ -23,18 +38,18 @@ export function ProgressComponent(props: Props) {
                     hyphenPosition="left"
                     widthLinePx={10}
                     translateLinePx={5}
-                    disabled={previousLink === undefined}
-                    {...previousLink}
+                    disabled={previousRoute === undefined}
+                    {...previousRoute?.link}
                 >
-                    <h2> {"<"} </h2>
+                    <h2>{"<"}</h2>
                 </SeeMoreButton>
                 <SeeMoreButton
                     className={classes.text}
                     hyphenPosition="right"
                     widthLinePx={10}
                     translateLinePx={5}
-                    disabled={nextLink === undefined}
-                    {...nextLink}
+                    disabled={nextOrBackRoute === undefined}
+                    {...nextOrBackRoute?.link}
                 >
                     <h2> {">"} </h2>
                 </SeeMoreButton>

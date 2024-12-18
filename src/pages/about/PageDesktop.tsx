@@ -63,7 +63,7 @@ export default function PageDesktop(props: Props) {
 
             <ProgressComponent
                 className={classes.navComponent}
-                previousLink={
+                previousRoute={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) > 0
                         ? routes[route.name]({
                               ...route.params,
@@ -71,10 +71,10 @@ export default function PageDesktop(props: Props) {
                                   aboutDetailsIds[
                                       aboutDetailsIds.indexOf(route.params.aboutDetailsId) - 1
                                   ]
-                          }).link
+                          })
                         : undefined
                 }
-                nextLink={
+                nextRoute={
                     aboutDetailsIds.indexOf(route.params.aboutDetailsId) < aboutDetailsIds.length - 1
                         ? routes[route.name]({
                               ...route.params,
@@ -82,9 +82,10 @@ export default function PageDesktop(props: Props) {
                                   aboutDetailsIds[
                                       aboutDetailsIds.indexOf(route.params.aboutDetailsId) + 1
                                   ]
-                          }).link
+                          })
                         : undefined
                 }
+                backRoute={undefined}
                 processPercentage={
                     (aboutDetailsIds.indexOf(route.params.aboutDetailsId) /
                         (aboutDetailsIds.length - 1)) *
