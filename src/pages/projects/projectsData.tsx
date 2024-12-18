@@ -41,6 +41,39 @@ import gmetaComponent3Url from "assets/projects-images/gmeta/gmetaComponent3.web
 export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
+/**
+ * 
+ * "zen" -> "gili"
+ * "gmeta" -> "badgeur"
+ * "arti" -> "zen"
+ * 
+ */
+export function getNextProjectId(projectId: ProjectId): ProjectId {
+    const index = projectIds.indexOf(projectId);
+
+    if (index === projectIds.length - 1) {
+        return projectIds[0];
+    }
+
+    return projectIds[index + 1];
+}
+
+/**
+ *  "zen" -> "arti"
+ *  "badgeur" -> "gmeta"
+ */
+export function getPreviousProjectId(projectId: ProjectId): ProjectId {
+    // if project = "zen" -> index = 0
+    const index = projectIds.indexOf(projectId)
+
+    // if index = 0 -> return "arti"
+    if (index === 0) {
+        return projectIds[projectIds.length - 1];
+    }
+    return projectIds[index-1];
+}
+
+
 export type Project = {
     id: ProjectId;
     imageUrl: string;
