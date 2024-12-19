@@ -31,11 +31,19 @@ import famedPhoneLUrl from "assets/famed-phoneL.svg";
 import famedPhoneRUrl from "assets/famed-phoneR.svg";
 
 import gmetaMacUrl from "assets/projects-images/gmeta/gmeta-mac.webp";
-import gmetaIpad1Url from "assets/projects-images/gmeta/gmeta-ipad1.webp";
-import gmetaIpad2Url from "assets/projects-images/gmeta/gmeta-ipad2.webp";
-import gmetaComponent1Url from "assets/projects-images/gmeta/gmeta-component1.webp";
-import gmetaComponent2Url from "assets/projects-images/gmeta/gmeta-component2.webp";
-import gmetaComponent3Url from "assets/projects-images/gmeta/gmeta-component3.webp";
+import gmetaIpad1Url from "assets/projects-images/gmeta/gmeta-ipad-1.webp";
+import gmetaIpad2Url from "assets/projects-images/gmeta/gmeta-ipad-2.webp";
+import gmetaComponent1Url from "assets/projects-images/gmeta/gmeta-component-1.webp";
+import gmetaComponent2Url from "assets/projects-images/gmeta/gmeta-component-2.webp";
+import gmetaComponent3Url from "assets/projects-images/gmeta/gmeta-component-3.webp";
+import gmetaColorUrl from "assets/projects-images/gmeta/gmeta-color.svg";
+import gmetaLogo1Url from "assets/projects-images/gmeta/gmeta-logo-1.svg";
+import gmetaLogo2Url from "assets/projects-images/gmeta/gmeta-logo-2.svg";
+import gmetaMoodboard1Url from "assets/projects-images/gmeta/gmeta-moodboard-1.webp";
+import gmetaMoodboard2Url from "assets/projects-images/gmeta/gmeta-moodboard-2.webp";
+import gmetaMoodboard3Url from "assets/projects-images/gmeta/gmeta-moodboard-3.webp";
+import gmetaMoodboard4Url from "assets/projects-images/gmeta/gmeta-moodboard-4.webp";
+import gmetaMoodboard5Url from "assets/projects-images/gmeta/gmeta-moodboard-5.webp";
 
 export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
@@ -196,7 +204,15 @@ export const detailImagesByProjectId = {
         gmetaIpad2Url,
         gmetaComponent1Url,
         gmetaComponent2Url,
-        gmetaComponent3Url
+        gmetaComponent3Url,
+        gmetaColorUrl,
+        gmetaLogo1Url,
+        gmetaLogo2Url,
+        gmetaMoodboard1Url,
+        gmetaMoodboard2Url,
+        gmetaMoodboard3Url,
+        gmetaMoodboard4Url,
+        gmetaMoodboard5Url
     },
     badgeur: {
         badgeurPhoneUrl,

@@ -1,6 +1,7 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
+import { Page4 } from "./Page4";
 import { Page3 } from "./Page3";
 import { PageVideo } from "./PageVideo";
 import { routes } from "routes";
@@ -24,6 +25,8 @@ export default function GmetaDesktop(props: Props) {
                         case 2:
                             return <Page3 />;
                         case 3:
+                            return <Page4 />;
+                        case 4:
                             return <PageVideo />;
                         default:
                             assert(false);
@@ -41,7 +44,7 @@ export default function GmetaDesktop(props: Props) {
                         })
                 }
                 nextRoute={
-                    route.params.detailsIndex === 3
+                    route.params.detailsIndex === 4
                         ? undefined
                         : routes[route.name]({
                             ...route.params,
@@ -53,7 +56,7 @@ export default function GmetaDesktop(props: Props) {
                     isGalleryVisible: true,
                     detailsIndex: undefined
                 })}
-                processPercentage={(route.params.detailsIndex / 3) * 100}
+                processPercentage={(route.params.detailsIndex / 4) * 100}
             />
         </div>
     );
