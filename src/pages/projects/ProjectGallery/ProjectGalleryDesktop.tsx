@@ -12,7 +12,6 @@ import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
 import type { Link } from "type-route";
 import type { Props } from "../Props";
 import { assert, is } from "tsafe/assert";
-import { useScrollNavigation } from "utils/useScrollNavigation";
 import { waitForThrottleFactory } from "utils/waitForThrottle";
 import { getNextProjectId } from "../projectsData";
 import { getPreviousProjectId } from "../projectsData";
@@ -48,52 +47,52 @@ export default function ProjectGalleryDesktop(props: Props) {
 
     const { isDelayed } = useDelayOnlyOnce();
 
-    const previousLink = (() => {
-        const previousRoute = routes[route.name]({
+    // NOTE: Theoretically it should be
+    // routes[route.name]({ ...route.params, projectId : getPreviousProjectId(route.params.projectId) })
+    // but we have a CSS animation bug so we hack around it.
+    const previousRoute = (() => {
+        const previousRoute_real = routes[route.name]({
             ...route.params,
             projectId: getPreviousProjectId(route.params.projectId)
         });
 
-        return {
-            href: previousRoute.link.href,
-            onClick: async (event?: React.MouseEvent | undefined) => {
-                event?.preventDefault();
+        const onClick = async (event?: React.MouseEvent | undefined) => {
+            event?.preventDefault();
 
-                await waitForThrottle_animation();
+            await waitForThrottle_animation();
 
-                assert(is<HTMLElement | undefined>(event?.target));
+            assert(is<HTMLElement | undefined>(event?.target));
 
-                const contentElement = document.querySelector(`.${classes.content}`);
+            const contentElement = document.querySelector(`.${classes.content}`);
 
-                assert(contentElement !== null);
-                assert(is<HTMLElement>(contentElement));
+            assert(contentElement !== null);
+            assert(is<HTMLElement>(contentElement));
 
-                contentElement.style.display = "none";
+            contentElement.style.display = "none";
 
-                const items = document.querySelectorAll(`.${classes.item}`);
-                document.querySelector(`.${classes.slide}`)!.prepend(items[items.length - 1]);
+            const items = document.querySelectorAll(`.${classes.item}`);
+            document.querySelector(`.${classes.slide}`)!.prepend(items[items.length - 1]);
 
-                setTimeout(() => {
-                    previousRoute.push();
-                }, ANIMATION_DURATION_MS);
-            }
+            setTimeout(() => {
+                previousRoute_real.push();
+            }, ANIMATION_DURATION_MS);
         };
+
+        const previousRoute: typeof previousRoute_real = {
+            ...previousRoute_real,
+            link: {
+                href: previousRoute_real.link.href,
+                onClick: onClick
+            },
+            push: () => onClick()
+        };
+
+        return previousRoute;
     })();
 
     const nextRoute = routes[route.name]({
         ...route.params,
         projectId: getNextProjectId(route.params.projectId)
-    });
-
-    useScrollNavigation(async direction => {
-        switch (direction) {
-            case "up":
-                previousLink.onClick();
-                break;
-            case "down":
-                nextRoute.push();
-                break;
-        }
     });
 
     if (isDownloadingAssets || isDelayed) {
@@ -144,9 +143,9 @@ export default function ProjectGalleryDesktop(props: Props) {
                                 i === 0 || i === 1
                                     ? undefined
                                     : routes[route.name]({
-                                          ...route.params,
-                                          projectId: id
-                                      }).link
+                                        ...route.params,
+                                        projectId: id
+                                    }).link
                             }
                         >
                             {(() => {
@@ -182,11 +181,10 @@ export default function ProjectGalleryDesktop(props: Props) {
 
                 <ProgressComponent
                     className={classes.navComponent}
-                    previousLink={previousLink}
-                    nextLink={nextRoute.link}
-                    processPercentage={
-                        (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
-                    }
+                    previousRoute={previousRoute}
+                    nextRoute={nextRoute}
+                    backRoute={undefined}
+                    processPercentage={(projectIds.indexOf(route.params.projectId) / projectIds.length - 1) * 100} 
                 />
             </div>
         </>

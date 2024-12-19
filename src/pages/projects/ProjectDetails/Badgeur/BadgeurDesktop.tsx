@@ -8,38 +8,10 @@ import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
 import { Props } from "../../Props";
-import { useScrollNavigation } from "utils/useScrollNavigation";
 
 export default function BadgeurDesktop(props: Props) {
     const { className, route } = props;
     const { cx, classes } = useStyles();
-
-    const previousRoute =
-        route.params.detailsIndex === 0
-            ? undefined
-            : routes[route.name]({
-                  ...route.params,
-                  detailsIndex: route.params.detailsIndex - 1
-              });
-
-    const nextRoute =
-        route.params.detailsIndex === 4
-            ? undefined
-            : routes[route.name]({
-                  ...route.params,
-                  detailsIndex: route.params.detailsIndex + 1
-              });
-
-    useScrollNavigation(direction => {
-        switch (direction) {
-            case "up":
-                previousRoute?.push();
-                break;
-            case "down":
-                nextRoute?.push();
-                break;
-        }
-    });
 
     return (
         <div className={cx(classes.root, className)}>
@@ -62,8 +34,27 @@ export default function BadgeurDesktop(props: Props) {
                 })()}
             </div>
             <ProgressComponent
-                previousLink={previousRoute?.link}
-                nextLink={nextRoute?.link}
+                previousRoute={
+                    route.params.detailsIndex === 0
+                        ? undefined
+                        : routes[route.name]({
+                            ...route.params,
+                            detailsIndex: route.params.detailsIndex - 1
+                        })
+                }
+                nextRoute={
+                    route.params.detailsIndex === 4
+                        ? undefined
+                        : routes[route.name]({
+                            ...route.params,
+                            detailsIndex: route.params.detailsIndex + 1
+                        })
+                }
+                backRoute={routes.projects({
+                    ...route.params,
+                    isGalleryVisible: true,
+                    detailsIndex: undefined
+                })}
                 processPercentage={(route.params.detailsIndex / 4) * 100}
             />
         </div>
