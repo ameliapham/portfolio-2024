@@ -19,12 +19,12 @@ export function Page2(props: Props) {
             />
             <div className={classes.details}>
                 <img
-                    src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
+                    src={detailImagesByProjectId.gmeta.gmetaIpad1Url}
                     alt="gmeta logo"
                     className={cx(classes.detail1)}
                 />
                 <img
-                    src={detailImagesByProjectId.gmeta.gmetaIpad3Url}
+                    src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
                     alt="gmeta logo"
                     className={cx(classes.detail2)}
                 />
@@ -52,8 +52,10 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
     return {
         root: {
             display: "grid",
-            gridTemplateColumns: "1fr 2fr 1fr",
+            gridTemplateColumns: "1fr 1fr 1fr",
             gridTemplateRows: "1fr 1fr",
+            gap: theme.spacing(8),
+            maxHeight: "600px",
 
             [theme.breakpoints.only("mobile")]: {
                 display: "flex",

@@ -30,13 +30,12 @@ import famedPhoneMUrl from "assets/famed-phoneM.svg";
 import famedPhoneLUrl from "assets/famed-phoneL.svg";
 import famedPhoneRUrl from "assets/famed-phoneR.svg";
 
-import gmetaMacUrl from "assets/projects-images/gmeta/gmetaMac.webp";
-import gmetaIpad1Url from "assets/projects-images/gmeta/gmetaIpad1.webp";
-import gmetaIpad2Url from "assets/projects-images/gmeta/gmetaIpad2.webp";
-import gmetaIpad3Url from "assets/projects-images/gmeta/gmetaIpad3.webp";
-import gmetaComponent1Url from "assets/projects-images/gmeta/gmetaComponent1.webp";
-import gmetaComponent2Url from "assets/projects-images/gmeta/gmetaComponent2.webp";
-import gmetaComponent3Url from "assets/projects-images/gmeta/gmetaComponent3.webp";
+import gmetaMacUrl from "assets/projects-images/gmeta/gmeta-mac.webp";
+import gmetaIpad1Url from "assets/projects-images/gmeta/gmeta-ipad1.webp";
+import gmetaIpad2Url from "assets/projects-images/gmeta/gmeta-ipad2.webp";
+import gmetaComponent1Url from "assets/projects-images/gmeta/gmeta-component1.webp";
+import gmetaComponent2Url from "assets/projects-images/gmeta/gmeta-component2.webp";
+import gmetaComponent3Url from "assets/projects-images/gmeta/gmeta-component3.webp";
 
 export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
@@ -195,7 +194,6 @@ export const detailImagesByProjectId = {
         gmetaMacUrl,
         gmetaIpad1Url,
         gmetaIpad2Url,
-        gmetaIpad3Url,
         gmetaComponent1Url,
         gmetaComponent2Url,
         gmetaComponent3Url
