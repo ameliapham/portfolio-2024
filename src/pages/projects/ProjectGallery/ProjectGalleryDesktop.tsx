@@ -184,7 +184,8 @@ export default function ProjectGalleryDesktop(props: Props) {
                     previousRoute={previousRoute}
                     nextRoute={nextRoute}
                     backRoute={undefined}
-                    processPercentage={(projectIds.indexOf(route.params.projectId) / projectIds.length - 1) * 100} 
+                    processPercentage={
+                        (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100}
                 />
             </div>
         </>

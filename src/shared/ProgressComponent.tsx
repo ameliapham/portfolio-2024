@@ -56,7 +56,7 @@ export function ProgressComponent(props: Props) {
                     widthLinePx={10}
                     translateLinePx={5}
                     disabled={previousRoute === undefined}
-                    {...previousRoute}
+                    {...previousRoute?.link}
                 >
                     <h2> {"<"} </h2>
                 </SeeMoreButton>
