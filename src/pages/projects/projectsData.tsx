@@ -20,9 +20,9 @@ import zenIpadUrl from "assets/zen-ipad.png";
 
 import badgeurPhoneUrl from "assets/projects-images/badgeur/badgeur-phone.webp";
 import badgeurLogoUrl from "assets/projects-images/badgeur/badgeur-logo.svg";
-import badgeurColor1Url from "assets/projects-images/badgeur/badgeur-color1.svg";
-import badgeurColor2Url from "assets/projects-images/badgeur/badgeur-color2.svg";
-import badgeurColor3Url from "assets/projects-images/badgeur/badgeur-color3.svg";
+import badgeurColor1Url from "assets/projects-images/badgeur/badgeur-color-1.svg";
+import badgeurColor2Url from "assets/projects-images/badgeur/badgeur-color-2.svg";
+import badgeurColor3Url from "assets/projects-images/badgeur/badgeur-color-3.svg";
 import wfBadgeurUrl from "assets/projects-images/badgeur/badgeur-wf.webp";
 import badgeurTestUrl from "assets/projects-images/badgeur/badgeur-test.webp";
 
