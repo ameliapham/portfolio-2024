@@ -20,12 +20,12 @@ export function Page2(props: Props) {
             <div className={classes.details}>
                 <img
                     src={detailImagesByProjectId.gmeta.gmetaIpad1Url}
-                    alt="gmeta logo"
+                    alt="gmeta details"
                     className={cx(classes.detail1)}
                 />
                 <img
                     src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
-                    alt="gmeta logo"
+                    alt="gmeta details"
                     className={cx(classes.detail2)}
                 />
             </div>
@@ -52,7 +52,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
     return {
         root: {
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateColumns: "1fr 2fr 1fr",
             gridTemplateRows: "1fr 1fr",
             gap: theme.spacing(8),
             maxHeight: "600px",
@@ -67,7 +67,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
             gridRow: "1/3",
             width: "100%",
             height: "100%",
-            maxHeight: "600px",
+            maxHeight: "700px",
             objectFit: "contain",
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
