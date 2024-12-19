@@ -3,6 +3,7 @@ import { LinearProgress } from "@mui/material";
 import { alpha } from "@mui/material";
 import { SeeMoreButton } from "./SeeMoreButton";
 import { useScrollNavigation } from "utils/useScrollNavigation";
+import { useKeyboardNavigation } from "utils/useKeyboardNavigation";
 import type { Route } from "routes";
 
 type Props = {
@@ -26,6 +27,22 @@ export function ProgressComponent(props: Props) {
                 break;
             case "down":
                 nextOrBackRoute?.push();
+                break;
+        }
+    });
+
+    useKeyboardNavigation(key => {
+        switch (key) {
+            case "ArrowLeft":
+            case "ArrowUp":
+                previousRoute?.push();
+                break;
+            case "ArrowRight":
+            case "ArrowDown":
+                nextOrBackRoute?.push();
+                break;
+            case "Escape":
+                backRoute?.push();
                 break;
         }
     });
