@@ -17,16 +17,19 @@ export function Page2(props: Props) {
                 alt="gmeta Macbook"
                 className={cx(classes.mac)}
             />
-            <img
-                src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
-                alt="gmeta logo"
-                className={cx(classes.detail1)}
-            />
-            <img
-                src={detailImagesByProjectId.gmeta.gmetaIpad3Url}
-                alt="gmeta logo"
-                className={cx(classes.detail2)}
-            />
+            <div className={classes.details}>
+                <img
+                    src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
+                    alt="gmeta logo"
+                    className={cx(classes.detail1)}
+                />
+                <img
+                    src={detailImagesByProjectId.gmeta.gmetaIpad3Url}
+                    alt="gmeta logo"
+                    className={cx(classes.detail2)}
+                />
+            </div>
+
         </div>
 
     );
@@ -50,6 +53,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
         root: {
             display: "grid",
             gridTemplateColumns: "1fr 2fr 1fr",
+            gridTemplateRows: "1fr 1fr",
 
             [theme.breakpoints.only("mobile")]: {
                 display: "flex",
@@ -58,7 +62,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
         },
         mac: {
             gridColumn: "1/4",
-            gridRow: "1/4",
+            gridRow: "1/3",
             width: "100%",
             height: "100%",
             maxHeight: "600px",
@@ -66,17 +70,25 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
         },
+        details:{
+            gridColumn: "3/4",
+            gridRow: "1/3",
+            display: "grid",
+            gridTemplateRows: "1fr 1fr 1fr",
+
+            [theme.breakpoints.only("mobile")]: {
+                display: "none"
+            }
+        }, 
         detail1: {
-            gridColumn: "3/5",
-            gridRow: "1",
+            gridRow: "1/2",
             width: "100%",
             opacity: 0,
             objectFit: "contain",
             animation: `${animate} 0.4s ease-in-out 0.4s 1 forwards`
         },
         detail2: {
-            gridColumn: "3/5",
-            gridRow: "2",
+            gridRow: "2/3",
             width: "100%",
             opacity: 0,
             objectFit: "contain",
