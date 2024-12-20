@@ -59,7 +59,7 @@ const useStyles = tss.withName({ name: "GmetaPage4" }).create(({ theme }) => {
             gridTemplateColumns: "1fr 1fr 1fr",
             gridTemplateRows: "1fr 1fr 1fr",
             gap: theme.spacing(2),
-            maxWidth: "900px",
+            maxWidth: "1000px",
         },
         component1: {
             gridColumn: "1/2",
@@ -93,7 +93,7 @@ const useStyles = tss.withName({ name: "GmetaPage4" }).create(({ theme }) => {
             gridRow: "3/4",
             height: "50px",
             display: "grid",
-            gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr",
+            gridTemplateRows: "1fr 1fr 1fr",
             alignItems: "center",
             alignSelf: "end"
         },
@@ -109,8 +109,8 @@ const useStyles = tss.withName({ name: "GmetaPage4" }).create(({ theme }) => {
                 content: "''",
                 position: "absolute",
                 bottom: "0%",
-                left: "0%",
-                width: "100%",
+                right: "0%",
+                width: "150%",
                 height: theme.spacing(0.1),
                 backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                 transition: "all 0.5s ease"

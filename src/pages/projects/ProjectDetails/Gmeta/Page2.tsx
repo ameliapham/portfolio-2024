@@ -88,7 +88,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(() => {
             width: "100%",
             height: "100%",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.5s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.65s 1 forwards`
         },
         ipad3: {
             gridColumn: "3/4",
@@ -104,7 +104,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(() => {
             width: "100%",
             height: "100%",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.6s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.5s 1 forwards`
         },
 
     };

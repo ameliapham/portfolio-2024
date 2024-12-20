@@ -14,7 +14,7 @@ export function Page3(props: Props) {
     const { cx, classes } = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div className={cx(classes.root, className)}>
             <div className={classes.moodboard}>
                 <img
                     src={detailImagesByProjectId.gmeta.gmetaColorUrl}
@@ -90,7 +90,7 @@ const useStyles = tss.withName({ name: "GmetaPage3" }).create(({ theme }) => {
             gridTemplateColumns: "3fr 2fr",
             gridTemplateRows: "1fr",
             gap: theme.spacing(4),
-            maxWidth: "900px",
+            maxWidth: "1000px",
             maxHeight: "700px"
         },
         moodboard: {
@@ -191,7 +191,7 @@ const useStyles = tss.withName({ name: "GmetaPage3" }).create(({ theme }) => {
             height: "50px",
             gridRow: "4",
             display: "grid",
-            gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr",
+            gridTemplateRows: "1fr 1fr",
             alignItems: "center",
             alignSelf: "end"
         },
