@@ -31,8 +31,13 @@ import famedPhoneLUrl from "assets/famed-phoneL.svg";
 import famedPhoneRUrl from "assets/famed-phoneR.svg";
 
 import gmetaMacUrl from "assets/projects-images/gmeta/gmeta-mac.webp";
+import gmetaMacbookUrl from "assets/projects-images/gmeta/gmeta-macbook.webp";
+import gmetaImacUrl from "assets/projects-images/gmeta/gmeta-imac.webp";
 import gmetaIpad1Url from "assets/projects-images/gmeta/gmeta-ipad-1.webp";
 import gmetaIpad2Url from "assets/projects-images/gmeta/gmeta-ipad-2.webp";
+import gmetaIpad3Url from "assets/projects-images/gmeta/gmeta-ipad-3.webp";
+import gmetaIpad4Url from "assets/projects-images/gmeta/gmeta-ipad-4.webp";
+import gmetaIpad5Url from "assets/projects-images/gmeta/gmeta-ipad-5.webp";
 import gmetaComponent1Url from "assets/projects-images/gmeta/gmeta-component-1.webp";
 import gmetaComponent2Url from "assets/projects-images/gmeta/gmeta-component-2.webp";
 import gmetaComponent3Url from "assets/projects-images/gmeta/gmeta-component-3.webp";
@@ -200,8 +205,13 @@ export const detailImagesByProjectId = {
     gili: {},
     gmeta: {
         gmetaMacUrl,
+        gmetaMacbookUrl,
+        gmetaImacUrl,
         gmetaIpad1Url,
         gmetaIpad2Url,
+        gmetaIpad3Url,
+        gmetaIpad4Url,
+        gmetaIpad5Url,
         gmetaComponent1Url,
         gmetaComponent2Url,
         gmetaComponent3Url,

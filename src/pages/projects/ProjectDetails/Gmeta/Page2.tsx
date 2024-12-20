@@ -13,22 +13,31 @@ export function Page2(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             <img
-                src={detailImagesByProjectId.gmeta.gmetaMacUrl}
+                src={detailImagesByProjectId.gmeta.gmetaIpad1Url}
+                alt="gmeta details"
+                className={cx(classes.ipad1)}
+            />
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
+                alt="gmeta details"
+                className={cx(classes.ipad2)}
+            />
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaMacbookUrl}
                 alt="gmeta Macbook"
                 className={cx(classes.mac)}
             />
-            <div className={classes.details}>
-                <img
-                    src={detailImagesByProjectId.gmeta.gmetaIpad1Url}
-                    alt="gmeta details"
-                    className={cx(classes.detail1)}
-                />
-                <img
-                    src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
-                    alt="gmeta details"
-                    className={cx(classes.detail2)}
-                />
-            </div>
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaIpad3Url}
+                alt="gmeta details"
+                className={cx(classes.ipad3)}
+            />
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaIpad4Url}
+                alt="gmeta details"
+                className={cx(classes.ipad4)}
+            />
+
 
         </div>
 
@@ -48,22 +57,15 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "GmetaPage2" }).create(() => {
     return {
         root: {
             display: "grid",
             gridTemplateColumns: "1fr 2fr 1fr",
             gridTemplateRows: "1fr 1fr",
-            gap: theme.spacing(8),
-            maxHeight: "600px",
-
-            [theme.breakpoints.only("mobile")]: {
-                display: "flex",
-                flexDirection: "column"
-            }
         },
         mac: {
-            gridColumn: "1/4",
+            gridColumn: "2/3",
             gridRow: "1/3",
             width: "100%",
             height: "100%",
@@ -72,29 +74,38 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
         },
-        details:{
-            gridColumn: "3/4",
-            gridRow: "1/3",
-            display: "grid",
-            gridTemplateRows: "1fr 1fr 1fr",
-
-            [theme.breakpoints.only("mobile")]: {
-                display: "none"
-            }
-        }, 
-        detail1: {
+        ipad1: {
+            gridColumn: "1/2",
             gridRow: "1/2",
             width: "100%",
+            height: "100%",
             opacity: 0,
-            objectFit: "contain",
-            animation: `${animate} 0.4s ease-in-out 0.4s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.3s 1 forwards`
         },
-        detail2: {
+        ipad2: {
+            gridColumn: "1/2",
             gridRow: "2/3",
             width: "100%",
+            height: "100%",
             opacity: 0,
-            objectFit: "contain",
-            animation: `${animate} 0.4s ease-in-out 0.6s 1 forwards`
-        }
+            animation: `${animate} 0.5s ease-in-out 0.5s 1 forwards`
+        },
+        ipad3: {
+            gridColumn: "3/4",
+            gridRow: "1/2",
+            width: "100%",
+            height: "100%",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`
+        },
+        ipad4: {
+            gridColumn: "3/4",
+            gridRow: "2/3",
+            width: "100%",
+            height: "100%",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.6s 1 forwards`
+        },
+
     };
 });
