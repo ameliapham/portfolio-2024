@@ -41,6 +41,8 @@ import gmetaIpad5Url from "assets/projects-images/gmeta/gmeta-ipad-5.webp";
 import gmetaComponent1Url from "assets/projects-images/gmeta/gmeta-component-1.webp";
 import gmetaComponent2Url from "assets/projects-images/gmeta/gmeta-component-2.webp";
 import gmetaComponent3Url from "assets/projects-images/gmeta/gmeta-component-3.webp";
+import gmetaComponent4Url from "assets/projects-images/gmeta/gmeta-component-4.svg";
+import gmetaComponent5Url from "assets/projects-images/gmeta/gmeta-component-5.svg";
 import gmetaColorUrl from "assets/projects-images/gmeta/gmeta-color.svg";
 import gmetaLogo1Url from "assets/projects-images/gmeta/gmeta-logo-1.svg";
 import gmetaLogo2Url from "assets/projects-images/gmeta/gmeta-logo-2.svg";
@@ -215,6 +217,8 @@ export const detailImagesByProjectId = {
         gmetaComponent1Url,
         gmetaComponent2Url,
         gmetaComponent3Url,
+        gmetaComponent4Url,
+        gmetaComponent5Url,
         gmetaColorUrl,
         gmetaLogo1Url,
         gmetaLogo2Url,
