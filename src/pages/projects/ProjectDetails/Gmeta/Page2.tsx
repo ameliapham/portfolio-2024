@@ -57,12 +57,17 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPage2" }).create(() => {
+const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
     return {
         root: {
             display: "grid",
             gridTemplateColumns: "1fr 2fr 1fr",
             gridTemplateRows: "1fr 1fr",
+
+            [theme.breakpoints.only("mobile")]: {
+                gridTemplateColumns: "1fr 1fr",
+                gridTemplateRows: "2fr 1fr 1fr",
+            }
         },
         mac: {
             gridColumn: "2/3",
@@ -72,39 +77,68 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(() => {
             maxHeight: "700px",
             objectFit: "contain",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "1/3",
+                gridRow: "1/2",
+            }
         },
         ipad1: {
             gridColumn: "1/2",
             gridRow: "1/2",
             width: "100%",
             height: "100%",
+            objectFit: "contain",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.3s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.3s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "1/2",
+                gridRow: "2/3",
+            }
         },
         ipad2: {
             gridColumn: "1/2",
             gridRow: "2/3",
             width: "100%",
             height: "100%",
+            objectFit: "contain",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.65s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.65s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "1/2",
+                gridRow: "3/4",
+            }
         },
         ipad3: {
             gridColumn: "3/4",
             gridRow: "1/2",
             width: "100%",
             height: "100%",
+            objectFit: "contain",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "2/3",
+                gridRow: "2/3",
+            }
         },
         ipad4: {
             gridColumn: "3/4",
             gridRow: "2/3",
             width: "100%",
             height: "100%",
+            objectFit: "contain",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.5s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.5s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "2/3",
+                gridRow: "3/4",
+            }
         },
 
     };
