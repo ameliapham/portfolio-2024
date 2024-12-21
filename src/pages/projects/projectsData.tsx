@@ -52,6 +52,15 @@ import gmetaMoodboard3Url from "assets/projects-images/gmeta/gmeta-moodboard-3.w
 import gmetaMoodboard4Url from "assets/projects-images/gmeta/gmeta-moodboard-4.webp";
 import gmetaMoodboard5Url from "assets/projects-images/gmeta/gmeta-moodboard-5.webp";
 
+import dameBookUrl from "assets/projects-images/dame/dame-book.webp";
+import dameToileUrl from "assets/projects-images/dame/dame-toile.webp";
+import dameImage1Url from "assets/projects-images/dame/dame-image-1.webp";
+import dameImage2Url from "assets/projects-images/dame/dame-image-2.webp";
+import dameImage3Url from "assets/projects-images/dame/dame-image-3.webp";
+import dameImage4Url from "assets/projects-images/dame/dame-image-4.webp";
+import dameImage5Url from "assets/projects-images/dame/dame-image-5.webp";
+import dameImage6Url from "assets/projects-images/dame/dame-image-6.webp";
+
 export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
@@ -238,7 +247,16 @@ export const detailImagesByProjectId = {
         badgeurTestUrl
     },
     iso: {},
-    dame: {},
+    dame: {
+        dameBookUrl,
+        dameToileUrl,
+        dameImage1Url,
+        dameImage2Url,
+        dameImage3Url,
+        dameImage4Url,
+        dameImage5Url,
+        dameImage6Url
+    },
     famed: {
         famedPhoneMUrl,
         famedPhoneLUrl,

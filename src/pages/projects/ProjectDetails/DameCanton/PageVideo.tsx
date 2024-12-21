@@ -37,7 +37,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GmetaPageVideo" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "DamePageVideo" }).create(({ theme }) => {
     return {
         root: {
             display: "flex",
