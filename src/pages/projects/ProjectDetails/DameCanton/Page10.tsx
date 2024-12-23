@@ -46,7 +46,7 @@ const useStyles = tss.withName({ name: "DamePage10" }).create(({ theme }) => {
         root: {
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gridTemplateRows: "1fr 1fr 1fr",
+            gridTemplateRows: "1fr 1fr 1fr"
         },
         image: {
             gridColumn: "1/3",

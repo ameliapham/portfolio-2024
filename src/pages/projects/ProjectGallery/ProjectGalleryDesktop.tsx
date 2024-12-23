@@ -143,9 +143,9 @@ export default function ProjectGalleryDesktop(props: Props) {
                                 i === 0 || i === 1
                                     ? undefined
                                     : routes[route.name]({
-                                        ...route.params,
-                                        projectId: id
-                                    }).link
+                                          ...route.params,
+                                          projectId: id
+                                      }).link
                             }
                         >
                             {(() => {
@@ -185,7 +185,8 @@ export default function ProjectGalleryDesktop(props: Props) {
                     nextRoute={nextRoute}
                     backRoute={undefined}
                     processPercentage={
-                        (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100}
+                        (projectIds.indexOf(route.params.projectId) / (projectIds.length - 1)) * 100
+                    }
                 />
             </div>
         </>

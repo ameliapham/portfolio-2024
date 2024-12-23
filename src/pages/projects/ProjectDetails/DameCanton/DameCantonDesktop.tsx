@@ -57,17 +57,17 @@ export default function DameCantonDesktop(props: Props) {
                     route.params.detailsIndex === 0
                         ? undefined
                         : routes[route.name]({
-                            ...route.params,
-                            detailsIndex: route.params.detailsIndex - 1
-                        })
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex - 1
+                          })
                 }
                 nextRoute={
                     route.params.detailsIndex === 10
                         ? undefined
                         : routes[route.name]({
-                            ...route.params,
-                            detailsIndex: route.params.detailsIndex + 1
-                        })
+                              ...route.params,
+                              detailsIndex: route.params.detailsIndex + 1
+                          })
                 }
                 backRoute={routes.projects({
                     ...route.params,

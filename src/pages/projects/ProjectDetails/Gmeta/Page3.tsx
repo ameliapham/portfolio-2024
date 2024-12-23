@@ -1,4 +1,4 @@
-import { tss } from "tss"
+import { tss } from "tss";
 import { keyframes } from "tss-react";
 import Typography from "@mui/material/Typography";
 import { alpha } from "@mui/material/styles";
@@ -9,7 +9,6 @@ type Props = {
 };
 
 export function Page3(props: Props) {
-
     const { className } = props;
     const { cx, classes } = useStyles();
 
@@ -66,7 +65,7 @@ export function Page3(props: Props) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 const animate = keyframes({
@@ -212,7 +211,6 @@ const useStyles = tss.withName({ name: "GmetaPage3" }).create(({ theme }) => {
                 backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                 transition: "all 0.5s ease"
             }
-        },
-
-    }
+        }
+    };
 });

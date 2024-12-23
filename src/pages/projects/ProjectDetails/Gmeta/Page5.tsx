@@ -30,7 +30,6 @@ export function Page5(props: Props) {
                 </Typography>
             </div>
         </div>
-
     );
 }
 
@@ -63,7 +62,7 @@ const useStyles = tss.withName({ name: "GmetaPage5" }).create(({ theme }) => {
             width: "100%",
             alignSelf: "end",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
         },
         component2: {
             gridColumn: "2/4",
@@ -79,8 +78,7 @@ const useStyles = tss.withName({ name: "GmetaPage5" }).create(({ theme }) => {
             gridRow: "1/2",
             display: "grid",
             gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr",
-            alignSelf: "end",
-
+            alignSelf: "end"
         },
         text: {
             gridRow: "5",
@@ -99,9 +97,7 @@ const useStyles = tss.withName({ name: "GmetaPage5" }).create(({ theme }) => {
                 height: theme.spacing(0.1),
                 backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                 transition: "all 0.5s ease"
-            },
-
-
+            }
         }
     };
 });

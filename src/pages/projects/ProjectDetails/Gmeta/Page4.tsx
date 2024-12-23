@@ -35,7 +35,6 @@ export function Page4(props: Props) {
                 </Typography>
             </div>
         </div>
-
     );
 }
 
@@ -59,7 +58,7 @@ const useStyles = tss.withName({ name: "GmetaPage4" }).create(({ theme }) => {
             gridTemplateColumns: "1fr 1fr 1fr",
             gridTemplateRows: "1fr 1fr 1fr",
             gap: theme.spacing(2),
-            maxWidth: "1000px",
+            maxWidth: "1000px"
         },
         component1: {
             gridColumn: "1/2",
@@ -114,7 +113,7 @@ const useStyles = tss.withName({ name: "GmetaPage4" }).create(({ theme }) => {
                 height: theme.spacing(0.1),
                 backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
                 transition: "all 0.5s ease"
-            },
+            }
         }
     };
 });

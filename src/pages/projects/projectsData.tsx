@@ -72,7 +72,7 @@ export type ProjectId = (typeof projectIds)[number];
 export function getNextProjectId(projectId: ProjectId): ProjectId {
     const index = projectIds.indexOf(projectId);
 
-    if (index === projectIds.length -1) {
+    if (index === projectIds.length - 1) {
         return projectIds[0];
     }
 

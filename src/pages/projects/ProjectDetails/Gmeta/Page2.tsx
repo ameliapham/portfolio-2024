@@ -37,10 +37,7 @@ export function Page2(props: Props) {
                 alt="gmeta details"
                 className={cx(classes.ipad4)}
             />
-
-
         </div>
-
     );
 }
 
@@ -66,7 +63,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 gridTemplateColumns: "1fr 1fr",
-                gridTemplateRows: "2fr 1fr 1fr",
+                gridTemplateRows: "2fr 1fr 1fr"
             }
         },
         mac: {
@@ -81,7 +78,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 gridColumn: "1/3",
-                gridRow: "1/2",
+                gridRow: "1/2"
             }
         },
         ipad1: {
@@ -95,7 +92,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 gridColumn: "1/2",
-                gridRow: "2/3",
+                gridRow: "2/3"
             }
         },
         ipad2: {
@@ -109,7 +106,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 gridColumn: "1/2",
-                gridRow: "3/4",
+                gridRow: "3/4"
             }
         },
         ipad3: {
@@ -123,7 +120,7 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 gridColumn: "2/3",
-                gridRow: "2/3",
+                gridRow: "2/3"
             }
         },
         ipad4: {
@@ -137,9 +134,8 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
 
             [theme.breakpoints.only("mobile")]: {
                 gridColumn: "2/3",
-                gridRow: "3/4",
+                gridRow: "3/4"
             }
-        },
-
+        }
     };
 });

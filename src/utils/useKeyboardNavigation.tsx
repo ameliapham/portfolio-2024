@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useConstCallback } from "powerhooks/useConstCallback";
 
-
 export function useKeyboardNavigation(
     onKeyboardPress: (key: "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight" | "Escape") => void
 ) {
