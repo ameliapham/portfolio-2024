@@ -41,7 +41,7 @@ export function Page1(props: Props) {
                         Credits
                     </Typography>
                     <Typography variant="body1">
-                        - Global for Law and Innovations
+                        - Global for Law and Innovation
                     </Typography>
                 </div>
                 <div className={classes.column3}>

@@ -89,8 +89,7 @@ const useStyles = tss.withName({ name: "GmetaPage3" }).create(({ theme }) => {
             gridTemplateColumns: "3fr 2fr",
             gridTemplateRows: "1fr",
             gap: theme.spacing(4),
-            maxWidth: "1000px",
-            maxHeight: "700px"
+            maxWidth: "900px",
         },
         moodboard: {
             gridColumn: "1/2",

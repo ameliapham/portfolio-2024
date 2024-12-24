@@ -15,7 +15,7 @@ export function Page6(props: Props) {
             <img
                 src={detailImagesByProjectId.dame.dameImage3Url}
                 alt="panels presentation"
-                className={cx(classes.image, classes.image)}
+                className={classes.image}
             />
         </div>
     );

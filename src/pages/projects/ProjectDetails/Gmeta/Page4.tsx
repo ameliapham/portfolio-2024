@@ -58,7 +58,7 @@ const useStyles = tss.withName({ name: "GmetaPage4" }).create(({ theme }) => {
             gridTemplateColumns: "1fr 1fr 1fr",
             gridTemplateRows: "1fr 1fr 1fr",
             gap: theme.spacing(2),
-            maxWidth: "1000px"
+            maxWidth: "900px"
         },
         component1: {
             gridColumn: "1/2",

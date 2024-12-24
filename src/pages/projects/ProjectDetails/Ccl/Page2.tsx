@@ -1,6 +1,8 @@
 import { tss } from "tss";
 import { keyframes } from "tss-react";
 import { detailImagesByProjectId } from "pages/projects/projectsData";
+import Typography from "@mui/material/Typography";
+import { alpha } from "@mui/material/styles";
 
 type Props = {
     className?: string;
@@ -19,9 +21,14 @@ export function Page2(props: Props) {
             />
             <img
                 src={detailImagesByProjectId.ccl.cclMac}
-                alt="CCL iPad"
+                alt="CCL mac"
                 className={classes.mac}
             />
+            <div className={classes.textContainer}>
+                <Typography variant="body1" className={classes.text}>
+                    Website
+                </Typography>
+            </div>
         </div>
     );
 }
@@ -39,11 +46,11 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "CclPage2" }).create(() => {
+const useStyles = tss.withName({ name: "CclPage2" }).create(({ theme }) => {
     return {
         root: {
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr 1fr 2fr",
+            gridTemplateColumns: "1fr 1fr 1fr 2fr 1fr",
             gridRow: "1fr 1fr 1fr",
         },
         ipad: {
@@ -66,5 +73,33 @@ const useStyles = tss.withName({ name: "CclPage2" }).create(() => {
             opacity: 0,
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
         },
+        textContainer: {
+            height: "50px",
+            gridColumn: "4/6",
+            gridRow: "1/2",
+            display: "grid",
+            gridTemplateRows: "1fr 1fr",
+            alignItems: "center",
+            alignSelf: "end",
+            paddingRight: theme.spacing(6)
+        },
+        text: {
+            gridRow: "2",
+            position: "relative",
+            textAlign: "right",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+
+            "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: "0%",
+                right: "0%",
+                width: "100%",
+                height: theme.spacing(0.1),
+                backgroundColor: `${alpha(theme.palette.text.primary, 0.2)}`,
+                transition: "all 0.5s ease"
+            }
+        }
     };
 });
