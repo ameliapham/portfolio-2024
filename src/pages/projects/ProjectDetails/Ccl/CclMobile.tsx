@@ -1,6 +1,7 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
+import { Page3 } from "./Page3";
 import { Props } from "../../Props";
 
 export default function CclMobile(props: Props) {
@@ -11,6 +12,7 @@ export default function CclMobile(props: Props) {
             <div className={cx(classes.root, className)}>
                 <Page1 />
                 <Page2 />
+                <Page3 />
             </div>
         </>
     );

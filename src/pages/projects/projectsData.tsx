@@ -65,6 +65,8 @@ import dameImage6Url from "assets/projects-images/dame/dame-image-6.webp";
 
 import cclMac from "assets/projects-images/ccl/ccl-mac.webp";
 import cclIpad from "assets/projects-images/ccl/ccl-ipad.webp";
+import cclPlatform1 from "assets/projects-images/ccl/ccl-platform-1.webp";
+import cclPlatform2 from "assets/projects-images/ccl/ccl-platform-2.webp";
 
 export const projectIds = ["zen", "gili", "ccl", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
@@ -141,7 +143,7 @@ export const projects: Project[] = [
         backgroundUrl: bgCcl,
         name: "Certificate of Customary Law's Website and Platform",
         description:
-            "A digital solution created for Global for Law and Innovations, combining a promo website to attract students and an interactive platform to manage and follow law courses."
+            "A digital solution created for Global for Law and Innovation, combining a promo website to attract students and an interactive platform to manage and follow law courses."
     },
     {
         id: projectIds[3],
@@ -231,7 +233,9 @@ export const detailImagesByProjectId = {
     gili: {},
     ccl: {
         cclMac,
-        cclIpad
+        cclIpad,
+        cclPlatform1,
+        cclPlatform2
     },
     gmeta: {
         gmetaMacUrl,
