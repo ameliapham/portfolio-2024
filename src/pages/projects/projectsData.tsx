@@ -63,6 +63,9 @@ import dameImage4Url from "assets/projects-images/dame/dame-image-4.webp";
 import dameImage5Url from "assets/projects-images/dame/dame-image-5.webp";
 import dameImage6Url from "assets/projects-images/dame/dame-image-6.webp";
 
+import cclMac from "assets/projects-images/ccl/ccl-mac.webp";
+import cclIpad from "assets/projects-images/ccl/ccl-ipad.webp";
+
 export const projectIds = ["zen", "gili", "ccl", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
@@ -225,6 +228,10 @@ export const detailImagesByProjectId = {
         zenIpadUrl
     },
     gili: {},
+    ccl: {
+        cclMac,
+        cclIpad
+    },
     gmeta: {
         gmetaMacUrl,
         gmetaMacbookUrl,
