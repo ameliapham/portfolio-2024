@@ -131,7 +131,8 @@ export const projects: Project[] = [
         backgroundUrl: p23gili,
         name: "GILI Platforms",
         description:
-            "For three years, I had the opportunity to work as the website manager of an online training platform for a start-up specializing in LegalTech. My role involved designing prototypes with Figma and implementing these concepts using WordPress and Elementor. This experience allowed me to hone my technical skills while learning to manage large-scale projects effectively."
+            "For three years, I had the opportunity to work as the website manager of an online training platform for a start-up specializing in LegalTech. My role involved designing prototypes with Figma and implementing these concepts using WordPress and Elementor. This experience allowed me to hone my technical skills while learning to manage large-scale projects effectively.",
+        linkFigma: "https://www.figma.com/proto/q7nmSUlBsp2Wlxq8X4GoQq/Les-formations-de-GILI?page-id=728%3A2209&type=design&node-id=740-850&viewport=939%2C451%2C0.27&t=kDEJwc4Y6kE9vbtK-1&scaling=scale-down"
     },
     {
         id: projectIds[2],
