@@ -1,6 +1,7 @@
 import { assert } from "tsafe/assert";
 
 import p24zen from "assets/project-gallery/p-zen.webp";
+import p23ccl from "assets/project-gallery/p-ccl.webp";
 import p23dame from "assets/project-gallery/p-dame.webp";
 import p23gmeta from "assets/project-gallery/p-gmeta.webp";
 import p23iso from "assets/project-gallery/p-iso.webp";
@@ -12,6 +13,7 @@ import p23badgeur from "assets/project-gallery/p-badgeur.webp";
 import bgGmeta from "assets/projects-background/bg-gmeta.webp";
 import bgBadgeur from "assets/projects-background/bg-badgeur.svg";
 import bgFamed from "assets/projects-background/bg-famed.svg";
+import bgCcl from "assets/projects-background/bg-ccl.svg";
 
 import zenPhoneUrl from "assets/zen-phone.png";
 import zenMacUrl from "assets/zen-mac.png";
@@ -61,7 +63,7 @@ import dameImage4Url from "assets/projects-images/dame/dame-image-4.webp";
 import dameImage5Url from "assets/projects-images/dame/dame-image-5.webp";
 import dameImage6Url from "assets/projects-images/dame/dame-image-6.webp";
 
-export const projectIds = ["zen", "gili", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
+export const projectIds = ["zen", "gili", "ccl", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 /**
@@ -131,6 +133,15 @@ export const projects: Project[] = [
     {
         id: projectIds[2],
         year: "2023",
+        imageUrl: p23ccl,
+        backgroundUrl: bgCcl,
+        name: "Certificate of Customary Law's Website and Platform",
+        description:
+            "A digital solution created for Global for Law and Innovations, combining a promo website to attract students and an interactive platform to manage and follow law courses."
+    },
+    {
+        id: projectIds[3],
+        year: "2023",
         imageUrl: p23gmeta,
         backgroundUrl: bgGmeta,
         name: "Gméta",
@@ -140,7 +151,7 @@ export const projects: Project[] = [
             "https://www.figma.com/proto/LHeeTDYqxcQkhchANYCnKL/Gm%C3%A9ta?page-id=460%3A12006&type=design&node-id=460-12007&viewport=863%2C180%2C0.06&t=FKah8L7tzi4Duqlg-1&scaling=contain&starting-point-node-id=460%3A12007"
     },
     {
-        id: projectIds[3],
+        id: projectIds[4],
         year: "2023",
         imageUrl: p23badgeur,
         backgroundUrl: bgBadgeur,
@@ -151,7 +162,7 @@ export const projects: Project[] = [
             "https://www.figma.com/proto/FRiP6t08RfqX3K0GmZ9v8b/Projet-Badgeur?page-id=0%3A1&type=design&node-id=22-251&viewport=2613%2C363%2C0.56&scaling=scale-down&starting-point-node-id=22%3A251&mode=design&t=EeE3Tq5y9X2PPakM-1"
     },
     {
-        id: projectIds[4],
+        id: projectIds[5],
         year: "2023",
         imageUrl: p23iso,
         backgroundUrl: p23iso,
@@ -161,7 +172,7 @@ export const projects: Project[] = [
         linkDownload: "https://filedn.com/lY4kM0nseRFykf1NMPMRuoQ/MEMORY%20CONTAINER.exe"
     },
     {
-        id: projectIds[5],
+        id: projectIds[6],
         year: "2022",
         imageUrl: p23dame,
         backgroundUrl: p23dame,
@@ -170,7 +181,7 @@ export const projects: Project[] = [
             "“In the Shadow of La Dame de Canton” is an immersive cultural experience that merges traditional Chinese arts with modern technology. The show features elements such as Chinese shadow puppetry, dance, music, and projection. This creation is the result of a collaboration with Philippe Holvoet, an entrepreneur specializing in catering and events. The show is currently in the prototype stage."
     },
     {
-        id: projectIds[6],
+        id: projectIds[7],
         year: "2021",
         imageUrl: p21famed,
         backgroundUrl: bgFamed,
@@ -181,7 +192,7 @@ export const projects: Project[] = [
             "https://www.figma.com/proto/X726Gg4oq7oP5EQ2v6HVMF/Famed?page-id=0%3A1&type=design&node-id=2-68&viewport=1626%2C595%2C0.23&scaling=scale-down&starting-point-node-id=2%3A68"
     },
     {
-        id: projectIds[7],
+        id: projectIds[8],
         year: "2021",
         imageUrl: p21arti,
         backgroundUrl: p21arti,
