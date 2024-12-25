@@ -1,19 +1,20 @@
 import { assert } from "tsafe/assert";
 
-import p24zen from "assets/project-gallery/p-zen.webp";
-import p23ccl from "assets/project-gallery/p-ccl.webp";
-import p23dame from "assets/project-gallery/p-dame.webp";
-import p23gmeta from "assets/project-gallery/p-gmeta.webp";
-import p23iso from "assets/project-gallery/p-iso.webp";
-import p21arti from "assets/project-gallery/p-arti.webp";
-import p23gili from "assets/p-gili.webp";
-import p21famed from "assets/project-gallery/p-famed.webp";
-import p23badgeur from "assets/project-gallery/p-badgeur.webp";
+import pZenUrl from "assets/project-gallery/p-zen.webp";
+import pCclUrl from "assets/project-gallery/p-ccl.webp";
+import pDameUrl from "assets/project-gallery/p-dame.webp";
+import pGmetaUrl from "assets/project-gallery/p-gmeta.webp";
+import pIsoUrl from "assets/project-gallery/p-iso.webp";
+import pArtiUrl from "assets/project-gallery/p-arti.webp";
+import pGiliUrl from "assets/project-gallery/p-gili.webp";
+import pFamedUrl from "assets/project-gallery/p-famed.webp";
+import pBadgeurUrl from "assets/project-gallery/p-badgeur.webp";
 
-import bgGmeta from "assets/projects-background/bg-gmeta.webp";
-import bgBadgeur from "assets/projects-background/bg-badgeur.svg";
-import bgFamed from "assets/projects-background/bg-famed.svg";
-import bgCcl from "assets/projects-background/bg-ccl.svg";
+import bgGmetaUrl from "assets/projects-background/bg-gmeta.webp";
+import bgBadgeurUrl from "assets/projects-background/bg-badgeur.svg";
+import bgFamedUrl from "assets/projects-background/bg-famed.svg";
+import bgCclUrl from "assets/projects-background/bg-ccl.svg";
+import bgGiliUrl from "assets/projects-background/bg-gili.svg";
 
 import zenPhoneUrl from "assets/zen-phone.png";
 import zenMacUrl from "assets/zen-mac.png";
@@ -63,10 +64,10 @@ import dameImage4Url from "assets/projects-images/dame/dame-image-4.webp";
 import dameImage5Url from "assets/projects-images/dame/dame-image-5.webp";
 import dameImage6Url from "assets/projects-images/dame/dame-image-6.webp";
 
-import cclMac from "assets/projects-images/ccl/ccl-mac.webp";
-import cclIpad from "assets/projects-images/ccl/ccl-ipad.webp";
-import cclPlatform1 from "assets/projects-images/ccl/ccl-platform-1.webp";
-import cclPlatform2 from "assets/projects-images/ccl/ccl-platform-2.webp";
+import cclMacUrl from "assets/projects-images/ccl/ccl-mac.webp";
+import cclIpadUrl from "assets/projects-images/ccl/ccl-ipad.webp";
+import cclPlatform1Url from "assets/projects-images/ccl/ccl-platform-1.webp";
+import cclPlatform2Url from "assets/projects-images/ccl/ccl-platform-2.webp";
 
 export const projectIds = ["zen", "gili", "ccl", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
@@ -117,8 +118,8 @@ export const projects: Project[] = [
     {
         id: projectIds[0],
         year: "2024",
-        imageUrl: p24zen,
-        backgroundUrl: p24zen,
+        imageUrl: pZenUrl,
+        backgroundUrl: pZenUrl,
         name: "Zen Gourmet",
         description:
             "Zen Gourmet is the website for an upcoming Vietnamese restaurant in Mannheim. The site was designed entirely from scratch with Figma and built using React and TypeScript.",
@@ -128,28 +129,29 @@ export const projects: Project[] = [
     },
     {
         id: projectIds[1],
-        year: "2023",
-        imageUrl: p23gili,
-        backgroundUrl: p23gili,
-        name: "GILI Platforms",
+        year: "2024",
+        imageUrl: pGiliUrl,
+        backgroundUrl: bgGiliUrl,
+        name: "GILI Website",
         description:
             "For three years, I had the opportunity to work as the website manager of an online training platform for a start-up specializing in LegalTech. My role involved designing prototypes with Figma and implementing these concepts using WordPress and Elementor. This experience allowed me to hone my technical skills while learning to manage large-scale projects effectively.",
-        linkFigma: "https://www.figma.com/proto/q7nmSUlBsp2Wlxq8X4GoQq/Les-formations-de-GILI?page-id=728%3A2209&type=design&node-id=740-850&viewport=939%2C451%2C0.27&t=kDEJwc4Y6kE9vbtK-1&scaling=scale-down"
     },
     {
         id: projectIds[2],
         year: "2023",
-        imageUrl: p23ccl,
-        backgroundUrl: bgCcl,
+        imageUrl: pCclUrl,
+        backgroundUrl: bgCclUrl,
         name: "Certificate of Customary Law's Website and Platform",
         description:
-            "A digital solution created for Global for Law and Innovation, combining a promo website to attract students and an interactive platform to manage and follow law courses."
+            "A digital solution created for Global for Law and Innovation, combining a promo website to attract students and an interactive platform to manage and follow law courses.",
+        linkFigma: "https://www.figma.com/proto/q7nmSUlBsp2Wlxq8X4GoQq/Les-formations-de-GILI?page-id=728%3A2209&type=design&node-id=740-850&viewport=939%2C451%2C0.27&t=kDEJwc4Y6kE9vbtK-1&scaling=scale-down"
+
     },
     {
         id: projectIds[3],
         year: "2023",
-        imageUrl: p23gmeta,
-        backgroundUrl: bgGmeta,
+        imageUrl: pGmetaUrl,
+        backgroundUrl: bgGmetaUrl,
         name: "Gméta",
         description:
             "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing at Saint-Denis University, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom.",
@@ -159,8 +161,8 @@ export const projects: Project[] = [
     {
         id: projectIds[4],
         year: "2023",
-        imageUrl: p23badgeur,
-        backgroundUrl: bgBadgeur,
+        imageUrl: pBadgeurUrl,
+        backgroundUrl: bgBadgeurUrl,
         name: "Badgeur",
         description:
             "Badgeur is an innovative academic project initially developed during my Bachelor's in Management at IAE Lyon 3 and later expanded during my Master's in Digital Creation and Publishing at Saint-Denis University. The project aims to replace traditional keychains with a compact chip and mobile app for seamless, secure access to personal spaces.",
@@ -170,8 +172,8 @@ export const projects: Project[] = [
     {
         id: projectIds[5],
         year: "2023",
-        imageUrl: p23iso,
-        backgroundUrl: p23iso,
+        imageUrl: pIsoUrl,
+        backgroundUrl: pIsoUrl,
         name: "“ISO 668”",
         description:
             "“ISO 668” is part of the MétaversCity initiative at Saint-Denis University, which aims to explore the potential applications of the metaverse in across a wide range of fields such as culture, education, economics, and politics. The 2023 edition, developed in collaboration with the University of the Aegean in Syros, received academic support and artistic evaluation from Maurice Benayoun, a renowned French pioneer in contemporary new-media art, curation, and theory. The project has been widely acclaimed for its innovative approach to cultural and artistic expression, as well as its practical applications within the metaverse.",
@@ -180,8 +182,8 @@ export const projects: Project[] = [
     {
         id: projectIds[6],
         year: "2022",
-        imageUrl: p23dame,
-        backgroundUrl: p23dame,
+        imageUrl: pDameUrl,
+        backgroundUrl: pDameUrl,
         name: "In the Shadow of La Dame de Canton",
         description:
             "“In the Shadow of La Dame de Canton” is an immersive cultural experience that merges traditional Chinese arts with modern technology. The show features elements such as Chinese shadow puppetry, dance, music, and projection. This creation is the result of a collaboration with Philippe Holvoet, an entrepreneur specializing in catering and events. The show is currently in the prototype stage."
@@ -189,8 +191,8 @@ export const projects: Project[] = [
     {
         id: projectIds[7],
         year: "2021",
-        imageUrl: p21famed,
-        backgroundUrl: bgFamed,
+        imageUrl: pFamedUrl,
+        backgroundUrl: bgFamedUrl,
         name: "Famed",
         description:
             "In the world of retail, “FAMED” is a groundbreaking innovation that transforms digital advertising and interactive shopping. By merging the engaging experience of a storefront-sized mirror with the power of digital marketing, FAMED creates an immersive, personalized shopping journey for consumers, while offering brands a unique and captivating advertising platform to connect with their audience.",
@@ -200,8 +202,8 @@ export const projects: Project[] = [
     {
         id: projectIds[8],
         year: "2021",
-        imageUrl: p21arti,
-        backgroundUrl: p21arti,
+        imageUrl: pArtiUrl,
+        backgroundUrl: pArtiUrl,
         name: "ARTI",
         description:
             "“ARTI” is an interactive application project exploring the critical question: “Will artificial intelligence surpass humans?” Our objective is to provoke thought and encourage users to reflect on this significant issue. Through the ARTI application, we aim to delve deeper into these inquiries and inspire users to reconsider their understanding of the current and future capabilities of artificial intelligence in relation to human abilities.",
@@ -232,10 +234,10 @@ export const detailImagesByProjectId = {
     },
     gili: {},
     ccl: {
-        cclMac,
-        cclIpad,
-        cclPlatform1,
-        cclPlatform2
+        cclMac: cclMacUrl,
+        cclIpad: cclIpadUrl,
+        cclPlatform1: cclPlatform1Url,
+        cclPlatform2: cclPlatform2Url
     },
     gmeta: {
         gmetaMacUrl,
