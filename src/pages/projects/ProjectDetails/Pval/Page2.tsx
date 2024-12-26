@@ -54,7 +54,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "PvalPage2" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "PvalPage2" }).create(() => {
     return {
         root: {
             display: "grid",
