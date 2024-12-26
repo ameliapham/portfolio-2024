@@ -10,8 +10,6 @@ import { Badgeur } from "./Badgeur";
 import { Iso } from "./Iso";
 import { DameCanton } from "./DameCanton";
 import { Famed } from "./Famed";
-import { Ccl } from "./Ccl";
-import { Gili } from "./Pval";
 
 export type Props = {
     className?: string;
@@ -52,10 +50,6 @@ export function ProjectDetails(props: Props) {
                             return <Iso route={route} />;
                         case "famed":
                             return <Famed route={route} />;
-                        case "ccl":
-                            return <Ccl route={route} />;
-                        case "pval":
-                            return <Gili route={route} />;
                     }
                 })()}
             </div>

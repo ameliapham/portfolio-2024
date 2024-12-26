@@ -49,7 +49,9 @@ export default function IsoDesktop(props: Props) {
                     isGalleryVisible: true,
                     detailsIndex: undefined
                 })}
-                processPercentage={(route.params.detailsIndex / 2) * 100}
+                processPercentage={
+                    (route.params.detailsIndex / 2) * 100
+                }
             />
         </div>
     );

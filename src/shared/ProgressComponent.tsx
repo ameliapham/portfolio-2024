@@ -32,7 +32,7 @@ export function ProgressComponent(props: Props) {
     });
 
     useKeyboardNavigation(key => {
-        switch (key) {
+        switch(key){
             case "ArrowLeft":
             case "ArrowUp":
                 previousRoute?.push();
@@ -58,7 +58,7 @@ export function ProgressComponent(props: Props) {
                     disabled={previousRoute === undefined}
                     {...previousRoute?.link}
                 >
-                    <h2> {"<"} </h2>
+                    <h2>{"<"}</h2>
                 </SeeMoreButton>
                 <SeeMoreButton
                     className={classes.text}
