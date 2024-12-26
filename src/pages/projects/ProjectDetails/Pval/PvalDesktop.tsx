@@ -7,7 +7,7 @@ import { ProgressComponent } from "shared/ProgressComponent";
 import { assert } from "tsafe/assert";
 import { Props } from "../../Props";
 
-export default function GiliDesktop(props: Props) {
+export default function PvalDesktop(props: Props) {
     const { className, route } = props;
     const { cx, classes } = useStyles();
 
@@ -55,7 +55,7 @@ export default function GiliDesktop(props: Props) {
     );
 }
 
-const useStyles = tss.withName({ GiliDesktop }).create(() => {
+const useStyles = tss.withName({ PvalDesktop }).create(() => {
     return {
         root: {
             width: "100%",

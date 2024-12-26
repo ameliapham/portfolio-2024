@@ -10,7 +10,7 @@ type Props = {
 };
 
 const project = getProjectByNameId({
-    projectId: "gili"
+    projectId: "pval"
 });
 
 export function Page1(props: Props) {
@@ -32,7 +32,7 @@ export function Page1(props: Props) {
             <div className={classes.content}>
                 <div className={classes.column1}>
                     <Typography variant="body1">
-                        This digital product offers a dual-purpose solution tailored to a training program in Customary Law. The promotional website is an engaging showcase highlighting the program's unique features, attracting prospective students, and building visibility. The platform provides an intuitive space where enrolled students can access, track, and update their courses efficiently.
+                        abc
                     </Typography>
                     <SeeMoreButton href={project.linkFigma} target="_blank" rel="noopener">View prototype</SeeMoreButton>
                 </div>
@@ -74,7 +74,7 @@ const animate = keyframes({
     }
 });
 
-const useStyles = tss.withName({ name: "GiliPage1" }).create(({ theme }) => {
+const useStyles = tss.withName({ name: "PvalPage1" }).create(({ theme }) => {
     return {
         root: {
             color: theme.palette.text.primary,

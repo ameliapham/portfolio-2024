@@ -4,7 +4,7 @@ import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
 import { Props } from "../../Props";
 
-export default function GiliMobile(props: Props) {
+export default function PvalMobile(props: Props) {
     const { className } = props;
     const { cx, classes } = useStyles();
     return (
@@ -18,7 +18,7 @@ export default function GiliMobile(props: Props) {
     );
 }
 
-const useStyles = tss.withName({ GiliMobile }).create(({ theme }) => {
+const useStyles = tss.withName({ PvalMobile }).create(({ theme }) => {
     return {
         root: {
             width: "100%",

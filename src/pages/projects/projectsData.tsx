@@ -6,7 +6,8 @@ import pDameUrl from "assets/project-gallery/p-dame.webp";
 import pGmetaUrl from "assets/project-gallery/p-gmeta.webp";
 import pIsoUrl from "assets/project-gallery/p-iso.webp";
 import pArtiUrl from "assets/project-gallery/p-arti.webp";
-import pGiliUrl from "assets/project-gallery/p-gili.webp";
+import pPvalUrl from "assets/project-gallery/p-pval.webp";
+//import pGiliUrl from "assets/project-gallery/p-gili.webp";
 import pFamedUrl from "assets/project-gallery/p-famed.webp";
 import pBadgeurUrl from "assets/project-gallery/p-badgeur.webp";
 
@@ -14,7 +15,8 @@ import bgGmetaUrl from "assets/projects-background/bg-gmeta.webp";
 import bgBadgeurUrl from "assets/projects-background/bg-badgeur.svg";
 import bgFamedUrl from "assets/projects-background/bg-famed.svg";
 import bgCclUrl from "assets/projects-background/bg-ccl.svg";
-import bgGiliUrl from "assets/projects-background/bg-gili.svg";
+import bgPvalUrl from "assets/projects-background/bg-pval.svg";
+//import bgGiliUrl from "assets/projects-background/bg-gili.svg";
 
 import zenPhoneUrl from "assets/zen-phone.png";
 import zenMacUrl from "assets/zen-mac.png";
@@ -69,7 +71,7 @@ import cclIpadUrl from "assets/projects-images/ccl/ccl-ipad.webp";
 import cclPlatform1Url from "assets/projects-images/ccl/ccl-platform-1.webp";
 import cclPlatform2Url from "assets/projects-images/ccl/ccl-platform-2.webp";
 
-export const projectIds = ["zen", "gili", "ccl", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
+export const projectIds = ["zen", "pval", "ccl", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 /**
@@ -130,11 +132,12 @@ export const projects: Project[] = [
     {
         id: projectIds[1],
         year: "2024",
-        imageUrl: pGiliUrl,
-        backgroundUrl: bgGiliUrl,
-        name: "GILI Website",
+        imageUrl: pPvalUrl,
+        backgroundUrl: bgPvalUrl,
+        name: "Legal Education's Website",
         description:
-            "For three years, I had the opportunity to work as the website manager of an online training platform for a start-up specializing in LegalTech. My role involved designing prototypes with Figma and implementing these concepts using WordPress and Elementor. This experience allowed me to hone my technical skills while learning to manage large-scale projects effectively.",
+            "abc",
+        linkFigma: "https://www.figma.com/proto/q7nmSUlBsp2Wlxq8X4GoQq/Les-formations-de-GILI?page-id=708%3A11&node-id=303-2&viewport=-560%2C-163%2C0.11&t=lecvN5xnOxsYq3vn-1&scaling=scale-down&content-scaling=fixed"
     },
     {
         id: projectIds[2],
