@@ -1,4 +1,4 @@
-# My Updating Portfolio 2024
+# My Updated Portfolio 2024
 
 Welcome to my continuously evolving portfolio! 🎨
 
