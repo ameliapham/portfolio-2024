@@ -7,7 +7,6 @@ import pGmetaUrl from "assets/project-gallery/p-gmeta.webp";
 import pIsoUrl from "assets/project-gallery/p-iso.webp";
 import pArtiUrl from "assets/project-gallery/p-arti.webp";
 import pPvalUrl from "assets/project-gallery/p-pval.webp";
-//import pGiliUrl from "assets/project-gallery/p-gili.webp";
 import pFamedUrl from "assets/project-gallery/p-famed.webp";
 import pBadgeurUrl from "assets/project-gallery/p-badgeur.webp";
 
@@ -16,7 +15,6 @@ import bgBadgeurUrl from "assets/projects-background/bg-badgeur.svg";
 import bgFamedUrl from "assets/projects-background/bg-famed.svg";
 import bgCclUrl from "assets/projects-background/bg-ccl.svg";
 import bgPvalUrl from "assets/projects-background/bg-pval.svg";
-//import bgGiliUrl from "assets/projects-background/bg-gili.svg";
 
 import zenPhoneUrl from "assets/zen-phone.png";
 import zenMacUrl from "assets/zen-mac.png";
@@ -70,6 +68,10 @@ import cclMacUrl from "assets/projects-images/ccl/ccl-mac.webp";
 import cclIpadUrl from "assets/projects-images/ccl/ccl-ipad.webp";
 import cclPlatform1Url from "assets/projects-images/ccl/ccl-platform-1.webp";
 import cclPlatform2Url from "assets/projects-images/ccl/ccl-platform-2.webp";
+
+import pvalImacUrl from "assets/projects-images/pval/pval-imac.webp";
+import pvalIpadUrl from "assets/projects-images/pval/pval-ipad.webp";
+import pvalIphoneUrl from "assets/projects-images/pval/pval-iphone.webp";
 
 export const projectIds = ["zen", "pval", "ccl", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
@@ -235,7 +237,11 @@ export const detailImagesByProjectId = {
         zenLogoUrl,
         zenIpadUrl
     },
-    gili: {},
+    pval: {
+        pvalImacUrl,
+        pvalIpadUrl,
+        pvalIphoneUrl
+    },
     ccl: {
         cclMac: cclMacUrl,
         cclIpad: cclIpadUrl,
