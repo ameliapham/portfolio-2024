@@ -17,7 +17,7 @@ window.addEventListener("wheel", event => {
     lastDeltaYAbs = deltaYAbs;
 });
 
-const evtScrollNavigationThrottled = evtScrollNavigation.pipe(throttleTime(500));
+const evtScrollNavigationThrottled = evtScrollNavigation.pipe(throttleTime(900));
 
 export function useScrollNavigation(onScrollNavigation: (direction: "up" | "down") => void) {
     const onScrollNavigation_stable = useConstCallback(onScrollNavigation);
