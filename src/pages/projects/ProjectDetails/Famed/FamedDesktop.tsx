@@ -29,29 +29,30 @@ export default function FamedDesktop(props: Props) {
                     })()}
                 </div>
                 <ProgressComponent
-                previousRoute={
-                    route.params.detailsIndex === 0
-                        ? undefined
-                        : routes[route.name]({
-                              ...route.params,
-                              detailsIndex: route.params.detailsIndex - 1
-                          })
-                }
-                nextRoute={
-                    route.params.detailsIndex === 2
-                        ? undefined
-                        : routes[route.name]({
-                              ...route.params,
-                              detailsIndex: route.params.detailsIndex + 1
-                          })
-                }
-                backRoute={routes.projects({
-                    ...route.params,
-                    isGalleryVisible: true,
-                    detailsIndex: undefined
-                })}
-                processPercentage={(route.params.detailsIndex / 2) * 100}
-            />
+
+                    previousRoute={
+                        route.params.detailsIndex === 0
+                            ? undefined
+                            : routes[route.name]({
+                                  ...route.params,
+                                  detailsIndex: route.params.detailsIndex - 1
+                              })
+                    }
+                    nextRoute={
+                        route.params.detailsIndex === 2
+                            ? undefined
+                            : routes[route.name]({
+                                  ...route.params,
+                                  detailsIndex: route.params.detailsIndex + 1
+                              })
+                    }
+                    backRoute={routes.projects({
+                        ...route.params,
+                        isGalleryVisible: true,
+                        detailsIndex: undefined
+                    })}
+                    processPercentage={(route.params.detailsIndex / 2) * 100}
+                />
             </div>
         </>
     );

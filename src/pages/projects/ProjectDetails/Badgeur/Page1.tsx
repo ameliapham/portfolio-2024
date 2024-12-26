@@ -33,12 +33,10 @@ export function Page1(props: Props) {
                 <div className={classes.column1}>
                     <Typography variant="body1">
                         The Badgeur project was developed in two distinct phases. <br />
-                        <br />
                         The first phase took place during a Bachelor's in Management at IAE Lyon 3,
                         focusing on concept development, technical feasibility, market research, and
                         identifying target customer needs. A physical prototype of the chip was created,
-                        and a business growth plan was established, including B2B and B2C partnerships.{" "}
-                        <br />
+                        and a business growth plan was established, including B2B and B2C partnerships.
                         <br />
                         The second phase occurred during a Master's in Digital Creation and Publishing,
                         where the mobile application was developed, market research was updated to
@@ -62,7 +60,7 @@ export function Page1(props: Props) {
                         - Market research & User testing: Paris 8's team <br />
                     </Typography>
                 </div>
-                <div className={classes.column2}>
+                <div className={classes.column3}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
                         My role
                     </Typography>
@@ -139,7 +137,17 @@ const useStyles = tss.withName({ name: "BadgeurPage1" }).create(({ theme }) => {
             flexDirection: "column",
             gap: theme.spacing(2),
 
-            [theme.breakpoints.down("laptop")]: {
+            [theme.breakpoints.only("tablet")]: {
+                display: "none"
+            }
+        },
+        column3: {
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: theme.spacing(2),
+
+            [theme.breakpoints.only("tablet")]: {
                 display: "none"
             }
         }

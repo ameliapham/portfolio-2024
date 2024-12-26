@@ -14,7 +14,7 @@ import type { Props } from "../Props";
 import { assert, is } from "tsafe/assert";
 import { waitForThrottleFactory } from "utils/waitForThrottle";
 import { getNextProjectId } from "../projectsData";
-import { getPreviousProjectId } from "../projectsData"
+import { getPreviousProjectId } from "../projectsData";
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 

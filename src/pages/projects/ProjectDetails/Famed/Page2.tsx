@@ -49,12 +49,12 @@ const useStyles = tss.withName({ name: "FamedPage2" }).create(({ theme }) => {
         root: {
             color: theme.palette.text.primary,
             display: "grid",
-            gridTemplateColumns: "2fr 1fr 2fr 1fr 2fr",
+            gridTemplateColumns: "1fr 4fr 4fr 4fr",
             gridTemplateRows: "1fr 1fr 1fr",
             alignItems: "center"
         },
         phoneLeft: {
-            gridColumn: "1/3",
+            gridColumn: "2/3",
             gridRow: "1 / 4",
             width: "100%",
             height: "100%",
@@ -64,7 +64,7 @@ const useStyles = tss.withName({ name: "FamedPage2" }).create(({ theme }) => {
             animation: `${animate} 0.5s ease-in-out 0.3s 1 forwards`
         },
         phoneMiddle: {
-            gridColumn: "2/5",
+            gridColumn: "3/4",
             gridRow: "1 / 4",
             width: "100%",
             height: "100%",
@@ -74,7 +74,7 @@ const useStyles = tss.withName({ name: "FamedPage2" }).create(({ theme }) => {
             animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
         },
         phoneRight: {
-            gridColumn: "4/6",
+            gridColumn: "4/5",
             gridRow: "1 / 4",
             width: "100%",
             height: "100%",

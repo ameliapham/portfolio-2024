@@ -13,22 +13,31 @@ export function Page2(props: Props) {
     return (
         <div className={cx(classes.root, className)}>
             <img
-                src={detailImagesByProjectId.gmeta.gmetaMacUrl}
+                src={detailImagesByProjectId.gmeta.gmetaIpad1Url}
+                alt="gmeta details"
+                className={cx(classes.ipad1)}
+            />
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
+                alt="gmeta details"
+                className={cx(classes.ipad2)}
+            />
+            <img
+                src={detailImagesByProjectId.gmeta.gmetaMacbookUrl}
                 alt="gmeta Macbook"
                 className={cx(classes.mac)}
             />
             <img
-                src={detailImagesByProjectId.gmeta.gmetaIpad2Url}
-                alt="gmeta logo"
-                className={cx(classes.detail1)}
+                src={detailImagesByProjectId.gmeta.gmetaIpad3Url}
+                alt="gmeta details"
+                className={cx(classes.ipad3)}
             />
             <img
-                src={detailImagesByProjectId.gmeta.gmetaIpad3Url}
-                alt="gmeta logo"
-                className={cx(classes.detail2)}
+                src={detailImagesByProjectId.gmeta.gmetaIpad4Url}
+                alt="gmeta details"
+                className={cx(classes.ipad4)}
             />
         </div>
-
     );
 }
 
@@ -50,37 +59,83 @@ const useStyles = tss.withName({ name: "GmetaPage2" }).create(({ theme }) => {
         root: {
             display: "grid",
             gridTemplateColumns: "1fr 2fr 1fr",
+            gridTemplateRows: "1fr 1fr",
 
             [theme.breakpoints.only("mobile")]: {
-                display: "flex",
-                flexDirection: "column"
+                gridTemplateColumns: "1fr 1fr",
+                gridTemplateRows: "2fr 1fr 1fr"
             }
         },
         mac: {
-            gridColumn: "1/4",
-            gridRow: "1/4",
+            gridColumn: "2/3",
+            gridRow: "1/3",
             width: "100%",
             height: "100%",
-            maxHeight: "600px",
+            maxHeight: "700px",
             objectFit: "contain",
             opacity: 0,
-            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`
+            animation: `${animate} 0.5s ease-in-out 0.2s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "1/3",
+                gridRow: "1/2"
+            }
         },
-        detail1: {
-            gridColumn: "3/5",
-            gridRow: "1",
+        ipad1: {
+            gridColumn: "1/2",
+            gridRow: "1/2",
             width: "100%",
-            opacity: 0,
+            height: "100%",
             objectFit: "contain",
-            animation: `${animate} 0.4s ease-in-out 0.4s 1 forwards`
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.3s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "1/2",
+                gridRow: "2/3"
+            }
         },
-        detail2: {
-            gridColumn: "3/5",
-            gridRow: "2",
+        ipad2: {
+            gridColumn: "1/2",
+            gridRow: "2/3",
             width: "100%",
-            opacity: 0,
+            height: "100%",
             objectFit: "contain",
-            animation: `${animate} 0.4s ease-in-out 0.6s 1 forwards`
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.65s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "1/2",
+                gridRow: "3/4"
+            }
+        },
+        ipad3: {
+            gridColumn: "3/4",
+            gridRow: "1/2",
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.4s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "2/3",
+                gridRow: "2/3"
+            }
+        },
+        ipad4: {
+            gridColumn: "3/4",
+            gridRow: "2/3",
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            opacity: 0,
+            animation: `${animate} 0.5s ease-in-out 0.5s 1 forwards`,
+
+            [theme.breakpoints.only("mobile")]: {
+                gridColumn: "2/3",
+                gridRow: "3/4"
+            }
         }
     };
 });

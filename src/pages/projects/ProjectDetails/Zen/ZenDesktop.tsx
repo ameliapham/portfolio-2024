@@ -53,10 +53,7 @@ export default function ZenDesktop(props: Props) {
                         isGalleryVisible: true,
                         detailsIndex: undefined
                     })}
-                    processPercentage={
-                        (route.params.detailsIndex / 3) * 100
-                        //(route.params.detailsIndex + 1) / 4 * 100
-                    }
+                    processPercentage={(route.params.detailsIndex / 3) * 100}
                 />
             </div>
         </>
