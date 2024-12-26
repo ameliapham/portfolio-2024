@@ -1,6 +1,5 @@
 import { tss } from "tss";
 import { Page1 } from "./Page1";
-import { PageVideo } from "./PageVideo";
 import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
 import { Page4 } from "./Page4";
@@ -26,8 +25,6 @@ export default function BadgeurDesktop(props: Props) {
                             return <Page3 />;
                         case 3:
                             return <Page4 />;
-                        case 4:
-                            return <PageVideo />;
                         default:
                             assert(false);
                     }
@@ -43,7 +40,7 @@ export default function BadgeurDesktop(props: Props) {
                           })
                 }
                 nextRoute={
-                    route.params.detailsIndex === 4
+                    route.params.detailsIndex === 3
                         ? undefined
                         : routes[route.name]({
                               ...route.params,
@@ -55,7 +52,7 @@ export default function BadgeurDesktop(props: Props) {
                     isGalleryVisible: true,
                     detailsIndex: undefined
                 })}
-                processPercentage={(route.params.detailsIndex / 4) * 100}
+                processPercentage={(route.params.detailsIndex / 3) * 100}
             />
         </div>
     );
