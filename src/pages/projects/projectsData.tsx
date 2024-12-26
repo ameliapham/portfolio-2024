@@ -16,10 +16,10 @@ import bgFamedUrl from "assets/projects-background/bg-famed.svg";
 import bgCclUrl from "assets/projects-background/bg-ccl.svg";
 import bgPvalUrl from "assets/projects-background/bg-pval.svg";
 
-import zenPhoneUrl from "assets/zen-phone.png";
-import zenMacUrl from "assets/zen-mac.png";
-import zenLogoUrl from "assets/zen-logo.png";
-import zenIpadUrl from "assets/zen-ipad.png";
+import zenPhoneUrl from "assets/projects-images/zen/zen-phone.webp";
+import zenMacUrl from "assets/projects-images/zen/zen-mac.webp";
+import zenLogoUrl from "assets/projects-images/zen/zen-logo.webp";
+import zenIpadUrl from "assets/projects-images/zen/zen-ipad.webp";
 
 import badgeurPhoneUrl from "assets/projects-images/badgeur/badgeur-phone.webp";
 import badgeurLogoUrl from "assets/projects-images/badgeur/badgeur-logo.svg";
@@ -29,9 +29,9 @@ import badgeurColor3Url from "assets/projects-images/badgeur/badgeur-color-3.svg
 import wfBadgeurUrl from "assets/projects-images/badgeur/badgeur-wf.webp";
 import badgeurTestUrl from "assets/projects-images/badgeur/badgeur-test.webp";
 
-import famedPhoneMUrl from "assets/famed-phoneM.svg";
-import famedPhoneLUrl from "assets/famed-phoneL.svg";
-import famedPhoneRUrl from "assets/famed-phoneR.svg";
+import famedPhoneMUrl from "assets/projects-images/famed/famed-phoneM.svg";
+import famedPhoneLUrl from "assets/projects-images/famed/famed-phoneL.svg";
+import famedPhoneRUrl from "assets/projects-images/famed/famed-phoneR.svg";
 
 import gmetaMacUrl from "assets/projects-images/gmeta/gmeta-mac.webp";
 import gmetaMacbookUrl from "assets/projects-images/gmeta/gmeta-macbook.webp";
