@@ -34,7 +34,7 @@ export function Page1(props: Props) {
                     <Typography variant="body1">
                         This digital product offers a dual-purpose solution tailored to a training program in Customary Law. The promotional website is an engaging showcase highlighting the program's unique features, attracting prospective students, and building visibility. The platform provides an intuitive space where enrolled students can access, track, and update their courses efficiently.
                     </Typography>
-                    <SeeMoreButton href={project.linkFigma}>View prototype</SeeMoreButton>
+                    <SeeMoreButton href={project.linkFigma} target="_blank" rel="noopener">View prototype</SeeMoreButton>
                 </div>
                 <div className={classes.column2}>
                     <Typography variant="body1" style={{ textTransform: "uppercase" }}>
