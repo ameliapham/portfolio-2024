@@ -32,7 +32,7 @@ export function Page1(props: Props) {
             <div className={classes.content}>
                 <div className={classes.column1}>
                     <Typography variant="body1">
-                        abc
+                        The Legal Education's Website, developed for Global for Law and Innovations, is a promotional platform for their legal education programs. This digital product's intuitive design and streamlined functionality highlight the program's strengths and create a professional yet accessible experience for prospective students.
                     </Typography>
                     <SeeMoreButton href={project.linkFigma} target="_blank" rel="noopener">View prototype</SeeMoreButton>
                 </div>
@@ -52,8 +52,7 @@ export function Page1(props: Props) {
                         - UI/UX design <br />
                         - Create a responsive design <br />
                         - Front-end development <br />
-                        - Technical development <br />
-                        - Perform a requirements analysis in collaboration with stakeholders <br />
+                        - Technical development
                     </Typography>
                 </div>
             </div>

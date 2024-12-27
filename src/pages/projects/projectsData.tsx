@@ -138,7 +138,7 @@ export const projects: Project[] = [
         backgroundUrl: bgPvalUrl,
         name: "Legal Education's Website",
         description:
-            "abc",
+            "An introducing website created for Global for Law and Innovation to promote their legal education programs. The site was designed with Figma and built with Wordpress and Elementor.",
         linkFigma: "https://www.figma.com/proto/q7nmSUlBsp2Wlxq8X4GoQq/Les-formations-de-GILI?page-id=708%3A11&node-id=303-2&viewport=-560%2C-163%2C0.11&t=lecvN5xnOxsYq3vn-1&scaling=scale-down&content-scaling=fixed"
     },
     {
