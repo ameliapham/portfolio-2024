@@ -73,7 +73,7 @@ import pvalImacUrl from "assets/projects-images/pval/pval-imac.webp";
 import pvalIpadUrl from "assets/projects-images/pval/pval-ipad.webp";
 import pvalIphoneUrl from "assets/projects-images/pval/pval-iphone.webp";
 
-export const projectIds = ["zen", "pval", "ccl", "gmeta", "badgeur", "iso", "dame", "famed", "arti"] as const;
+export const projectIds = ["zen", "pval", "ccl", "badgeur", "gmeta", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 /**
@@ -155,17 +155,6 @@ export const projects: Project[] = [
     {
         id: projectIds[3],
         year: "2023",
-        imageUrl: pGmetaUrl,
-        backgroundUrl: bgGmetaUrl,
-        name: "Gméta",
-        description:
-            "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing at Saint-Denis University, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom.",
-        linkFigma:
-            "https://www.figma.com/proto/LHeeTDYqxcQkhchANYCnKL/Gm%C3%A9ta?page-id=460%3A12006&type=design&node-id=460-12007&viewport=863%2C180%2C0.06&t=FKah8L7tzi4Duqlg-1&scaling=contain&starting-point-node-id=460%3A12007"
-    },
-    {
-        id: projectIds[4],
-        year: "2023",
         imageUrl: pBadgeurUrl,
         backgroundUrl: bgBadgeurUrl,
         name: "Badgeur",
@@ -173,6 +162,17 @@ export const projects: Project[] = [
             "Badgeur is an innovative academic project initially developed during my Bachelor's in Management at IAE Lyon 3 and later expanded during my Master's in Digital Creation and Publishing at Saint-Denis University. The project aims to replace traditional keychains with a compact chip and mobile app for seamless, secure access to personal spaces.",
         linkFigma:
             "https://www.figma.com/proto/FRiP6t08RfqX3K0GmZ9v8b/Projet-Badgeur?page-id=0%3A1&type=design&node-id=22-251&viewport=2613%2C363%2C0.56&scaling=scale-down&starting-point-node-id=22%3A251&mode=design&t=EeE3Tq5y9X2PPakM-1"
+    },
+    {
+        id: projectIds[4],
+        year: "2023",
+        imageUrl: pGmetaUrl,
+        backgroundUrl: bgGmetaUrl,
+        name: "Gméta",
+        description:
+            "Gméta is a Master's thesis project in Master 2 Digital Creation and Publishing at Saint-Denis University, developed in collaboration with the Global Institute for Law and Innovation. The project focused on the UX/UI design of an educational metaverse. The goal was to create a prototype of an immersive application aimed at replicating the natural cohesion that develops in an online classroom.",
+        linkFigma:
+            "https://www.figma.com/proto/LHeeTDYqxcQkhchANYCnKL/Gm%C3%A9ta?page-id=460%3A12006&type=design&node-id=460-12007&viewport=863%2C180%2C0.06&t=FKah8L7tzi4Duqlg-1&scaling=contain&starting-point-node-id=460%3A12007"
     },
     {
         id: projectIds[5],
