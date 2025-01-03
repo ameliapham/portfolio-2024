@@ -1,8 +1,8 @@
-import type { Props } from "../Props";
+import type { Props } from "../../Props";
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
 import { routes } from "routes";
-import { projects, detailImagesByProjectId } from "../projectsData";
+import { projects, detailImagesByProjectId } from "../../projectsData";
 import { ProjectFrame } from "./ProjectFrame";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
