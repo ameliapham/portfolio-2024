@@ -1,7 +1,6 @@
 import { assert } from "tsafe/assert";
 
 import pZenUrl from "assets/project-gallery/p-zen.webp";
-import pCclUrl from "assets/project-gallery/p-ccl.webp";
 import pDameUrl from "assets/project-gallery/p-dame.webp";
 import pGmetaUrl from "assets/project-gallery/p-gmeta.webp";
 import pIsoUrl from "assets/project-gallery/p-iso.webp";
@@ -13,7 +12,6 @@ import pBadgeurUrl from "assets/project-gallery/p-badgeur.webp";
 import bgGmetaUrl from "assets/projects-background/bg-gmeta.webp";
 import bgBadgeurUrl from "assets/projects-background/bg-badgeur.svg";
 import bgFamedUrl from "assets/projects-background/bg-famed.svg";
-import bgCclUrl from "assets/projects-background/bg-ccl.svg";
 import bgPvalUrl from "assets/projects-background/bg-pval.svg";
 
 import zenPhoneUrl from "assets/projects-images/zen/zen-phone.webp";
@@ -73,7 +71,7 @@ import pvalImacUrl from "assets/projects-images/pval/pval-imac.webp";
 import pvalIpadUrl from "assets/projects-images/pval/pval-ipad.webp";
 import pvalIphoneUrl from "assets/projects-images/pval/pval-iphone.webp";
 
-export const projectIds = ["zen", "pval", "ccl", "badgeur", "gmeta", "iso", "dame", "famed", "arti"] as const;
+export const projectIds = ["zen", "pval", "badgeur", "gmeta", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
 /**
@@ -144,17 +142,6 @@ export const projects: Project[] = [
     {
         id: projectIds[2],
         year: "2023",
-        imageUrl: pCclUrl,
-        backgroundUrl: bgCclUrl,
-        name: "Certificate of Customary Law's Website and Platform",
-        description:
-            "A digital solution created for Global for Law and Innovation, combining a promo website to attract students and an interactive platform to manage and follow law courses.",
-        linkFigma: "https://www.figma.com/proto/q7nmSUlBsp2Wlxq8X4GoQq/Les-formations-de-GILI?page-id=728%3A2209&type=design&node-id=740-850&viewport=939%2C451%2C0.27&t=kDEJwc4Y6kE9vbtK-1&scaling=scale-down"
-
-    },
-    {
-        id: projectIds[3],
-        year: "2023",
         imageUrl: pBadgeurUrl,
         backgroundUrl: bgBadgeurUrl,
         name: "Badgeur",
@@ -164,7 +151,7 @@ export const projects: Project[] = [
             "https://www.figma.com/proto/FRiP6t08RfqX3K0GmZ9v8b/Projet-Badgeur?page-id=0%3A1&type=design&node-id=22-251&viewport=2613%2C363%2C0.56&scaling=scale-down&starting-point-node-id=22%3A251&mode=design&t=EeE3Tq5y9X2PPakM-1"
     },
     {
-        id: projectIds[4],
+        id: projectIds[3],
         year: "2023",
         imageUrl: pGmetaUrl,
         backgroundUrl: bgGmetaUrl,
@@ -175,7 +162,7 @@ export const projects: Project[] = [
             "https://www.figma.com/proto/LHeeTDYqxcQkhchANYCnKL/Gm%C3%A9ta?page-id=460%3A12006&type=design&node-id=460-12007&viewport=863%2C180%2C0.06&t=FKah8L7tzi4Duqlg-1&scaling=contain&starting-point-node-id=460%3A12007"
     },
     {
-        id: projectIds[5],
+        id: projectIds[4],
         year: "2023",
         imageUrl: pIsoUrl,
         backgroundUrl: pIsoUrl,
@@ -185,7 +172,7 @@ export const projects: Project[] = [
         linkDownload: "https://filedn.com/lY4kM0nseRFykf1NMPMRuoQ/MEMORY%20CONTAINER.exe"
     },
     {
-        id: projectIds[6],
+        id: projectIds[5],
         year: "2022",
         imageUrl: pDameUrl,
         backgroundUrl: pDameUrl,
@@ -194,7 +181,7 @@ export const projects: Project[] = [
             "“In the Shadow of La Dame de Canton” is an immersive cultural experience that merges traditional Chinese arts with modern technology. The show features elements such as Chinese shadow puppetry, dance, music, and projection. This creation is the result of a collaboration with Philippe Holvoet, an entrepreneur specializing in catering and events. The show is currently in the prototype stage."
     },
     {
-        id: projectIds[7],
+        id: projectIds[6],
         year: "2021",
         imageUrl: pFamedUrl,
         backgroundUrl: bgFamedUrl,
@@ -205,7 +192,7 @@ export const projects: Project[] = [
             "https://www.figma.com/proto/X726Gg4oq7oP5EQ2v6HVMF/Famed?page-id=0%3A1&type=design&node-id=2-68&viewport=1626%2C595%2C0.23&scaling=scale-down&starting-point-node-id=2%3A68"
     },
     {
-        id: projectIds[8],
+        id: projectIds[7],
         year: "2021",
         imageUrl: pArtiUrl,
         backgroundUrl: pArtiUrl,
