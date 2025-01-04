@@ -2,18 +2,18 @@ import { useMemo } from "react";
 import { rotateArrayRight } from "utils/rotateArray";
 import { routes } from "routes";
 import { tss, keyframes } from "tss";
-import { projects, projectIds, detailImagesByProjectId } from "../projectsData";
+import { projects, projectIds, detailImagesByProjectId } from "../../projectsData";
 import { SeeMoreButton } from "shared/SeeMoreButton";
 import Typography from "@mui/material/Typography";
 import { SplashScreen } from "shared/SplashScreen";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
-import type { Props } from "../Props";
+import type { Props } from "../../Props";
 import { assert, is } from "tsafe/assert";
 import { waitForThrottleFactory } from "utils/waitForThrottle";
-import { getNextProjectId } from "../projectsData";
-import { getPreviousProjectId } from "../projectsData";
+import { getNextProjectId } from "../../projectsData";
+import { getPreviousProjectId } from "../../projectsData";
 
 const projectAssetUrls = projects.map(project => project.imageUrl);
 
