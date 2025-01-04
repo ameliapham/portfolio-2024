@@ -11,7 +11,9 @@ window.addEventListener("wheel", event => {
     const deltaYAbs = Math.abs(event.deltaY);
 
     if (deltaYAbs - lastDeltaYAbs > 2) {
-        evtScrollNavigation.post(event.deltaY > 0 ? "down" : "up");
+        setTimeout(() => {
+            evtScrollNavigation.post(event.deltaY > 0 ? "down" : "up");
+        }), 0;
     }
 
     lastDeltaYAbs = deltaYAbs;
