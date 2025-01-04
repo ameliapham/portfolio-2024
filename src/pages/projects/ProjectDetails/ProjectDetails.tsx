@@ -12,6 +12,7 @@ import { DameCanton } from "./DameCanton";
 import { Famed } from "./Famed";
 import { Ccl } from "./Ccl";
 import { Gili } from "./Pval";
+import { Arti } from "./Arti";
 
 export type Props = {
     className?: string;
@@ -56,6 +57,8 @@ export function ProjectDetails(props: Props) {
                             return <Ccl route={route} />;
                         case "pval":
                             return <Gili route={route} />;
+                        case "arti":
+                            return <Arti route={route} />;
                     }
                 })()}
             </div>
