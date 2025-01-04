@@ -72,14 +72,12 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
             `} 400ms`
     },
     video: {
-        objectFit: "cover",
-        width: "100%",
-        height: "100%"
+        objectFit: "contain",
+        width: "100%"
     },
     imageUrl: {
         position: "absolute",
-        width: "100%",
-        height: "100%"
+        width: "100%"
     },
     description: {
         position: "absolute",
