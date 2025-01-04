@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { Props } from "../../Props";
 import { tss } from "tss";
 import Typography from "@mui/material/Typography";
@@ -29,7 +30,32 @@ export default function ProjectGalleryMobile(props: Props) {
 
     const { isDelayed } = useDelayOnlyOnce();
 
-    if (isDownloadingAssets || isDelayed) {
+    const isReady = !isDownloadingAssets && !isDelayed;
+
+    useEffect(() => {
+        if (!isReady) {
+            return;
+        }
+
+        const LOCAL_STORAGE_KEY = "scrollPosition";
+
+
+        const scrollPosition = sessionStorage.getItem(LOCAL_STORAGE_KEY);
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition));
+        }
+
+
+        const onScroll = () => {
+            sessionStorage.setItem(LOCAL_STORAGE_KEY, `${window.scrollY}`);
+        };
+        window.addEventListener("scroll", onScroll);
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+        }
+    }, [isReady]);
+
+    if (!isReady) {
         return (
             <div
                 className={css({
