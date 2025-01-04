@@ -9,7 +9,6 @@ import { SplashScreen } from "shared/SplashScreen";
 import { ProgressComponent } from "shared/ProgressComponent";
 import { useDownloadAssets } from "utils/useDownloadAssets";
 import { useDelayOnlyOnce } from "utils/useDelayOnlyOnce";
-import type { Link } from "type-route";
 import type { Props } from "../Props";
 import { assert, is } from "tsafe/assert";
 import { waitForThrottleFactory } from "utils/waitForThrottle";
@@ -135,17 +134,21 @@ export default function ProjectGalleryDesktop(props: Props) {
             <div className={cx(classes.root, className)}>
                 <div className={classes.slide}>
                     {rotatedProjects.map(({ id, imageUrl, description, name, year }, i) => (
-                        <Item
+                        <div
                             key={name}
                             className={classes.item}
-                            backgroundImage={imageUrl}
-                            link={
+                            style={{
+                                backgroundImage: `url(${imageUrl})`,
+                                cursor: i === 0 || i === 1 ? "default" : "pointer"
+                            }}
+                            onClick={
                                 i === 0 || i === 1
                                     ? undefined
-                                    : routes[route.name]({
-                                          ...route.params,
-                                          projectId: id
-                                      }).link
+                                    : () =>
+                                        routes[route.name]({
+                                            ...route.params,
+                                            projectId: id,
+                                        }).push()
                             }
                         >
                             {(() => {
@@ -175,7 +178,7 @@ export default function ProjectGalleryDesktop(props: Props) {
                                     </a>
                                 );
                             })()}
-                        </Item>
+                        </div>
                     ))}
                 </div>
 
@@ -191,31 +194,6 @@ export default function ProjectGalleryDesktop(props: Props) {
             </div>
         </>
     );
-}
-
-function Item(props: {
-    className?: string;
-    backgroundImage: string;
-    link: Link | undefined;
-    children: React.ReactNode;
-}) {
-    const { className, backgroundImage, link, children } = props;
-
-    const styles = { backgroundImage: `url(${backgroundImage})` };
-
-    if (link === undefined) {
-        return (
-            <a className={className} style={styles}>
-                {children}
-            </a>
-        );
-    } else {
-        return (
-            <a className={className} style={styles} {...link}>
-                {children}
-            </a>
-        );
-    }
 }
 
 const animate = keyframes({
