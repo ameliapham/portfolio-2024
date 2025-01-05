@@ -15,6 +15,7 @@ import bgBadgeurUrl from "assets/projects-background/bg-badgeur.svg";
 import bgFamedUrl from "assets/projects-background/bg-famed.svg";
 import bgCclUrl from "assets/projects-background/bg-ccl.svg";
 import bgPvalUrl from "assets/projects-background/bg-pval.svg";
+import bgArtiUrl from "assets/projects-background/bg-arti.svg";
 
 import zenPhoneUrl from "assets/projects-images/zen/zen-phone.webp";
 import zenMacUrl from "assets/projects-images/zen/zen-mac.webp";
@@ -208,7 +209,7 @@ export const projects: Project[] = [
         id: projectIds[8],
         year: "2021",
         imageUrl: pArtiUrl,
-        backgroundUrl: pArtiUrl,
+        backgroundUrl: bgArtiUrl,
         name: "ARTI",
         description:
             "“ARTI” is an interactive application project exploring the critical question: “Will artificial intelligence surpass humans?” Our objective is to provoke thought and encourage users to reflect on this significant issue. Through the ARTI application, we aim to delve deeper into these inquiries and inspire users to reconsider their understanding of the current and future capabilities of artificial intelligence in relation to human abilities.",
