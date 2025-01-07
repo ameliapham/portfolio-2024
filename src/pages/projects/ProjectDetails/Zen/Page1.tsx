@@ -32,10 +32,10 @@ export function Page1(props: Props) {
             <div className={classes.content}>
                 <div className={classes.column1}>
                     <Typography variant="body1">
-                        Zen Gourmet is the website for an upcoming Vietnamese restaurant in Mannheim. The
+                        Zen Asia is the website for an upcoming Vietnamese restaurant in Mannheim. The
                         site was designed entirely from scratch, encompassing the selection of the color
                         palette, logo and icon creation, promotional imagery developed with AI
-                        assistance, and a custom UI design with FIgma. The development was subsequently
+                        assistance, and a custom UI design with Figma. The development was subsequently
                         executed using React and TypeScript.
                     </Typography>
                     <div className={classes.buttons}>
