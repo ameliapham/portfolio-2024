@@ -11,7 +11,7 @@ export function Cv() {
                 <br />
                 <br />
                 As a UI/UX Designer, Web Designer, and Front-End Developer, my expertise spans a wide
-                range of activities in the design field, including user research, the creation of
+                range of activities in the digital design field, including user research, the creation of
                 interactive prototypes, web design and development, as well as user testing.
             </Typography>
 
