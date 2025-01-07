@@ -94,6 +94,7 @@ const useStyles = tss
                 height: "100%",
                 width: "100%",
                 background: `url(${avatarUrl})`,
+                backgroundColor: "black",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 clipPath: "polygon(0% 0%, 100% 10%, 100% 90%, 0% 100%)"
