@@ -1,6 +1,5 @@
 import { tss } from "tss";
 import { keyframes } from "tss-react";
-import { alpha } from "@mui/material/styles";
 import { detailImagesByProjectId } from "../../projectsData";
 
 type Props = {

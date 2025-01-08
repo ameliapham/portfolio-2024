@@ -74,7 +74,6 @@ import pvalImacUrl from "assets/projects-images/pval/pval-imac.webp";
 import pvalIpadUrl from "assets/projects-images/pval/pval-ipad.webp";
 import pvalIphoneUrl from "assets/projects-images/pval/pval-iphone.webp";
 
-import artiEditorialUrl from "assets/projects-images/arti/arti-editorial.png";
 import artiPhoneUrl from "assets/projects-images/arti/arti-phone.webp";
 import artiPhone1Url from "assets/projects-images/arti/arti-phone-1.webp";
 import artiPhone2Url from "assets/projects-images/arti/arti-phone-2.webp";
@@ -304,7 +303,6 @@ export const detailImagesByProjectId = {
         famedPhoneRUrl
     },
     arti: {
-        artiEditorialUrl,
         artiPhoneUrl,
         artiPhone1Url,
         artiPhone2Url,
