@@ -74,6 +74,12 @@ import pvalImacUrl from "assets/projects-images/pval/pval-imac.webp";
 import pvalIpadUrl from "assets/projects-images/pval/pval-ipad.webp";
 import pvalIphoneUrl from "assets/projects-images/pval/pval-iphone.webp";
 
+import artiEditorialUrl from "assets/projects-images/arti/arti-editorial.png";
+import artiPhoneUrl from "assets/projects-images/arti/arti-phone.webp";
+import artiPhone1Url from "assets/projects-images/arti/arti-phone-1.webp";
+import artiPhone2Url from "assets/projects-images/arti/arti-phone-2.webp";
+import artiPhone3Url from "assets/projects-images/arti/arti-phone-3.webp";
+
 export const projectIds = ["zen", "pval", "ccl", "badgeur", "gmeta", "iso", "dame", "famed", "arti"] as const;
 export type ProjectId = (typeof projectIds)[number];
 
@@ -297,5 +303,11 @@ export const detailImagesByProjectId = {
         famedPhoneLUrl,
         famedPhoneRUrl
     },
-    arti: {}
+    arti: {
+        artiEditorialUrl,
+        artiPhoneUrl,
+        artiPhone1Url,
+        artiPhone2Url,
+        artiPhone3Url
+    }
 };
