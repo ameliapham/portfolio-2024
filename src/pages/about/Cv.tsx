@@ -15,7 +15,7 @@ export function Cv() {
                 interactive prototypes, web design and development, as well as user testing.
             </Typography>
 
-            <SeeMoreButton href="https://github.com/ameliapham/portfolio-2024/releases/download/assets/CV.Amelia.PHAM.2024.pdf">
+            <SeeMoreButton href="https://github.com/ameliapham/portfolio-2024/releases/download/assets/CV.Amelia.PHAM.2025.en.pdf">
                 Download CV
             </SeeMoreButton>
         </>
