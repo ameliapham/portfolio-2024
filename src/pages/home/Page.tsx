@@ -78,7 +78,6 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
     imageUrl: {
         position: "absolute",
         width: "100%",
-        zIndex: 1000
     },
     description: {
         position: "absolute",
