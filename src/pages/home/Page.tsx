@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { tss } from "tss";
-import headVideo from "assets/headVideo.mp4";
-import headText from "assets/headText.png";
+import headVideoMp4Url from "assets/headVideo.mp4";
+import headVideoGifUrl from "assets/headVideo.gif";
+import headTextWebpUrl from "assets/headText.webp";
 import Typography from "@mui/material/Typography";
 import { HomeSeeMoreButton } from "./HomeSeeMoreButton";
 import { CustomGradients } from "./Gradients";
@@ -16,7 +18,7 @@ type Props = {
 
 export default function Page(props: Props) {
     const { className } = props;
-    const { cx, classes } = useStyles();
+    const { cx, classes, isMobile } = useStyles();
 
     useScrollNavigation(direction => {
         if (direction === "down") {
@@ -24,13 +26,44 @@ export default function Page(props: Props) {
         }
     });
 
+    useEffect(()=>{
+        if( !isMobile ){
+            return;
+        }
+
+        let hasBeenCalled = false;
+
+        const listener = ()=> {
+
+            if( hasBeenCalled ){
+                return;
+            }
+
+            hasBeenCalled = true;
+
+            routes.projects().push();
+        };
+
+        document.addEventListener("touchmove", listener);
+
+        return ()=> {
+            document.removeEventListener("touchmove", listener);
+        };
+
+
+    }, []);
+
     return (
         <div className={cx(classes.root, className)}>
-            <video className={classes.video} autoPlay muted loop>
-                <source src={headVideo} type="video/mp4" />
-            </video>
+            {isMobile ? (
+                <img className={classes.video} src={headVideoGifUrl} />
+            ) : (
+                <video className={classes.video} autoPlay muted loop>
+                    <source src={headVideoMp4Url} type="video/mp4" />
+                </video>
+            )}
 
-            <img className={classes.imageUrl} src={headText} alt="headText" />
+            <img className={classes.imageUrl} src={headTextWebpUrl} alt="headText" />
 
             <Typography className={classes.description} variant="h6">
                 UX UI Designer / Front End Developer
@@ -77,7 +110,7 @@ const useStyles = tss.withName({ Page }).create(({ theme }) => ({
     },
     imageUrl: {
         position: "absolute",
-        width: "100%",
+        width: "100%"
     },
     description: {
         position: "absolute",
