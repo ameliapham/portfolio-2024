@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { tss } from "tss";
 import headVideo from "assets/headVideo.mp4";
 import headText from "assets/headText.png";
@@ -16,13 +17,31 @@ type Props = {
 
 export default function Page(props: Props) {
     const { className } = props;
-    const { cx, classes } = useStyles();
+    const { cx, classes, isMobile } = useStyles();
 
     useScrollNavigation(direction => {
         if (direction === "down") {
             routes.projects().push();
         }
     });
+
+    useEffect(()=>{
+        if( !isMobile ){
+            return;
+        }
+        let hasBeenCalled = false;
+        const listener = ()=> {
+            if( hasBeenCalled ){
+                return;
+            }
+            hasBeenCalled = true;
+            routes.projects().push();
+        };
+        document.addEventListener("touchmove", listener);
+        return ()=> {
+            document.removeEventListener("touchmove", listener);
+        };
+    }, []);
 
     return (
         <div className={cx(classes.root, className)}>
