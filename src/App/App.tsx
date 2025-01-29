@@ -22,7 +22,7 @@ export function AppContextualized() {
 
     const isScrollablePage = useIsScrollablePage({ pageId: route.name || "page404" });
 
-    const { classes, theme, css } = useStyles({
+    const { classes, theme, css, cx } = useStyles({
         isScrollablePage
     });
 
@@ -53,9 +53,10 @@ export function AppContextualized() {
             />
             <div className={classes.root}>
                 <NavBar className={classes.navbar} pageId={route.name} />
+                
                 <Suspense
                     fallback={
-                        <div className={classes.page}>
+                        <div className={cx(classes.page, css({ textAlign: "center"}))}>
                             <SplashScreen className={css({ width: "50%" })} />
                         </div>
                     }
