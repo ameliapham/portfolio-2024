@@ -133,7 +133,7 @@ export const projects: Project[] = [
         name: "Zen Asia",
         description:
             "Zen Asia is the website for an upcoming Vietnamese restaurant in Mannheim. The site was designed entirely from scratch with Figma and built using React and TypeScript.",
-        linkOnline: "https://ap-restaurant-template.vercel.app/",
+        linkOnline: "https://zen-restaurant.vercel.app/",
         linkFigma:
             "https://www.figma.com/proto/j2u9A8Ni65LVpMZGTlwmHu/Restaurant-template?page-id=6%3A5805&node-id=349-26084&node-type=canvas&viewport=436%2C308%2C0.04&t=t97lpvEDD2t1a5ne-1&scaling=contain&content-scaling=fixed"
     },
