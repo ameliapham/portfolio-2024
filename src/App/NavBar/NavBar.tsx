@@ -1,5 +1,6 @@
 import { tss } from "tss";
 import logo from "assets/logoFix.svg";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import { NavButton } from "./NavButton";
 import { alpha } from "@mui/material/styles";
 import { routes, useRoute } from "routes";
@@ -61,6 +62,14 @@ export function NavBar(props: Props) {
                             {pageId_i}
                         </NavButton>
                     ))}
+                <a
+                    href="https://github.com/ameliapham/portfolio-2024"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={classes.githubLink}
+                >
+                    <GitHubIcon className={classes.githubIcon} />
+                </a>
             </div>
         </div>
     );
@@ -144,5 +153,34 @@ const useStyles = tss
         },
         mobileMenu: {
             height: "100%"
+        },
+        githubLink: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+
+            "&::after": {
+                content: "''",
+                position: "absolute",
+                bottom: "10px",
+                left: "50%",
+                width: "0",
+                height: theme.spacing(0.1),
+                backgroundColor: `${alpha(theme.palette.text.primary, 0.5)}`,
+                transform: "translateX(-50%)",
+                transition: "all 0.5s ease"
+            },
+
+            "&:hover::after": {
+                width: "100%"
+            }
+        },
+
+        githubIcon: {
+            width: theme.spacing(2),
+            height: theme.spacing(2),
+            color: theme.palette.text.primary,
+            transition: "0.3s ease-in-out",
         }
     }));
