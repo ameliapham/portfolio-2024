@@ -62,8 +62,9 @@ export function Page1(props: Props) {
                     <Typography variant="body1">
                         - UI & UX design <br />
                         - Logo design <br />
-                        - Graphics design <br />
-                        - Front-end development <br />- Technical development
+                        - Web design <br />
+                        - Front-end development <br />
+                        - Technical development
                     </Typography>
                 </div>
             </div>

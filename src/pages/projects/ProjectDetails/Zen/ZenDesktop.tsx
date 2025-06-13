@@ -3,6 +3,7 @@ import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
 import { Page3 } from "./Page3";
 import { Page4 } from "./Page4";
+import { Page5 } from "./Page5";
 import { assert } from "tsafe/assert";
 import { routes } from "routes";
 import { ProgressComponent } from "shared/ProgressComponent";
@@ -26,6 +27,8 @@ export default function ZenDesktop(props: Props) {
                                 return <Page3 />;
                             case 3:
                                 return <Page4 />;
+                            case 4:
+                                return <Page5 />;
                             default:
                                 assert(false);
                         }
@@ -41,7 +44,7 @@ export default function ZenDesktop(props: Props) {
                               })
                     }
                     nextRoute={
-                        route.params.detailsIndex === 3
+                        route.params.detailsIndex === 4
                             ? undefined
                             : routes[route.name]({
                                   ...route.params,
@@ -53,7 +56,7 @@ export default function ZenDesktop(props: Props) {
                         isGalleryVisible: true,
                         detailsIndex: undefined
                     })}
-                    processPercentage={(route.params.detailsIndex / 3) * 100}
+                    processPercentage={(route.params.detailsIndex / 4) * 100}
                 />
             </div>
         </>
